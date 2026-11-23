@@ -1115,7 +1115,7 @@
                         Allocation</span>
                     <span id="modal-total-price" class="font-display text-xl sm:text-2xl font-bold text-white">$0</span>
                 </div>
-                <button onclick="confirmAddToCart()"
+                <button id="modal-submit-btn" onclick="confirmAddToCart()"
                     class="px-6 py-3 rounded-xl bg-[#00f0ff] hover:bg-[#33f3ff] text-[#07090e] font-semibold text-sm shadow-cyan-glow transition-all inline-flex items-center gap-2">
                     <i data-lucide="plus-circle" class="w-4 h-4"></i>
                     <span>Add to Project Brief</span>
@@ -1241,7 +1241,7 @@
                     </div>
                 </div>
 
-                <button type="button" onclick="confirmAddBundleToCart()"
+                <button id="bundle-submit-btn" type="button" onclick="confirmAddBundleToCart()"
                     class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#8b5cf6] to-[#00f0ff] hover:opacity-95 text-[#07090e] font-bold text-sm shadow-cyan-glow transition-all inline-flex items-center justify-center gap-2 shrink-0">
                     <i data-lucide="layers" class="w-4 h-4"></i>
                     <span>Add Bundle to Project Brief</span>
@@ -1692,6 +1692,8 @@
         let cartItems = [];
         let currentModalService = null;
         let selectedTierIndex = 0;
+        let editingCartItemUid = null;
+        let editingBundleItemUid = null;
         let bundleSelections = {}; // Map of serviceId -> selectedTierIndex
         let serviceDrafts = {}; // Map of serviceId -> { notes, tierIndex, priority, targetDate }
         let bundleDraft = { notes: '', priority: 'standard', targetDate: '' };
@@ -1737,7 +1739,7 @@
         }
 
         function saveServiceDraft() {
-            if (!currentModalService) return;
+            if (!currentModalService || editingCartItemUid) return;
             serviceDrafts[currentModalService.id] = {
                 notes: document.getElementById('modal-notes')?.value || '',
                 tierIndex: selectedTierIndex,
@@ -1748,6 +1750,7 @@
         }
 
         function saveBundleDraft() {
+            if (editingBundleItemUid) return;
             bundleDraft = {
                 notes: document.getElementById('bundle-notes')?.value || '',
                 priority: document.getElementById('bundle-priority')?.value || 'standard',
@@ -1934,12 +1937,13 @@
         // =====================================================================
         // SINGLE SERVICE CONFIGURATOR MODAL LOGIC
         // =====================================================================
-        function openConfigModal(serviceId) {
+        function openConfigModal(serviceId, existingCartItem = null) {
             const service = SERVICES_CATALOG.find(s => s.id === serviceId);
             if (!service) return;
 
             currentModalService = service;
-            const savedDraft = serviceDrafts[serviceId] || {};
+            editingCartItemUid = existingCartItem ? existingCartItem.uid : null;
+            const savedDraft = existingCartItem || serviceDrafts[serviceId] || {};
             selectedTierIndex = typeof savedDraft.tierIndex === 'number' ? savedDraft.tierIndex : 0;
 
             document.getElementById('modal-discipline-tag').textContent = service.disciplineLabel;
@@ -1947,7 +1951,7 @@
             document.getElementById('modal-service-desc').textContent = service.shortDesc;
             document.getElementById('modal-priority').value = savedDraft.priority || 'standard';
 
-            if (savedDraft.targetDate) {
+            if (savedDraft.targetDate && savedDraft.targetDate !== 'Flexible') {
                 document.getElementById('modal-target-date').value = savedDraft.targetDate;
             }
 
@@ -1959,6 +1963,13 @@
             if (notesInputEl) {
                 notesInputEl.value = savedDraft.notes || '';
                 notesInputEl.placeholder = service.briefPlaceholder || 'Share your goals, key deliverables, reference links, and specific requirements...';
+            }
+
+            const submitBtn = document.getElementById('modal-submit-btn');
+            if (submitBtn) {
+                submitBtn.innerHTML = editingCartItemUid
+                    ? '<i data-lucide="check" class="w-4 h-4"></i><span>Save Changes</span>'
+                    : '<i data-lucide="plus-circle" class="w-4 h-4"></i><span>Add to Project Brief</span>';
             }
 
             const deliverablesEl = document.getElementById('modal-deliverables');
@@ -1984,6 +1995,7 @@
             modal.classList.add('hidden');
             modal.classList.remove('flex');
             currentModalService = null;
+            editingCartItemUid = null;
         }
 
         function renderModalTiers() {
@@ -2040,10 +2052,11 @@
             }
 
             const price = priority === 'rush' ? Math.round(tier.price * 1.25) : tier.price;
-
-            cartItems.push({
-                uid: 'item-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+            const updatedPayload = {
+                uid: editingCartItemUid || ('item-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6)),
                 isBundle: false,
+                serviceId: currentModalService.id,
+                tierIndex: selectedTierIndex,
                 title: currentModalService.title,
                 disciplineLabel: currentModalService.disciplineLabel,
                 tierName: tier.name,
@@ -2051,26 +2064,61 @@
                 targetDate,
                 notes,
                 price
-            });
+            };
 
             const addedTitle = currentModalService.title;
-            delete serviceDrafts[currentModalService.id];
+            const wasEditing = Boolean(editingCartItemUid);
+
+            if (wasEditing) {
+                const idx = cartItems.findIndex(item => item.uid === editingCartItemUid);
+                if (idx !== -1) {
+                    cartItems[idx] = updatedPayload;
+                } else {
+                    cartItems.push(updatedPayload);
+                }
+            } else {
+                cartItems.push(updatedPayload);
+                delete serviceDrafts[currentModalService.id];
+            }
+
             persistState();
             closeConfigModal();
             updateCartUI();
-            showToast(`Added "${addedTitle}" to Project Brief`);
+            if (wasEditing) toggleCartDrawer(true);
+            showToast(wasEditing ? `Updated "${addedTitle}" in Project Brief` : `Added "${addedTitle}" to Project Brief`);
         }
 
         // =====================================================================
         // MULTI-DISCIPLINE BUNDLE BUILDER MODAL LOGIC
         // =====================================================================
-        function openCustomConsultation() {
+        function openCustomConsultation(existingBundleItem = null) {
+            editingBundleItemUid = existingBundleItem ? existingBundleItem.uid : null;
+
             const bundleNotesEl = document.getElementById('bundle-notes');
             const bundlePriorityEl = document.getElementById('bundle-priority');
             const bundleDateEl = document.getElementById('bundle-target-date');
-            if (bundleNotesEl) bundleNotesEl.value = bundleDraft.notes || '';
-            if (bundlePriorityEl) bundlePriorityEl.value = bundleDraft.priority || 'standard';
-            if (bundleDateEl && bundleDraft.targetDate) bundleDateEl.value = bundleDraft.targetDate;
+            const bundleSubmitBtn = document.getElementById('bundle-submit-btn');
+
+            if (existingBundleItem) {
+                bundleSelections = existingBundleItem.selectionsMap
+                    ? { ...existingBundleItem.selectionsMap }
+                    : reconstructBundleSelections(existingBundleItem.includedServices || []);
+                if (bundleNotesEl) bundleNotesEl.value = existingBundleItem.notes || '';
+                if (bundlePriorityEl) bundlePriorityEl.value = existingBundleItem.priority || 'standard';
+                if (bundleDateEl && existingBundleItem.targetDate && existingBundleItem.targetDate !== 'Flexible') {
+                    bundleDateEl.value = existingBundleItem.targetDate;
+                }
+            } else {
+                if (bundleNotesEl) bundleNotesEl.value = bundleDraft.notes || '';
+                if (bundlePriorityEl) bundlePriorityEl.value = bundleDraft.priority || 'standard';
+                if (bundleDateEl && bundleDraft.targetDate) bundleDateEl.value = bundleDraft.targetDate;
+            }
+
+            if (bundleSubmitBtn) {
+                bundleSubmitBtn.innerHTML = editingBundleItemUid
+                    ? '<i data-lucide="check" class="w-4 h-4"></i><span>Save Bundle Changes</span>'
+                    : '<i data-lucide="layers" class="w-4 h-4"></i><span>Add Bundle to Project Brief</span>';
+            }
 
             renderBundleServices();
             updateBundleTotals();
@@ -2080,16 +2128,47 @@
             lucide.createIcons();
         }
 
+        function reconstructBundleSelections(includedServices) {
+            const map = {};
+            includedServices.forEach((entry) => {
+                const service = SERVICES_CATALOG.find(s => entry.startsWith(s.title + ' ('));
+                if (service) {
+                    const tierIdx = service.tiers.findIndex(t => entry.endsWith(`(${t.name})`));
+                    map[service.id] = tierIdx >= 0 ? tierIdx : 0;
+                }
+            });
+            return map;
+        }
+
         function closeBundleModal() {
             const modal = document.getElementById('bundle-modal');
             if (!modal) return;
             modal.classList.add('hidden');
             modal.classList.remove('flex');
+            editingBundleItemUid = null;
         }
 
         function clearBundleSelections() {
             bundleSelections = {};
-            persistState();
+            if (!editingBundleItemUid) persistState();
+            renderBundleServices();
+            updateBundleTotals();
+        }
+
+        function toggleBundleService(serviceId) {
+            if (Object.prototype.hasOwnProperty.call(bundleSelections, serviceId)) {
+                delete bundleSelections[serviceId];
+            } else {
+                bundleSelections[serviceId] = 0;
+            }
+            if (!editingBundleItemUid) persistState();
+            renderBundleServices();
+            updateBundleTotals();
+        }
+
+        function selectBundleServiceTier(serviceId, tierIdx) {
+            bundleSelections[serviceId] = tierIdx;
+            if (!editingBundleItemUid) persistState();
             renderBundleServices();
             updateBundleTotals();
         }
@@ -2267,10 +2346,12 @@
             const rushAdjustedRaw = isRush ? Math.round(rawBaseTotal * 1.25) : rawBaseTotal;
             const discountRate = selectedIds.length >= 9 ? 0.15 : (selectedIds.length >= 6 ? 0.10 : 0);
             const finalPrice = rushAdjustedRaw - Math.round(rushAdjustedRaw * discountRate);
+            const wasEditingBundle = Boolean(editingBundleItemUid);
 
-            cartItems.push({
-                uid: 'bundle-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+            const bundlePayload = {
+                uid: editingBundleItemUid || ('bundle-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6)),
                 isBundle: true,
+                selectionsMap: { ...bundleSelections },
                 title: `Multi-Discipline Bundle (${selectedIds.length} Services)`,
                 disciplineLabel: discountRate > 0 ? `${Math.round(discountRate * 100)}% Studio Bundle Savings` : 'Custom Bundle',
                 tierName: includedServices.join(' + '),
@@ -2279,16 +2360,27 @@
                 targetDate,
                 notes,
                 price: finalPrice
-            });
+            };
+
+            if (wasEditingBundle) {
+                const idx = cartItems.findIndex(item => item.uid === editingBundleItemUid);
+                if (idx !== -1) {
+                    cartItems[idx] = bundlePayload;
+                } else {
+                    cartItems.push(bundlePayload);
+                }
+            } else {
+                cartItems.push(bundlePayload);
+                bundleDraft = { notes: '', priority: 'standard', targetDate: document.getElementById('bundle-target-date')?.value || '' };
+            }
 
             bundleSelections = {};
-            bundleDraft = { notes: '', priority: 'standard', targetDate: document.getElementById('bundle-target-date')?.value || '' };
             document.getElementById('bundle-notes').value = '';
             persistState();
             closeBundleModal();
             updateCartUI();
             toggleCartDrawer(true);
-            showToast(`Added ${selectedIds.length}-service bundle to Project Brief`);
+            showToast(wasEditingBundle ? `Updated ${selectedIds.length}-service bundle in Project Brief` : `Added ${selectedIds.length}-service bundle to Project Brief`);
         }
 
         // =====================================================================
@@ -2320,6 +2412,36 @@
             persistState();
             updateCartUI();
             showToast('Removed item from Project Brief');
+        }
+
+        function editCartItem(uid) {
+            const item = cartItems.find(entry => entry.uid === uid);
+            if (!item) return;
+
+            toggleCartDrawer(false);
+
+            if (item.isBundle) {
+                openCustomConsultation(item);
+                return;
+            }
+
+            const service = item.serviceId
+                ? SERVICES_CATALOG.find(s => s.id === item.serviceId)
+                : SERVICES_CATALOG.find(s => s.title === item.title);
+
+            if (!service) {
+                showToast('Unable to load configurator for this item', true);
+                return;
+            }
+
+            const resolvedTierIdx = typeof item.tierIndex === 'number'
+                ? item.tierIndex
+                : Math.max(0, service.tiers.findIndex(t => t.name === item.tierName));
+
+            openConfigModal(service.id, {
+                ...item,
+                tierIndex: resolvedTierIdx
+            });
         }
 
         function clearCartItems() {
@@ -2368,14 +2490,26 @@
               <span class="font-mono text-[10px] uppercase tracking-wider text-[#ff0055]">${escapeHTML(item.disciplineLabel)}</span>
               <h4 class="font-display font-semibold text-sm text-white">${escapeHTML(item.title)}</h4>
             </div>
-            <button
-              type="button"
-              onclick="removeCartItem('${item.uid}')"
-              aria-label="Remove item"
-              class="p-1.5 rounded-lg bg-[#ff0055]/10 hover:bg-[#ff0055]/20 text-[#ff4d88] hover:text-[#ff80aa] transition"
-            >
-              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-            </button>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <button
+                type="button"
+                onclick="editCartItem('${item.uid}')"
+                title="Edit item"
+                aria-label="Edit item"
+                class="p-1.5 rounded-lg bg-white/[0.04] hover:bg-[#00f0ff]/15 text-slate-300 hover:text-[#00f0ff] transition"
+              >
+                <i data-lucide="pencil" class="w-3.5 h-3.5"></i>
+              </button>
+              <button
+                type="button"
+                onclick="removeCartItem('${item.uid}')"
+                title="Remove item"
+                aria-label="Remove item"
+                class="p-1.5 rounded-lg bg-[#ff0055]/10 hover:bg-[#ff0055]/20 text-[#ff4d88] hover:text-[#ff80aa] transition"
+              >
+                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
           </div>
 
           <div class="text-xs text-slate-400">
