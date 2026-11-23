@@ -9,9 +9,8 @@
         gtag('js', new Date());
     </script>
     <script>(function (w, d, t, u, o) { w[u] = w[u] || [], o.ts = (new Date).getTime(); var n = d.createElement(t); n.src = "https://bat.bing.net/bat.js?ti=" + o.ti + ("uetq" != u ? "&q=" + u : ""), n.async = 1, n.onload = n.onreadystatechange = function () { var s = this.readyState; s && "loaded" !== s && "complete" !== s || (o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad"), n.onload = n.onreadystatechange = null) }; var i = d.getElementsByTagName(t)[0]; i.parentNode.insertBefore(n, i); })(window, document, "script", "uetq", { ti: "187300229", enableAutoSpaTracking: true });</script>
-    <!-- You can set default Consent Mode right after the UET tag -->
+    <!-- Default Consent Mode right after the UET tag -->
     <script>window.uetq = window.uetq || []; window.uetq.push('consent', 'default', { 'ad_storage': 'denied' });</script>
-    <!-- Implement a cookie banner or another method to collect user consent. When a user grants consent (e.g., selects 'Accept' on your banner), update the consent settings using the command below. -->
     <script>window.uetq = window.uetq || []; window.uetq.push('consent', 'update', { 'ad_storage': 'granted' });</script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,8 +23,8 @@
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Static Tailwind CSS + Custom Studio Utilities (No Play CDN warning) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
     <!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,39 +34,770 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        obsidian: '#07090e',
-                        panel: '#0c101a',
-                        panelHover: '#111726',
-                        cyberCyan: '#00f0ff',
-                        electricViolet: '#8b5cf6',
-                        neonEmerald: '#10b981',
-                    },
-                    boxShadow: {
-                        'cyan-glow': '0 0 24px -4px rgba(0, 240, 255, 0.25)',
-                        'violet-glow': '0 0 24px -4px rgba(139, 92, 246, 0.25)',
-                        'emerald-glow': '0 0 24px -4px rgba(16, 185, 129, 0.25)',
-                    }
-                }
+    <style>
+        :root {
+            --obsidian: #07090e;
+            --panel: #0c101a;
+            --cyber-cyan: #00f0ff;
+            --electric-violet: #8b5cf6;
+            --neon-emerald: #10b981;
+        }
+
+        html.scroll-smooth {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #07090e;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-sans {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Slate & Custom Hex Backgrounds */
+        .bg-\[\#07090e\] {
+            background-color: #07090e;
+        }
+
+        .bg-\[\#07090e\]\/90 {
+            background-color: rgba(7, 9, 14, 0.9);
+        }
+
+        .bg-\[\#07090e\]\/95 {
+            background-color: rgba(7, 9, 14, 0.95);
+        }
+
+        .bg-\[\#04060a\]\/75 {
+            background-color: rgba(4, 6, 10, 0.75);
+        }
+
+        .bg-\[\#04060a\]\/80 {
+            background-color: rgba(4, 6, 10, 0.8);
+        }
+
+        .bg-\[\#04060a\]\/85 {
+            background-color: rgba(4, 6, 10, 0.85);
+        }
+
+        .bg-\[\#0c101a\] {
+            background-color: #0c101a;
+        }
+
+        .bg-\[\#0c101a\]\/60 {
+            background-color: rgba(12, 16, 26, 0.6);
+        }
+
+        .bg-\[\#0c101a\]\/80 {
+            background-color: rgba(12, 16, 26, 0.8);
+        }
+
+        .bg-\[\#0c101a\]\/90 {
+            background-color: rgba(12, 16, 26, 0.9);
+        }
+
+        .bg-\[\#0c101a\]\/95 {
+            background-color: rgba(12, 16, 26, 0.95);
+        }
+
+        .bg-white\/\[0\.02\] {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .bg-white\/\[0\.03\] {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .bg-white\/\[0\.04\] {
+            background-color: rgba(255, 255, 255, 0.04);
+        }
+
+        .bg-white\/\[0\.05\] {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .bg-white\/\[0\.06\] {
+            background-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .hover\:bg-white\/\[0\.06\]:hover {
+            background-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .hover\:bg-white\/\[0\.08\]:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .hover\:bg-white\/\[0\.1\]:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .bg-\[\#00f0ff\] {
+            background-color: #00f0ff;
+        }
+
+        .hover\:bg-\[\#00f0ff\]:hover {
+            background-color: #00f0ff;
+        }
+
+        .hover\:bg-\[\#33f3ff\]:hover {
+            background-color: #33f3ff;
+        }
+
+        .bg-\[\#00f0ff\]\/\[0\.045\] {
+            background-color: rgba(0, 240, 255, 0.045);
+        }
+
+        .bg-\[\#00f0ff\]\/\[0\.06\] {
+            background-color: rgba(0, 240, 255, 0.06);
+        }
+
+        .bg-\[\#00f0ff\]\/10 {
+            background-color: rgba(0, 240, 255, 0.1);
+        }
+
+        .hover\:bg-\[\#00f0ff\]\/10:hover {
+            background-color: rgba(0, 240, 255, 0.1);
+        }
+
+        .bg-\[\#00f0ff\]\/15 {
+            background-color: rgba(0, 240, 255, 0.15);
+        }
+
+        .hover\:bg-\[\#00f0ff\]\/15:hover {
+            background-color: rgba(0, 240, 255, 0.15);
+        }
+
+        .bg-\[\#8b5cf6\]\/\[0\.055\] {
+            background-color: rgba(139, 92, 246, 0.055);
+        }
+
+        .bg-\[\#8b5cf6\]\/10 {
+            background-color: rgba(139, 92, 246, 0.1);
+        }
+
+        .bg-\[\#8b5cf6\]\/15 {
+            background-color: rgba(139, 92, 246, 0.15);
+        }
+
+        .bg-\[\#10b981\] {
+            background-color: #10b981;
+        }
+
+        .hover\:bg-\[\#34d399\]:hover {
+            background-color: #34d399;
+        }
+
+        .bg-\[\#10b981\]\/\[0\.035\] {
+            background-color: rgba(16, 185, 129, 0.035);
+        }
+
+        .bg-\[\#10b981\]\/\[0\.07\] {
+            background-color: rgba(16, 185, 129, 0.07);
+        }
+
+        .bg-\[\#10b981\]\/10 {
+            background-color: rgba(16, 185, 129, 0.1);
+        }
+
+        .bg-\[\#10b981\]\/15 {
+            background-color: rgba(16, 185, 129, 0.15);
+        }
+
+        .bg-amber-400\/10 {
+            background-color: rgba(251, 191, 36, 0.1);
+        }
+
+        .bg-amber-400\/15 {
+            background-color: rgba(251, 191, 36, 0.15);
+        }
+
+        .hover\:bg-red-500\/20:hover {
+            background-color: rgba(239, 68, 68, 0.2);
+        }
+
+        .bg-\[\#ff0055\] {
+            background-color: #ff0055;
+        }
+
+        .bg-\[\#ff0055\]\/10 {
+            background-color: rgba(255, 0, 85, 0.1);
+        }
+
+        .hover\:bg-\[\#ff0055\]\/10:hover {
+            background-color: rgba(255, 0, 85, 0.1);
+        }
+
+        .bg-\[\#ff0055\]\/15 {
+            background-color: rgba(255, 0, 85, 0.15);
+        }
+
+        .hover\:bg-\[\#ff0055\]\/20:hover {
+            background-color: rgba(255, 0, 85, 0.2);
+        }
+
+        .border-\[\#ff0055\] {
+            border-color: #ff0055;
+        }
+
+        .border-\[\#ff0055\]\/30 {
+            border-color: rgba(255, 0, 85, 0.3);
+        }
+
+        .border-\[\#ff0055\]\/40 {
+            border-color: rgba(255, 0, 85, 0.4);
+        }
+
+        .border-\[\#ff0055\]\/50 {
+            border-color: rgba(255, 0, 85, 0.5);
+        }
+
+        .hover\:border-\[\#ff0055\]:hover {
+            border-color: #ff0055;
+        }
+
+        .hover\:border-\[\#ff0055\]\/50:hover {
+            border-color: rgba(255, 0, 85, 0.5);
+        }
+
+        .text-\[\#ff0055\] {
+            color: #ff0055;
+        }
+
+        .text-\[\#ff4d88\] {
+            color: #ff4d88;
+        }
+
+        .hover\:text-\[\#ff80aa\]:hover {
+            color: #ff80aa;
+        }
+
+        .shadow-pink-glow,
+        .hover\:shadow-pink-glow:hover {
+            box-shadow: 0 0 24px -4px rgba(255, 0, 85, 0.32);
+        }
+
+        /* Gradients */
+        .bg-gradient-to-r {
+            background-image: linear-gradient(to right, var(--tw-gradient-stops));
+        }
+
+        .bg-gradient-to-br {
+            background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+        }
+
+        .from-\[\#00f0ff\] {
+            --tw-gradient-from: #00f0ff;
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 240, 255, 0));
+        }
+
+        .from-\[\#00f0ff\]\/20 {
+            --tw-gradient-from: rgba(0, 240, 255, 0.2);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 240, 255, 0));
+        }
+
+        .from-\[\#8b5cf6\] {
+            --tw-gradient-from: #8b5cf6;
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(139, 92, 246, 0));
+        }
+
+        .via-\[\#8b5cf6\] {
+            --tw-gradient-stops: var(--tw-gradient-from), #8b5cf6, var(--tw-gradient-to, rgba(139, 92, 246, 0));
+        }
+
+        .via-\[\#8b5cf6\]\/20 {
+            --tw-gradient-stops: var(--tw-gradient-from), rgba(139, 92, 246, 0.2), var(--tw-gradient-to, rgba(139, 92, 246, 0));
+        }
+
+        .via-\[\#00f0ff\] {
+            --tw-gradient-stops: var(--tw-gradient-from), #00f0ff, var(--tw-gradient-to, rgba(0, 240, 255, 0));
+        }
+
+        .to-\[\#00f0ff\] {
+            --tw-gradient-to: #00f0ff;
+        }
+
+        .to-\[\#8b5cf6\] {
+            --tw-gradient-to: #8b5cf6;
+        }
+
+        .to-\[\#10b981\] {
+            --tw-gradient-to: #10b981;
+        }
+
+        .to-\[\#10b981\]\/20 {
+            --tw-gradient-to: rgba(16, 185, 129, 0.2);
+        }
+
+        .bg-clip-text {
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        /* Text Colors */
+        .text-slate-200 {
+            color: #e2e8f0;
+        }
+
+        .text-slate-300 {
+            color: #cbd5e1;
+        }
+
+        .text-slate-400 {
+            color: #94a3b8;
+        }
+
+        .text-slate-500 {
+            color: #64748b;
+        }
+
+        .text-\[\#07090e\] {
+            color: #07090e;
+        }
+
+        .hover\:text-\[\#07090e\]:hover {
+            color: #07090e;
+        }
+
+        .text-\[\#00f0ff\] {
+            color: #00f0ff;
+        }
+
+        .hover\:text-\[\#00f0ff\]:hover {
+            color: #00f0ff;
+        }
+
+        .text-\[\#8b5cf6\] {
+            color: #8b5cf6;
+        }
+
+        .hover\:text-\[\#8b5cf6\]:hover {
+            color: #8b5cf6;
+        }
+
+        .text-\[\#10b981\] {
+            color: #10b981;
+        }
+
+        .hover\:text-\[\#10b981\]:hover {
+            color: #10b981;
+        }
+
+        .text-amber-300 {
+            color: #fcd34d;
+        }
+
+        .hover\:text-amber-300:hover {
+            color: #fcd34d;
+        }
+
+        .text-amber-400 {
+            color: #fbbf24;
+        }
+
+        .text-emerald-100 {
+            color: #d1fae5;
+        }
+
+        .hover\:text-red-300:hover {
+            color: #fca5a5;
+        }
+
+        .placeholder-slate-500::placeholder {
+            color: #64748b;
+        }
+
+        .placeholder-emerald-200\/35::placeholder {
+            color: rgba(167, 243, 208, 0.35);
+        }
+
+        .selection\:bg-\[\#00f0ff\]\/20::selection {
+            background-color: rgba(0, 240, 255, 0.2);
+        }
+
+        .selection\:text-\[\#00f0ff\]::selection {
+            color: #00f0ff;
+        }
+
+        /* Borders */
+        .border-white\/\[0\.05\] {
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .border-white\/\[0\.06\] {
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .border-white\/\[0\.07\] {
+            border-color: rgba(255, 255, 255, 0.07);
+        }
+
+        .border-white\/\[0\.08\] {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .border-white\/\[0\.1\] {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .border-white\/\[0\.12\] {
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .border-white\/20 {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .hover\:border-white\/20:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .hover\:border-white\/25:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .border-\[\#00f0ff\] {
+            border-color: #00f0ff;
+        }
+
+        .hover\:border-\[\#00f0ff\]:hover {
+            border-color: #00f0ff;
+        }
+
+        .border-\[\#00f0ff\]\/25 {
+            border-color: rgba(0, 240, 255, 0.25);
+        }
+
+        .border-\[\#00f0ff\]\/30 {
+            border-color: rgba(0, 240, 255, 0.3);
+        }
+
+        .border-\[\#00f0ff\]\/40 {
+            border-color: rgba(0, 240, 255, 0.4);
+        }
+
+        .border-\[\#00f0ff\]\/50 {
+            border-color: rgba(0, 240, 255, 0.5);
+        }
+
+        .hover\:border-\[\#00f0ff\]\/50:hover {
+            border-color: rgba(0, 240, 255, 0.5);
+        }
+
+        .border-\[\#00f0ff\]\/60 {
+            border-color: rgba(0, 240, 255, 0.6);
+        }
+
+        .hover\:border-\[\#00f0ff\]\/60:hover {
+            border-color: rgba(0, 240, 255, 0.6);
+        }
+
+        .focus\:border-\[\#00f0ff\]:focus {
+            border-color: #00f0ff;
+        }
+
+        .focus\:border-\[\#00f0ff\]\/60:focus {
+            border-color: rgba(0, 240, 255, 0.6);
+        }
+
+        .border-\[\#8b5cf6\]\/25 {
+            border-color: rgba(139, 92, 246, 0.25);
+        }
+
+        .border-\[\#8b5cf6\]\/30 {
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .border-\[\#8b5cf6\]\/40 {
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+
+        .hover\:border-\[\#8b5cf6\]\/60:hover {
+            border-color: rgba(139, 92, 246, 0.6);
+        }
+
+        .border-\[\#10b981\]\/25 {
+            border-color: rgba(16, 185, 129, 0.25);
+        }
+
+        .border-\[\#10b981\]\/30 {
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .border-\[\#10b981\]\/35 {
+            border-color: rgba(16, 185, 129, 0.35);
+        }
+
+        .border-\[\#10b981\]\/40 {
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+
+        .border-\[\#10b981\]\/50 {
+            border-color: rgba(16, 185, 129, 0.5);
+        }
+
+        .hover\:border-\[\#10b981\]\/60:hover {
+            border-color: rgba(16, 185, 129, 0.6);
+        }
+
+        .focus\:border-\[\#10b981\]:focus {
+            border-color: #10b981;
+        }
+
+        .border-amber-400\/25 {
+            border-color: rgba(251, 191, 36, 0.25);
+        }
+
+        .hover\:border-amber-400\/60:hover {
+            border-color: rgba(251, 191, 36, 0.6);
+        }
+
+        /* Glows, Blur, Sizing & Arbitrary Utilities */
+        .shadow-cyan-glow,
+        .hover\:shadow-cyan-glow:hover {
+            box-shadow: 0 0 24px -4px rgba(0, 240, 255, 0.25);
+        }
+
+        .shadow-violet-glow,
+        .hover\:shadow-violet-glow:hover {
+            box-shadow: 0 0 24px -4px rgba(139, 92, 246, 0.25);
+        }
+
+        .shadow-emerald-glow,
+        .hover\:shadow-emerald-glow:hover {
+            box-shadow: 0 0 24px -4px rgba(16, 185, 129, 0.25);
+        }
+
+        .hover\:shadow-\[0_0_24px_-4px_rgba\(251\,191\,36\,0\.25\)\]:hover {
+            box-shadow: 0 0 24px -4px rgba(251, 191, 36, 0.25);
+        }
+
+        .backdrop-blur-sm {
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        .backdrop-blur-md {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .backdrop-blur-xl {
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+
+        .blur-\[130px\] {
+            filter: blur(130px);
+        }
+
+        .blur-\[140px\] {
+            filter: blur(140px);
+        }
+
+        .rounded-2xl {
+            border-radius: 1rem;
+        }
+
+        .rounded-3xl {
+            border-radius: 1.5rem;
+        }
+
+        .w-\[480px\] {
+            width: 480px;
+        }
+
+        .h-\[480px\] {
+            height: 480px;
+        }
+
+        .w-\[500px\] {
+            width: 500px;
+        }
+
+        .h-\[500px\] {
+            height: 500px;
+        }
+
+        .w-\[520px\] {
+            width: 520px;
+        }
+
+        .h-\[520px\] {
+            height: 520px;
+        }
+
+        .min-w-\[22px\] {
+            min-width: 22px;
+        }
+
+        .h-\[22px\] {
+            height: 22px;
+        }
+
+        .max-h-\[90vh\] {
+            max-height: 90vh;
+        }
+
+        .max-h-\[92vh\] {
+            max-height: 92vh;
+        }
+
+        .text-\[10px\] {
+            font-size: 10px;
+        }
+
+        .text-\[11px\] {
+            font-size: 11px;
+        }
+
+        .leading-\[1\.1\] {
+            line-height: 1.1;
+        }
+
+        .tracking-\[0\.2em\] {
+            letter-spacing: 0.2em;
+        }
+
+        .scroll-mt-28 {
+            scroll-margin-top: 7rem;
+        }
+
+        .shrink-0 {
+            flex-shrink: 0;
+        }
+
+        .basis-full {
+            flex-basis: 100%;
+        }
+
+        .gap-1\.5 {
+            gap: 0.375rem;
+        }
+
+        .gap-2\.5 {
+            gap: 0.625rem;
+        }
+
+        .space-y-2\.5> :not([hidden])~ :not([hidden]) {
+            margin-top: 0.625rem;
+        }
+
+        .pt-28 {
+            padding-top: 7rem;
+        }
+
+        .pt-36 {
+            padding-top: 9rem;
+        }
+
+        .px-3\.5 {
+            padding-left: 0.875rem;
+            padding-right: 0.875rem;
+        }
+
+        .py-2\.5 {
+            padding-top: 0.625rem;
+            padding-bottom: 0.625rem;
+        }
+
+        .py-3\.5 {
+            padding-top: 0.875rem;
+            padding-bottom: 0.875rem;
+        }
+
+        .p-3\.5 {
+            padding: 0.875rem;
+        }
+
+        .pb-2\.5 {
+            padding-bottom: 0.625rem;
+        }
+
+        .bottom-2\.5 {
+            bottom: 0.625rem;
+        }
+
+        .right-2\.5 {
+            right: 0.625rem;
+        }
+
+        .left-3\.5 {
+            left: 0.875rem;
+        }
+
+        .-translate-x-1\/2 {
+            transform: translateX(-50%);
+        }
+
+        .-translate-y-1\/2 {
+            transform: translateY(-50%);
+        }
+
+        .translate-y-4 {
+            transform: translateY(1rem);
+        }
+
+        .translate-x-full {
+            transform: translateX(100%);
+        }
+
+        .group:hover .group-hover\:scale-105 {
+            transform: scale(1.05);
+        }
+
+        .group:hover .group-hover\:scale-110 {
+            transform: scale(1.1);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .\[color-scheme\:dark\] {
+            color-scheme: dark;
+        }
+
+        .bg-\[linear-gradient\(to_right\,rgba\(255\,255\,255\,0\.02\)_1px\,transparent_1px\)\,linear-gradient\(to_bottom\,rgba\(255\,255\,255\,0\.02\)_1px\,transparent_1px\)\] {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+
+        .bg-\[size\:64px_64px\] {
+            background-size: 64px 64px;
+        }
+
+        .\[mask-image\:radial-gradient\(ellipse_80\%_60\%_at_50\%_20\%\,\#000_65\%\,transparent_100\%\)\] {
+            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 65%, transparent 100%);
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 65%, transparent 100%);
+        }
+
+        @media (min-width: 640px) {
+            .sm\:pt-36 {
+                padding-top: 9rem;
             }
-        };
-    </script>
+        }
+    </style>
 </head>
 
 <body
     class="bg-[#07090e] text-slate-200 font-sans antialiased selection:bg-[#00f0ff]/20 selection:text-[#00f0ff] overflow-x-hidden">
 
-    <!-- Ambient Futuristic Background Mesh (Non-intrusive, refined) -->
+    <!-- Ambient Futuristic Background Mesh -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div class="absolute -top-40 -left-40 w-[520px] h-[520px] rounded-full bg-[#00f0ff]/[0.045] blur-[130px]"></div>
         <div class="absolute top-1/3 -right-40 w-[480px] h-[480px] rounded-full bg-[#8b5cf6]/[0.055] blur-[140px]">
@@ -122,13 +852,13 @@
             <!-- Right Action: Project Cart / Booking Drawer Trigger -->
             <div class="flex items-center gap-3">
                 <button onclick="toggleCartDrawer(true)" aria-label="Open Project Brief & Booking Cart"
-                    class="relative inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.04] hover:bg-[#00f0ff]/10 border border-white/[0.1] hover:border-[#00f0ff]/50 text-sm font-medium text-white transition-all duration-300 group">
-                    <i data-lucide="layers"
-                        class="w-4 h-4 text-[#00f0ff] group-hover:scale-110 transition-transform"></i>
-                    <span class="hidden sm:inline">Project Brief</span>
-                    <span class="sm:hidden">Brief</span>
+                    class="relative inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#ff0055]/10 hover:bg-[#ff0055]/20 border border-[#ff0055]/40 hover:border-[#ff0055] text-sm font-medium text-[#ff0055] shadow-pink-glow transition-all duration-300 group">
+                    <i data-lucide="shopping-cart"
+                        class="w-4 h-4 text-[#ff0055] group-hover:scale-110 transition-transform"></i>
+                    <span class="hidden sm:inline font-semibold">Project Brief</span>
+                    <span class="sm:hidden font-semibold">Brief</span>
                     <span id="cart-badge"
-                        class="inline-flex items-center justify-center min-w-[22px] h-[22px] px-1.5 rounded-full text-xs font-mono font-semibold bg-[#00f0ff] text-[#07090e] shadow-cyan-glow transition-transform">
+                        class="inline-flex items-center justify-center min-w-[22px] h-[22px] px-1.5 rounded-full text-xs font-mono font-bold bg-[#ff0055] text-white shadow-pink-glow transition-transform">
                         0
                     </span>
                 </button>
@@ -139,7 +869,7 @@
     <!-- Main Content -->
     <main class="relative z-10 pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
 
-        <!-- Hero Section: Refined, Focused, High-Clarity -->
+        <!-- Hero Section -->
         <section class="text-center max-w-4xl mx-auto mb-14 sm:mb-20">
             <div
                 class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] mb-6">
@@ -169,8 +899,8 @@
                     <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
                 </a>
                 <button onclick="openCustomConsultation()"
-                    class="px-6 py-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.12] text-white font-medium text-sm transition-all duration-200 inline-flex items-center gap-2">
-                    <i data-lucide="sparkles" class="w-4 h-4 text-[#8b5cf6]"></i>
+                    class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#00f0ff] via-[#8b5cf6] to-[#10b981] hover:opacity-95 text-[#07090e] font-semibold text-sm tracking-wide shadow-cyan-glow transition-all duration-200 inline-flex items-center gap-2">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-[#07090e]"></i>
                     <span>Multi-Discipline Bundle</span>
                 </button>
             </div>
@@ -236,7 +966,7 @@
             </div>
         </section>
 
-        <!-- Studio Workflow Strip (Simple, Refined 3-Step Clarity) -->
+        <!-- Studio Workflow Strip -->
         <section class="mt-24 rounded-3xl bg-[#0c101a]/90 border border-white/[0.08] p-8 sm:p-10">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
@@ -372,7 +1102,7 @@
                         class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
                         Project Brief &amp; Specific Requirements *
                     </label>
-                    <textarea id="modal-notes" rows="3" required
+                    <textarea id="modal-notes" rows="3" required oninput="saveServiceDraft()"
                         placeholder="Share your goals, key deliverables, reference links, and specific requirements..."
                         class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-[#00f0ff] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500 resize-none"></textarea>
                 </div>
@@ -418,7 +1148,7 @@
                             <i data-lucide="sparkles" class="w-3 h-3"></i>
                             <span>Multi-Discipline Bundle Configurator</span>
                         </span>
-                        <span id="bundle-discount-pill" <span id="bundle-discount-pill"
+                        <span id="bundle-discount-pill"
                             class="font-mono text-[11px] px-2.5 py-0.5 rounded-md bg-white/[0.04] text-slate-400 border border-white/[0.08]">
                             Select 6+ services for up to 15% Studio Bundle Savings
                         </span>
@@ -485,8 +1215,8 @@
                             class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
                             Unified Multi-Discipline Brief &amp; Cross-Deliverable Notes *
                         </label>
-                        <textarea id="bundle-notes" rows="3" required
-                            placeholder="Describe how these disciplines connect (e.g., Web3 dApp + Smart Contract + Custom Brand Identity + Launch Soundtrack or Custom Merch/Ink)..."
+                        <textarea id="bundle-notes" rows="3" required oninput="saveBundleDraft()"
+                            placeholder="Provide an overview of your project goals, how your selected services connect, key milestones, and any reference links..."
                             class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-[#00f0ff] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500 resize-none"></textarea>
                     </div>
                 </div>
@@ -531,17 +1261,23 @@
 
         <!-- Drawer Panel -->
         <aside id="cart-drawer"
-            class="fixed top-0 right-0 h-full w-full max-w-md bg-[#0c101a] border-l border-white/[0.1] shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-out">
+            class="fixed top-0 right-0 h-full w-full max-w-md bg-[#0c101a] border-l border-[#ff0055]/40 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-out">
             <!-- Drawer Header -->
-            <div class="px-6 py-5 border-b border-white/[0.08] flex items-center justify-between">
+            <div class="px-6 py-5 border-b border-[#ff0055]/30 flex items-center justify-between gap-3">
                 <div class="flex items-center gap-2.5">
-                    <i data-lucide="layers" class="w-5 h-5 text-[#00f0ff]"></i>
-                    <h2 class="font-display text-lg font-bold text-white">Active Project Brief</h2>
+                    <i data-lucide="shopping-cart" class="w-5 h-5 text-[#ff0055]"></i>
+                    <h2 class="font-display text-lg font-bold text-[#ff0055]">Active Project Brief</h2>
                 </div>
-                <button onclick="toggleCartDrawer(false)" aria-label="Close drawer"
-                    class="p-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.1] text-slate-400 hover:text-white transition">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
+                <div class="flex items-center gap-2.5">
+                    <button type="button" id="clear-cart-btn" onclick="clearCartItems()"
+                        class="px-3.5 py-1.5 rounded-xl bg-[#ff0055]/15 hover:bg-[#ff0055]/20 border border-[#ff0055] text-xs font-mono font-medium text-[#ff4d88] hover:text-[#ff80aa] transition">
+                        Clear Cart
+                    </button>
+                    <button onclick="toggleCartDrawer(false)" aria-label="Close drawer"
+                        class="p-1.5 rounded-xl hover:bg-[#ff0055]/15 text-[#ff0055] transition">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
             </div>
 
             <!-- Drawer Items List -->
@@ -550,18 +1286,20 @@
             </div>
 
             <!-- Checkout & Settlement Form -->
-            <div id="cart-footer" class="p-6 bg-[#07090e] border-t border-white/[0.08] space-y-4">
+            <div id="cart-footer" class="p-6 bg-[#07090e] border-t border-[#ff0055]/30 space-y-4">
                 <div class="flex items-center justify-between text-sm">
                     <span class="text-slate-400">Estimated Total Scope</span>
-                    <span id="cart-subtotal" class="font-display text-2xl font-bold text-white">$0</span>
+                    <span id="cart-subtotal" class="font-display text-2xl font-bold text-[#ff0055]">$0</span>
                 </div>
 
                 <!-- Client Contact Details -->
                 <div class="space-y-2.5 pt-2 border-t border-white/[0.06]">
-                    <input type="text" id="client-name" placeholder="Your Name / Brand / Handle *"
-                        class="w-full px-3.5 py-2.5 rounded-xl bg-[#0c101a] border border-white/[0.1] focus:border-[#00f0ff] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
-                    <input type="email" id="client-email" placeholder="Contact Email for Brief & Invoice *"
-                        class="w-full px-3.5 py-2.5 rounded-xl bg-[#0c101a] border border-white/[0.1] focus:border-[#00f0ff] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
+                    <input type="text" id="client-name" oninput="saveClientCheckoutDraft()"
+                        placeholder="Your Name / Brand / Handle *"
+                        class="w-full px-3.5 py-2.5 rounded-xl bg-[#0c101a] border border-white/[0.1] focus:border-[#ff0055] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
+                    <input type="email" id="client-email" oninput="saveClientCheckoutDraft()"
+                        placeholder="Contact Email for Brief & Invoice *"
+                        class="w-full px-3.5 py-2.5 rounded-xl bg-[#0c101a] border border-white/[0.1] focus:border-[#ff0055] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
                 </div>
 
                 <!-- Emerald Green Referral Code Section -->
@@ -574,20 +1312,27 @@
                             <span>Referral / Partner Code (Optional)</span>
                         </label>
                     </div>
-                    <input type="text" id="client-referral-code" placeholder="*******"
+                    <input type="text" id="client-referral-code" oninput="saveClientCheckoutDraft()"
+                        placeholder="*******"
                         class="w-full px-3.5 py-2 rounded-xl bg-[#07090e]/90 border border-[#10b981]/30 focus:border-[#10b981] focus:outline-none font-mono text-xs sm:text-sm text-emerald-100 placeholder-emerald-200/35 transition" />
                 </div>
 
                 <!-- Direct Studio Booking & Invoice Notice -->
                 <div
                     class="px-3.5 py-2.5 rounded-xl border border-[#8b5cf6]/40 bg-[#8b5cf6]/10 flex items-center justify-between gap-3">
-
-                    <button onclick="submitProjectBrief()"
-                        class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#00f0ff] to-[#8b5cf6] hover:opacity-95 text-[#07090e] font-bold text-sm tracking-wide shadow-cyan-glow transition-all flex items-center justify-center gap-2">
-                        <span>Submit Project Brief &amp; Request Invoice</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-white">
+                        <i data-lucide="file-text" class="w-4 h-4 text-[#8b5cf6] shrink-0"></i>
+                        <span>Direct Studio Invoice &amp; Booking</span>
+                    </div>
+                    <span class="font-mono text-[10px] text-slate-400">Crypto / Wire / Card</span>
                 </div>
+
+                <button onclick="submitProjectBrief()"
+                    class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#00f0ff] to-[#8b5cf6] hover:opacity-95 text-[#07090e] font-bold text-sm tracking-wide shadow-cyan-glow transition-all flex items-center justify-center gap-2">
+                    <span>Submit Project Brief &amp; Request Invoice</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
         </aside>
     </div>
 
@@ -627,19 +1372,6 @@
                         <i data-lucide="copy" class="w-4 h-4"></i>
                     </span>
                 </button>
-            </div>
-
-            <!-- Referral Confirmation Banner (Shown when referral email is included) -->
-            <div id="receipt-referral-banner"
-                class="hidden mb-5 p-3.5 rounded-2xl bg-[#10b981]/10 border border-[#10b981]/30 flex items-start gap-2.5 text-xs">
-                <i data-lucide="gift" class="w-4 h-4 text-[#10b981] shrink-0 mt-0.5"></i>
-                <div class="text-slate-300">
-                    <span class="font-mono text-[11px] uppercase tracking-wider text-[#10b981] font-semibold block">
-                        Referral Logged &bull; Up to 20% Commission Eligible
-                    </span>
-                    Referral contact <span id="receipt-referral-email" class="text-white font-mono"></span> has been
-                    attached to your studio transmission.
-                </div>
             </div>
 
             <div class="flex items-center justify-between pt-4 border-t border-white/[0.08] mb-6">
@@ -954,22 +1686,93 @@
         };
 
         // Application State
+        const STORAGE_KEY = 'd474designs_storefront_state_v1';
         let activeFilter = 'all';
         let searchQuery = '';
         let cartItems = [];
         let currentModalService = null;
         let selectedTierIndex = 0;
         let bundleSelections = {}; // Map of serviceId -> selectedTierIndex
+        let serviceDrafts = {}; // Map of serviceId -> { notes, tierIndex, priority, targetDate }
+        let bundleDraft = { notes: '', priority: 'standard', targetDate: '' };
+        let clientCheckoutDraft = { name: '', email: '', referralCode: '' };
         let lastGeneratedReceiptText = '';
         let copyButtonTimers = [];
 
+        function loadPersistedState() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return;
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed.cartItems)) cartItems = parsed.cartItems;
+                if (parsed.bundleSelections && typeof parsed.bundleSelections === 'object') {
+                    bundleSelections = parsed.bundleSelections;
+                }
+                if (parsed.serviceDrafts && typeof parsed.serviceDrafts === 'object') {
+                    serviceDrafts = parsed.serviceDrafts;
+                }
+                if (parsed.bundleDraft && typeof parsed.bundleDraft === 'object') {
+                    bundleDraft = { ...bundleDraft, ...parsed.bundleDraft };
+                }
+                if (parsed.clientCheckoutDraft && typeof parsed.clientCheckoutDraft === 'object') {
+                    clientCheckoutDraft = { ...clientCheckoutDraft, ...parsed.clientCheckoutDraft };
+                }
+            } catch (e) {
+                // Ignore storage access errors
+            }
+        }
+
+        function persistState() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify({
+                    cartItems,
+                    bundleSelections,
+                    serviceDrafts,
+                    bundleDraft,
+                    clientCheckoutDraft
+                }));
+            } catch (e) {
+                // Ignore quota/storage access errors
+            }
+        }
+
+        function saveServiceDraft() {
+            if (!currentModalService) return;
+            serviceDrafts[currentModalService.id] = {
+                notes: document.getElementById('modal-notes')?.value || '',
+                tierIndex: selectedTierIndex,
+                priority: document.getElementById('modal-priority')?.value || 'standard',
+                targetDate: document.getElementById('modal-target-date')?.value || ''
+            };
+            persistState();
+        }
+
+        function saveBundleDraft() {
+            bundleDraft = {
+                notes: document.getElementById('bundle-notes')?.value || '',
+                priority: document.getElementById('bundle-priority')?.value || 'standard',
+                targetDate: document.getElementById('bundle-target-date')?.value || ''
+            };
+            persistState();
+        }
+
+        function saveClientCheckoutDraft() {
+            clientCheckoutDraft = {
+                name: document.getElementById('client-name')?.value || '',
+                email: document.getElementById('client-email')?.value || '',
+                referralCode: document.getElementById('client-referral-code')?.value || ''
+            };
+            persistState();
+        }
+
         // Initialize on DOM load
         document.addEventListener('DOMContentLoaded', () => {
+            loadPersistedState();
             renderServices();
             updateCartUI();
             lucide.createIcons();
 
-            // Default date inputs to 7 days from today
+            // Default date inputs to 7 days from today (unless saved in draft)
             const defaultDate = new Date();
             defaultDate.setDate(defaultDate.getDate() + 7);
             const formattedDefaultDate = defaultDate.toISOString().split('T')[0];
@@ -977,7 +1780,26 @@
             const modalDateInput = document.getElementById('modal-target-date');
             const bundleDateInput = document.getElementById('bundle-target-date');
             if (modalDateInput) modalDateInput.value = formattedDefaultDate;
-            if (bundleDateInput) bundleDateInput.value = formattedDefaultDate;
+            if (bundleDateInput) bundleDateInput.value = bundleDraft.targetDate || formattedDefaultDate;
+
+            const bundleNotesEl = document.getElementById('bundle-notes');
+            const bundlePriorityEl = document.getElementById('bundle-priority');
+            if (bundleNotesEl && bundleDraft.notes) bundleNotesEl.value = bundleDraft.notes;
+            if (bundlePriorityEl && bundleDraft.priority) bundlePriorityEl.value = bundleDraft.priority;
+
+            const clientNameEl = document.getElementById('client-name');
+            const clientEmailEl = document.getElementById('client-email');
+            const clientReferralEl = document.getElementById('client-referral-code');
+            if (clientNameEl && clientCheckoutDraft.name) clientNameEl.value = clientCheckoutDraft.name;
+            if (clientEmailEl && clientCheckoutDraft.email) clientEmailEl.value = clientCheckoutDraft.email;
+            if (clientReferralEl && clientCheckoutDraft.referralCode) clientReferralEl.value = clientCheckoutDraft.referralCode;
+
+            // Attach persistence listeners for date & priority fields
+            if (modalDateInput) modalDateInput.addEventListener('change', saveServiceDraft);
+            const modalPriorityEl = document.getElementById('modal-priority');
+            if (modalPriorityEl) modalPriorityEl.addEventListener('change', saveServiceDraft);
+            if (bundleDateInput) bundleDateInput.addEventListener('change', saveBundleDraft);
+            if (bundlePriorityEl) bundlePriorityEl.addEventListener('change', saveBundleDraft);
 
             // Close modals/drawers on Escape key
             document.addEventListener('keydown', (e) => {
@@ -1117,12 +1939,17 @@
             if (!service) return;
 
             currentModalService = service;
-            selectedTierIndex = 0;
+            const savedDraft = serviceDrafts[serviceId] || {};
+            selectedTierIndex = typeof savedDraft.tierIndex === 'number' ? savedDraft.tierIndex : 0;
 
             document.getElementById('modal-discipline-tag').textContent = service.disciplineLabel;
             document.getElementById('modal-service-title').textContent = service.title;
             document.getElementById('modal-service-desc').textContent = service.shortDesc;
-            document.getElementById('modal-priority').value = 'standard';
+            document.getElementById('modal-priority').value = savedDraft.priority || 'standard';
+
+            if (savedDraft.targetDate) {
+                document.getElementById('modal-target-date').value = savedDraft.targetDate;
+            }
 
             const notesLabelEl = document.getElementById('modal-notes-label');
             const notesInputEl = document.getElementById('modal-notes');
@@ -1130,7 +1957,7 @@
                 notesLabelEl.textContent = `${service.briefLabel || 'Project Brief & Specific Requirements'} *`;
             }
             if (notesInputEl) {
-                notesInputEl.value = '';
+                notesInputEl.value = savedDraft.notes || '';
                 notesInputEl.placeholder = service.briefPlaceholder || 'Share your goals, key deliverables, reference links, and specific requirements...';
             }
 
@@ -1187,6 +2014,7 @@
             selectedTierIndex = idx;
             renderModalTiers();
             updateModalCalculatedPrice();
+            saveServiceDraft();
         }
 
         function updateModalCalculatedPrice() {
@@ -1226,6 +2054,8 @@
             });
 
             const addedTitle = currentModalService.title;
+            delete serviceDrafts[currentModalService.id];
+            persistState();
             closeConfigModal();
             updateCartUI();
             showToast(`Added "${addedTitle}" to Project Brief`);
@@ -1235,6 +2065,13 @@
         // MULTI-DISCIPLINE BUNDLE BUILDER MODAL LOGIC
         // =====================================================================
         function openCustomConsultation() {
+            const bundleNotesEl = document.getElementById('bundle-notes');
+            const bundlePriorityEl = document.getElementById('bundle-priority');
+            const bundleDateEl = document.getElementById('bundle-target-date');
+            if (bundleNotesEl) bundleNotesEl.value = bundleDraft.notes || '';
+            if (bundlePriorityEl) bundlePriorityEl.value = bundleDraft.priority || 'standard';
+            if (bundleDateEl && bundleDraft.targetDate) bundleDateEl.value = bundleDraft.targetDate;
+
             renderBundleServices();
             updateBundleTotals();
             const modal = document.getElementById('bundle-modal');
@@ -1252,6 +2089,7 @@
 
         function clearBundleSelections() {
             bundleSelections = {};
+            persistState();
             renderBundleServices();
             updateBundleTotals();
         }
@@ -1262,12 +2100,14 @@
             } else {
                 bundleSelections[serviceId] = 0;
             }
+            persistState();
             renderBundleServices();
             updateBundleTotals();
         }
 
         function selectBundleServiceTier(serviceId, tierIdx) {
             bundleSelections[serviceId] = tierIdx;
+            persistState();
             renderBundleServices();
             updateBundleTotals();
         }
@@ -1442,7 +2282,9 @@
             });
 
             bundleSelections = {};
+            bundleDraft = { notes: '', priority: 'standard', targetDate: document.getElementById('bundle-target-date')?.value || '' };
             document.getElementById('bundle-notes').value = '';
+            persistState();
             closeBundleModal();
             updateCartUI();
             toggleCartDrawer(true);
@@ -1475,8 +2317,20 @@
 
         function removeCartItem(uid) {
             cartItems = cartItems.filter(item => item.uid !== uid);
+            persistState();
             updateCartUI();
             showToast('Removed item from Project Brief');
+        }
+
+        function clearCartItems() {
+            if (cartItems.length === 0) {
+                showToast('Project Brief is already empty', true);
+                return;
+            }
+            cartItems = [];
+            persistState();
+            updateCartUI();
+            showToast('Cleared all items from Project Brief');
         }
 
         function updateCartUI() {
@@ -1494,8 +2348,8 @@
             if (cartItems.length === 0) {
                 container.innerHTML = `
           <div class="h-full flex flex-col items-center justify-center text-center py-12 px-4">
-            <div class="w-12 h-12 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center mb-3">
-              <i data-lucide="layers" class="w-6 h-6 text-slate-500"></i>
+            <div class="w-12 h-12 rounded-2xl bg-[#ff0055]/10 border border-[#ff0055]/30 flex items-center justify-center mb-3">
+              <i data-lucide="shopping-cart" class="w-6 h-6 text-[#ff0055]"></i>
             </div>
             <h3 class="font-display font-semibold text-white text-base mb-1">Your Project Brief is Empty</h3>
             <p class="text-xs text-slate-400 max-w-xs leading-relaxed">
@@ -1508,17 +2362,17 @@
             }
 
             container.innerHTML = cartItems.map((item) => `
-        <div class="p-4 rounded-2xl bg-[#07090e] border border-white/[0.08] space-y-2">
+        <div class="p-4 rounded-2xl bg-[#07090e] border border-[#ff0055]/30 space-y-2">
           <div class="flex items-start justify-between gap-3">
             <div>
-              <span class="font-mono text-[10px] uppercase tracking-wider text-[#00f0ff]">${escapeHTML(item.disciplineLabel)}</span>
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#ff0055]">${escapeHTML(item.disciplineLabel)}</span>
               <h4 class="font-display font-semibold text-sm text-white">${escapeHTML(item.title)}</h4>
             </div>
             <button
               type="button"
               onclick="removeCartItem('${item.uid}')"
               aria-label="Remove item"
-              class="p-1.5 rounded-lg bg-white/[0.03] hover:bg-red-500/20 text-slate-400 hover:text-red-300 transition"
+              class="p-1.5 rounded-lg bg-[#ff0055]/10 hover:bg-[#ff0055]/20 text-[#ff4d88] hover:text-[#ff80aa] transition"
             >
               <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
             </button>
@@ -1526,7 +2380,7 @@
 
           <div class="text-xs text-slate-400">
             ${item.isBundle && item.includedServices
-                    ? `<ul class="space-y-1 mt-1 pl-2 border-l border-[#8b5cf6]/40">${item.includedServices.map(s => `<li>&bull; ${escapeHTML(s)}</li>`).join('')}</ul>`
+                    ? `<ul class="space-y-1 mt-1 pl-2 border-l border-[#ff0055]/40">${item.includedServices.map(s => `<li>&bull; ${escapeHTML(s)}</li>`).join('')}</ul>`
                     : `<span>Scope: <strong class="text-slate-200 font-medium">${escapeHTML(item.tierName)}</strong></span>`
                 }
           </div>
@@ -1540,7 +2394,7 @@
 
           <div class="pt-2 border-t border-white/[0.06] flex items-center justify-between">
             <span class="font-mono text-[10px] uppercase text-slate-500">Allocation</span>
-            <span class="font-display font-bold text-base text-white">$${item.price.toLocaleString()}</span>
+            <span class="font-display font-bold text-base text-[#ff0055]">$${item.price.toLocaleString()}</span>
           </div>
         </div>
       `).join('');
@@ -1616,6 +2470,8 @@
             cartItems = [];
             const referralInput = document.getElementById('client-referral-code');
             if (referralInput) referralInput.value = '';
+            clientCheckoutDraft.referralCode = '';
+            persistState();
             updateCartUI();
             toggleCartDrawer(false);
 
