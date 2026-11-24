@@ -9,7 +9,7 @@
         gtag('js', new Date());
     </script>
     <script>(function (w, d, t, u, o) { w[u] = w[u] || [], o.ts = (new Date).getTime(); var n = d.createElement(t); n.src = "https://bat.bing.net/bat.js?ti=" + o.ti + ("uetq" != u ? "&q=" + u : ""), n.async = 1, n.onload = n.onreadystatechange = function () { var s = this.readyState; s && "loaded" !== s && "complete" !== s || (o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad"), n.onload = n.onreadystatechange = null) }; var i = d.getElementsByTagName(t)[0]; i.parentNode.insertBefore(n, i); })(window, document, "script", "uetq", { ti: "187300229", enableAutoSpaTracking: true });</script>
-    <!-- Default Consent Mode right after the UET tag -->
+    <!-- Default Consent Mode -->
     <script>window.uetq = window.uetq || []; window.uetq.push('consent', 'default', { 'ad_storage': 'denied' });</script>
     <script>window.uetq = window.uetq || []; window.uetq.push('consent', 'update', { 'ad_storage': 'granted' });</script>
     <meta charset="UTF-8" />
@@ -23,7 +23,7 @@
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 
-    <!-- Static Tailwind CSS + Custom Studio Utilities (No Play CDN warning) -->
+    <!-- Static Pre-compiled Tailwind CSS (Zero CDN JS Console Warnings) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
     <!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,16 +34,19 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <!-- Custom Design Tokens & Tailwind v3 Utility Extensions -->
     <style>
         :root {
             --obsidian: #07090e;
             --panel: #0c101a;
+            --panel-hover: #111726;
             --cyber-cyan: #00f0ff;
             --electric-violet: #8b5cf6;
             --neon-emerald: #10b981;
+            --crimson-pink: #ff0055;
         }
 
-        html.scroll-smooth {
+        html {
             scroll-behavior: smooth;
         }
 
@@ -51,6 +54,7 @@
             background-color: #07090e;
             color: #e2e8f0;
             font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
 
         .font-sans {
@@ -65,7 +69,7 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Slate & Custom Hex Backgrounds */
+        /* Custom Palette Utilities */
         .bg-\[\#07090e\] {
             background-color: #07090e;
         }
@@ -154,6 +158,14 @@
             background-color: #33f3ff;
         }
 
+        .bg-\[\#00f0ff\]\/10 {
+            background-color: rgba(0, 240, 255, 0.1);
+        }
+
+        .bg-\[\#00f0ff\]\/15 {
+            background-color: rgba(0, 240, 255, 0.15);
+        }
+
         .bg-\[\#00f0ff\]\/\[0\.045\] {
             background-color: rgba(0, 240, 255, 0.045);
         }
@@ -162,24 +174,12 @@
             background-color: rgba(0, 240, 255, 0.06);
         }
 
-        .bg-\[\#00f0ff\]\/10 {
-            background-color: rgba(0, 240, 255, 0.1);
-        }
-
         .hover\:bg-\[\#00f0ff\]\/10:hover {
             background-color: rgba(0, 240, 255, 0.1);
         }
 
-        .bg-\[\#00f0ff\]\/15 {
-            background-color: rgba(0, 240, 255, 0.15);
-        }
-
         .hover\:bg-\[\#00f0ff\]\/15:hover {
             background-color: rgba(0, 240, 255, 0.15);
-        }
-
-        .bg-\[\#8b5cf6\]\/\[0\.055\] {
-            background-color: rgba(139, 92, 246, 0.055);
         }
 
         .bg-\[\#8b5cf6\]\/10 {
@@ -190,12 +190,24 @@
             background-color: rgba(139, 92, 246, 0.15);
         }
 
+        .bg-\[\#8b5cf6\]\/\[0\.055\] {
+            background-color: rgba(139, 92, 246, 0.055);
+        }
+
         .bg-\[\#10b981\] {
             background-color: #10b981;
         }
 
         .hover\:bg-\[\#34d399\]:hover {
             background-color: #34d399;
+        }
+
+        .bg-\[\#10b981\]\/10 {
+            background-color: rgba(16, 185, 129, 0.1);
+        }
+
+        .bg-\[\#10b981\]\/15 {
+            background-color: rgba(16, 185, 129, 0.15);
         }
 
         .bg-\[\#10b981\]\/\[0\.035\] {
@@ -206,12 +218,57 @@
             background-color: rgba(16, 185, 129, 0.07);
         }
 
-        .bg-\[\#10b981\]\/10 {
-            background-color: rgba(16, 185, 129, 0.1);
+        /* Crimson Pink Cart Theme (#ff0055) */
+        .bg-\[\#ff0055\] {
+            background-color: #ff0055;
         }
 
-        .bg-\[\#10b981\]\/15 {
-            background-color: rgba(16, 185, 129, 0.15);
+        .bg-\[\#ff0055\]\/10 {
+            background-color: rgba(255, 0, 85, 0.1);
+        }
+
+        .bg-\[\#ff0055\]\/15 {
+            background-color: rgba(255, 0, 85, 0.15);
+        }
+
+        .hover\:bg-\[\#ff0055\]\/15:hover {
+            background-color: rgba(255, 0, 85, 0.15);
+        }
+
+        .hover\:bg-\[\#ff0055\]\/20:hover {
+            background-color: rgba(255, 0, 85, 0.2);
+        }
+
+        .text-\[\#ff0055\] {
+            color: #ff0055;
+        }
+
+        .text-\[\#ff4d88\] {
+            color: #ff4d88;
+        }
+
+        .hover\:text-\[\#ff80aa\]:hover {
+            color: #ff80aa;
+        }
+
+        .border-\[\#ff0055\] {
+            border-color: #ff0055;
+        }
+
+        .border-\[\#ff0055\]\/30 {
+            border-color: rgba(255, 0, 85, 0.3);
+        }
+
+        .border-\[\#ff0055\]\/40 {
+            border-color: rgba(255, 0, 85, 0.4);
+        }
+
+        .hover\:border-\[\#ff0055\]:hover {
+            border-color: #ff0055;
+        }
+
+        .focus\:border-\[\#ff0055\]:focus {
+            border-color: #ff0055;
         }
 
         .bg-amber-400\/10 {
@@ -230,154 +287,11 @@
             background-color: #fbbf24;
         }
 
-        .border-amber-400\/40 {
-            border-color: rgba(251, 191, 36, 0.4);
-        }
-
-        .shadow-amber-glow,
-        .hover\:shadow-amber-glow:hover {
-            box-shadow: 0 0 24px -4px rgba(245, 158, 11, 0.35);
-        }
-
         .hover\:bg-red-500\/20:hover {
             background-color: rgba(239, 68, 68, 0.2);
         }
 
-        .bg-\[\#ff0055\] {
-            background-color: #ff0055;
-        }
-
-        .bg-\[\#ff0055\]\/10 {
-            background-color: rgba(255, 0, 85, 0.1);
-        }
-
-        .hover\:bg-\[\#ff0055\]\/10:hover {
-            background-color: rgba(255, 0, 85, 0.1);
-        }
-
-        .bg-\[\#ff0055\]\/15 {
-            background-color: rgba(255, 0, 85, 0.15);
-        }
-
-        .hover\:bg-\[\#ff0055\]\/20:hover {
-            background-color: rgba(255, 0, 85, 0.2);
-        }
-
-        .border-\[\#ff0055\] {
-            border-color: #ff0055;
-        }
-
-        .border-\[\#ff0055\]\/30 {
-            border-color: rgba(255, 0, 85, 0.3);
-        }
-
-        .border-\[\#ff0055\]\/40 {
-            border-color: rgba(255, 0, 85, 0.4);
-        }
-
-        .border-\[\#ff0055\]\/50 {
-            border-color: rgba(255, 0, 85, 0.5);
-        }
-
-        .hover\:border-\[\#ff0055\]:hover {
-            border-color: #ff0055;
-        }
-
-        .hover\:border-\[\#ff0055\]\/50:hover {
-            border-color: rgba(255, 0, 85, 0.5);
-        }
-
-        .text-\[\#ff0055\] {
-            color: #ff0055;
-        }
-
-        .text-\[\#ff4d88\] {
-            color: #ff4d88;
-        }
-
-        .hover\:text-\[\#ff80aa\]:hover {
-            color: #ff80aa;
-        }
-
-        .shadow-pink-glow,
-        .hover\:shadow-pink-glow:hover {
-            box-shadow: 0 0 24px -4px rgba(255, 0, 85, 0.32);
-        }
-
-        /* Gradients */
-        .bg-gradient-to-r {
-            background-image: linear-gradient(to right, var(--tw-gradient-stops));
-        }
-
-        .bg-gradient-to-br {
-            background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
-        }
-
-        .from-\[\#00f0ff\] {
-            --tw-gradient-from: #00f0ff;
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 240, 255, 0));
-        }
-
-        .from-\[\#00f0ff\]\/20 {
-            --tw-gradient-from: rgba(0, 240, 255, 0.2);
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 240, 255, 0));
-        }
-
-        .from-\[\#8b5cf6\] {
-            --tw-gradient-from: #8b5cf6;
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(139, 92, 246, 0));
-        }
-
-        .via-\[\#8b5cf6\] {
-            --tw-gradient-stops: var(--tw-gradient-from), #8b5cf6, var(--tw-gradient-to, rgba(139, 92, 246, 0));
-        }
-
-        .via-\[\#8b5cf6\]\/20 {
-            --tw-gradient-stops: var(--tw-gradient-from), rgba(139, 92, 246, 0.2), var(--tw-gradient-to, rgba(139, 92, 246, 0));
-        }
-
-        .via-\[\#00f0ff\] {
-            --tw-gradient-stops: var(--tw-gradient-from), #00f0ff, var(--tw-gradient-to, rgba(0, 240, 255, 0));
-        }
-
-        .to-\[\#00f0ff\] {
-            --tw-gradient-to: #00f0ff;
-        }
-
-        .to-\[\#8b5cf6\] {
-            --tw-gradient-to: #8b5cf6;
-        }
-
-        .to-\[\#10b981\] {
-            --tw-gradient-to: #10b981;
-        }
-
-        .to-\[\#10b981\]\/20 {
-            --tw-gradient-to: rgba(16, 185, 129, 0.2);
-        }
-
-        .bg-clip-text {
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-
         /* Text Colors */
-        .text-slate-200 {
-            color: #e2e8f0;
-        }
-
-        .text-slate-300 {
-            color: #cbd5e1;
-        }
-
-        .text-slate-400 {
-            color: #94a3b8;
-        }
-
-        .text-slate-500 {
-            color: #64748b;
-        }
-
         .text-\[\#07090e\] {
             color: #07090e;
         }
@@ -410,11 +324,23 @@
             color: #10b981;
         }
 
-        .text-amber-300 {
-            color: #fcd34d;
+        .text-slate-200 {
+            color: #e2e8f0;
         }
 
-        .hover\:text-amber-300:hover {
+        .text-slate-300 {
+            color: #cbd5e1;
+        }
+
+        .text-slate-400 {
+            color: #94a3b8;
+        }
+
+        .text-slate-500 {
+            color: #64748b;
+        }
+
+        .text-amber-300 {
             color: #fcd34d;
         }
 
@@ -424,6 +350,10 @@
 
         .text-emerald-100 {
             color: #d1fae5;
+        }
+
+        .hover\:text-amber-300:hover {
+            color: #fcd34d;
         }
 
         .hover\:text-red-300:hover {
@@ -438,15 +368,43 @@
             color: rgba(167, 243, 208, 0.35);
         }
 
-        .selection\:bg-\[\#00f0ff\]\/20::selection {
-            background-color: rgba(0, 240, 255, 0.2);
+        /* Gradient Utilities */
+        .from-\[\#00f0ff\] {
+            --tw-gradient-from: #00f0ff;
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 240, 255, 0));
         }
 
-        .selection\:text-\[\#00f0ff\]::selection {
-            color: #00f0ff;
+        .from-\[\#8b5cf6\] {
+            --tw-gradient-from: #8b5cf6;
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(139, 92, 246, 0));
         }
 
-        /* Borders */
+        .via-\[\#8b5cf6\] {
+            --tw-gradient-stops: var(--tw-gradient-from), #8b5cf6, var(--tw-gradient-to, rgba(139, 92, 246, 0));
+        }
+
+        .via-\[\#00f0ff\] {
+            --tw-gradient-stops: var(--tw-gradient-from), #00f0ff, var(--tw-gradient-to, rgba(0, 240, 255, 0));
+        }
+
+        .to-\[\#10b981\] {
+            --tw-gradient-to: #10b981;
+        }
+
+        .to-\[\#8b5cf6\] {
+            --tw-gradient-to: #8b5cf6;
+        }
+
+        .to-\[\#00f0ff\] {
+            --tw-gradient-to: #00f0ff;
+        }
+
+        .bg-clip-text {
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        /* Border Colors */
         .border-white\/\[0\.05\] {
             border-color: rgba(255, 255, 255, 0.05);
         }
@@ -491,6 +449,10 @@
             border-color: #00f0ff;
         }
 
+        .focus\:border-\[\#00f0ff\]:focus {
+            border-color: #00f0ff;
+        }
+
         .border-\[\#00f0ff\]\/25 {
             border-color: rgba(0, 240, 255, 0.25);
         }
@@ -507,20 +469,16 @@
             border-color: rgba(0, 240, 255, 0.5);
         }
 
-        .hover\:border-\[\#00f0ff\]\/50:hover {
-            border-color: rgba(0, 240, 255, 0.5);
-        }
-
         .border-\[\#00f0ff\]\/60 {
             border-color: rgba(0, 240, 255, 0.6);
         }
 
-        .hover\:border-\[\#00f0ff\]\/60:hover {
-            border-color: rgba(0, 240, 255, 0.6);
+        .hover\:border-\[\#00f0ff\]\/50:hover {
+            border-color: rgba(0, 240, 255, 0.5);
         }
 
-        .focus\:border-\[\#00f0ff\]:focus {
-            border-color: #00f0ff;
+        .hover\:border-\[\#00f0ff\]\/60:hover {
+            border-color: rgba(0, 240, 255, 0.6);
         }
 
         .focus\:border-\[\#00f0ff\]\/60:focus {
@@ -563,55 +521,77 @@
             border-color: rgba(16, 185, 129, 0.5);
         }
 
-        .hover\:border-\[\#10b981\]\/60:hover {
-            border-color: rgba(16, 185, 129, 0.6);
-        }
-
         .focus\:border-\[\#10b981\]:focus {
             border-color: #10b981;
+        }
+
+        .hover\:border-\[\#10b981\]\/60:hover {
+            border-color: rgba(16, 185, 129, 0.6);
         }
 
         .border-amber-400\/25 {
             border-color: rgba(251, 191, 36, 0.25);
         }
 
+        .border-amber-400\/40 {
+            border-color: rgba(251, 191, 36, 0.4);
+        }
+
+        .focus\:border-amber-400:focus {
+            border-color: #fbbf24;
+        }
+
         .hover\:border-amber-400\/60:hover {
             border-color: rgba(251, 191, 36, 0.6);
         }
 
-        /* Glows, Blur, Sizing & Arbitrary Utilities */
-        .shadow-cyan-glow,
+        /* Custom Glow Shadows */
+        .shadow-cyan-glow {
+            box-shadow: 0 0 24px -4px rgba(0, 240, 255, 0.25);
+        }
+
         .hover\:shadow-cyan-glow:hover {
             box-shadow: 0 0 24px -4px rgba(0, 240, 255, 0.25);
         }
 
-        .shadow-violet-glow,
         .hover\:shadow-violet-glow:hover {
             box-shadow: 0 0 24px -4px rgba(139, 92, 246, 0.25);
         }
 
-        .shadow-emerald-glow,
+        .shadow-emerald-glow {
+            box-shadow: 0 0 24px -4px rgba(16, 185, 129, 0.25);
+        }
+
         .hover\:shadow-emerald-glow:hover {
             box-shadow: 0 0 24px -4px rgba(16, 185, 129, 0.25);
+        }
+
+        .shadow-pink-glow {
+            box-shadow: 0 0 24px -4px rgba(255, 0, 85, 0.35);
+        }
+
+        .shadow-amber-glow {
+            box-shadow: 0 0 24px -4px rgba(245, 158, 11, 0.3);
         }
 
         .hover\:shadow-\[0_0_24px_-4px_rgba\(251\,191\,36\,0\.25\)\]:hover {
             box-shadow: 0 0 24px -4px rgba(251, 191, 36, 0.25);
         }
 
+        /* Spacing, Sizing & Backdrop Utilities missing in Tailwind v2 */
         .backdrop-blur-sm {
-            backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
         }
 
         .backdrop-blur-md {
-            backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
         }
 
         .backdrop-blur-xl {
-            backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
+            backdrop-filter: blur(24px);
         }
 
         .blur-\[130px\] {
@@ -620,14 +600,6 @@
 
         .blur-\[140px\] {
             filter: blur(140px);
-        }
-
-        .rounded-2xl {
-            border-radius: 1rem;
-        }
-
-        .rounded-3xl {
-            border-radius: 1.5rem;
         }
 
         .w-\[480px\] {
@@ -670,32 +642,48 @@
             max-height: 92vh;
         }
 
+        .rounded-2xl {
+            border-radius: 1rem;
+        }
+
+        .rounded-3xl {
+            border-radius: 1.5rem;
+        }
+
         .text-\[10px\] {
             font-size: 10px;
+            line-height: 1.4;
         }
 
         .text-\[11px\] {
             font-size: 11px;
-        }
-
-        .leading-\[1\.1\] {
-            line-height: 1.1;
+            line-height: 1.4;
         }
 
         .tracking-\[0\.2em\] {
             letter-spacing: 0.2em;
         }
 
+        .leading-\[1\.1\] {
+            line-height: 1.1;
+        }
+
+        .stroke-\[3\] {
+            stroke-width: 3;
+        }
+
+        .pt-28 {
+            padding-top: 7rem;
+        }
+
         .scroll-mt-28 {
             scroll-margin-top: 7rem;
         }
 
-        .shrink-0 {
-            flex-shrink: 0;
-        }
-
-        .basis-full {
-            flex-basis: 100%;
+        @media (min-width: 640px) {
+            .sm\:pt-36 {
+                padding-top: 9rem;
+            }
         }
 
         .gap-1\.5 {
@@ -706,26 +694,16 @@
             gap: 0.625rem;
         }
 
+        .gap-x-4 {
+            column-gap: 1rem;
+        }
+
+        .gap-y-1 {
+            row-gap: 0.25rem;
+        }
+
         .space-y-2\.5> :not([hidden])~ :not([hidden]) {
             margin-top: 0.625rem;
-        }
-
-        .pt-28 {
-            padding-top: 7rem;
-        }
-
-        .pt-36 {
-            padding-top: 9rem;
-        }
-
-        .px-3\.5 {
-            padding-left: 0.875rem;
-            padding-right: 0.875rem;
-        }
-
-        .py-2\.5 {
-            padding-top: 0.625rem;
-            padding-bottom: 0.625rem;
         }
 
         .py-3\.5 {
@@ -733,48 +711,49 @@
             padding-bottom: 0.875rem;
         }
 
-        .p-3\.5 {
-            padding: 0.875rem;
+        .px-3\.5 {
+            padding-left: 0.875rem;
+            padding-right: 0.875rem;
         }
 
-        .pb-2\.5 {
-            padding-bottom: 0.625rem;
+        .py-1\.5 {
+            padding-top: 0.375rem;
+            padding-bottom: 0.375rem;
         }
 
-        .bottom-2\.5 {
-            bottom: 0.625rem;
+        .px-2\.5 {
+            padding-left: 0.625rem;
+            padding-right: 0.625rem;
+        }
+
+        .pt-0\.5 {
+            padding-top: 0.125rem;
+        }
+
+        .mt-0\.5 {
+            margin-top: 0.125rem;
         }
 
         .right-2\.5 {
             right: 0.625rem;
         }
 
+        .bottom-2\.5 {
+            bottom: 0.625rem;
+        }
+
         .left-3\.5 {
             left: 0.875rem;
         }
 
-        .-translate-x-1\/2 {
-            transform: translateX(-50%);
-        }
-
-        .-translate-y-1\/2 {
-            transform: translateY(-50%);
-        }
-
-        .translate-y-4 {
-            transform: translateY(1rem);
-        }
-
-        .translate-x-full {
-            transform: translateX(100%);
-        }
-
-        .group:hover .group-hover\:scale-105 {
-            transform: scale(1.05);
-        }
-
-        .group:hover .group-hover\:scale-110 {
-            transform: scale(1.1);
+        /* Ambient Background Grid & Mask */
+        .ambient-grid {
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 64px 64px;
+            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 65%, transparent 100%);
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 65%, transparent 100%);
         }
 
         .no-scrollbar::-webkit-scrollbar {
@@ -785,34 +764,10 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-
-        .\[color-scheme\:dark\] {
-            color-scheme: dark;
-        }
-
-        .bg-\[linear-gradient\(to_right\,rgba\(255\,255\,255\,0\.02\)_1px\,transparent_1px\)\,linear-gradient\(to_bottom\,rgba\(255\,255\,255\,0\.02\)_1px\,transparent_1px\)\] {
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-        }
-
-        .bg-\[size\:64px_64px\] {
-            background-size: 64px 64px;
-        }
-
-        .\[mask-image\:radial-gradient\(ellipse_80\%_60\%_at_50\%_20\%\,\#000_65\%\,transparent_100\%\)\] {
-            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 65%, transparent 100%);
-            mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 65%, transparent 100%);
-        }
-
-        @media (min-width: 640px) {
-            .sm\:pt-36 {
-                padding-top: 9rem;
-            }
-        }
     </style>
 </head>
 
-<body
-    class="bg-[#07090e] text-slate-200 font-sans antialiased selection:bg-[#00f0ff]/20 selection:text-[#00f0ff] overflow-x-hidden">
+<body class="bg-[#07090e] text-slate-200 font-sans antialiased overflow-x-hidden">
 
     <!-- Ambient Futuristic Background Mesh -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -822,9 +777,7 @@
         <div class="absolute -bottom-40 left-1/3 w-[500px] h-[500px] rounded-full bg-[#10b981]/[0.035] blur-[140px]">
         </div>
         <!-- Subtle Architectural Grid -->
-        <div
-            class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_20%,#000_65%,transparent_100%)]">
-        </div>
+        <div class="ambient-grid absolute inset-0"></div>
     </div>
 
     <!-- Floating Glass Navigation Bar -->
@@ -841,7 +794,7 @@
                     <span class="font-display font-bold text-lg sm:text-xl tracking-tight text-white leading-none">
                         D474<span class="text-[#00f0ff] font-normal">designs</span>
                     </span>
-                    <span
+                    <span data-i18n="navSubtitle"
                         class="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-400 mt-0.5 hidden sm:inline-block">Multidisciplinary
                         Studio</span>
                 </div>
@@ -849,31 +802,44 @@
 
             <!-- Quick Discipline Links (Desktop) -->
             <div class="hidden lg:flex items-center gap-1 bg-white/[0.03] p-1 rounded-xl border border-white/[0.05]">
-                <button onclick="setCategoryFilter('all', true)"
+                <button onclick="setCategoryFilter('all', true)" data-i18n="navAll"
                     class="nav-quick-link px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/[0.06] transition">All
                     Disciplines</button>
-                <button onclick="setCategoryFilter('engineering', true)"
+                <button onclick="setCategoryFilter('engineering', true)" data-i18n="navCode"
                     class="nav-quick-link px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-[#00f0ff] hover:bg-white/[0.06] transition">Code
                     &amp; Web3</button>
-                <button onclick="setCategoryFilter('brand', true)"
+                <button onclick="setCategoryFilter('brand', true)" data-i18n="navBrand"
                     class="nav-quick-link px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-[#8b5cf6] hover:bg-white/[0.06] transition">Brand
                     &amp; Publicity</button>
-                <button onclick="setCategoryFilter('audio', true)"
+                <button onclick="setCategoryFilter('audio', true)" data-i18n="navAudio"
                     class="nav-quick-link px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-[#10b981] hover:bg-white/[0.06] transition">Audio
                     &amp; Video</button>
-                <button onclick="setCategoryFilter('physical', true)"
+                <button onclick="setCategoryFilter('physical', true)" data-i18n="navPhysical"
                     class="nav-quick-link px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-amber-300 hover:bg-white/[0.06] transition">Airbrush
                     &amp; Ink</button>
             </div>
 
-            <!-- Right Action: Project Cart / Booking Drawer Trigger -->
-            <div class="flex items-center gap-3">
+            <!-- Right Action: Language Toggle & Project Cart Drawer Trigger -->
+            <div class="flex items-center gap-2.5 sm:gap-3">
+                <!-- Sleek EN / ES Language Switcher -->
+                <div role="group" aria-label="Language Switcher"
+                    class="inline-flex items-center p-0.5 rounded-xl bg-white/[0.03] border border-white/[0.08] font-mono text-[11px]">
+                    <button type="button" id="lang-btn-en" onclick="setLanguage('en')"
+                        class="px-2.5 py-1.5 rounded-lg font-semibold bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 transition-all">
+                        EN
+                    </button>
+                    <button type="button" id="lang-btn-es" onclick="setLanguage('es')"
+                        class="px-2.5 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white border border-transparent transition-all">
+                        ES
+                    </button>
+                </div>
+
                 <button onclick="toggleCartDrawer(true)" aria-label="Open Project Brief & Booking Cart"
                     class="relative inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#ff0055]/10 hover:bg-[#ff0055]/20 border border-[#ff0055]/40 hover:border-[#ff0055] text-sm font-medium text-[#ff0055] shadow-pink-glow transition-all duration-300 group">
                     <i data-lucide="shopping-cart"
                         class="w-4 h-4 text-[#ff0055] group-hover:scale-110 transition-transform"></i>
-                    <span class="hidden sm:inline font-semibold">Project Brief</span>
-                    <span class="sm:hidden font-semibold">Brief</span>
+                    <span data-i18n="navBriefLong" class="hidden sm:inline font-semibold">Project Brief</span>
+                    <span data-i18n="navBriefShort" class="sm:hidden font-semibold">Brief</span>
                     <span id="cart-badge"
                         class="inline-flex items-center justify-center min-w-[22px] h-[22px] px-1.5 rounded-full text-xs font-mono font-bold bg-[#ff0055] text-white shadow-pink-glow transition-transform">
                         0
@@ -891,19 +857,21 @@
             <div
                 class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] mb-6">
                 <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
-                <span class="font-mono text-xs text-slate-300 tracking-wide">ACCEPTING COMMISSIONS &amp; SPRINT
+                <span data-i18n="heroStatus" class="font-mono text-xs text-slate-300 tracking-wide">ACCEPTING
+                    COMMISSIONS &amp; SPRINT
                     BOOKINGS</span>
             </div>
 
             <h1
                 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.1] mb-6">
-                Precision Craft Across <br class="hidden sm:block" />
-                <span class="bg-gradient-to-r from-[#00f0ff] via-[#8b5cf6] to-[#10b981] bg-clip-text text-transparent">
+                <span data-i18n="heroTitleTop">Precision Craft Across</span> <br class="hidden sm:block" />
+                <span data-i18n="heroTitleGradient"
+                    class="bg-gradient-to-r from-[#00f0ff] via-[#8b5cf6] to-[#10b981] bg-clip-text text-transparent">
                     Code, Sound, Brand &amp; Ink.
                 </span>
             </h1>
 
-            <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">
+            <p data-i18n="heroDesc" class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">
                 D474designs unifies full-stack engineering, Web3 architecture, visual identity, publicity &amp; client
                 promotion, sound engineering, video editing, custom airbrushing, and bespoke tattoo artistry under one
                 streamlined studio storefront.
@@ -912,13 +880,13 @@
             <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
                 <a href="#catalog"
                     class="px-6 py-3.5 rounded-xl bg-[#00f0ff] hover:bg-[#33f3ff] text-[#07090e] font-semibold text-sm tracking-wide shadow-cyan-glow transition-all duration-200 inline-flex items-center gap-2">
-                    <span>Explore Services</span>
+                    <span data-i18n="heroExploreBtn">Explore Services</span>
                     <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
                 </a>
                 <button onclick="openCustomConsultation()"
                     class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#00f0ff] via-[#8b5cf6] to-[#10b981] hover:opacity-95 text-[#07090e] font-semibold text-sm tracking-wide shadow-cyan-glow transition-all duration-200 inline-flex items-center gap-2">
                     <i data-lucide="sparkles" class="w-4 h-4 text-[#07090e]"></i>
-                    <span>Multi-Discipline Bundle</span>
+                    <span data-i18n="heroBundleBtn">Multi-Discipline Bundle</span>
                 </button>
             </div>
         </section>
@@ -931,12 +899,12 @@
                     <div
                         class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-amber-300">
                         <i data-lucide="coins" class="w-3.5 h-3.5"></i>
-                        <span>Flexible Scope &amp; Micro-Commissions</span>
+                        <span data-i18n="budgetBadge">Flexible Scope &amp; Micro-Commissions</span>
                     </div>
-                    <h2 class="font-display text-lg sm:text-xl font-bold text-white">
+                    <h2 data-i18n="budgetTopTitle" class="font-display text-lg sm:text-xl font-bold text-white">
                         Need a Smaller Task or Budget-Friendly Custom Quote?
                     </h2>
-                    <p class="text-xs sm:text-sm text-slate-400 max-w-2xl">
+                    <p data-i18n="budgetTopDesc" class="text-xs sm:text-sm text-slate-400 max-w-2xl">
                         Have a quick fix, compact edit, or tight budget? Add a custom budget request directly to your
                         Project Brief and send it to the studio for a tailored rate.
                     </p>
@@ -944,7 +912,7 @@
                 <button type="button" onclick="openBudgetRequestModal()"
                     class="shrink-0 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-[#07090e] font-bold text-xs sm:text-sm tracking-wide shadow-amber-glow transition-all duration-200 inline-flex items-center justify-center gap-2">
                     <i data-lucide="send" class="w-4 h-4"></i>
-                    <span>Request Budget / Custom Quote</span>
+                    <span data-i18n="budgetCtaBtn">Request Budget / Custom Quote</span>
                 </button>
             </div>
         </section>
@@ -956,23 +924,24 @@
                 <!-- Category Tabs -->
                 <div id="category-tabs" class="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 no-scrollbar"
                     role="tablist" aria-label="Service Disciplines">
-                    <button data-filter="all" onclick="setCategoryFilter('all')"
+                    <button data-filter="all" onclick="setCategoryFilter('all')" data-i18n="tabAll"
                         class="filter-tab active shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-[#00f0ff]/10 border-[#00f0ff]/50 text-[#00f0ff] shadow-cyan-glow">
                         All Disciplines (11)
                     </button>
                     <button data-filter="engineering" onclick="setCategoryFilter('engineering')"
+                        data-i18n="tabEngineering"
                         class="filter-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
                         Engineering &amp; Web3
                     </button>
-                    <button data-filter="brand" onclick="setCategoryFilter('brand')"
+                    <button data-filter="brand" onclick="setCategoryFilter('brand')" data-i18n="tabBrand"
                         class="filter-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
                         Brand &amp; Media
                     </button>
-                    <button data-filter="audio" onclick="setCategoryFilter('audio')"
+                    <button data-filter="audio" onclick="setCategoryFilter('audio')" data-i18n="tabAudio"
                         class="filter-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
                         Audio &amp; Video
                     </button>
-                    <button data-filter="physical" onclick="setCategoryFilter('physical')"
+                    <button data-filter="physical" onclick="setCategoryFilter('physical')" data-i18n="tabPhysical"
                         class="filter-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
                         Physical &amp; Ink
                     </button>
@@ -983,7 +952,7 @@
                     <i data-lucide="search"
                         class="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
                     <input type="text" id="service-search" oninput="handleSearch(this.value)"
-                        placeholder="Filter services or deliverables..."
+                        data-i18n-placeholder="searchPlaceholder" placeholder="Filter services or deliverables..."
                         class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#0c101a] border border-white/[0.08] focus:border-[#00f0ff]/60 focus:outline-none text-sm text-white placeholder-slate-500 transition" />
                 </div>
             </div>
@@ -999,10 +968,12 @@
             <div id="empty-search-state"
                 class="hidden text-center py-16 px-4 rounded-2xl bg-[#0c101a]/60 border border-white/[0.06]">
                 <i data-lucide="radar" class="w-10 h-10 text-slate-500 mx-auto mb-3"></i>
-                <h3 class="font-display text-lg font-semibold text-white mb-1">No matching services found</h3>
-                <p class="text-sm text-slate-400 mb-4">Try clearing your search term or switching discipline filters.
+                <h3 data-i18n="emptySearchTitle" class="font-display text-lg font-semibold text-white mb-1">No matching
+                    services found</h3>
+                <p data-i18n="emptySearchDesc" class="text-sm text-slate-400 mb-4">Try clearing your search term or
+                    switching discipline filters.
                 </p>
-                <button onclick="resetFilters()"
+                <button onclick="resetFilters()" data-i18n="resetFiltersBtn"
                     class="px-4 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-xs font-mono text-[#00f0ff] border border-[#00f0ff]/30 transition">
                     Reset Catalog Filters
                 </button>
@@ -1013,33 +984,42 @@
         <section class="mt-24 rounded-3xl bg-[#0c101a]/90 border border-white/[0.08] p-8 sm:p-10">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
-                    <span class="font-mono text-xs uppercase tracking-widest text-[#00f0ff]">Seamless Execution</span>
-                    <h2 class="font-display text-2xl sm:text-3xl font-bold text-white mt-1">How D474designs Commissions
+                    <span data-i18n="workflowTag"
+                        class="font-mono text-xs uppercase tracking-widest text-[#00f0ff]">Seamless Execution</span>
+                    <h2 data-i18n="workflowHeading" class="font-display text-2xl sm:text-3xl font-bold text-white mt-1">
+                        How D474designs Commissions
                         Work</h2>
                 </div>
-                <p class="text-sm text-slate-400 max-w-md">Combine digital builds, publicity campaigns, sound
+                <p data-i18n="workflowIntro" class="text-sm text-slate-400 max-w-md">Combine digital builds, publicity
+                    campaigns, sound
                     engineering, video editing, or physical custom art sessions into a single unified project brief.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <div class="font-mono text-xs text-[#00f0ff] mb-2">01 // CONFIGURE</div>
-                    <h3 class="font-display font-semibold text-white text-base mb-1.5">Select Scope &amp; Tier</h3>
-                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">Choose starter packages or custom
+                    <div data-i18n="step1Tag" class="font-mono text-xs text-[#00f0ff] mb-2">01 // CONFIGURE</div>
+                    <h3 data-i18n="step1Title" class="font-display font-semibold text-white text-base mb-1.5">Select
+                        Scope &amp; Tier</h3>
+                    <p data-i18n="step1Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">Choose starter
+                        packages or custom
                         sprints across software, branding, audio, airbrushing, or tattoo sessions.</p>
                 </div>
                 <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <div class="font-mono text-xs text-[#8b5cf6] mb-2">02 // SPECIFY</div>
-                    <h3 class="font-display font-semibold text-white text-base mb-1.5">Attach Creative Notes &amp; Dates
+                    <div data-i18n="step2Tag" class="font-mono text-xs text-[#8b5cf6] mb-2">02 // SPECIFY</div>
+                    <h3 data-i18n="step2Title" class="font-display font-semibold text-white text-base mb-1.5">Attach
+                        Creative Notes &amp; Dates
                     </h3>
-                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">Add technical specs, reference links,
+                    <p data-i18n="step2Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">Add technical
+                        specs, reference links,
                         placement details, or target dates directly inside each service configurator.</p>
                 </div>
                 <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <div class="font-mono text-xs text-[#10b981] mb-2">03 // INITIATE</div>
-                    <h3 class="font-display font-semibold text-white text-base mb-1.5">Instant Dossier &amp; Invoice
+                    <div data-i18n="step3Tag" class="font-mono text-xs text-[#10b981] mb-2">03 // INITIATE</div>
+                    <h3 data-i18n="step3Title" class="font-display font-semibold text-white text-base mb-1.5">Instant
+                        Dossier &amp; Invoice
                     </h3>
-                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">Generate a timestamped D474designs
+                    <p data-i18n="step3Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">Generate a
+                        timestamped D474designs
                         project dossier with a direct studio invoice sent straight to your inbox.</p>
                 </div>
             </div>
@@ -1053,12 +1033,12 @@
                     <div
                         class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-amber-300">
                         <i data-lucide="coins" class="w-3.5 h-3.5"></i>
-                        <span>Flexible Scope &amp; Micro-Commissions</span>
+                        <span data-i18n="budgetBadge">Flexible Scope &amp; Micro-Commissions</span>
                     </div>
-                    <h2 class="font-display text-lg sm:text-xl font-bold text-white">
+                    <h2 data-i18n="budgetBottomTitle" class="font-display text-lg sm:text-xl font-bold text-white">
                         Working With a Smaller Budget or Quick One-Off Task?
                     </h2>
-                    <p class="text-xs sm:text-sm text-slate-400 max-w-2xl">
+                    <p data-i18n="budgetBottomDesc" class="text-xs sm:text-sm text-slate-400 max-w-2xl">
                         Submit your target budget, discipline, and project summary as an item in your Project Brief so
                         we can review and email you a custom quote.
                     </p>
@@ -1066,7 +1046,7 @@
                 <button type="button" onclick="openBudgetRequestModal()"
                     class="shrink-0 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-[#07090e] font-bold text-xs sm:text-sm tracking-wide shadow-amber-glow transition-all duration-200 inline-flex items-center justify-center gap-2">
                     <i data-lucide="send" class="w-4 h-4"></i>
-                    <span>Request Budget / Custom Quote</span>
+                    <span data-i18n="budgetCtaBtn">Request Budget / Custom Quote</span>
                 </button>
             </div>
         </section>
@@ -1078,13 +1058,13 @@
             <!-- Social & Network Channels -->
             <div
                 class="flex flex-wrap items-center justify-center sm:justify-between gap-4 pb-6 border-b border-white/[0.06]">
-                <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-400">Connect &amp;
-                    Network</span>
+                <span data-i18n="footerConnect"
+                    class="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-400">Connect &amp; Network</span>
                 <div class="flex flex-wrap items-center justify-center gap-2.5">
                     <!-- Facebook -->
                     <a href="https://www.facebook.com/D474designs" target="_blank" rel="noopener noreferrer"
-                        aria-label="D474designs on Facebook" title="Facebook"
-                        class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all duration-200">
+                        title="D474designs on Facebook" aria-label="D474designs on Facebook"
+                        class="w-9 h-9 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                             <path
                                 d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
@@ -1092,8 +1072,8 @@
                     </a>
                     <!-- Instagram -->
                     <a href="https://www.instagram.com/d474designs/" target="_blank" rel="noopener noreferrer"
-                        aria-label="D474designs on Instagram" title="Instagram"
-                        class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all duration-200">
+                        title="D474designs on Instagram" aria-label="D474designs on Instagram"
+                        class="w-9 h-9 rounded-xl bg-white/[0.03] hover:bg-[#ff0055]/10 border border-white/[0.08] hover:border-[#ff0055]/50 text-slate-400 hover:text-[#ff0055] flex items-center justify-center transition-all">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                             <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
@@ -1101,8 +1081,8 @@
                     </a>
                     <!-- X (Twitter) -->
                     <a href="https://x.com/D474designs" target="_blank" rel="noopener noreferrer"
-                        aria-label="D474designs on X" title="X"
-                        class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all duration-200">
+                        title="D474designs on X" aria-label="D474designs on X"
+                        class="w-9 h-9 rounded-xl bg-white/[0.03] hover:bg-white/[0.1] border border-white/[0.08] hover:border-white/30 text-slate-400 hover:text-white flex items-center justify-center transition-all">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                             <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -1110,8 +1090,8 @@
                     </a>
                     <!-- LinkedIn -->
                     <a href="https://www.linkedin.com/in/jcazares117/" target="_blank" rel="noopener noreferrer"
-                        aria-label="Jaime Cazares on LinkedIn" title="LinkedIn"
-                        class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all duration-200">
+                        title="Jaime Cazares on LinkedIn" aria-label="Jaime Cazares on LinkedIn"
+                        class="w-9 h-9 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                             <path
                                 d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
@@ -1119,8 +1099,8 @@
                     </a>
                     <!-- GitHub -->
                     <a href="https://github.com/D474designs" target="_blank" rel="noopener noreferrer"
-                        aria-label="D474designs on GitHub" title="GitHub"
-                        class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all duration-200">
+                        title="D474designs on GitHub" aria-label="D474designs on GitHub"
+                        class="w-9 h-9 rounded-xl bg-white/[0.03] hover:bg-[#8b5cf6]/15 border border-white/[0.08] hover:border-[#8b5cf6]/50 text-slate-400 hover:text-[#8b5cf6] flex items-center justify-center transition-all">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
@@ -1128,23 +1108,23 @@
                     </a>
                     <!-- SlideShare -->
                     <a href="https://www.slideshare.net/JaimeCazares1" target="_blank" rel="noopener noreferrer"
-                        aria-label="Jaime Cazares on SlideShare" title="SlideShare"
-                        class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all duration-200">
+                        title="Jaime Cazares on SlideShare" aria-label="Jaime Cazares on SlideShare"
+                        class="w-9 h-9 rounded-xl bg-white/[0.03] hover:bg-[#10b981]/15 border border-white/[0.08] hover:border-[#10b981]/50 text-slate-400 hover:text-[#10b981] flex items-center justify-center transition-all">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                             <path
-                                d="M19.5 3h-15A1.5 1.5 0 0 0 3 4.5v9A1.5 1.5 0 0 0 4.5 15h3.15c-.4.75-.65 1.62-.65 2.55 0 2.04 1.34 3.45 3.1 3.45 1.34 0 2.45-.78 2.9-1.95.45 1.17 1.56 1.95 2.9 1.95 1.76 0 3.1-1.41 3.1-3.45 0-.93-.25-1.8-.65-2.55h1.15a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 19.5 3zM9.25 11.75a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5.5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                                d="M19.5 3h-15A1.5 1.5 0 0 0 3 4.5v9A1.5 1.5 0 0 0 4.5 15h3.88l-1.94 4.86a1 1 0 0 0 .56 1.3 1 1 0 0 0 1.3-.56L10.55 15h2.9l2.25 5.6a1 1 0 0 0 1.3.56 1 1 0 0 0 .56-1.3L15.62 15h3.88a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 19.5 3zM9 11.25a1.75 1.75 0 1 1 0-3.5 1.75 1.75 0 0 1 0 3.5zm6 0a1.75 1.75 0 1 1 0-3.5 1.75 1.75 0 0 1 0 3.5z" />
                         </svg>
                     </a>
-                    <!-- D474designs Portal (Design & Studio Portfolio) -->
+                    <!-- D474designs Creative Portfolio (https://d474designs.github.io) -->
                     <a href="https://d474designs.github.io" target="_blank" rel="noopener noreferrer"
-                        aria-label="D474designs Studio Portal" title="D474designs Portal"
-                        class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#8b5cf6]/15 border border-white/[0.08] hover:border-[#8b5cf6]/60 text-slate-400 hover:text-[#8b5cf6] flex items-center justify-center transition-all duration-200">
+                        title="D474designs Creative Portfolio" aria-label="D474designs Creative Portfolio"
+                        class="w-9 h-9 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all">
                         <i data-lucide="palette" class="w-4 h-4"></i>
                     </a>
-                    <!-- D474developments Portal (Engineering & Development Lab) -->
+                    <!-- D474developments Engineering Portal (https://d474developments.github.io) -->
                     <a href="https://d474developments.github.io" target="_blank" rel="noopener noreferrer"
-                        aria-label="D474developments Engineering Portal" title="D474developments Portal"
-                        class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#10b981]/15 border border-white/[0.08] hover:border-[#10b981]/60 text-slate-400 hover:text-[#10b981] flex items-center justify-center transition-all duration-200">
+                        title="D474developments Engineering Hub" aria-label="D474developments Engineering Hub"
+                        class="w-9 h-9 rounded-xl bg-white/[0.03] hover:bg-amber-400/15 border border-white/[0.08] hover:border-amber-400/50 text-slate-400 hover:text-amber-300 flex items-center justify-center transition-all">
                         <i data-lucide="code-2" class="w-4 h-4"></i>
                     </a>
                 </div>
@@ -1156,9 +1136,10 @@
                     <span class="font-display font-bold text-sm text-white">D474<span
                             class="text-[#00f0ff]">designs</span></span>
                     <span>&bull;</span>
-                    <span>Engineering &bull; Publicity &bull; Audio &amp; Video &bull; Physical Art</span>
+                    <span data-i18n="footerTagline">Engineering &bull; Publicity &bull; Audio &amp; Video &bull;
+                        Physical Art</span>
                 </div>
-                <div class="font-mono text-[11px] text-slate-500">
+                <div data-i18n="footerLegal" class="font-mono text-[11px] text-slate-500">
                     D474SERVICE &bull; ALL TRANSMISSIONS ENCRYPTED &bull; &copy; 2026 D474DESIGNS STUDIO
                 </div>
             </div>
@@ -1204,7 +1185,8 @@
 
                 <!-- Deliverables List -->
                 <div>
-                    <label class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-2.5">Core
+                    <label data-i18n="modalDeliverablesLabel"
+                        class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-2.5">Core
                         Deliverables Included</label>
                     <ul id="modal-deliverables" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
                         <!-- Populated dynamically -->
@@ -1213,7 +1195,8 @@
 
                 <!-- Tier / Package Selector -->
                 <div>
-                    <label class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-2.5">Select Scope /
+                    <label data-i18n="modalSelectTierLabel"
+                        class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-2.5">Select Scope /
                         Package Tier</label>
                     <div id="modal-tiers" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <!-- Populated dynamically -->
@@ -1223,7 +1206,7 @@
                 <!-- Preferred Date / Timeline & Brief Notes -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label for="modal-target-date"
+                        <label for="modal-target-date" data-i18n="modalTargetDateLabel"
                             class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
                             Target Date / Session Window
                         </label>
@@ -1231,14 +1214,14 @@
                             class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-[#00f0ff] focus:outline-none text-xs sm:text-sm text-white [color-scheme:dark]" />
                     </div>
                     <div>
-                        <label for="modal-priority"
+                        <label for="modal-priority" data-i18n="modalTurnaroundLabel"
                             class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
                             Turnaround Speed
                         </label>
                         <select id="modal-priority" onchange="updateModalCalculatedPrice()"
                             class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-[#00f0ff] focus:outline-none text-xs sm:text-sm text-white">
-                            <option value="standard">Standard Studio Queue (+0%)</option>
-                            <option value="rush">Priority Rush Sprint (+25%)</option>
+                            <option value="standard" data-i18n="speedStandard">Standard Studio Queue (+0%)</option>
+                            <option value="rush" data-i18n="speedRush">Priority Rush Sprint (+25%)</option>
                         </select>
                     </div>
                 </div>
@@ -1257,7 +1240,8 @@
             <!-- Modal Footer -->
             <div class="px-6 py-4 bg-[#07090e]/90 border-t border-white/[0.08] flex items-center justify-between gap-4">
                 <div>
-                    <span class="block font-mono text-[10px] uppercase tracking-wider text-slate-400">Estimated
+                    <span data-i18n="modalEstAllocation"
+                        class="block font-mono text-[10px] uppercase tracking-wider text-slate-400">Estimated
                         Allocation</span>
                     <span id="modal-total-price" class="font-display text-xl sm:text-2xl font-bold text-white">$0</span>
                 </div>
@@ -1292,14 +1276,15 @@
                         <span
                             class="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-[#8b5cf6]/15 text-[#8b5cf6] border border-[#8b5cf6]/30">
                             <i data-lucide="sparkles" class="w-3 h-3"></i>
-                            <span>Multi-Discipline Bundle Configurator</span>
+                            <span data-i18n="bundleBadge">Multi-Discipline Bundle Configurator</span>
                         </span>
                         <span id="bundle-discount-pill"
                             class="font-mono text-[11px] px-2.5 py-0.5 rounded-md bg-white/[0.04] text-slate-400 border border-white/[0.08]">
                             Select 6+ services for up to 15% Studio Bundle Savings
                         </span>
                     </div>
-                    <h3 id="bundle-modal-title" class="font-display text-xl sm:text-2xl font-bold text-white">
+                    <h3 id="bundle-modal-title" data-i18n="bundleTitle"
+                        class="font-display text-xl sm:text-2xl font-bold text-white">
                         Combine Services Across Disciplines
                     </h3>
                 </div>
@@ -1319,9 +1304,10 @@
                             class="inline-flex items-center justify-center px-2.5 py-1 rounded-lg bg-[#00f0ff]/15 text-[#00f0ff] font-mono font-bold">
                             0 Selected
                         </span>
-                        <span>Check services below and select your preferred scope tier for each.</span>
+                        <span data-i18n="bundleSubInstruction">Check services below and select your preferred scope tier
+                            for each.</span>
                     </div>
-                    <button type="button" onclick="clearBundleSelections()"
+                    <button type="button" onclick="clearBundleSelections()" data-i18n="bundleClearBtn"
                         class="font-mono text-[11px] text-slate-400 hover:text-white underline underline-offset-4 transition">
                         Clear Selections
                     </button>
@@ -1336,7 +1322,7 @@
                 <div class="pt-4 border-t border-white/[0.08] space-y-4">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label for="bundle-target-date"
+                            <label for="bundle-target-date" data-i18n="bundleTargetDateLabel"
                                 class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
                                 Target Launch / Session Window
                             </label>
@@ -1344,24 +1330,25 @@
                                 class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-[#00f0ff] focus:outline-none text-xs sm:text-sm text-white [color-scheme:dark]" />
                         </div>
                         <div>
-                            <label for="bundle-priority"
+                            <label for="bundle-priority" data-i18n="bundleTurnaroundLabel"
                                 class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
                                 Bundle Turnaround Speed
                             </label>
                             <select id="bundle-priority" onchange="updateBundleTotals()"
                                 class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-[#00f0ff] focus:outline-none text-xs sm:text-sm text-white">
-                                <option value="standard">Standard Studio Queue (+0%)</option>
-                                <option value="rush">Priority Rush Sprint (+25%)</option>
+                                <option value="standard" data-i18n="speedStandard">Standard Studio Queue (+0%)</option>
+                                <option value="rush" data-i18n="speedRush">Priority Rush Sprint (+25%)</option>
                             </select>
                         </div>
                     </div>
 
                     <div>
-                        <label for="bundle-notes"
+                        <label for="bundle-notes" data-i18n="bundleNotesLabel"
                             class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
                             Unified Multi-Discipline Brief &amp; Cross-Deliverable Notes *
                         </label>
                         <textarea id="bundle-notes" rows="3" required oninput="saveBundleDraft()"
+                            data-i18n-placeholder="bundleNotesPlaceholder"
                             placeholder="Provide an overview of your project goals, how your selected services connect, key milestones, and any reference links..."
                             class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-[#00f0ff] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500 resize-none"></textarea>
                     </div>
@@ -1373,7 +1360,8 @@
                 class="px-6 py-4 bg-[#07090e]/95 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
                     <div>
-                        <span class="block font-mono text-[10px] uppercase tracking-wider text-slate-400">Bundle
+                        <span data-i18n="bundleAllocationLabel"
+                            class="block font-mono text-[10px] uppercase tracking-wider text-slate-400">Bundle
                             Allocation</span>
                         <div class="flex items-baseline gap-2.5">
                             <span id="bundle-final-price" class="font-display text-2xl font-bold text-white">$0</span>
@@ -1412,10 +1400,11 @@
             <div class="px-6 py-5 border-b border-[#ff0055]/30 flex items-center justify-between gap-3">
                 <div class="flex items-center gap-2.5">
                     <i data-lucide="shopping-cart" class="w-5 h-5 text-[#ff0055]"></i>
-                    <h2 class="font-display text-lg font-bold text-[#ff0055]">Active Project Brief</h2>
+                    <h2 data-i18n="cartTitle" class="font-display text-lg font-bold text-[#ff0055]">Active Project Brief
+                    </h2>
                 </div>
                 <div class="flex items-center gap-2.5">
-                    <button type="button" id="clear-cart-btn" onclick="clearCartItems()"
+                    <button type="button" id="clear-cart-btn" onclick="clearCartItems()" data-i18n="cartClearBtn"
                         class="px-3.5 py-1.5 rounded-xl bg-[#ff0055]/15 hover:bg-[#ff0055]/20 border border-[#ff0055] text-xs font-mono font-medium text-[#ff4d88] hover:text-[#ff80aa] transition">
                         Clear Cart
                     </button>
@@ -1434,17 +1423,17 @@
             <!-- Checkout & Settlement Form -->
             <div id="cart-footer" class="p-6 bg-[#07090e] border-t border-[#ff0055]/30 space-y-4">
                 <div class="flex items-center justify-between text-sm">
-                    <span class="text-slate-400">Estimated Total Scope</span>
+                    <span data-i18n="cartEstTotalLabel" class="text-slate-400">Estimated Total Scope</span>
                     <span id="cart-subtotal" class="font-display text-2xl font-bold text-[#ff0055]">$0</span>
                 </div>
 
                 <!-- Client Contact Details -->
                 <div class="space-y-2.5 pt-2 border-t border-white/[0.06]">
                     <input type="text" id="client-name" oninput="saveClientCheckoutDraft()"
-                        placeholder="Your Name / Brand / Handle *"
+                        data-i18n-placeholder="clientNamePlaceholder" placeholder="Your Name / Brand / Handle *"
                         class="w-full px-3.5 py-2.5 rounded-xl bg-[#0c101a] border border-white/[0.1] focus:border-[#ff0055] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
                     <input type="email" id="client-email" oninput="saveClientCheckoutDraft()"
-                        placeholder="Contact Email for Brief & Invoice *"
+                        data-i18n-placeholder="clientEmailPlaceholder" placeholder="Contact Email for Brief & Invoice *"
                         class="w-full px-3.5 py-2.5 rounded-xl bg-[#0c101a] border border-white/[0.1] focus:border-[#ff0055] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
                 </div>
 
@@ -1455,7 +1444,7 @@
                         <label for="client-referral-code"
                             class="flex items-center gap-2 text-xs font-semibold text-[#10b981]">
                             <i data-lucide="tag" class="w-3.5 h-3.5 text-[#10b981] shrink-0"></i>
-                            <span>Referral / Partner Code (Optional)</span>
+                            <span data-i18n="referralLabel">Referral / Partner Code (Optional)</span>
                         </label>
                     </div>
                     <input type="text" id="client-referral-code" oninput="saveClientCheckoutDraft()"
@@ -1468,14 +1457,15 @@
                     class="px-3.5 py-2.5 rounded-xl border border-[#8b5cf6]/40 bg-[#8b5cf6]/10 flex items-center justify-between gap-3">
                     <div class="flex items-center gap-2 text-xs font-semibold text-white">
                         <i data-lucide="file-text" class="w-4 h-4 text-[#8b5cf6] shrink-0"></i>
-                        <span>Direct Studio Invoice &amp; Booking</span>
+                        <span data-i18n="directInvoiceLabel">Direct Studio Invoice &amp; Booking</span>
                     </div>
-                    <span class="font-mono text-[10px] text-slate-400">Crypto / Wire / Card</span>
+                    <span data-i18n="paymentMethodsLabel" class="font-mono text-[10px] text-slate-400">Crypto / Wire /
+                        Card</span>
                 </div>
 
                 <button onclick="submitProjectBrief()"
                     class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#00f0ff] to-[#8b5cf6] hover:opacity-95 text-[#07090e] font-bold text-sm tracking-wide shadow-cyan-glow transition-all flex items-center justify-center gap-2">
-                    <span>Submit Project Brief &amp; Request Invoice</span>
+                    <span data-i18n="submitBriefBtn">Submit Project Brief &amp; Request Invoice</span>
                     <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </button>
             </div>
@@ -1495,7 +1485,7 @@
                 <div
                     class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#10b981]/10 border border-[#10b981]/30 text-[#10b981] font-mono text-xs">
                     <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
-                    <span>TRANSMISSION READY</span>
+                    <span data-i18n="receiptBadge">TRANSMISSION READY</span>
                 </div>
                 <div class="flex items-center gap-2.5">
                     <span id="receipt-id" class="font-mono text-xs text-slate-400">#D474-0000</span>
@@ -1506,8 +1496,9 @@
                 </div>
             </div>
 
-            <h3 class="font-display text-2xl font-bold text-white mb-2">D474designs Dossier Generated</h3>
-            <p class="text-sm text-slate-400 mb-6">
+            <h3 data-i18n="receiptTitle" class="font-display text-2xl font-bold text-white mb-2">D474designs Dossier
+                Generated</h3>
+            <p id="receipt-desc-text" class="text-sm text-slate-400 mb-6">
                 Your project brief has been prepared for the D474designs studio queue and remains saved in your cart
                 until you send it. Click <span class="text-white font-medium">Email Brief to Studio</span> below to
                 transmit your dossier and request your <span class="text-white font-medium">Direct Studio Invoice</span>
@@ -1528,15 +1519,16 @@
             </div>
 
             <div class="flex items-center justify-between pt-4 border-t border-white/[0.08] mb-6">
-                <span class="text-xs font-mono uppercase text-slate-400">Total Estimated Allocation</span>
+                <span data-i18n="receiptTotalLabel" class="text-xs font-mono uppercase text-slate-400">Total Estimated
+                    Allocation</span>
                 <span id="receipt-total" class="font-display text-2xl font-bold text-[#10b981]">$0</span>
             </div>
 
             <div class="flex">
-                <a id="mailto-studio-link" href="mailto:jcazares117@gmail.com" onclick="handleStudioEmailSent()"
+                <a id="mailto-studio-link" href="mailto:jaime.cazares.dev@gmail.com" onclick="handleStudioEmailSent()"
                     class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#00f0ff] to-[#10b981] hover:opacity-95 text-[#07090e] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider shadow-cyan-glow transition flex items-center justify-center gap-2">
                     <i data-lucide="mail" class="w-4 h-4"></i>
-                    <span>Email Brief to Studio</span>
+                    <span data-i18n="receiptEmailBtn">Email Brief to Studio</span>
                 </a>
             </div>
         </div>
@@ -1559,11 +1551,12 @@
             <!-- Modal Header -->
             <div class="px-6 pt-6 pb-4 border-b border-white/[0.07] flex items-start justify-between gap-4">
                 <div>
-                    <span
+                    <span data-i18n="budgetModalBadge"
                         class="inline-block font-mono text-[11px] uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-amber-400/10 text-amber-300 border border-amber-400/25 mb-2">
                         Custom Budget &amp; Smaller Requests
                     </span>
-                    <h3 id="budget-modal-title" class="font-display text-xl sm:text-2xl font-bold text-white">
+                    <h3 id="budget-modal-title" data-i18n="budgetModalTitle"
+                        class="font-display text-xl sm:text-2xl font-bold text-white">
                         Budget / Custom Quote Request
                     </h3>
                 </div>
@@ -1575,7 +1568,7 @@
 
             <!-- Modal Body -->
             <div class="p-6 overflow-y-auto space-y-5">
-                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p data-i18n="budgetModalDesc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
                     Provide the key details and your target budget below. This request will be added to your <span
                         class="text-white font-medium">Active Project Brief</span> just like any standard service so you
                     can review, edit, and email it directly to the studio.
@@ -1583,42 +1576,47 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label for="budget-discipline"
+                        <label for="budget-discipline" data-i18n="budgetDisciplineLabel"
                             class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
                             Service Discipline *
                         </label>
                         <select id="budget-discipline" onchange="saveBudgetRequestDraft()"
                             class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-amber-400 focus:outline-none text-xs sm:text-sm text-white">
-                            <option value="Engineering & Web3">Engineering &amp; Web3</option>
-                            <option value="Brand & Visual Media">Brand &amp; Visual Media</option>
-                            <option value="Audio & Video">Audio &amp; Video</option>
-                            <option value="Physical & Body Art">Physical &amp; Body Art</option>
-                            <option value="General / Multi-Skill">General / Multi-Skill</option>
+                            <option value="Engineering & Web3" data-i18n="optDiscEng">Engineering &amp; Web3</option>
+                            <option value="Brand & Visual Media" data-i18n="optDiscBrand">Brand &amp; Visual Media
+                            </option>
+                            <option value="Audio & Video" data-i18n="optDiscAudio">Audio &amp; Video</option>
+                            <option value="Physical & Body Art" data-i18n="optDiscPhysical">Physical &amp; Body Art
+                            </option>
+                            <option value="General / Multi-Skill" data-i18n="optDiscGeneral">General / Multi-Skill
+                            </option>
                         </select>
                     </div>
                     <div>
-                        <label for="budget-amount"
+                        <label for="budget-amount" data-i18n="budgetAmountLabel"
                             class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
                             Target Budget (USD) *
                         </label>
                         <input type="number" id="budget-amount" min="1" step="1"
-                            oninput="updateBudgetModalPrice(); saveBudgetRequestDraft();" placeholder="e.g. 150"
+                            oninput="updateBudgetModalPrice(); saveBudgetRequestDraft();"
+                            data-i18n-placeholder="budgetAmountPlaceholder" placeholder="e.g. 150"
                             class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-amber-400 focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label for="budget-title-input"
+                        <label for="budget-title-input" data-i18n="budgetTitleLabel"
                             class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
                             Short Request Title *
                         </label>
                         <input type="text" id="budget-title-input" oninput="saveBudgetRequestDraft()"
+                            data-i18n-placeholder="budgetTitlePlaceholder"
                             placeholder="e.g. Quick Bug Fix / Promo Cut / Logo Edit"
                             class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-amber-400 focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
                     </div>
                     <div>
-                        <label for="budget-target-date"
+                        <label for="budget-target-date" data-i18n="budgetDateLabel"
                             class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
                             Target Date / Deadline
                         </label>
@@ -1628,11 +1626,12 @@
                 </div>
 
                 <div>
-                    <label for="budget-notes"
+                    <label for="budget-notes" data-i18n="budgetNotesLabel"
                         class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
                         Deliverables, Reference Links &amp; Scope Details *
                     </label>
                     <textarea id="budget-notes" rows="3" required oninput="saveBudgetRequestDraft()"
+                        data-i18n-placeholder="budgetNotesPlaceholder"
                         placeholder="Explain what you need accomplished, any reference links or files, and how we can best tailor the scope to your budget..."
                         class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-amber-400 focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500 resize-none"></textarea>
                 </div>
@@ -1641,7 +1640,8 @@
             <!-- Modal Footer -->
             <div class="px-6 py-4 bg-[#07090e]/90 border-t border-white/[0.08] flex items-center justify-between gap-4">
                 <div>
-                    <span class="block font-mono text-[10px] uppercase tracking-wider text-slate-400">Proposed
+                    <span data-i18n="budgetProposedLabel"
+                        class="block font-mono text-[10px] uppercase tracking-wider text-slate-400">Proposed
                         Budget</span>
                     <span id="budget-modal-total"
                         class="font-display text-xl sm:text-2xl font-bold text-amber-300">$0</span>
@@ -1655,14 +1655,14 @@
         </div>
     </div>
 
-    <!-- Toast Notification Banner (Replaces alert() cleanly) -->
+    <!-- Clickable, Hover-Pausable Toast Notification Banner -->
     <div id="toast-notification" onclick="handleToastClick()" onmouseenter="pauseToastTimer()"
-        onmouseleave="resumeToastTimer()"
-        class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-4 transition-all duration-300 max-w-md w-max cursor-pointer">
+        onmouseleave="resumeToastTimer()" role="status"
+        class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 cursor-pointer pointer-events-none opacity-0 translate-y-4 transition-all duration-300 max-w-[92vw]">
         <div
-            class="px-5 py-3.5 rounded-2xl bg-[#0c101a]/95 backdrop-blur-xl border border-[#00f0ff]/40 hover:border-[#00f0ff] shadow-cyan-glow flex items-center gap-3.5 text-sm sm:text-base text-white transition-colors">
+            class="px-5 py-4 rounded-2xl bg-[#0c101a]/95 backdrop-blur-xl border border-[#00f0ff]/50 hover:border-[#00f0ff] shadow-cyan-glow flex items-center gap-3.5 text-sm sm:text-base text-white">
             <i id="toast-icon" data-lucide="check-circle" class="w-5 h-5 text-[#00f0ff] shrink-0"></i>
-            <span id="toast-message">Action completed</span>
+            <span id="toast-message" class="font-medium">Action completed</span>
         </div>
     </div>
 
@@ -1949,7 +1949,9 @@
         };
 
         // Application State
+        const STUDIO_EMAIL = 'jaime.cazares.dev@gmail.com';
         const STORAGE_KEY = 'd474designs_storefront_state_v1';
+        let currentLang = 'en';
         let activeFilter = 'all';
         let searchQuery = '';
         let cartItems = [];
@@ -1967,11 +1969,494 @@
         let lastGeneratedReceiptText = '';
         let copyButtonTimers = [];
 
+        const UI_TRANSLATIONS = {
+            en: {
+                pageTitle: 'D474designs — Engineering, Sound, Visuals & Custom Ink',
+                navSubtitle: 'Multidisciplinary Studio',
+                navAll: 'All Disciplines',
+                navCode: 'Code & Web3',
+                navBrand: 'Brand & Publicity',
+                navAudio: 'Audio & Video',
+                navPhysical: 'Airbrush & Ink',
+                navBriefLong: 'Project Brief',
+                navBriefShort: 'Brief',
+                heroStatus: 'ACCEPTING COMMISSIONS & SPRINT BOOKINGS',
+                heroTitleTop: 'Precision Craft Across',
+                heroTitleGradient: 'Code, Sound, Brand & Ink.',
+                heroDesc: 'D474designs unifies full-stack engineering, Web3 architecture, visual identity, publicity & client promotion, sound engineering, video editing, custom airbrushing, and bespoke tattoo artistry under one streamlined studio storefront.',
+                heroExploreBtn: 'Explore Services',
+                heroBundleBtn: 'Multi-Discipline Bundle',
+                budgetBadge: 'Flexible Scope & Micro-Commissions',
+                budgetTopTitle: 'Need a Smaller Task or Budget-Friendly Custom Quote?',
+                budgetTopDesc: 'Have a quick fix, compact edit, or tight budget? Add a custom budget request directly to your Project Brief and send it to the studio for a tailored rate.',
+                budgetBottomTitle: 'Working With a Smaller Budget or Quick One-Off Task?',
+                budgetBottomDesc: 'Submit your target budget, discipline, and project summary as an item in your Project Brief so we can review and email you a custom quote.',
+                budgetCtaBtn: 'Request Budget / Custom Quote',
+                tabAll: 'All Disciplines (11)',
+                tabEngineering: 'Engineering & Web3',
+                tabBrand: 'Brand & Media',
+                tabAudio: 'Audio & Video',
+                tabPhysical: 'Physical & Ink',
+                searchPlaceholder: 'Filter services or deliverables...',
+                startingAt: 'Starting At',
+                configureBtn: 'Configure',
+                emptySearchTitle: 'No matching services found',
+                emptySearchDesc: 'Try clearing your search term or switching discipline filters.',
+                resetFiltersBtn: 'Reset Catalog Filters',
+                workflowTag: 'Seamless Execution',
+                workflowHeading: 'How D474designs Commissions Work',
+                workflowIntro: 'Combine digital builds, publicity campaigns, sound engineering, video editing, or physical custom art sessions into a single unified project brief.',
+                step1Tag: '01 // CONFIGURE',
+                step1Title: 'Select Scope & Tier',
+                step1Desc: 'Choose starter packages or custom sprints across software, branding, audio, airbrushing, or tattoo sessions.',
+                step2Tag: '02 // SPECIFY',
+                step2Title: 'Attach Creative Notes & Dates',
+                step2Desc: 'Add technical specs, reference links, placement details, or target dates directly inside each service configurator.',
+                step3Tag: '03 // INITIATE',
+                step3Title: 'Instant Dossier & Invoice',
+                step3Desc: 'Generate a timestamped D474designs project dossier with a direct studio invoice sent straight to your inbox.',
+                footerConnect: 'Connect & Network',
+                footerTagline: 'Engineering • Publicity • Audio & Video • Physical Art',
+                footerLegal: 'D474SERVICE • ALL TRANSMISSIONS ENCRYPTED • © 2026 D474DESIGNS STUDIO',
+                modalDeliverablesLabel: 'Core Deliverables Included',
+                modalSelectTierLabel: 'Select Scope / Package Tier',
+                modalTargetDateLabel: 'Target Date / Session Window',
+                modalTurnaroundLabel: 'Turnaround Speed',
+                speedStandard: 'Standard Studio Queue (+0%)',
+                speedRush: 'Priority Rush Sprint (+25%)',
+                modalEstAllocation: 'Estimated Allocation',
+                addToBriefBtn: 'Add to Project Brief',
+                saveChangesBtn: 'Save Changes',
+                bundleBadge: 'Multi-Discipline Bundle Configurator',
+                bundleTitle: 'Combine Services Across Disciplines',
+                bundleSubInstruction: 'Check services below and select your preferred scope tier for each.',
+                bundleClearBtn: 'Clear Selections',
+                bundleTargetDateLabel: 'Target Launch / Session Window',
+                bundleTurnaroundLabel: 'Bundle Turnaround Speed',
+                bundleNotesLabel: 'Unified Multi-Discipline Brief & Cross-Deliverable Notes *',
+                bundleNotesPlaceholder: 'Provide an overview of your project goals, how your selected services connect, key milestones, and any reference links...',
+                bundleAllocationLabel: 'Bundle Allocation',
+                addBundleBtn: 'Add Bundle to Project Brief',
+                saveBundleBtn: 'Save Bundle Changes',
+                bundleDefaultPill: 'Select 6+ services for up to 15% Studio Bundle Savings',
+                cartTitle: 'Active Project Brief',
+                cartClearBtn: 'Clear Cart',
+                cartEmptyTitle: 'Your Project Brief is Empty',
+                cartEmptyDesc: 'Configure individual services from the catalog or build a discounted Multi-Discipline Bundle to generate your studio dossier.',
+                cartEstTotalLabel: 'Estimated Total Scope',
+                clientNamePlaceholder: 'Your Name / Brand / Handle *',
+                clientEmailPlaceholder: 'Contact Email for Brief & Invoice *',
+                referralLabel: 'Referral / Partner Code (Optional)',
+                directInvoiceLabel: 'Direct Studio Invoice & Booking',
+                paymentMethodsLabel: 'Crypto / Wire / Card',
+                submitBriefBtn: 'Submit Project Brief & Request Invoice',
+                receiptBadge: 'TRANSMISSION READY',
+                receiptTitle: 'D474designs Dossier Generated',
+                receiptTotalLabel: 'Total Estimated Allocation',
+                receiptEmailBtn: 'Email Brief to Studio',
+                budgetModalBadge: 'Custom Budget & Smaller Requests',
+                budgetModalTitle: 'Budget / Custom Quote Request',
+                budgetModalDesc: 'Provide the key details and your target budget below. This request will be added to your Active Project Brief just like any standard service so you can review, edit, and email it directly to the studio.',
+                budgetDisciplineLabel: 'Service Discipline *',
+                budgetAmountLabel: 'Target Budget (USD) *',
+                budgetAmountPlaceholder: 'e.g. 150',
+                budgetTitleLabel: 'Short Request Title *',
+                budgetTitlePlaceholder: 'e.g. Quick Bug Fix / Promo Cut / Logo Edit',
+                budgetDateLabel: 'Target Date / Deadline',
+                budgetNotesLabel: 'Deliverables, Reference Links & Scope Details *',
+                budgetNotesPlaceholder: 'Explain what you need accomplished, any reference links or files, and how we can best tailor the scope to your budget...',
+                budgetProposedLabel: 'Proposed Budget',
+                saveQuoteBtn: 'Save Quote Request',
+                optDiscEng: 'Engineering & Web3',
+                optDiscBrand: 'Brand & Visual Media',
+                optDiscAudio: 'Audio & Video',
+                optDiscPhysical: 'Physical & Body Art',
+                optDiscGeneral: 'General / Multi-Skill',
+                scopeLabel: 'Scope:',
+                dateLabel: 'Date:',
+                rushBadge: 'Priority Rush (+25%)',
+                sentToStudio: 'Sent to Studio',
+                markSent: 'Mark Sent',
+                allocationLabel: 'Allocation',
+                selectedSuffix: 'Selected'
+            },
+            es: {
+                pageTitle: 'D474designs — Ingeniería, Sonido, Visuales y Tatuaje Personalizado',
+                navSubtitle: 'Estudio Multidisciplinario',
+                navAll: 'Todas las Disciplinas',
+                navCode: 'Código y Web3',
+                navBrand: 'Marca y Publicidad',
+                navAudio: 'Audio y Video',
+                navPhysical: 'Aerografía y Tinta',
+                navBriefLong: 'Resumen de Proyecto',
+                navBriefShort: 'Resumen',
+                heroStatus: 'ACEPTANDO COMISIONES Y RESERVAS DE SPRINT',
+                heroTitleTop: 'Precisión Artesanal en',
+                heroTitleGradient: 'Código, Sonido, Marca y Tinta.',
+                heroDesc: 'D474designs unifica ingeniería full-stack, arquitectura Web3, identidad visual, publicidad y promoción de clientes, ingeniería de sonido, edición de video, aerografía personalizada y arte de tatuaje a medida en una sola tienda de estudio.',
+                heroExploreBtn: 'Explorar Servicios',
+                heroBundleBtn: 'Paquete Multidisciplinario',
+                budgetBadge: 'Alcance Flexible y Micro-Comisiones',
+                budgetTopTitle: '¿Necesitas una Tarea Más Pequeña o Cotización a tu Presupuesto?',
+                budgetTopDesc: '¿Tienes un arreglo rápido, una edición corta o un presupuesto ajustado? Agrega una solicitud personalizada directamente a tu Resumen de Proyecto y envíala al estudio para recibir una tarifa a medida.',
+                budgetBottomTitle: '¿Trabajas con un Presupuesto Menor o una Tarea Puntual?',
+                budgetBottomDesc: 'Envía tu presupuesto objetivo, disciplina y resumen del proyecto como un artículo en tu Resumen de Proyecto para revisarlo y enviarte una cotización personalizada por correo.',
+                budgetCtaBtn: 'Solicitar Presupuesto / Cotización',
+                tabAll: 'Todas las Disciplinas (11)',
+                tabEngineering: 'Ingeniería y Web3',
+                tabBrand: 'Marca y Medios',
+                tabAudio: 'Audio y Video',
+                tabPhysical: 'Físico y Tinta',
+                searchPlaceholder: 'Filtrar servicios o entregables...',
+                startingAt: 'Desde',
+                configureBtn: 'Configurar',
+                emptySearchTitle: 'No se encontraron servicios coincidentes',
+                emptySearchDesc: 'Intenta borrar tu búsqueda o cambiar de categoría.',
+                resetFiltersBtn: 'Restablecer Filtros',
+                workflowTag: 'Ejecución Fluida',
+                workflowHeading: 'Cómo Funcionan las Comisiones en D474designs',
+                workflowIntro: 'Combina desarrollos digitales, campañas de publicidad, ingeniería de sonido, edición de video o sesiones de arte físico en un único resumen de proyecto.',
+                step1Tag: '01 // CONFIGURA',
+                step1Title: 'Elige Alcance y Nivel',
+                step1Desc: 'Selecciona paquetes iniciales o sprints personalizados en software, branding, audio, aerografía o sesiones de tatuaje.',
+                step2Tag: '02 // ESPECIFICA',
+                step2Title: 'Adjunta Notas Creativas y Fechas',
+                step2Desc: 'Agrega especificaciones técnicas, enlaces de referencia, detalles de ubicación o fechas objetivo dentro de cada configurador.',
+                step3Tag: '03 // INICIA',
+                step3Title: 'Dossier Instantáneo y Factura',
+                step3Desc: 'Genera un dossier de proyecto D474designs con marca de tiempo y una factura directa del estudio enviada a tu correo.',
+                footerConnect: 'Conecta y Redes',
+                footerTagline: 'Ingeniería • Publicidad • Audio y Video • Arte Físico',
+                footerLegal: 'D474SERVICE • TODAS LAS TRANSMISIONES CIFRADAS • © 2026 D474DESIGNS STUDIO',
+                modalDeliverablesLabel: 'Entregables Principales Incluidos',
+                modalSelectTierLabel: 'Selecciona Alcance / Nivel de Paquete',
+                modalTargetDateLabel: 'Fecha Objetivo / Ventana de Sesión',
+                modalTurnaroundLabel: 'Velocidad de Entrega',
+                speedStandard: 'Cola Estándar del Estudio (+0%)',
+                speedRush: 'Sprint Prioritario Urgente (+25%)',
+                modalEstAllocation: 'Asignación Estimada',
+                addToBriefBtn: 'Agregar al Resumen de Proyecto',
+                saveChangesBtn: 'Guardar Cambios',
+                bundleBadge: 'Configurador de Paquete Multidisciplinario',
+                bundleTitle: 'Combina Servicios de Varias Disciplinas',
+                bundleSubInstruction: 'Marca los servicios abajo y selecciona el nivel de alcance preferido para cada uno.',
+                bundleClearBtn: 'Limpiar Selección',
+                bundleTargetDateLabel: 'Fecha Objetivo de Lanzamiento / Sesión',
+                bundleTurnaroundLabel: 'Velocidad de Entrega del Paquete',
+                bundleNotesLabel: 'Resumen Multidisciplinario Unificado y Notas Cruzadas *',
+                bundleNotesPlaceholder: 'Describe los objetivos de tu proyecto, cómo se conectan los servicios elegidos, hitos clave y enlaces de referencia...',
+                bundleAllocationLabel: 'Asignación del Paquete',
+                addBundleBtn: 'Agregar Paquete al Resumen',
+                saveBundleBtn: 'Guardar Cambios del Paquete',
+                bundleDefaultPill: 'Elige 6+ servicios para ahorrar hasta 15% en Paquete de Estudio',
+                cartTitle: 'Resumen de Proyecto Activo',
+                cartClearBtn: 'Vaciar Carrito',
+                cartEmptyTitle: 'Tu Resumen de Proyecto Está Vacío',
+                cartEmptyDesc: 'Configura servicios individuales del catálogo o arma un Paquete Multidisciplinario con descuento para generar tu dossier.',
+                cartEstTotalLabel: 'Alcance Total Estimado',
+                clientNamePlaceholder: 'Tu Nombre / Marca / Usuario *',
+                clientEmailPlaceholder: 'Correo de Contacto para Resumen y Factura *',
+                referralLabel: 'Código de Referido / Socio (Opcional)',
+                directInvoiceLabel: 'Factura Directa y Reserva de Estudio',
+                paymentMethodsLabel: 'Cripto / Transferencia / Tarjeta',
+                submitBriefBtn: 'Enviar Resumen y Solicitar Factura',
+                receiptBadge: 'TRANSMISIÓN LISTA',
+                receiptTitle: 'Dossier D474designs Generado',
+                receiptTotalLabel: 'Asignación Total Estimada',
+                receiptEmailBtn: 'Enviar Resumen por Correo al Estudio',
+                budgetModalBadge: 'Presupuesto Personalizado y Solicitudes Menores',
+                budgetModalTitle: 'Solicitud de Presupuesto / Cotización',
+                budgetModalDesc: 'Ingresa los detalles clave y tu presupuesto objetivo abajo. Esta solicitud se agregará a tu Resumen de Proyecto Activo como cualquier servicio estándar para revisarla, editarla y enviarla por correo al estudio.',
+                budgetDisciplineLabel: 'Disciplina del Servicio *',
+                budgetAmountLabel: 'Presupuesto Objetivo (USD) *',
+                budgetAmountPlaceholder: 'ej. 150',
+                budgetTitleLabel: 'Título Corto de la Solicitud *',
+                budgetTitlePlaceholder: 'ej. Corrección Rápida / Corte Promo / Edición Logo',
+                budgetDateLabel: 'Fecha Objetivo / Entrega',
+                budgetNotesLabel: 'Entregables, Enlaces de Referencia y Detalles *',
+                budgetNotesPlaceholder: 'Explica lo que necesitas lograr, enlaces o archivos de referencia y cómo adaptar el alcance a tu presupuesto...',
+                budgetProposedLabel: 'Presupuesto Propuesto',
+                saveQuoteBtn: 'Guardar Solicitud',
+                optDiscEng: 'Ingeniería y Web3',
+                optDiscBrand: 'Marca y Medios Visuales',
+                optDiscAudio: 'Audio y Video',
+                optDiscPhysical: 'Arte Físico y Corporal',
+                optDiscGeneral: 'General / Multidisciplinario',
+                scopeLabel: 'Alcance:',
+                dateLabel: 'Fecha:',
+                rushBadge: 'Prioridad Urgente (+25%)',
+                sentToStudio: 'Enviado al Estudio',
+                markSent: 'Marcar Enviado',
+                allocationLabel: 'Asignación',
+                selectedSuffix: 'Seleccionados'
+            }
+        };
+
+        const SERVICES_TRANSLATIONS_ES = {
+            'fullstack-eng': {
+                disciplineLabel: 'Ingeniería y Web3',
+                title: 'Ingeniería de Software Full-Stack',
+                shortDesc: 'Aplicaciones web escalables, APIs en tiempo real, arquitectura en la nube y plataformas SaaS a medida diseñadas para máxima velocidad.',
+                briefLabel: 'Stack Tecnológico, Funciones y Notas de Arquitectura',
+                briefPlaceholder: 'Comparte el stack preferido, roles de usuario, necesidades de API/base de datos, autenticación o enlaces de repositorio...',
+                deliverables: [
+                    'Arquitectura Frontend y Backend',
+                    'API REST / GraphQL y Base de Datos',
+                    'Autenticación y Despliegue en la Nube',
+                    'Código Fuente Limpio y Documentado'
+                ],
+                tiers: [
+                    { name: 'MVP / Sprint Inicial', detail: 'Arquitectura base de app o API (sprint de 2 semanas)' },
+                    { name: 'Plataforma Completa', detail: 'Sistema en producción de extremo a extremo + integraciones' }
+                ]
+            },
+            'smart-contracts': {
+                disciplineLabel: 'Ingeniería y Web3',
+                title: 'Contratos Inteligentes y Web3',
+                shortDesc: 'Contratos Solidity optimizados en gas, ingeniería de tokenomics, integración dApp y auditorías rigurosas de seguridad.',
+                briefLabel: 'Red, Lógica del Contrato y Especificaciones Tokenomics',
+                briefPlaceholder: 'Especifica la red EVM objetivo, reglas de token/NFT/staking, mecánicas de mint o requisitos de wallet...',
+                deliverables: [
+                    'Contratos Personalizados ERC-20 / 721 / 1155',
+                    'Pruebas Unitarias y Fuzz Automatizadas',
+                    'Conexión de Wallets y Hooks Frontend Web3',
+                    'Optimización de Gas e Informe de Auditoría'
+                ],
+                tiers: [
+                    { name: 'Contrato Token / NFT', detail: 'Contrato personalizado auditado + script de despliegue' },
+                    { name: 'Protocolo dApp Completo', detail: 'Ecosistema multicontrato + integración UI Web3' }
+                ]
+            },
+            'ui-ux-design': {
+                disciplineLabel: 'Ingeniería y Web3',
+                title: 'Diseño de Interfaces UI y UX',
+                shortDesc: 'Interfaces futuristas de alta conversión, prototipos interactivos en Figma y sistemas de diseño modulares.',
+                briefLabel: 'Flujos de Producto, Pantallas y Dirección Visual',
+                briefPlaceholder: 'Enumera flujos clave o pantallas, colores/estilo de marca, enlaces de Figma o apps cuya UX admires...',
+                deliverables: [
+                    'Flujos de Usuario y Arquitectura Wireframe',
+                    'Prototipos Interactivos de Alta Fidelidad',
+                    'Sistema de Componentes y Tokens de Diseño',
+                    'Vistas Responsivas Móvil y Escritorio'
+                ],
+                tiers: [
+                    { name: 'Kit de Interfaz de Producto', detail: 'Hasta 8 pantallas principales + prototipo navegable' },
+                    { name: 'Sistema de Diseño Completo', detail: 'UX completa de app, tokens de diseño y entrega a devs' }
+                ]
+            },
+            'marketing-strategy': {
+                disciplineLabel: 'Marca y Medios Visuales',
+                title: 'Estrategia de Marketing y Crecimiento',
+                shortDesc: 'Posicionamiento digital respaldado por datos, embudos de lanzamiento, adquisición de audiencia y narrativa de marca.',
+                briefLabel: 'Oferta, Audiencia Objetivo y Metas de Crecimiento',
+                briefPlaceholder: 'Describe tu producto o marca, perfil de cliente ideal, objetivos de lanzamiento y canales actuales...',
+                deliverables: [
+                    'Hoja de Ruta de Lanzamiento Go-To-Market',
+                    'Arquitectura de Embudo de Conversión',
+                    'Inteligencia de Audiencia y Competencia',
+                    'Plan de Contenido y Crecimiento de 30 Días'
+                ],
+                tiers: [
+                    { name: 'Plan de Lanzamiento', detail: 'Posicionamiento, mapa de embudo y plan de 30 días' },
+                    { name: 'Campaña Completa de Crecimiento', detail: 'Construcción integral de embudo, analítica y optimización' }
+                ]
+            },
+            'graphic-design': {
+                disciplineLabel: 'Marca y Medios Visuales',
+                title: 'Diseño Gráfico e Identidad Visual',
+                shortDesc: 'Identidades visuales distintivas, tipografía personalizada, portadas, gráficos para ropa y activos vectoriales.',
+                briefLabel: 'Estilo Visual, Formatos y Referencias de Marca',
+                briefPlaceholder: 'Describe conceptos de logo/arte, paleta de colores, dimensiones para impresión/merch/portada y referencias...',
+                deliverables: [
+                    'Logotipos Principales y Secundarios',
+                    'Guía de Color, Tipografía y Marca',
+                    'Ilustración Personalizada / Portada / Arte Merch',
+                    'Archivos Fuente Vectoriales y de Impresión (AI/SVG)'
+                ],
+                tiers: [
+                    { name: 'Pack de Activos Visuales / Portada', detail: 'Arte clave personalizado, emblema o suite gráfica merch' },
+                    { name: 'Identidad de Marca Completa', detail: 'Sistema completo de logo, manual de marca y papelería' }
+                ]
+            },
+            'advertisement': {
+                disciplineLabel: 'Marca y Medios Visuales',
+                title: 'Publicidad y Promoción de Clientes',
+                shortDesc: 'Publicidad directa y promoción activa en redes sociales, menciones destacadas y campañas de difusión segmentadas.',
+                briefLabel: 'Tema a Promocionar, Enlaces y Metas de Publicidad',
+                briefPlaceholder: 'Comparte qué promocionaremos (lanzamiento, marca, drop, evento), enlaces/redes, ángulos clave y audiencia...',
+                deliverables: [
+                    'Promoción Activa y Difusión Publicitaria',
+                    'Publicaciones Destacadas en Múltiples Canales',
+                    'Copy de Campaña, Ganchos y Segmentación',
+                    'Resumen de Alcance y Rendimiento'
+                ],
+                tiers: [
+                    { name: 'Impulso Promo Destacado', detail: 'Difusión publicitaria dirigida y espacios promocionales para tu lanzamiento' },
+                    { name: 'Campaña Integral de Publicidad', detail: 'Promoción multicanal sostenida y despliegue de campaña' }
+                ]
+            },
+            'sound-engineering': {
+                disciplineLabel: 'Audio y Video',
+                title: 'Ingeniería de Sonido (Mezcla y Master)',
+                shortDesc: 'Afinación vocal quirúrgica, mezcla con calidez analógica, masterización lista para streaming y claridad espacial.',
+                briefLabel: 'Especificaciones del Track, Stems y Referencia Sonora',
+                briefPlaceholder: 'Comparte BPM/tonalidad, enlace de stems o cantidad de pistas, notas vocales/mezcla y canciones de referencia...',
+                deliverables: [
+                    'Balance y Ecualización Multipista de Stems',
+                    'Compresión Vocal, Efectos y Afinación',
+                    'Masterización Lista para Streaming y Club',
+                    'WAV 24-Bit + Stems Instrumental/Acapella'
+                ],
+                tiers: [
+                    { name: 'Mezcla y Master de 1 Canción', detail: 'Mezcla completa de stems + master comercial (2 revisiones)' },
+                    { name: 'Paquete EP / 5 Canciones', detail: 'Masterización sonora cohesiva en 5 canciones completas' }
+                ]
+            },
+            'music-production': {
+                disciplineLabel: 'Audio y Video',
+                title: 'Edición de Video y Cortes Visuales',
+                shortDesc: 'Ritmo preciso, cortes sincronizados al beat, gradación de color, títulos animados y edición pulida para videoclips, promos y reels.',
+                briefLabel: 'Enlace de Material Crudo, Ritmo y Formatos',
+                briefPlaceholder: 'Comparte enlace del material, duración o formatos objetivo (16:9 / 9:16), estilo de color/ritmo y referencias...',
+                deliverables: [
+                    'Montaje de Línea de Tiempo y Cortes al Ritmo',
+                    'Gradación de Color, Transiciones y Sincronización',
+                    'Subtítulos, Títulos y Pulido Motion',
+                    'Master en Alta Resolución + Cortes para Redes'
+                ],
+                tiers: [
+                    { name: 'Edición Corta / Promo Reel', detail: 'Reel editado, corte promocional o highlight visual + revisiones' },
+                    { name: 'Edición de Producción Completa', detail: 'Edición multiescena completa, color, VFX/títulos y masters' }
+                ]
+            },
+            'ghost-writing': {
+                disciplineLabel: 'Audio y Video',
+                title: 'Ghost Writing y Composición Lírica',
+                shortDesc: 'Composición afilada, arquitectura de cadencia, coros, versos y redacción narrativa de alto impacto con NDA total.',
+                briefLabel: 'Temática, Flow/Tono y Notas de Beat o Guion',
+                briefPlaceholder: 'Describe el tema de la canción, cadencia/flow o tono de guion, enlace del beat si aplica y frases clave...',
+                deliverables: [
+                    'Letras Originales, Coros y Guía de Cadencia',
+                    'Pista Demo Vocal de Referencia',
+                    '100% Confidencialidad y Cesión de Regalías',
+                    '2 Revisiones Colaborativas de Letra'
+                ],
+                tiers: [
+                    { name: 'Coro + Verso / Guion Comercial', detail: 'Composición precisa o guion comercial + pista de referencia' },
+                    { name: 'Paquete Completo de Composición', detail: 'Letra completa, guía melódica y cesión total de derechos' }
+                ]
+            },
+            'airbrushing-paint': {
+                disciplineLabel: 'Arte Físico y Corporal',
+                title: 'Aerografía, Pintura y Diseño Personalizado',
+                shortDesc: 'Arte de aerografía de precisión, gráficos para autos/cascos, ropa personalizada y murales de superficie fina.',
+                briefLabel: 'Superficie, Dimensiones y Concepto Artístico',
+                briefPlaceholder: 'Especifica artículo o superficie (ropa, casco, tanque, lienzo, muro), medidas, colores y temática...',
+                deliverables: [
+                    'Preparación de Superficie y Pigmentos Automotrices',
+                    'Boceto Conceptual y Mockup de Color',
+                    'Aerografía Multicapa a Mano Alzada y Plantilla',
+                    'Capa Transparente Protectora Resistente a UV'
+                ],
+                tiers: [
+                    { name: 'Ropa Personalizada / Pieza Pequeña', detail: 'Chaquetas, tenis, cascos o paneles de estudio' },
+                    { name: 'Automotriz / Mural Gran Formato', detail: 'Tanques, cofres, lienzos grandes o instalación mural' }
+                ]
+            },
+            'tattooing': {
+                disciplineLabel: 'Arte Físico y Corporal',
+                title: 'Tatuaje a Medida y Reserva de Sesión',
+                shortDesc: 'Línea fina personalizada, surrealismo oscuro, cyber-sigilismo y tinta en negro/gris o color con precisión estéril.',
+                briefLabel: 'Zona del Cuerpo, Tamaño y Concepto del Tatuaje',
+                briefPlaceholder: 'Comparte ubicación anatómica, tamaño aproximado en cm/pulgadas, estilo (línea fina, surrealismo, cyber-sigilismo, B&G/color) y referencias...',
+                deliverables: [
+                    'Consulta 1-a-1 de Ubicación Anatómica y Diseño',
+                    'Stencil Artístico 100% Original y Personalizado',
+                    'Estudio Estéril de Grado Hospitalario',
+                    'Protocolo de Cuidado Posterior y Garantía de Retoque'
+                ],
+                tiers: [
+                    { name: 'Sesión de Medio Día (Hasta 3.5 hrs)', detail: 'Pieza personalizada, escala mediana, una sesión' },
+                    { name: 'Intensivo Día Completo (Hasta 7 hrs)', detail: 'Avance de manga/espalda a gran escala + diseño a medida' }
+                ]
+            }
+        };
+
+        function t(key) {
+            return (UI_TRANSLATIONS[currentLang] && UI_TRANSLATIONS[currentLang][key])
+                || UI_TRANSLATIONS.en[key]
+                || key;
+        }
+
+        function getLocalizedService(service) {
+            if (!service) return service;
+            if (currentLang !== 'es' || !SERVICES_TRANSLATIONS_ES[service.id]) {
+                return service;
+            }
+            const tr = SERVICES_TRANSLATIONS_ES[service.id];
+            return {
+                ...service,
+                disciplineLabel: tr.disciplineLabel || service.disciplineLabel,
+                title: tr.title || service.title,
+                shortDesc: tr.shortDesc || service.shortDesc,
+                briefLabel: tr.briefLabel || service.briefLabel,
+                briefPlaceholder: tr.briefPlaceholder || service.briefPlaceholder,
+                deliverables: tr.deliverables || service.deliverables,
+                tiers: service.tiers.map((tier, idx) => ({
+                    ...tier,
+                    name: (tr.tiers && tr.tiers[idx] && tr.tiers[idx].name) || tier.name,
+                    detail: (tr.tiers && tr.tiers[idx] && tr.tiers[idx].detail) || tier.detail
+                }))
+            };
+        }
+
+        function setLanguage(lang, silent = false) {
+            currentLang = lang === 'es' ? 'es' : 'en';
+            document.documentElement.lang = currentLang;
+            document.title = t('pageTitle');
+
+            const enBtn = document.getElementById('lang-btn-en');
+            const esBtn = document.getElementById('lang-btn-es');
+            if (enBtn && esBtn) {
+                if (currentLang === 'en') {
+                    enBtn.className = 'px-2.5 py-1.5 rounded-lg font-semibold bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 transition-all';
+                    esBtn.className = 'px-2.5 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white border border-transparent transition-all';
+                } else {
+                    esBtn.className = 'px-2.5 py-1.5 rounded-lg font-semibold bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 transition-all';
+                    enBtn.className = 'px-2.5 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white border border-transparent transition-all';
+                }
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach((el) => {
+                const key = el.getAttribute('data-i18n');
+                if (key) el.textContent = t(key);
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (key) el.placeholder = t(key);
+            });
+
+            renderServices();
+            updateCartUI();
+
+            if (document.getElementById('bundle-modal')?.classList.contains('flex')) {
+                renderBundleServices();
+                updateBundleTotals();
+            }
+
+            if (!silent) {
+                persistState();
+                showToast(currentLang === 'es' ? 'Idioma cambiado a Español' : 'Language switched to English');
+            }
+        }
+
         function loadPersistedState() {
             try {
                 const raw = localStorage.getItem(STORAGE_KEY);
                 if (!raw) return;
                 const parsed = JSON.parse(raw);
+                if (parsed.lang === 'es' || parsed.lang === 'en') currentLang = parsed.lang;
                 if (Array.isArray(parsed.cartItems)) cartItems = parsed.cartItems;
                 if (parsed.bundleSelections && typeof parsed.bundleSelections === 'object') {
                     bundleSelections = parsed.bundleSelections;
@@ -1989,13 +2474,14 @@
                     clientCheckoutDraft = { ...clientCheckoutDraft, ...parsed.clientCheckoutDraft };
                 }
             } catch (e) {
-                // Ignore storage access errors
+                // Ignore corrupted storage entries
             }
         }
 
         function persistState() {
             try {
                 localStorage.setItem(STORAGE_KEY, JSON.stringify({
+                    lang: currentLang,
                     cartItems,
                     bundleSelections,
                     serviceDrafts,
@@ -2011,10 +2497,10 @@
         function saveServiceDraft() {
             if (!currentModalService || editingCartItemUid) return;
             serviceDrafts[currentModalService.id] = {
-                notes: document.getElementById('modal-notes')?.value || '',
                 tierIndex: selectedTierIndex,
                 priority: document.getElementById('modal-priority')?.value || 'standard',
-                targetDate: document.getElementById('modal-target-date')?.value || ''
+                targetDate: document.getElementById('modal-target-date')?.value || '',
+                notes: document.getElementById('modal-notes')?.value || ''
             };
             persistState();
         }
@@ -2038,57 +2524,32 @@
             persistState();
         }
 
-        function saveBudgetRequestDraft() {
-            if (editingBudgetItemUid) return;
-            budgetRequestDraft = {
-                discipline: document.getElementById('budget-discipline')?.value || 'Engineering & Web3',
-                title: document.getElementById('budget-title-input')?.value || '',
-                amount: document.getElementById('budget-amount')?.value || '',
-                targetDate: document.getElementById('budget-target-date')?.value || '',
-                notes: document.getElementById('budget-notes')?.value || ''
-            };
-            persistState();
-        }
+        // =====================================================================
+        // CUSTOM BUDGET / SMALLER REQUEST MODAL LOGIC
+        // =====================================================================
+        function openBudgetRequestModal(existingCartItem = null) {
+            editingBudgetItemUid = existingCartItem ? existingCartItem.uid : null;
+            const source = existingCartItem || budgetRequestDraft || {};
 
-        function updateBudgetModalPrice() {
-            const rawVal = parseFloat(document.getElementById('budget-amount')?.value || '0');
-            const safeAmount = Number.isFinite(rawVal) && rawVal > 0 ? Math.round(rawVal) : 0;
-            const totalEl = document.getElementById('budget-modal-total');
-            if (totalEl) totalEl.textContent = `$${safeAmount.toLocaleString()}`;
-        }
-
-        function openBudgetRequestModal(existingBudgetItem = null) {
-            editingBudgetItemUid = existingBudgetItem ? existingBudgetItem.uid : null;
-
-            const defaultDate = new Date();
-            defaultDate.setDate(defaultDate.getDate() + 7);
-            const formattedDefaultDate = defaultDate.toISOString().split('T')[0];
-
-            const disciplineEl = document.getElementById('budget-discipline');
+            const discEl = document.getElementById('budget-discipline');
+            const amtEl = document.getElementById('budget-amount');
             const titleEl = document.getElementById('budget-title-input');
-            const amountEl = document.getElementById('budget-amount');
             const dateEl = document.getElementById('budget-target-date');
             const notesEl = document.getElementById('budget-notes');
-            const submitBtn = document.getElementById('budget-submit-btn');
 
-            if (existingBudgetItem) {
-                if (disciplineEl) disciplineEl.value = existingBudgetItem.budgetDiscipline || 'Engineering & Web3';
-                if (titleEl) titleEl.value = existingBudgetItem.customRequestTitle || existingBudgetItem.title.replace(/^Custom Budget Request:\s*/i, '');
-                if (amountEl) amountEl.value = existingBudgetItem.price || '';
-                if (dateEl) dateEl.value = (existingBudgetItem.targetDate && existingBudgetItem.targetDate !== 'Flexible') ? existingBudgetItem.targetDate : formattedDefaultDate;
-                if (notesEl) notesEl.value = existingBudgetItem.notes || '';
-            } else {
-                if (disciplineEl) disciplineEl.value = budgetRequestDraft.discipline || 'Engineering & Web3';
-                if (titleEl) titleEl.value = budgetRequestDraft.title || '';
-                if (amountEl) amountEl.value = budgetRequestDraft.amount || '';
-                if (dateEl) dateEl.value = budgetRequestDraft.targetDate || formattedDefaultDate;
-                if (notesEl) notesEl.value = budgetRequestDraft.notes || '';
+            if (discEl) discEl.value = source.customDiscipline || source.discipline || 'Engineering & Web3';
+            if (amtEl) amtEl.value = existingCartItem ? existingCartItem.price : (source.amount || '');
+            if (titleEl) titleEl.value = existingCartItem ? (existingCartItem.customTitle || existingCartItem.title) : (source.title || '');
+            if (dateEl && source.targetDate && source.targetDate !== 'Flexible') {
+                dateEl.value = source.targetDate;
             }
+            if (notesEl) notesEl.value = source.notes || '';
 
+            const submitBtn = document.getElementById('budget-submit-btn');
             if (submitBtn) {
                 submitBtn.innerHTML = editingBudgetItemUid
-                    ? '<i data-lucide="check" class="w-4 h-4"></i><span>Save Quote Request</span>'
-                    : '<i data-lucide="plus-circle" class="w-4 h-4"></i><span>Add to Project Brief</span>';
+                    ? `<i data-lucide="check" class="w-4 h-4"></i><span>${escapeHTML(t('saveQuoteBtn'))}</span>`
+                    : `<i data-lucide="plus-circle" class="w-4 h-4"></i><span>${escapeHTML(t('addToBriefBtn'))}</span>`;
             }
 
             updateBudgetModalPrice();
@@ -2106,107 +2567,123 @@
             editingBudgetItemUid = null;
         }
 
+        function updateBudgetModalPrice() {
+            const amt = parseFloat(document.getElementById('budget-amount')?.value || '0');
+            const displayVal = Number.isFinite(amt) && amt > 0 ? Math.round(amt) : 0;
+            const totalEl = document.getElementById('budget-modal-total');
+            if (totalEl) totalEl.textContent = `$${displayVal.toLocaleString()}`;
+        }
+
+        function saveBudgetRequestDraft() {
+            if (editingBudgetItemUid) return;
+            budgetRequestDraft = {
+                discipline: document.getElementById('budget-discipline')?.value || 'Engineering & Web3',
+                amount: document.getElementById('budget-amount')?.value || '',
+                title: document.getElementById('budget-title-input')?.value || '',
+                targetDate: document.getElementById('budget-target-date')?.value || '',
+                notes: document.getElementById('budget-notes')?.value || ''
+            };
+            persistState();
+        }
+
         function confirmAddBudgetRequestToCart() {
             const discipline = document.getElementById('budget-discipline').value;
-            const titleEl = document.getElementById('budget-title-input');
             const amountEl = document.getElementById('budget-amount');
-            const dateEl = document.getElementById('budget-target-date');
+            const titleEl = document.getElementById('budget-title-input');
             const notesEl = document.getElementById('budget-notes');
+            const targetDate = document.getElementById('budget-target-date').value || 'Flexible';
 
-            const customTitle = titleEl.value.trim();
             const parsedAmount = Math.round(parseFloat(amountEl.value || '0'));
-            const targetDate = dateEl.value || 'Flexible';
+            const customTitle = titleEl.value.trim();
             const notes = notesEl.value.trim();
 
             if (!customTitle) {
                 titleEl.focus();
-                showToast('Please enter a short title for your custom budget request', true);
+                showToast(currentLang === 'es' ? 'Ingresa un título corto para tu solicitud personalizada' : 'Please enter a short title for your custom budget request', true);
                 return;
             }
             if (!Number.isFinite(parsedAmount) || parsedAmount <= 0) {
                 amountEl.focus();
-                showToast('Please enter a valid target budget amount in USD', true);
+                showToast(currentLang === 'es' ? 'Ingresa un presupuesto objetivo válido en USD' : 'Please enter a valid target budget amount in USD', true);
                 return;
             }
             if (!notes) {
                 notesEl.focus();
-                showToast('Please describe the deliverables and details for your request', true);
+                showToast(currentLang === 'es' ? 'Describe los entregables y detalles de tu solicitud' : 'Please describe the deliverables and details for your request', true);
                 return;
             }
 
-            const wasEditing = Boolean(editingBudgetItemUid);
-            const existingItem = wasEditing ? cartItems.find(item => item.uid === editingBudgetItemUid) : null;
-
-            const budgetPayload = {
-                uid: editingBudgetItemUid || ('budget-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6)),
+            const itemPayload = {
                 isBundle: false,
-                isBudgetRequest: true,
-                sentToStudio: existingItem ? Boolean(existingItem.sentToStudio) : false,
-                budgetDiscipline: discipline,
-                customRequestTitle: customTitle,
-                title: `Custom Budget Request: ${customTitle}`,
-                disciplineLabel: `${discipline} • Custom Quote`,
-                tierName: `Proposed Budget ($${parsedAmount.toLocaleString()})`,
+                isSpecialRequest: true,
+                serviceId: 'special-request',
+                customDiscipline: discipline,
+                customTitle,
+                title: `${customTitle} (Custom Quote)`,
+                disciplineLabel: 'Special Requests',
+                tierName: `Custom Budget Request — ${discipline} ($${parsedAmount.toLocaleString()})`,
                 priority: 'standard',
                 targetDate,
                 notes,
-                price: parsedAmount
+                price: parsedAmount,
+                sentToStudio: false
             };
 
-            if (wasEditing) {
+            const wasEditing = Boolean(editingBudgetItemUid);
+            if (editingBudgetItemUid) {
                 const idx = cartItems.findIndex(item => item.uid === editingBudgetItemUid);
                 if (idx !== -1) {
-                    cartItems[idx] = budgetPayload;
-                } else {
-                    cartItems.push(budgetPayload);
+                    cartItems[idx] = { ...cartItems[idx], ...itemPayload };
                 }
             } else {
-                cartItems.push(budgetPayload);
+                cartItems.push({
+                    uid: 'budget-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+                    ...itemPayload
+                });
                 budgetRequestDraft = { discipline: 'Engineering & Web3', title: '', amount: '', targetDate: '', notes: '' };
             }
 
-            persistState();
             closeBudgetModal();
+            persistState();
             updateCartUI();
-            toggleCartDrawer(true);
-            showToast(wasEditing ? 'Updated custom budget request in Project Brief' : 'Added custom budget request to Project Brief');
+            showToast(wasEditing ? `Updated "${customTitle}"` : `Added "${customTitle}" to Project Brief`);
         }
 
         // Initialize on DOM load
         document.addEventListener('DOMContentLoaded', () => {
             loadPersistedState();
-            renderServices();
-            updateCartUI();
+            setLanguage(currentLang, true);
             lucide.createIcons();
 
-            // Default date inputs to 7 days from today (unless saved in draft)
+            // Default date inputs to 7 days from today
             const defaultDate = new Date();
             defaultDate.setDate(defaultDate.getDate() + 7);
             const formattedDefaultDate = defaultDate.toISOString().split('T')[0];
 
             const modalDateInput = document.getElementById('modal-target-date');
             const bundleDateInput = document.getElementById('bundle-target-date');
+            const budgetDateInput = document.getElementById('budget-target-date');
             if (modalDateInput) modalDateInput.value = formattedDefaultDate;
             if (bundleDateInput) bundleDateInput.value = bundleDraft.targetDate || formattedDefaultDate;
+            if (budgetDateInput) budgetDateInput.value = budgetRequestDraft.targetDate || formattedDefaultDate;
 
-            const bundleNotesEl = document.getElementById('bundle-notes');
-            const bundlePriorityEl = document.getElementById('bundle-priority');
-            if (bundleNotesEl && bundleDraft.notes) bundleNotesEl.value = bundleDraft.notes;
-            if (bundlePriorityEl && bundleDraft.priority) bundlePriorityEl.value = bundleDraft.priority;
+            if (bundleDraft.notes && document.getElementById('bundle-notes')) {
+                document.getElementById('bundle-notes').value = bundleDraft.notes;
+            }
+            if (bundleDraft.priority && document.getElementById('bundle-priority')) {
+                document.getElementById('bundle-priority').value = bundleDraft.priority;
+            }
 
-            const clientNameEl = document.getElementById('client-name');
-            const clientEmailEl = document.getElementById('client-email');
-            const clientReferralEl = document.getElementById('client-referral-code');
-            if (clientNameEl && clientCheckoutDraft.name) clientNameEl.value = clientCheckoutDraft.name;
-            if (clientEmailEl && clientCheckoutDraft.email) clientEmailEl.value = clientCheckoutDraft.email;
-            if (clientReferralEl && clientCheckoutDraft.referralCode) clientReferralEl.value = clientCheckoutDraft.referralCode;
-
-            // Attach persistence listeners for date & priority fields
-            if (modalDateInput) modalDateInput.addEventListener('change', saveServiceDraft);
-            const modalPriorityEl = document.getElementById('modal-priority');
-            if (modalPriorityEl) modalPriorityEl.addEventListener('change', saveServiceDraft);
-            if (bundleDateInput) bundleDateInput.addEventListener('change', saveBundleDraft);
-            if (bundlePriorityEl) bundlePriorityEl.addEventListener('change', saveBundleDraft);
+            // Restore persisted client checkout inputs
+            if (clientCheckoutDraft.name && document.getElementById('client-name')) {
+                document.getElementById('client-name').value = clientCheckoutDraft.name;
+            }
+            if (clientCheckoutDraft.email && document.getElementById('client-email')) {
+                document.getElementById('client-email').value = clientCheckoutDraft.email;
+            }
+            if (clientCheckoutDraft.referralCode && document.getElementById('client-referral-code')) {
+                document.getElementById('client-referral-code').value = clientCheckoutDraft.referralCode;
+            }
 
             // Close modals/drawers on Escape key
             document.addEventListener('keydown', (e) => {
@@ -2232,12 +2709,18 @@
                 if (!matchesCategory) return false;
                 if (!query) return true;
 
+                const localized = getLocalizedService(service);
                 const searchableText = [
                     service.title,
                     service.disciplineLabel,
                     service.shortDesc,
                     ...service.deliverables,
-                    ...service.tiers.map(t => t.name)
+                    ...service.tiers.map(t => t.name),
+                    localized.title,
+                    localized.disciplineLabel,
+                    localized.shortDesc,
+                    ...localized.deliverables,
+                    ...localized.tiers.map(t => t.name)
                 ].join(' ').toLowerCase();
 
                 return searchableText.includes(query);
@@ -2251,7 +2734,8 @@
             }
 
             emptyState.classList.add('hidden');
-            grid.innerHTML = filtered.map((service) => {
+            grid.innerHTML = filtered.map((rawService) => {
+                const service = getLocalizedService(rawService);
                 const accent = ACCENT_STYLES[service.accent] || ACCENT_STYLES.cyan;
                 const startingPrice = Math.min(...service.tiers.map(t => t.price));
 
@@ -2286,7 +2770,7 @@
 
             <div class="pt-4 border-t border-white/[0.07] flex items-center justify-between gap-3">
               <div>
-                <span class="block font-mono text-[10px] uppercase tracking-wider text-slate-500">Starting At</span>
+                <span class="block font-mono text-[10px] uppercase tracking-wider text-slate-500">${escapeHTML(t('startingAt'))}</span>
                 <span class="font-display text-xl font-bold text-white">$${startingPrice.toLocaleString()}</span>
               </div>
               <button
@@ -2294,7 +2778,7 @@
                 onclick="openConfigModal('${service.id}')"
                 class="px-4 py-2.5 rounded-xl bg-white/[0.05] hover:bg-[#00f0ff] text-white hover:text-[#07090e] border border-white/[0.1] hover:border-[#00f0ff] font-medium text-xs sm:text-sm transition-all duration-200 inline-flex items-center gap-1.5"
               >
-                <span>Configure</span>
+                <span>${escapeHTML(t('configureBtn'))}</span>
                 <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i>
               </button>
             </div>
@@ -2343,8 +2827,9 @@
         // SINGLE SERVICE CONFIGURATOR MODAL LOGIC
         // =====================================================================
         function openConfigModal(serviceId, existingCartItem = null) {
-            const service = SERVICES_CATALOG.find(s => s.id === serviceId);
-            if (!service) return;
+            const rawService = SERVICES_CATALOG.find(s => s.id === serviceId);
+            if (!rawService) return;
+            const service = getLocalizedService(rawService);
 
             currentModalService = service;
             editingCartItemUid = existingCartItem ? existingCartItem.uid : null;
@@ -2373,8 +2858,8 @@
             const submitBtn = document.getElementById('modal-submit-btn');
             if (submitBtn) {
                 submitBtn.innerHTML = editingCartItemUid
-                    ? '<i data-lucide="check" class="w-4 h-4"></i><span>Save Changes</span>'
-                    : '<i data-lucide="plus-circle" class="w-4 h-4"></i><span>Add to Project Brief</span>';
+                    ? `<i data-lucide="check" class="w-4 h-4"></i><span>${escapeHTML(t('saveChangesBtn'))}</span>`
+                    : `<i data-lucide="plus-circle" class="w-4 h-4"></i><span>${escapeHTML(t('addToBriefBtn'))}</span>`;
             }
 
             const deliverablesEl = document.getElementById('modal-deliverables');
@@ -2440,6 +2925,7 @@
             const isRush = document.getElementById('modal-priority').value === 'rush';
             const finalPrice = isRush ? Math.round(basePrice * 1.25) : basePrice;
             document.getElementById('modal-total-price').textContent = `$${finalPrice.toLocaleString()}`;
+            saveServiceDraft();
         }
 
         function confirmAddToCart() {
@@ -2452,53 +2938,45 @@
 
             if (!notes) {
                 notesEl.focus();
-                showToast('Please enter your service brief details before adding to Project Brief', true);
+                showToast(currentLang === 'es' ? 'Ingresa los detalles de tu servicio antes de agregarlo al Resumen' : 'Please enter your service brief details before adding to Project Brief', true);
                 return;
             }
 
             const price = priority === 'rush' ? Math.round(tier.price * 1.25) : tier.price;
-            const existingItem = editingCartItemUid ? cartItems.find(item => item.uid === editingCartItemUid) : null;
-            const isSpecialRequest = currentModalService.id === 'special-request' || currentModalService.category === 'special-request';
             const updatedPayload = {
-                uid: editingCartItemUid || ('item-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6)),
                 isBundle: false,
-                isSpecialRequest,
-                sentToStudio: existingItem ? Boolean(existingItem.sentToStudio) : false,
                 serviceId: currentModalService.id,
                 tierIndex: selectedTierIndex,
                 title: currentModalService.title,
-                disciplineLabel: isSpecialRequest ? 'Special Requests' : currentModalService.disciplineLabel,
+                disciplineLabel: currentModalService.disciplineLabel,
                 tierName: tier.name,
                 priority,
                 targetDate,
                 notes,
-                price
+                price,
+                sentToStudio: false
             };
 
             const addedTitle = currentModalService.title;
             const wasEditing = Boolean(editingCartItemUid);
 
-            if (wasEditing) {
+            if (editingCartItemUid) {
                 const idx = cartItems.findIndex(item => item.uid === editingCartItemUid);
                 if (idx !== -1) {
-                    cartItems[idx] = updatedPayload;
-                } else {
-                    cartItems.push(updatedPayload);
+                    cartItems[idx] = { ...cartItems[idx], ...updatedPayload };
                 }
             } else {
-                cartItems.push(updatedPayload);
+                cartItems.push({
+                    uid: 'item-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+                    ...updatedPayload
+                });
                 delete serviceDrafts[currentModalService.id];
             }
 
-            persistState();
             closeConfigModal();
+            persistState();
             updateCartUI();
-            if (wasEditing) toggleCartDrawer(true);
-            showToast(
-                wasEditing ? `Updated "${addedTitle}" in Project Brief` : `Added "${addedTitle}" to Project Brief`,
-                false,
-                !wasEditing
-            );
+            showToast(wasEditing ? `Updated "${addedTitle}"` : `Added "${addedTitle}" to Project Brief`);
         }
 
         // =====================================================================
@@ -2507,30 +2985,34 @@
         function openCustomConsultation(existingBundleItem = null) {
             editingBundleItemUid = existingBundleItem ? existingBundleItem.uid : null;
 
-            const bundleNotesEl = document.getElementById('bundle-notes');
-            const bundlePriorityEl = document.getElementById('bundle-priority');
-            const bundleDateEl = document.getElementById('bundle-target-date');
-            const bundleSubmitBtn = document.getElementById('bundle-submit-btn');
-
             if (existingBundleItem) {
-                bundleSelections = existingBundleItem.selectionsMap
-                    ? { ...existingBundleItem.selectionsMap }
-                    : reconstructBundleSelections(existingBundleItem.includedServices || []);
-                if (bundleNotesEl) bundleNotesEl.value = existingBundleItem.notes || '';
-                if (bundlePriorityEl) bundlePriorityEl.value = existingBundleItem.priority || 'standard';
-                if (bundleDateEl && existingBundleItem.targetDate && existingBundleItem.targetDate !== 'Flexible') {
-                    bundleDateEl.value = existingBundleItem.targetDate;
+                bundleSelections = { ...(existingBundleItem.bundleSelections || {}) };
+                if (document.getElementById('bundle-notes')) {
+                    document.getElementById('bundle-notes').value = existingBundleItem.notes || '';
                 }
-            } else {
-                if (bundleNotesEl) bundleNotesEl.value = bundleDraft.notes || '';
-                if (bundlePriorityEl) bundlePriorityEl.value = bundleDraft.priority || 'standard';
-                if (bundleDateEl && bundleDraft.targetDate) bundleDateEl.value = bundleDraft.targetDate;
+                if (document.getElementById('bundle-priority')) {
+                    document.getElementById('bundle-priority').value = existingBundleItem.priority || 'standard';
+                }
+                if (document.getElementById('bundle-target-date') && existingBundleItem.targetDate && existingBundleItem.targetDate !== 'Flexible') {
+                    document.getElementById('bundle-target-date').value = existingBundleItem.targetDate;
+                }
+            } else if (bundleDraft) {
+                if (document.getElementById('bundle-notes')) {
+                    document.getElementById('bundle-notes').value = bundleDraft.notes || '';
+                }
+                if (document.getElementById('bundle-priority')) {
+                    document.getElementById('bundle-priority').value = bundleDraft.priority || 'standard';
+                }
+                if (document.getElementById('bundle-target-date') && bundleDraft.targetDate) {
+                    document.getElementById('bundle-target-date').value = bundleDraft.targetDate;
+                }
             }
 
+            const bundleSubmitBtn = document.getElementById('bundle-submit-btn');
             if (bundleSubmitBtn) {
                 bundleSubmitBtn.innerHTML = editingBundleItemUid
-                    ? '<i data-lucide="check" class="w-4 h-4"></i><span>Save Bundle Changes</span>'
-                    : '<i data-lucide="layers" class="w-4 h-4"></i><span>Add Bundle to Project Brief</span>';
+                    ? `<i data-lucide="check" class="w-4 h-4"></i><span>${escapeHTML(t('saveBundleBtn'))}</span>`
+                    : `<i data-lucide="layers" class="w-4 h-4"></i><span>${escapeHTML(t('addBundleBtn'))}</span>`;
             }
 
             renderBundleServices();
@@ -2539,18 +3021,6 @@
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             lucide.createIcons();
-        }
-
-        function reconstructBundleSelections(includedServices) {
-            const map = {};
-            includedServices.forEach((entry) => {
-                const service = SERVICES_CATALOG.find(s => entry.startsWith(s.title + ' ('));
-                if (service) {
-                    const tierIdx = service.tiers.findIndex(t => entry.endsWith(`(${t.name})`));
-                    map[service.id] = tierIdx >= 0 ? tierIdx : 0;
-                }
-            });
-            return map;
         }
 
         function closeBundleModal() {
@@ -2563,7 +3033,7 @@
 
         function clearBundleSelections() {
             bundleSelections = {};
-            if (!editingBundleItemUid) persistState();
+            persistState();
             renderBundleServices();
             updateBundleTotals();
         }
@@ -2574,14 +3044,14 @@
             } else {
                 bundleSelections[serviceId] = 0;
             }
-            if (!editingBundleItemUid) persistState();
+            persistState();
             renderBundleServices();
             updateBundleTotals();
         }
 
         function selectBundleServiceTier(serviceId, tierIdx) {
             bundleSelections[serviceId] = tierIdx;
-            if (!editingBundleItemUid) persistState();
+            persistState();
             renderBundleServices();
             updateBundleTotals();
         }
@@ -2590,15 +3060,22 @@
             const container = document.getElementById('bundle-services-container');
             if (!container) return;
 
-            const disciplines = [
-                { key: 'engineering', label: '01 // Engineering & Web3', accent: 'text-[#00f0ff]' },
-                { key: 'brand', label: '02 // Brand & Visual Media', accent: 'text-[#8b5cf6]' },
-                { key: 'audio', label: '03 // Audio & Video', accent: 'text-[#10b981]' },
-                { key: 'physical', label: '04 // Physical & Body Art', accent: 'text-amber-300' }
-            ];
+            const disciplines = currentLang === 'es'
+                ? [
+                    { key: 'engineering', label: '01 // Ingeniería y Web3', accent: 'text-[#00f0ff]' },
+                    { key: 'brand', label: '02 // Marca y Medios Visuales', accent: 'text-[#8b5cf6]' },
+                    { key: 'audio', label: '03 // Audio y Video', accent: 'text-[#10b981]' },
+                    { key: 'physical', label: '04 // Arte Físico y Corporal', accent: 'text-amber-300' }
+                ]
+                : [
+                    { key: 'engineering', label: '01 // Engineering & Web3', accent: 'text-[#00f0ff]' },
+                    { key: 'brand', label: '02 // Brand & Visual Media', accent: 'text-[#8b5cf6]' },
+                    { key: 'audio', label: '03 // Audio & Video', accent: 'text-[#10b981]' },
+                    { key: 'physical', label: '04 // Physical & Body Art', accent: 'text-amber-300' }
+                ];
 
             container.innerHTML = disciplines.map((group) => {
-                const groupServices = SERVICES_CATALOG.filter(s => s.category === group.key);
+                const groupServices = SERVICES_CATALOG.filter(s => s.category === group.key).map(getLocalizedService);
                 return `
           <div class="space-y-3">
             <h4 class="font-mono text-xs uppercase tracking-widest ${group.accent}">${group.label}</h4>
@@ -2684,7 +3161,7 @@
             const savingsAmount = Math.round(rushAdjustedRaw * discountRate);
             const finalBundlePrice = rushAdjustedRaw - savingsAmount;
 
-            document.getElementById('bundle-selected-count').textContent = `${count} Selected`;
+            document.getElementById('bundle-selected-count').textContent = `${count} ${t('selectedSuffix')}`;
             document.getElementById('bundle-final-price').textContent = `$${finalBundlePrice.toLocaleString()}`;
 
             const rawPriceEl = document.getElementById('bundle-raw-price');
@@ -2695,14 +3172,18 @@
                 const pct = Math.round(discountRate * 100);
                 rawPriceEl.textContent = `$${rushAdjustedRaw.toLocaleString()}`;
                 rawPriceEl.classList.remove('hidden');
-                savingsBadgeEl.textContent = `Save $${savingsAmount.toLocaleString()} (${pct}%)`;
+                savingsBadgeEl.textContent = currentLang === 'es'
+                    ? `Ahorras $${savingsAmount.toLocaleString()} (${pct}%)`
+                    : `Save $${savingsAmount.toLocaleString()} (${pct}%)`;
                 savingsBadgeEl.classList.remove('hidden');
-                discountPillEl.textContent = `${pct}% Multi-Discipline Bundle Discount Active`;
+                discountPillEl.textContent = currentLang === 'es'
+                    ? `${pct}% de Descuento de Paquete Activo`
+                    : `${pct}% Multi-Discipline Bundle Discount Active`;
                 discountPillEl.className = 'font-mono text-[11px] px-2.5 py-0.5 rounded-md bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/30';
             } else {
                 rawPriceEl.classList.add('hidden');
                 savingsBadgeEl.classList.add('hidden');
-                discountPillEl.textContent = 'Select 6+ services for up to 15% Studio Bundle Savings';
+                discountPillEl.textContent = t('bundleDefaultPill');
                 discountPillEl.className = 'font-mono text-[11px] px-2.5 py-0.5 rounded-md bg-white/[0.04] text-slate-400 border border-white/[0.08]';
             }
         }
@@ -2710,7 +3191,7 @@
         function confirmAddBundleToCart() {
             const selectedIds = Object.keys(bundleSelections);
             if (selectedIds.length === 0) {
-                showToast('Select at least one service to build a bundle', true);
+                showToast(currentLang === 'es' ? 'Selecciona al menos un servicio para armar un paquete' : 'Select at least one service to build a bundle', true);
                 return;
             }
 
@@ -2721,7 +3202,7 @@
 
             if (!notes) {
                 notesEl.focus();
-                showToast('Please enter Unified Multi-Discipline Brief & Cross-Deliverable Notes before adding the bundle', true);
+                showToast(currentLang === 'es' ? 'Ingresa las notas unificadas del paquete antes de agregarlo' : 'Please enter Unified Multi-Discipline Brief & Cross-Deliverable Notes before adding the bundle', true);
                 return;
             }
 
@@ -2741,43 +3222,46 @@
             const rushAdjustedRaw = isRush ? Math.round(rawBaseTotal * 1.25) : rawBaseTotal;
             const discountRate = selectedIds.length >= 9 ? 0.15 : (selectedIds.length >= 6 ? 0.10 : 0);
             const finalPrice = rushAdjustedRaw - Math.round(rushAdjustedRaw * discountRate);
-            const wasEditingBundle = Boolean(editingBundleItemUid);
-            const existingBundle = wasEditingBundle ? cartItems.find(item => item.uid === editingBundleItemUid) : null;
 
             const bundlePayload = {
-                uid: editingBundleItemUid || ('bundle-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6)),
                 isBundle: true,
-                sentToStudio: existingBundle ? Boolean(existingBundle.sentToStudio) : false,
-                selectionsMap: { ...bundleSelections },
-                title: `Multi-Discipline Bundle (${selectedIds.length} Services)`,
+                bundleSelections: { ...bundleSelections },
+                title: currentLang === 'es'
+                    ? `Paquete Multidisciplinario (${selectedIds.length} Servicios)`
+                    : `Multi-Discipline Bundle (${selectedIds.length} Services)`,
                 disciplineLabel: discountRate > 0 ? `${Math.round(discountRate * 100)}% Studio Bundle Savings` : 'Custom Bundle',
                 tierName: includedServices.join(' + '),
                 includedServices,
                 priority: isRush ? 'rush' : 'standard',
                 targetDate,
                 notes,
-                price: finalPrice
+                price: finalPrice,
+                sentToStudio: false
             };
 
-            if (wasEditingBundle) {
+            const wasEditing = Boolean(editingBundleItemUid);
+            if (editingBundleItemUid) {
                 const idx = cartItems.findIndex(item => item.uid === editingBundleItemUid);
                 if (idx !== -1) {
-                    cartItems[idx] = bundlePayload;
-                } else {
-                    cartItems.push(bundlePayload);
+                    cartItems[idx] = { ...cartItems[idx], ...bundlePayload };
                 }
             } else {
-                cartItems.push(bundlePayload);
-                bundleDraft = { notes: '', priority: 'standard', targetDate: document.getElementById('bundle-target-date')?.value || '' };
+                cartItems.push({
+                    uid: 'bundle-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+                    ...bundlePayload
+                });
+                bundleSelections = {};
+                bundleDraft = { notes: '', priority: 'standard', targetDate: '' };
+                document.getElementById('bundle-notes').value = '';
             }
 
-            bundleSelections = {};
-            document.getElementById('bundle-notes').value = '';
-            persistState();
             closeBundleModal();
+            persistState();
             updateCartUI();
             toggleCartDrawer(true);
-            showToast(wasEditingBundle ? `Updated ${selectedIds.length}-service bundle in Project Brief` : `Added ${selectedIds.length}-service bundle to Project Brief`);
+            showToast(wasEditing
+                ? `Updated ${selectedIds.length}-service bundle`
+                : `Added ${selectedIds.length}-service bundle to Project Brief`);
         }
 
         // =====================================================================
@@ -2804,42 +3288,13 @@
             }
         }
 
-        function removeCartItem(uid) {
-            cartItems = cartItems.filter(item => item.uid !== uid);
-            persistState();
-            updateCartUI();
-            showToast('Removed item from Project Brief');
-        }
-
-        function toggleItemSentStatus(uid, isChecked) {
-            const item = cartItems.find(entry => entry.uid === uid);
-            if (!item) return;
-            item.sentToStudio = Boolean(isChecked);
-            persistState();
-            updateCartUI();
-            showToast(item.sentToStudio ? `Marked "${item.title}" as sent to studio` : `Unmarked "${item.title}"`);
-        }
-
-        function handleStudioEmailSent() {
-            if (lastSubmittedUids.length > 0) {
-                cartItems.forEach((item) => {
-                    if (lastSubmittedUids.includes(item.uid)) {
-                        item.sentToStudio = true;
-                    }
-                });
-                persistState();
-                updateCartUI();
-            }
-            showToast('Opening email client & marked items as sent to studio');
-        }
-
         function editCartItem(uid) {
             const item = cartItems.find(entry => entry.uid === uid);
             if (!item) return;
 
             toggleCartDrawer(false);
 
-            if (item.isBudgetRequest) {
+            if (item.isSpecialRequest || item.serviceId === 'special-request') {
                 openBudgetRequestModal(item);
                 return;
             }
@@ -2849,34 +3304,63 @@
                 return;
             }
 
-            const service = item.serviceId
-                ? SERVICES_CATALOG.find(s => s.id === item.serviceId)
-                : SERVICES_CATALOG.find(s => s.title === item.title);
+            let targetServiceId = item.serviceId;
+            let resolvedTierIndex = typeof item.tierIndex === 'number' ? item.tierIndex : 0;
 
-            if (!service) {
-                showToast('Unable to load configurator for this item', true);
-                return;
+            if (!targetServiceId) {
+                const matchedService = SERVICES_CATALOG.find(s => s.title === item.title);
+                if (matchedService) {
+                    targetServiceId = matchedService.id;
+                    const foundTier = matchedService.tiers.findIndex(t => t.name === item.tierName);
+                    if (foundTier !== -1) resolvedTierIndex = foundTier;
+                }
             }
 
-            const resolvedTierIdx = typeof item.tierIndex === 'number'
-                ? item.tierIndex
-                : Math.max(0, service.tiers.findIndex(t => t.name === item.tierName));
+            if (targetServiceId) {
+                openConfigModal(targetServiceId, { ...item, tierIndex: resolvedTierIndex });
+            }
+        }
 
-            openConfigModal(service.id, {
-                ...item,
-                tierIndex: resolvedTierIdx
-            });
+        function removeCartItem(uid) {
+            cartItems = cartItems.filter(item => item.uid !== uid);
+            persistState();
+            updateCartUI();
+            showToast(currentLang === 'es' ? 'Artículo eliminado del Resumen' : 'Removed item from Project Brief');
         }
 
         function clearCartItems() {
             if (cartItems.length === 0) {
-                showToast('Project Brief is already empty', true);
+                showToast(currentLang === 'es' ? 'Tu Resumen de Proyecto ya está vacío' : 'Your Project Brief is already empty', true);
                 return;
             }
             cartItems = [];
             persistState();
             updateCartUI();
-            showToast('Cleared all items from Project Brief');
+            showToast(currentLang === 'es' ? 'Todos los artículos fueron eliminados' : 'Cleared all items from Project Brief');
+        }
+
+        function toggleItemSentStatus(uid, isChecked) {
+            const targetItem = cartItems.find(item => item.uid === uid);
+            if (!targetItem) return;
+            targetItem.sentToStudio = Boolean(isChecked);
+            persistState();
+            updateCartUI();
+        }
+
+        function handleStudioEmailSent() {
+            if (Array.isArray(lastSubmittedUids) && lastSubmittedUids.length > 0) {
+                cartItems.forEach((item) => {
+                    if (lastSubmittedUids.includes(item.uid)) {
+                        item.sentToStudio = true;
+                    }
+                });
+            } else {
+                cartItems.forEach((item) => {
+                    item.sentToStudio = true;
+                });
+            }
+            persistState();
+            updateCartUI();
         }
 
         function updateCartUI() {
@@ -2897,9 +3381,9 @@
             <div class="w-12 h-12 rounded-2xl bg-[#ff0055]/10 border border-[#ff0055]/30 flex items-center justify-center mb-3">
               <i data-lucide="shopping-cart" class="w-6 h-6 text-[#ff0055]"></i>
             </div>
-            <h3 class="font-display font-semibold text-white text-base mb-1">Your Project Brief is Empty</h3>
+            <h3 class="font-display font-semibold text-white text-base mb-1">${escapeHTML(t('cartEmptyTitle'))}</h3>
             <p class="text-xs text-slate-400 max-w-xs leading-relaxed">
-              Configure individual services from the catalog or build a discounted Multi-Discipline Bundle to generate your studio dossier.
+              ${escapeHTML(t('cartEmptyDesc'))}
             </p>
           </div>
         `;
@@ -2910,7 +3394,7 @@
             container.innerHTML = cartItems.map((item) => {
                 const isSent = Boolean(item.sentToStudio);
                 const displayDiscipline = (item.isSpecialRequest || item.serviceId === 'special-request')
-                    ? 'Special Requests'
+                    ? (currentLang === 'es' ? 'Solicitudes Especiales' : 'Special Requests')
                     : item.disciplineLabel;
                 return `
         <div class="p-4 rounded-2xl bg-[#07090e] border ${isSent ? 'border-[#10b981]/40' : 'border-[#ff0055]/30'} space-y-2 transition-colors">
@@ -2944,13 +3428,13 @@
           <div class="text-xs text-slate-400">
             ${item.isBundle && item.includedServices
                         ? `<ul class="space-y-1 mt-1 pl-2 border-l border-[#ff0055]/40">${item.includedServices.map(s => `<li>&bull; ${escapeHTML(s)}</li>`).join('')}</ul>`
-                        : `<span>Scope: <strong class="text-slate-200 font-medium">${escapeHTML(item.tierName)}</strong></span>`
+                        : `<span>${escapeHTML(t('scopeLabel'))} <strong class="text-slate-200 font-medium">${escapeHTML(item.tierName)}</strong></span>`
                     }
           </div>
 
           <div class="flex flex-wrap items-center gap-2 pt-1 text-[11px] font-mono text-slate-400">
-            <span class="px-2 py-0.5 rounded bg-white/[0.04]">Date: ${escapeHTML(item.targetDate)}</span>
-            ${item.priority === 'rush' ? '<span class="px-2 py-0.5 rounded bg-amber-400/15 text-amber-300">Priority Rush (+25%)</span>' : ''}
+            <span class="px-2 py-0.5 rounded bg-white/[0.04]">${escapeHTML(t('dateLabel'))} ${escapeHTML(item.targetDate)}</span>
+            ${item.priority === 'rush' ? `<span class="px-2 py-0.5 rounded bg-amber-400/15 text-amber-300">${escapeHTML(t('rushBadge'))}</span>` : ''}
             <label class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border cursor-pointer select-none transition-colors ${isSent
                         ? 'bg-[#10b981]/15 border-[#10b981]/40 text-[#10b981]'
                         : 'bg-white/[0.04] border-white/[0.12] text-slate-300 hover:border-white/25'
@@ -2961,14 +3445,14 @@
                 onchange="toggleItemSentStatus('${item.uid}', this.checked)"
                 class="w-3 h-3 rounded accent-[#10b981] cursor-pointer"
               />
-              <span>${isSent ? 'Sent to Studio' : 'Mark Sent'}</span>
+              <span>${escapeHTML(isSent ? t('sentToStudio') : t('markSent'))}</span>
             </label>
           </div>
 
           ${item.notes ? `<p class="text-xs text-slate-400 italic bg-white/[0.02] p-2 rounded-lg border border-white/[0.05]">"${escapeHTML(item.notes)}"</p>` : ''}
 
           <div class="pt-2 border-t border-white/[0.06] flex items-center justify-between">
-            <span class="font-mono text-[10px] uppercase text-slate-500">Allocation</span>
+            <span class="font-mono text-[10px] uppercase text-slate-500">${escapeHTML(t('allocationLabel'))}</span>
             <span class="font-display font-bold text-base text-[#ff0055]">$${item.price.toLocaleString()}</span>
           </div>
         </div>
@@ -2980,7 +3464,7 @@
 
         function submitProjectBrief() {
             if (cartItems.length === 0) {
-                showToast('Add at least one service to your Project Brief first', true);
+                showToast(currentLang === 'es' ? 'Agrega al menos un servicio a tu Resumen de Proyecto primero' : 'Add at least one service to your Project Brief first', true);
                 return;
             }
 
@@ -2988,7 +3472,7 @@
             const clientEmail = document.getElementById('client-email').value.trim();
 
             if (!clientName || !clientEmail || !clientEmail.includes('@')) {
-                showToast('Please enter your Name/Brand and a valid Email address', true);
+                showToast(currentLang === 'es' ? 'Ingresa tu Nombre/Marca y un correo electrónico válido' : 'Please enter your Name/Brand and a valid Email address', true);
                 return;
             }
 
@@ -2998,7 +3482,12 @@
             lastSubmittedUids = cartItems.map(item => item.uid);
 
             document.getElementById('receipt-id').textContent = `#${receiptCode}`;
-            document.getElementById('receipt-email').textContent = clientEmail;
+            const receiptDescEl = document.getElementById('receipt-desc-text');
+            if (receiptDescEl) {
+                receiptDescEl.innerHTML = currentLang === 'es'
+                    ? `Tu resumen de proyecto ha sido preparado para la cola de D474designs y permanece guardado en tu carrito hasta que lo envíes. Haz clic en <span class="text-white font-medium">Enviar Resumen por Correo al Estudio</span> abajo para transmitir tu dossier y solicitar tu <span class="text-white font-medium">Factura Directa del Estudio</span> para <span id="receipt-email" class="text-[#00f0ff]">${escapeHTML(clientEmail)}</span>.`
+                    : `Your project brief has been prepared for the D474designs studio queue and remains saved in your cart until you send it. Click <span class="text-white font-medium">Email Brief to Studio</span> below to transmit your dossier and request your <span class="text-white font-medium">Direct Studio Invoice</span> for <span id="receipt-email" class="text-[#00f0ff]">${escapeHTML(clientEmail)}</span>.`;
+            }
             document.getElementById('receipt-total').textContent = `$${total.toLocaleString()}`;
 
             const summaryContainer = document.getElementById('receipt-summary');
@@ -3040,7 +3529,7 @@
             if (mailtoLink) {
                 const subject = encodeURIComponent(`D474designs Project Brief #${receiptCode} — ${clientName}`);
                 const body = encodeURIComponent(lastGeneratedReceiptText);
-                mailtoLink.href = `mailto:jcazares117@gmail.com?subject=${subject}&body=${body}`;
+                mailtoLink.href = `mailto:${STUDIO_EMAIL}?subject=${subject}&body=${body}`;
             }
 
             // Keep items preserved in the cart until user explicitly clears them
@@ -3077,11 +3566,9 @@
                 copyButtonTimers = [];
 
                 if (iconWrap && copyBtn) {
-                    // 0ms: Fade out copy icon (150ms)
                     iconWrap.classList.remove('opacity-100');
                     iconWrap.classList.add('opacity-0');
 
-                    // 150ms: Swap to emerald checkmark & fade in (150ms)
                     copyButtonTimers.push(setTimeout(() => {
                         iconWrap.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i>';
                         copyBtn.classList.add('text-[#10b981]', 'border-[#10b981]/50');
@@ -3090,13 +3577,11 @@
                         iconWrap.classList.add('opacity-100');
                     }, 150));
 
-                    // 700ms: Fade out checkmark (150ms)
                     copyButtonTimers.push(setTimeout(() => {
                         iconWrap.classList.remove('opacity-100');
                         iconWrap.classList.add('opacity-0');
                     }, 700));
 
-                    // 850ms: Swap back to copy icon & fade in by 1000ms total
                     copyButtonTimers.push(setTimeout(() => {
                         iconWrap.innerHTML = '<i data-lucide="copy" class="w-4 h-4"></i>';
                         copyBtn.classList.remove('text-[#10b981]', 'border-[#10b981]/50');
@@ -3106,68 +3591,57 @@
                     }, 850));
                 }
 
-                showToast('D474designs Dossier copied to clipboard');
+                showToast(currentLang === 'es' ? 'Dossier D474designs copiado al portapapeles' : 'D474designs Dossier copied to clipboard');
             } catch (err) {
-                showToast('Unable to copy automatically', true);
+                showToast(currentLang === 'es' ? 'No se pudo copiar automáticamente' : 'Unable to copy automatically', true);
             }
             document.body.removeChild(tempTextarea);
         }
 
-        // Toast feedback helper with longer display, hover-pause/resume, and click-to-open-cart support
-        const TOAST_DEFAULT_DURATION = 5500;
+        // Clickable, hover-pausable Toast feedback helper
         let toastTimeout = null;
-        let toastRemainingTime = 0;
-        let toastEndTimestamp = 0;
-        let toastIsPaused = false;
+        let toastRemainingMs = 5500;
+        let toastStartedAt = 0;
+        let isToastVisible = false;
 
-        function clearToastTimer() {
-            if (toastTimeout) {
-                clearTimeout(toastTimeout);
-                toastTimeout = null;
-            }
+        function hideToast() {
+            const toast = document.getElementById('toast-notification');
+            if (!toast) return;
+            toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+            isToastVisible = false;
+            clearTimeout(toastTimeout);
+            toastTimeout = null;
         }
 
-        function scheduleToastDismiss(delayMs) {
-            clearToastTimer();
-            toastRemainingTime = Math.max(0, delayMs);
-            toastEndTimestamp = Date.now() + toastRemainingTime;
-            toastIsPaused = false;
+        function startToastTimer(durationMs) {
+            clearTimeout(toastTimeout);
+            toastRemainingMs = durationMs;
+            toastStartedAt = Date.now();
             toastTimeout = setTimeout(() => {
-                const toast = document.getElementById('toast-notification');
-                if (toast) {
-                    toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
-                }
-                toastRemainingTime = 0;
-            }, toastRemainingTime);
+                hideToast();
+            }, toastRemainingMs);
         }
 
         function pauseToastTimer() {
-            const toast = document.getElementById('toast-notification');
-            if (!toast || toast.classList.contains('opacity-0') || toastIsPaused) return;
-            toastRemainingTime = Math.max(0, toastEndTimestamp - Date.now());
-            clearToastTimer();
-            toastIsPaused = true;
+            if (!isToastVisible || !toastTimeout) return;
+            clearTimeout(toastTimeout);
+            toastTimeout = null;
+            const elapsed = Date.now() - toastStartedAt;
+            toastRemainingMs = Math.max(800, toastRemainingMs - elapsed);
         }
 
         function resumeToastTimer() {
-            const toast = document.getElementById('toast-notification');
-            if (!toast || toast.classList.contains('opacity-0') || !toastIsPaused) return;
-            const resumeDelay = toastRemainingTime > 250 ? toastRemainingTime : 1500;
-            scheduleToastDismiss(resumeDelay);
+            if (!isToastVisible || toastTimeout) return;
+            startToastTimer(toastRemainingMs);
         }
 
         function handleToastClick() {
-            const toast = document.getElementById('toast-notification');
-            if (toast) {
-                toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
-            }
-            clearToastTimer();
-            toastRemainingTime = 0;
-            toastIsPaused = false;
+            if (!isToastVisible) return;
+            hideToast();
             toggleCartDrawer(true);
         }
 
-        function showToast(message, isWarning = false, durationMs = TOAST_DEFAULT_DURATION) {
+        function showToast(message, isWarning = false) {
             const toast = document.getElementById('toast-notification');
             const msgEl = document.getElementById('toast-message');
             const iconEl = document.getElementById('toast-icon');
@@ -3178,12 +3652,13 @@
             lucide.createIcons();
 
             toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
-            scheduleToastDismiss(durationMs);
+            isToastVisible = true;
+            startToastTimer(5500);
         }
 
         // Escape user input safely
         function escapeHTML(str) {
-            return str.replace(/[&<>"']/g, match => ({
+            return String(str).replace(/[&<>"']/g, match => ({
                 '&': '&amp;',
                 '<': '&lt;',
                 '>': '&gt;',
