@@ -43,753 +43,213 @@
             --neon-emerald: #10b981;
         }
 
-        html.scroll-smooth {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: #07090e;
-            color: #e2e8f0;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .font-sans {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .font-display {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .font-mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
+        html.scroll-smooth { scroll-behavior: smooth; }
+        body { background-color: #07090e; color: #e2e8f0; font-family: 'Inter', sans-serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
 
         /* Slate & Custom Hex Backgrounds */
-        .bg-\[\#07090e\] {
-            background-color: #07090e;
-        }
+        .bg-\[\#07090e\] { background-color: #07090e; }
+        .bg-\[\#07090e\]\/90 { background-color: rgba(7, 9, 14, 0.9); }
+        .bg-\[\#07090e\]\/95 { background-color: rgba(7, 9, 14, 0.95); }
+        .bg-\[\#04060a\]\/75 { background-color: rgba(4, 6, 10, 0.75); }
+        .bg-\[\#04060a\]\/80 { background-color: rgba(4, 6, 10, 0.8); }
+        .bg-\[\#04060a\]\/85 { background-color: rgba(4, 6, 10, 0.85); }
+        .bg-\[\#0c101a\] { background-color: #0c101a; }
+        .bg-\[\#0c101a\]\/60 { background-color: rgba(12, 16, 26, 0.6); }
+        .bg-\[\#0c101a\]\/80 { background-color: rgba(12, 16, 26, 0.8); }
+        .bg-\[\#0c101a\]\/90 { background-color: rgba(12, 16, 26, 0.9); }
+        .bg-\[\#0c101a\]\/95 { background-color: rgba(12, 16, 26, 0.95); }
+        .bg-white\/\[0\.02\] { background-color: rgba(255, 255, 255, 0.02); }
+        .bg-white\/\[0\.03\] { background-color: rgba(255, 255, 255, 0.03); }
+        .bg-white\/\[0\.04\] { background-color: rgba(255, 255, 255, 0.04); }
+        .bg-white\/\[0\.05\] { background-color: rgba(255, 255, 255, 0.05); }
+        .bg-white\/\[0\.06\] { background-color: rgba(255, 255, 255, 0.06); }
+        .hover\:bg-white\/\[0\.06\]:hover { background-color: rgba(255, 255, 255, 0.06); }
+        .hover\:bg-white\/\[0\.08\]:hover { background-color: rgba(255, 255, 255, 0.08); }
+        .hover\:bg-white\/\[0\.1\]:hover { background-color: rgba(255, 255, 255, 0.1); }
 
-        .bg-\[\#07090e\]\/90 {
-            background-color: rgba(7, 9, 14, 0.9);
-        }
+        .bg-\[\#00f0ff\] { background-color: #00f0ff; }
+        .hover\:bg-\[\#00f0ff\]:hover { background-color: #00f0ff; }
+        .hover\:bg-\[\#33f3ff\]:hover { background-color: #33f3ff; }
+        .bg-\[\#00f0ff\]\/\[0\.045\] { background-color: rgba(0, 240, 255, 0.045); }
+        .bg-\[\#00f0ff\]\/\[0\.06\] { background-color: rgba(0, 240, 255, 0.06); }
+        .bg-\[\#00f0ff\]\/10 { background-color: rgba(0, 240, 255, 0.1); }
+        .hover\:bg-\[\#00f0ff\]\/10:hover { background-color: rgba(0, 240, 255, 0.1); }
+        .bg-\[\#00f0ff\]\/15 { background-color: rgba(0, 240, 255, 0.15); }
+        .hover\:bg-\[\#00f0ff\]\/15:hover { background-color: rgba(0, 240, 255, 0.15); }
 
-        .bg-\[\#07090e\]\/95 {
-            background-color: rgba(7, 9, 14, 0.95);
-        }
+        .bg-\[\#8b5cf6\]\/\[0\.055\] { background-color: rgba(139, 92, 246, 0.055); }
+        .bg-\[\#8b5cf6\]\/10 { background-color: rgba(139, 92, 246, 0.1); }
+        .bg-\[\#8b5cf6\]\/15 { background-color: rgba(139, 92, 246, 0.15); }
 
-        .bg-\[\#04060a\]\/75 {
-            background-color: rgba(4, 6, 10, 0.75);
-        }
-
-        .bg-\[\#04060a\]\/80 {
-            background-color: rgba(4, 6, 10, 0.8);
-        }
-
-        .bg-\[\#04060a\]\/85 {
-            background-color: rgba(4, 6, 10, 0.85);
-        }
-
-        .bg-\[\#0c101a\] {
-            background-color: #0c101a;
-        }
-
-        .bg-\[\#0c101a\]\/60 {
-            background-color: rgba(12, 16, 26, 0.6);
-        }
-
-        .bg-\[\#0c101a\]\/80 {
-            background-color: rgba(12, 16, 26, 0.8);
-        }
-
-        .bg-\[\#0c101a\]\/90 {
-            background-color: rgba(12, 16, 26, 0.9);
-        }
-
-        .bg-\[\#0c101a\]\/95 {
-            background-color: rgba(12, 16, 26, 0.95);
-        }
-
-        .bg-white\/\[0\.02\] {
-            background-color: rgba(255, 255, 255, 0.02);
-        }
-
-        .bg-white\/\[0\.03\] {
-            background-color: rgba(255, 255, 255, 0.03);
-        }
-
-        .bg-white\/\[0\.04\] {
-            background-color: rgba(255, 255, 255, 0.04);
-        }
-
-        .bg-white\/\[0\.05\] {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .bg-white\/\[0\.06\] {
-            background-color: rgba(255, 255, 255, 0.06);
-        }
-
-        .hover\:bg-white\/\[0\.06\]:hover {
-            background-color: rgba(255, 255, 255, 0.06);
-        }
-
-        .hover\:bg-white\/\[0\.08\]:hover {
-            background-color: rgba(255, 255, 255, 0.08);
-        }
-
-        .hover\:bg-white\/\[0\.1\]:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .bg-\[\#00f0ff\] {
-            background-color: #00f0ff;
-        }
-
-        .hover\:bg-\[\#00f0ff\]:hover {
-            background-color: #00f0ff;
-        }
-
-        .hover\:bg-\[\#33f3ff\]:hover {
-            background-color: #33f3ff;
-        }
-
-        .bg-\[\#00f0ff\]\/\[0\.045\] {
-            background-color: rgba(0, 240, 255, 0.045);
-        }
-
-        .bg-\[\#00f0ff\]\/\[0\.06\] {
-            background-color: rgba(0, 240, 255, 0.06);
-        }
-
-        .bg-\[\#00f0ff\]\/10 {
-            background-color: rgba(0, 240, 255, 0.1);
-        }
-
-        .hover\:bg-\[\#00f0ff\]\/10:hover {
-            background-color: rgba(0, 240, 255, 0.1);
-        }
-
-        .bg-\[\#00f0ff\]\/15 {
-            background-color: rgba(0, 240, 255, 0.15);
-        }
-
-        .hover\:bg-\[\#00f0ff\]\/15:hover {
-            background-color: rgba(0, 240, 255, 0.15);
-        }
-
-        .bg-\[\#8b5cf6\]\/\[0\.055\] {
-            background-color: rgba(139, 92, 246, 0.055);
-        }
-
-        .bg-\[\#8b5cf6\]\/10 {
-            background-color: rgba(139, 92, 246, 0.1);
-        }
-
-        .bg-\[\#8b5cf6\]\/15 {
-            background-color: rgba(139, 92, 246, 0.15);
-        }
-
-        .bg-\[\#10b981\] {
-            background-color: #10b981;
-        }
-
-        .hover\:bg-\[\#34d399\]:hover {
-            background-color: #34d399;
-        }
-
-        .bg-\[\#10b981\]\/\[0\.035\] {
-            background-color: rgba(16, 185, 129, 0.035);
-        }
-
-        .bg-\[\#10b981\]\/\[0\.07\] {
-            background-color: rgba(16, 185, 129, 0.07);
-        }
-
-        .bg-\[\#10b981\]\/10 {
-            background-color: rgba(16, 185, 129, 0.1);
-        }
-
-        .bg-\[\#10b981\]\/15 {
-            background-color: rgba(16, 185, 129, 0.15);
-        }
-
-        .bg-amber-400\/10 {
-            background-color: rgba(251, 191, 36, 0.1);
-        }
-
-        .bg-amber-400\/15 {
-            background-color: rgba(251, 191, 36, 0.15);
-        }
-
-        .hover\:bg-red-500\/20:hover {
-            background-color: rgba(239, 68, 68, 0.2);
-        }
-
-        .bg-\[\#ff0055\] {
-            background-color: #ff0055;
-        }
-
-        .bg-\[\#ff0055\]\/10 {
-            background-color: rgba(255, 0, 85, 0.1);
-        }
-
-        .hover\:bg-\[\#ff0055\]\/10:hover {
-            background-color: rgba(255, 0, 85, 0.1);
-        }
-
-        .bg-\[\#ff0055\]\/15 {
-            background-color: rgba(255, 0, 85, 0.15);
-        }
-
-        .hover\:bg-\[\#ff0055\]\/20:hover {
-            background-color: rgba(255, 0, 85, 0.2);
-        }
-
-        .border-\[\#ff0055\] {
-            border-color: #ff0055;
-        }
-
-        .border-\[\#ff0055\]\/30 {
-            border-color: rgba(255, 0, 85, 0.3);
-        }
-
-        .border-\[\#ff0055\]\/40 {
-            border-color: rgba(255, 0, 85, 0.4);
-        }
-
-        .border-\[\#ff0055\]\/50 {
-            border-color: rgba(255, 0, 85, 0.5);
-        }
-
-        .hover\:border-\[\#ff0055\]:hover {
-            border-color: #ff0055;
-        }
-
-        .hover\:border-\[\#ff0055\]\/50:hover {
-            border-color: rgba(255, 0, 85, 0.5);
-        }
-
-        .text-\[\#ff0055\] {
-            color: #ff0055;
-        }
-
-        .text-\[\#ff4d88\] {
-            color: #ff4d88;
-        }
-
-        .hover\:text-\[\#ff80aa\]:hover {
-            color: #ff80aa;
-        }
-
-        .shadow-pink-glow,
-        .hover\:shadow-pink-glow:hover {
-            box-shadow: 0 0 24px -4px rgba(255, 0, 85, 0.32);
-        }
+        .bg-\[\#10b981\] { background-color: #10b981; }
+        .hover\:bg-\[\#34d399\]:hover { background-color: #34d399; }
+        .bg-\[\#10b981\]\/\[0\.035\] { background-color: rgba(16, 185, 129, 0.035); }
+        .bg-\[\#10b981\]\/\[0\.07\] { background-color: rgba(16, 185, 129, 0.07); }
+        .bg-\[\#10b981\]\/10 { background-color: rgba(16, 185, 129, 0.1); }
+        .bg-\[\#10b981\]\/15 { background-color: rgba(16, 185, 129, 0.15); }
+        .bg-amber-400\/10 { background-color: rgba(251, 191, 36, 0.1); }
+        .bg-amber-400\/15 { background-color: rgba(251, 191, 36, 0.15); }
+        .hover\:bg-red-500\/20:hover { background-color: rgba(239, 68, 68, 0.2); }
+        .bg-\[\#ff0055\] { background-color: #ff0055; }
+        .bg-\[\#ff0055\]\/10 { background-color: rgba(255, 0, 85, 0.1); }
+        .hover\:bg-\[\#ff0055\]\/10:hover { background-color: rgba(255, 0, 85, 0.1); }
+        .bg-\[\#ff0055\]\/15 { background-color: rgba(255, 0, 85, 0.15); }
+        .hover\:bg-\[\#ff0055\]\/20:hover { background-color: rgba(255, 0, 85, 0.2); }
+        .border-\[\#ff0055\] { border-color: #ff0055; }
+        .border-\[\#ff0055\]\/30 { border-color: rgba(255, 0, 85, 0.3); }
+        .border-\[\#ff0055\]\/40 { border-color: rgba(255, 0, 85, 0.4); }
+        .border-\[\#ff0055\]\/50 { border-color: rgba(255, 0, 85, 0.5); }
+        .hover\:border-\[\#ff0055\]:hover { border-color: #ff0055; }
+        .hover\:border-\[\#ff0055\]\/50:hover { border-color: rgba(255, 0, 85, 0.5); }
+        .text-\[\#ff0055\] { color: #ff0055; }
+        .text-\[\#ff4d88\] { color: #ff4d88; }
+        .hover\:text-\[\#ff80aa\]:hover { color: #ff80aa; }
+        .shadow-pink-glow, .hover\:shadow-pink-glow:hover { box-shadow: 0 0 24px -4px rgba(255, 0, 85, 0.32); }
 
         /* Gradients */
-        .bg-gradient-to-r {
-            background-image: linear-gradient(to right, var(--tw-gradient-stops));
-        }
-
-        .bg-gradient-to-br {
-            background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
-        }
-
-        .from-\[\#00f0ff\] {
-            --tw-gradient-from: #00f0ff;
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 240, 255, 0));
-        }
-
-        .from-\[\#00f0ff\]\/20 {
-            --tw-gradient-from: rgba(0, 240, 255, 0.2);
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 240, 255, 0));
-        }
-
-        .from-\[\#8b5cf6\] {
-            --tw-gradient-from: #8b5cf6;
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(139, 92, 246, 0));
-        }
-
-        .via-\[\#8b5cf6\] {
-            --tw-gradient-stops: var(--tw-gradient-from), #8b5cf6, var(--tw-gradient-to, rgba(139, 92, 246, 0));
-        }
-
-        .via-\[\#8b5cf6\]\/20 {
-            --tw-gradient-stops: var(--tw-gradient-from), rgba(139, 92, 246, 0.2), var(--tw-gradient-to, rgba(139, 92, 246, 0));
-        }
-
-        .via-\[\#00f0ff\] {
-            --tw-gradient-stops: var(--tw-gradient-from), #00f0ff, var(--tw-gradient-to, rgba(0, 240, 255, 0));
-        }
-
-        .to-\[\#00f0ff\] {
-            --tw-gradient-to: #00f0ff;
-        }
-
-        .to-\[\#8b5cf6\] {
-            --tw-gradient-to: #8b5cf6;
-        }
-
-        .to-\[\#10b981\] {
-            --tw-gradient-to: #10b981;
-        }
-
-        .to-\[\#10b981\]\/20 {
-            --tw-gradient-to: rgba(16, 185, 129, 0.2);
-        }
-
-        .bg-clip-text {
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
+        .bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-stops)); }
+        .bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
+        .from-\[\#00f0ff\] { --tw-gradient-from: #00f0ff; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 240, 255, 0)); }
+        .from-\[\#00f0ff\]\/20 { --tw-gradient-from: rgba(0, 240, 255, 0.2); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 240, 255, 0)); }
+        .from-\[\#8b5cf6\] { --tw-gradient-from: #8b5cf6; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(139, 92, 246, 0)); }
+        .via-\[\#8b5cf6\] { --tw-gradient-stops: var(--tw-gradient-from), #8b5cf6, var(--tw-gradient-to, rgba(139, 92, 246, 0)); }
+        .via-\[\#8b5cf6\]\/20 { --tw-gradient-stops: var(--tw-gradient-from), rgba(139, 92, 246, 0.2), var(--tw-gradient-to, rgba(139, 92, 246, 0)); }
+        .via-\[\#00f0ff\] { --tw-gradient-stops: var(--tw-gradient-from), #00f0ff, var(--tw-gradient-to, rgba(0, 240, 255, 0)); }
+        .to-\[\#00f0ff\] { --tw-gradient-to: #00f0ff; }
+        .to-\[\#8b5cf6\] { --tw-gradient-to: #8b5cf6; }
+        .to-\[\#10b981\] { --tw-gradient-to: #10b981; }
+        .to-\[\#10b981\]\/20 { --tw-gradient-to: rgba(16, 185, 129, 0.2); }
+        .bg-clip-text { -webkit-background-clip: text; background-clip: text; }
 
         /* Text Colors */
-        .text-slate-200 {
-            color: #e2e8f0;
-        }
-
-        .text-slate-300 {
-            color: #cbd5e1;
-        }
-
-        .text-slate-400 {
-            color: #94a3b8;
-        }
-
-        .text-slate-500 {
-            color: #64748b;
-        }
-
-        .text-\[\#07090e\] {
-            color: #07090e;
-        }
-
-        .hover\:text-\[\#07090e\]:hover {
-            color: #07090e;
-        }
-
-        .text-\[\#00f0ff\] {
-            color: #00f0ff;
-        }
-
-        .hover\:text-\[\#00f0ff\]:hover {
-            color: #00f0ff;
-        }
-
-        .text-\[\#8b5cf6\] {
-            color: #8b5cf6;
-        }
-
-        .hover\:text-\[\#8b5cf6\]:hover {
-            color: #8b5cf6;
-        }
-
-        .text-\[\#10b981\] {
-            color: #10b981;
-        }
-
-        .hover\:text-\[\#10b981\]:hover {
-            color: #10b981;
-        }
-
-        .text-amber-300 {
-            color: #fcd34d;
-        }
-
-        .hover\:text-amber-300:hover {
-            color: #fcd34d;
-        }
-
-        .text-amber-400 {
-            color: #fbbf24;
-        }
-
-        .text-emerald-100 {
-            color: #d1fae5;
-        }
-
-        .hover\:text-red-300:hover {
-            color: #fca5a5;
-        }
-
-        .placeholder-slate-500::placeholder {
-            color: #64748b;
-        }
-
-        .placeholder-emerald-200\/35::placeholder {
-            color: rgba(167, 243, 208, 0.35);
-        }
-
-        .selection\:bg-\[\#00f0ff\]\/20::selection {
-            background-color: rgba(0, 240, 255, 0.2);
-        }
-
-        .selection\:text-\[\#00f0ff\]::selection {
-            color: #00f0ff;
-        }
+        .text-slate-200 { color: #e2e8f0; }
+        .text-slate-300 { color: #cbd5e1; }
+        .text-slate-400 { color: #94a3b8; }
+        .text-slate-500 { color: #64748b; }
+        .text-\[\#07090e\] { color: #07090e; }
+        .hover\:text-\[\#07090e\]:hover { color: #07090e; }
+        .text-\[\#00f0ff\] { color: #00f0ff; }
+        .hover\:text-\[\#00f0ff\]:hover { color: #00f0ff; }
+        .text-\[\#8b5cf6\] { color: #8b5cf6; }
+        .hover\:text-\[\#8b5cf6\]:hover { color: #8b5cf6; }
+        .text-\[\#10b981\] { color: #10b981; }
+        .hover\:text-\[\#10b981\]:hover { color: #10b981; }
+        .text-amber-300 { color: #fcd34d; }
+        .hover\:text-amber-300:hover { color: #fcd34d; }
+        .text-amber-400 { color: #fbbf24; }
+        .text-emerald-100 { color: #d1fae5; }
+        .hover\:text-red-300:hover { color: #fca5a5; }
+        .placeholder-slate-500::placeholder { color: #64748b; }
+        .placeholder-emerald-200\/35::placeholder { color: rgba(167, 243, 208, 0.35); }
+        .selection\:bg-\[\#00f0ff\]\/20::selection { background-color: rgba(0, 240, 255, 0.2); }
+        .selection\:text-\[\#00f0ff\]::selection { color: #00f0ff; }
 
         /* Borders */
-        .border-white\/\[0\.05\] {
-            border-color: rgba(255, 255, 255, 0.05);
-        }
+        .border-white\/\[0\.05\] { border-color: rgba(255, 255, 255, 0.05); }
+        .border-white\/\[0\.06\] { border-color: rgba(255, 255, 255, 0.06); }
+        .border-white\/\[0\.07\] { border-color: rgba(255, 255, 255, 0.07); }
+        .border-white\/\[0\.08\] { border-color: rgba(255, 255, 255, 0.08); }
+        .border-white\/\[0\.1\] { border-color: rgba(255, 255, 255, 0.1); }
+        .border-white\/\[0\.12\] { border-color: rgba(255, 255, 255, 0.12); }
+        .border-white\/20 { border-color: rgba(255, 255, 255, 0.2); }
+        .hover\:border-white\/20:hover { border-color: rgba(255, 255, 255, 0.2); }
+        .hover\:border-white\/25:hover { border-color: rgba(255, 255, 255, 0.25); }
 
-        .border-white\/\[0\.06\] {
-            border-color: rgba(255, 255, 255, 0.06);
-        }
+        .border-\[\#00f0ff\] { border-color: #00f0ff; }
+        .hover\:border-\[\#00f0ff\]:hover { border-color: #00f0ff; }
+        .border-\[\#00f0ff\]\/25 { border-color: rgba(0, 240, 255, 0.25); }
+        .border-\[\#00f0ff\]\/30 { border-color: rgba(0, 240, 255, 0.3); }
+        .border-\[\#00f0ff\]\/40 { border-color: rgba(0, 240, 255, 0.4); }
+        .border-\[\#00f0ff\]\/50 { border-color: rgba(0, 240, 255, 0.5); }
+        .hover\:border-\[\#00f0ff\]\/50:hover { border-color: rgba(0, 240, 255, 0.5); }
+        .border-\[\#00f0ff\]\/60 { border-color: rgba(0, 240, 255, 0.6); }
+        .hover\:border-\[\#00f0ff\]\/60:hover { border-color: rgba(0, 240, 255, 0.6); }
+        .focus\:border-\[\#00f0ff\]:focus { border-color: #00f0ff; }
+        .focus\:border-\[\#00f0ff\]\/60:focus { border-color: rgba(0, 240, 255, 0.6); }
 
-        .border-white\/\[0\.07\] {
-            border-color: rgba(255, 255, 255, 0.07);
-        }
+        .border-\[\#8b5cf6\]\/25 { border-color: rgba(139, 92, 246, 0.25); }
+        .border-\[\#8b5cf6\]\/30 { border-color: rgba(139, 92, 246, 0.3); }
+        .border-\[\#8b5cf6\]\/40 { border-color: rgba(139, 92, 246, 0.4); }
+        .hover\:border-\[\#8b5cf6\]\/60:hover { border-color: rgba(139, 92, 246, 0.6); }
 
-        .border-white\/\[0\.08\] {
-            border-color: rgba(255, 255, 255, 0.08);
-        }
+        .border-\[\#10b981\]\/25 { border-color: rgba(16, 185, 129, 0.25); }
+        .border-\[\#10b981\]\/30 { border-color: rgba(16, 185, 129, 0.3); }
+        .border-\[\#10b981\]\/35 { border-color: rgba(16, 185, 129, 0.35); }
+        .border-\[\#10b981\]\/40 { border-color: rgba(16, 185, 129, 0.4); }
+        .border-\[\#10b981\]\/50 { border-color: rgba(16, 185, 129, 0.5); }
+        .hover\:border-\[\#10b981\]\/60:hover { border-color: rgba(16, 185, 129, 0.6); }
+        .focus\:border-\[\#10b981\]:focus { border-color: #10b981; }
 
-        .border-white\/\[0\.1\] {
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .border-white\/\[0\.12\] {
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-
-        .border-white\/20 {
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .hover\:border-white\/20:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .hover\:border-white\/25:hover {
-            border-color: rgba(255, 255, 255, 0.25);
-        }
-
-        .border-\[\#00f0ff\] {
-            border-color: #00f0ff;
-        }
-
-        .hover\:border-\[\#00f0ff\]:hover {
-            border-color: #00f0ff;
-        }
-
-        .border-\[\#00f0ff\]\/25 {
-            border-color: rgba(0, 240, 255, 0.25);
-        }
-
-        .border-\[\#00f0ff\]\/30 {
-            border-color: rgba(0, 240, 255, 0.3);
-        }
-
-        .border-\[\#00f0ff\]\/40 {
-            border-color: rgba(0, 240, 255, 0.4);
-        }
-
-        .border-\[\#00f0ff\]\/50 {
-            border-color: rgba(0, 240, 255, 0.5);
-        }
-
-        .hover\:border-\[\#00f0ff\]\/50:hover {
-            border-color: rgba(0, 240, 255, 0.5);
-        }
-
-        .border-\[\#00f0ff\]\/60 {
-            border-color: rgba(0, 240, 255, 0.6);
-        }
-
-        .hover\:border-\[\#00f0ff\]\/60:hover {
-            border-color: rgba(0, 240, 255, 0.6);
-        }
-
-        .focus\:border-\[\#00f0ff\]:focus {
-            border-color: #00f0ff;
-        }
-
-        .focus\:border-\[\#00f0ff\]\/60:focus {
-            border-color: rgba(0, 240, 255, 0.6);
-        }
-
-        .border-\[\#8b5cf6\]\/25 {
-            border-color: rgba(139, 92, 246, 0.25);
-        }
-
-        .border-\[\#8b5cf6\]\/30 {
-            border-color: rgba(139, 92, 246, 0.3);
-        }
-
-        .border-\[\#8b5cf6\]\/40 {
-            border-color: rgba(139, 92, 246, 0.4);
-        }
-
-        .hover\:border-\[\#8b5cf6\]\/60:hover {
-            border-color: rgba(139, 92, 246, 0.6);
-        }
-
-        .border-\[\#10b981\]\/25 {
-            border-color: rgba(16, 185, 129, 0.25);
-        }
-
-        .border-\[\#10b981\]\/30 {
-            border-color: rgba(16, 185, 129, 0.3);
-        }
-
-        .border-\[\#10b981\]\/35 {
-            border-color: rgba(16, 185, 129, 0.35);
-        }
-
-        .border-\[\#10b981\]\/40 {
-            border-color: rgba(16, 185, 129, 0.4);
-        }
-
-        .border-\[\#10b981\]\/50 {
-            border-color: rgba(16, 185, 129, 0.5);
-        }
-
-        .hover\:border-\[\#10b981\]\/60:hover {
-            border-color: rgba(16, 185, 129, 0.6);
-        }
-
-        .focus\:border-\[\#10b981\]:focus {
-            border-color: #10b981;
-        }
-
-        .border-amber-400\/25 {
-            border-color: rgba(251, 191, 36, 0.25);
-        }
-
-        .hover\:border-amber-400\/60:hover {
-            border-color: rgba(251, 191, 36, 0.6);
-        }
+        .border-amber-400\/25 { border-color: rgba(251, 191, 36, 0.25); }
+        .hover\:border-amber-400\/60:hover { border-color: rgba(251, 191, 36, 0.6); }
 
         /* Glows, Blur, Sizing & Arbitrary Utilities */
-        .shadow-cyan-glow,
-        .hover\:shadow-cyan-glow:hover {
-            box-shadow: 0 0 24px -4px rgba(0, 240, 255, 0.25);
-        }
+        .shadow-cyan-glow, .hover\:shadow-cyan-glow:hover { box-shadow: 0 0 24px -4px rgba(0, 240, 255, 0.25); }
+        .shadow-violet-glow, .hover\:shadow-violet-glow:hover { box-shadow: 0 0 24px -4px rgba(139, 92, 246, 0.25); }
+        .shadow-emerald-glow, .hover\:shadow-emerald-glow:hover { box-shadow: 0 0 24px -4px rgba(16, 185, 129, 0.25); }
+        .hover\:shadow-\[0_0_24px_-4px_rgba\(251\,191\,36\,0\.25\)\]:hover { box-shadow: 0 0 24px -4px rgba(251, 191, 36, 0.25); }
 
-        .shadow-violet-glow,
-        .hover\:shadow-violet-glow:hover {
-            box-shadow: 0 0 24px -4px rgba(139, 92, 246, 0.25);
-        }
+        .backdrop-blur-sm { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+        .backdrop-blur-md { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .backdrop-blur-xl { backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+        .blur-\[130px\] { filter: blur(130px); }
+        .blur-\[140px\] { filter: blur(140px); }
 
-        .shadow-emerald-glow,
-        .hover\:shadow-emerald-glow:hover {
-            box-shadow: 0 0 24px -4px rgba(16, 185, 129, 0.25);
-        }
-
-        .hover\:shadow-\[0_0_24px_-4px_rgba\(251\,191\,36\,0\.25\)\]:hover {
-            box-shadow: 0 0 24px -4px rgba(251, 191, 36, 0.25);
-        }
-
-        .backdrop-blur-sm {
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-        }
-
-        .backdrop-blur-md {
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        .backdrop-blur-xl {
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-        }
-
-        .blur-\[130px\] {
-            filter: blur(130px);
-        }
-
-        .blur-\[140px\] {
-            filter: blur(140px);
-        }
-
-        .rounded-2xl {
-            border-radius: 1rem;
-        }
-
-        .rounded-3xl {
-            border-radius: 1.5rem;
-        }
-
-        .w-\[480px\] {
-            width: 480px;
-        }
-
-        .h-\[480px\] {
-            height: 480px;
-        }
-
-        .w-\[500px\] {
-            width: 500px;
-        }
-
-        .h-\[500px\] {
-            height: 500px;
-        }
-
-        .w-\[520px\] {
-            width: 520px;
-        }
-
-        .h-\[520px\] {
-            height: 520px;
-        }
-
-        .min-w-\[22px\] {
-            min-width: 22px;
-        }
-
-        .h-\[22px\] {
-            height: 22px;
-        }
-
-        .max-h-\[90vh\] {
-            max-height: 90vh;
-        }
-
-        .max-h-\[92vh\] {
-            max-height: 92vh;
-        }
-
-        .text-\[10px\] {
-            font-size: 10px;
-        }
-
-        .text-\[11px\] {
-            font-size: 11px;
-        }
-
-        .leading-\[1\.1\] {
-            line-height: 1.1;
-        }
-
-        .tracking-\[0\.2em\] {
-            letter-spacing: 0.2em;
-        }
-
-        .scroll-mt-28 {
-            scroll-margin-top: 7rem;
-        }
-
-        .shrink-0 {
-            flex-shrink: 0;
-        }
-
-        .basis-full {
-            flex-basis: 100%;
-        }
-
-        .gap-1\.5 {
-            gap: 0.375rem;
-        }
-
-        .gap-2\.5 {
-            gap: 0.625rem;
-        }
-
-        .space-y-2\.5> :not([hidden])~ :not([hidden]) {
-            margin-top: 0.625rem;
-        }
-
-        .pt-28 {
-            padding-top: 7rem;
-        }
-
-        .pt-36 {
-            padding-top: 9rem;
-        }
-
-        .px-3\.5 {
-            padding-left: 0.875rem;
-            padding-right: 0.875rem;
-        }
-
-        .py-2\.5 {
-            padding-top: 0.625rem;
-            padding-bottom: 0.625rem;
-        }
-
-        .py-3\.5 {
-            padding-top: 0.875rem;
-            padding-bottom: 0.875rem;
-        }
-
-        .p-3\.5 {
-            padding: 0.875rem;
-        }
-
-        .pb-2\.5 {
-            padding-bottom: 0.625rem;
-        }
-
-        .bottom-2\.5 {
-            bottom: 0.625rem;
-        }
-
-        .right-2\.5 {
-            right: 0.625rem;
-        }
-
-        .left-3\.5 {
-            left: 0.875rem;
-        }
-
-        .-translate-x-1\/2 {
-            transform: translateX(-50%);
-        }
-
-        .-translate-y-1\/2 {
-            transform: translateY(-50%);
-        }
-
-        .translate-y-4 {
-            transform: translateY(1rem);
-        }
-
-        .translate-x-full {
-            transform: translateX(100%);
-        }
-
-        .group:hover .group-hover\:scale-105 {
-            transform: scale(1.05);
-        }
-
-        .group:hover .group-hover\:scale-110 {
-            transform: scale(1.1);
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .\[color-scheme\:dark\] {
-            color-scheme: dark;
-        }
+        .rounded-2xl { border-radius: 1rem; }
+        .rounded-3xl { border-radius: 1.5rem; }
+        .w-\[480px\] { width: 480px; }
+        .h-\[480px\] { height: 480px; }
+        .w-\[500px\] { width: 500px; }
+        .h-\[500px\] { height: 500px; }
+        .w-\[520px\] { width: 520px; }
+        .h-\[520px\] { height: 520px; }
+        .min-w-\[22px\] { min-width: 22px; }
+        .h-\[22px\] { height: 22px; }
+        .max-h-\[90vh\] { max-height: 90vh; }
+        .max-h-\[92vh\] { max-height: 92vh; }
+        .text-\[10px\] { font-size: 10px; }
+        .text-\[11px\] { font-size: 11px; }
+        .leading-\[1\.1\] { line-height: 1.1; }
+        .tracking-\[0\.2em\] { letter-spacing: 0.2em; }
+        .scroll-mt-28 { scroll-margin-top: 7rem; }
+        .shrink-0 { flex-shrink: 0; }
+        .basis-full { flex-basis: 100%; }
+        .gap-1\.5 { gap: 0.375rem; }
+        .gap-2\.5 { gap: 0.625rem; }
+        .space-y-2\.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.625rem; }
+        .pt-28 { padding-top: 7rem; }
+        .pt-36 { padding-top: 9rem; }
+        .px-3\.5 { padding-left: 0.875rem; padding-right: 0.875rem; }
+        .py-2\.5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
+        .py-3\.5 { padding-top: 0.875rem; padding-bottom: 0.875rem; }
+        .p-3\.5 { padding: 0.875rem; }
+        .pb-2\.5 { padding-bottom: 0.625rem; }
+        .bottom-2\.5 { bottom: 0.625rem; }
+        .right-2\.5 { right: 0.625rem; }
+        .left-3\.5 { left: 0.875rem; }
+        .-translate-x-1\/2 { transform: translateX(-50%); }
+        .-translate-y-1\/2 { transform: translateY(-50%); }
+        .translate-y-4 { transform: translateY(1rem); }
+        .translate-x-full { transform: translateX(100%); }
+        .group:hover .group-hover\:scale-105 { transform: scale(1.05); }
+        .group:hover .group-hover\:scale-110 { transform: scale(1.1); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .\[color-scheme\:dark\] { color-scheme: dark; }
 
         .bg-\[linear-gradient\(to_right\,rgba\(255\,255\,255\,0\.02\)_1px\,transparent_1px\)\,linear-gradient\(to_bottom\,rgba\(255\,255\,255\,0\.02\)_1px\,transparent_1px\)\] {
             background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
         }
-
-        .bg-\[size\:64px_64px\] {
-            background-size: 64px 64px;
-        }
-
+        .bg-\[size\:64px_64px\] { background-size: 64px 64px; }
         .\[mask-image\:radial-gradient\(ellipse_80\%_60\%_at_50\%_20\%\,\#000_65\%\,transparent_100\%\)\] {
             -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 65%, transparent 100%);
             mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 65%, transparent 100%);
         }
-
         @media (min-width: 640px) {
-            .sm\:pt-36 {
-                padding-top: 9rem;
-            }
+            .sm\:pt-36 { padding-top: 9rem; }
         }
     </style>
 </head>
@@ -1007,74 +467,58 @@
     <footer class="relative z-10 border-t border-white/[0.07] bg-[#07090e]/90 py-10 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto flex flex-col gap-6">
             <!-- Social & Network Channels -->
-            <div
-                class="flex flex-wrap items-center justify-center sm:justify-between gap-4 pb-6 border-b border-white/[0.06]">
-                <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-400">Connect &amp;
-                    Network</span>
+            <div class="flex flex-wrap items-center justify-center sm:justify-between gap-4 pb-6 border-b border-white/[0.06]">
+                <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-400">Connect &amp; Network</span>
                 <div class="flex flex-wrap items-center justify-center gap-2.5">
                     <!-- Facebook -->
-                    <a href="https://www.facebook.com/D474designs" target="_blank" rel="noopener noreferrer"
-                        aria-label="D474designs on Facebook" title="Facebook"
+                    <a href="https://www.facebook.com/D474designs" target="_blank" rel="noopener noreferrer" aria-label="D474designs on Facebook" title="Facebook"
                         class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all duration-200">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
                         </svg>
                     </a>
                     <!-- Instagram -->
-                    <a href="https://www.instagram.com/d474designs/" target="_blank" rel="noopener noreferrer"
-                        aria-label="D474designs on Instagram" title="Instagram"
+                    <a href="https://www.instagram.com/d474designs/" target="_blank" rel="noopener noreferrer" aria-label="D474designs on Instagram" title="Instagram"
                         class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all duration-200">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                         </svg>
                     </a>
                     <!-- X (Twitter) -->
-                    <a href="https://x.com/D474designs" target="_blank" rel="noopener noreferrer"
-                        aria-label="D474designs on X" title="X"
+                    <a href="https://x.com/D474designs" target="_blank" rel="noopener noreferrer" aria-label="D474designs on X" title="X"
                         class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all duration-200">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                         </svg>
                     </a>
                     <!-- LinkedIn -->
-                    <a href="https://www.linkedin.com/in/jcazares117/" target="_blank" rel="noopener noreferrer"
-                        aria-label="Jaime Cazares on LinkedIn" title="LinkedIn"
+                    <a href="https://www.linkedin.com/in/jcazares117/" target="_blank" rel="noopener noreferrer" aria-label="Jaime Cazares on LinkedIn" title="LinkedIn"
                         class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all duration-200">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
                         </svg>
                     </a>
                     <!-- GitHub -->
-                    <a href="https://github.com/D474designs" target="_blank" rel="noopener noreferrer"
-                        aria-label="D474designs on GitHub" title="GitHub"
+                    <a href="https://github.com/D474designs" target="_blank" rel="noopener noreferrer" aria-label="D474designs on GitHub" title="GitHub"
                         class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all duration-200">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
                         </svg>
                     </a>
                     <!-- SlideShare -->
-                    <a href="https://www.slideshare.net/JaimeCazares1" target="_blank" rel="noopener noreferrer"
-                        aria-label="Jaime Cazares on SlideShare" title="SlideShare"
+                    <a href="https://www.slideshare.net/JaimeCazares1" target="_blank" rel="noopener noreferrer" aria-label="Jaime Cazares on SlideShare" title="SlideShare"
                         class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all duration-200">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                                d="M19.5 3h-15A1.5 1.5 0 0 0 3 4.5v9A1.5 1.5 0 0 0 4.5 15h3.15c-.4.75-.65 1.62-.65 2.55 0 2.04 1.34 3.45 3.1 3.45 1.34 0 2.45-.78 2.9-1.95.45 1.17 1.56 1.95 2.9 1.95 1.76 0 3.1-1.41 3.1-3.45 0-.93-.25-1.8-.65-2.55h1.15a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 19.5 3zM9.25 11.75a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5.5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                            <path d="M19.5 3h-15A1.5 1.5 0 0 0 3 4.5v9A1.5 1.5 0 0 0 4.5 15h3.15c-.4.75-.65 1.62-.65 2.55 0 2.04 1.34 3.45 3.1 3.45 1.34 0 2.45-.78 2.9-1.95.45 1.17 1.56 1.95 2.9 1.95 1.76 0 3.1-1.41 3.1-3.45 0-.93-.25-1.8-.65-2.55h1.15a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 19.5 3zM9.25 11.75a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5.5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
                         </svg>
                     </a>
                     <!-- D474designs Portal (Design & Studio Portfolio) -->
-                    <a href="https://d474designs.github.io" target="_blank" rel="noopener noreferrer"
-                        aria-label="D474designs Studio Portal" title="D474designs Portal"
+                    <a href="https://d474designs.github.io" target="_blank" rel="noopener noreferrer" aria-label="D474designs Studio Portal" title="D474designs Portal"
                         class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#8b5cf6]/15 border border-white/[0.08] hover:border-[#8b5cf6]/60 text-slate-400 hover:text-[#8b5cf6] flex items-center justify-center transition-all duration-200">
                         <i data-lucide="palette" class="w-4 h-4"></i>
                     </a>
                     <!-- D474developments Portal (Engineering & Development Lab) -->
-                    <a href="https://d474developments.github.io" target="_blank" rel="noopener noreferrer"
-                        aria-label="D474developments Engineering Portal" title="D474developments Portal"
+                    <a href="https://d474developments.github.io" target="_blank" rel="noopener noreferrer" aria-label="D474developments Engineering Portal" title="D474developments Portal"
                         class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#10b981]/15 border border-white/[0.08] hover:border-[#10b981]/60 text-slate-400 hover:text-[#10b981] flex items-center justify-center transition-all duration-200">
                         <i data-lucide="code-2" class="w-4 h-4"></i>
                     </a>
@@ -1371,11 +815,9 @@
 
                 <!-- Client Contact Details -->
                 <div class="space-y-2.5 pt-2 border-t border-white/[0.06]">
-                    <input type="text" id="client-name" oninput="saveClientCheckoutDraft()"
-                        placeholder="Your Name / Brand / Handle *"
+                    <input type="text" id="client-name" oninput="saveClientCheckoutDraft()" placeholder="Your Name / Brand / Handle *"
                         class="w-full px-3.5 py-2.5 rounded-xl bg-[#0c101a] border border-white/[0.1] focus:border-[#ff0055] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
-                    <input type="email" id="client-email" oninput="saveClientCheckoutDraft()"
-                        placeholder="Contact Email for Brief & Invoice *"
+                    <input type="email" id="client-email" oninput="saveClientCheckoutDraft()" placeholder="Contact Email for Brief & Invoice *"
                         class="w-full px-3.5 py-2.5 rounded-xl bg-[#0c101a] border border-white/[0.1] focus:border-[#ff0055] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
                 </div>
 
@@ -1389,8 +831,7 @@
                             <span>Referral / Partner Code (Optional)</span>
                         </label>
                     </div>
-                    <input type="text" id="client-referral-code" oninput="saveClientCheckoutDraft()"
-                        placeholder="*******"
+                    <input type="text" id="client-referral-code" oninput="saveClientCheckoutDraft()" placeholder="*******"
                         class="w-full px-3.5 py-2 rounded-xl bg-[#07090e]/90 border border-[#10b981]/30 focus:border-[#10b981] focus:outline-none font-mono text-xs sm:text-sm text-emerald-100 placeholder-emerald-200/35 transition" />
                 </div>
 
@@ -1426,16 +867,20 @@
                 <div
                     class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#10b981]/10 border border-[#10b981]/30 text-[#10b981] font-mono text-xs">
                     <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
-                    <span>TRANSMISSION CONFIRMED</span>
+                    <span>TRANSMISSION READY</span>
                 </div>
-                <span id="receipt-id" class="font-mono text-xs text-slate-400">#D474-0000</span>
+                <div class="flex items-center gap-2.5">
+                    <span id="receipt-id" class="font-mono text-xs text-slate-400">#D474-0000</span>
+                    <button type="button" onclick="closeReceiptModal()" aria-label="Close dossier modal"
+                        class="p-1.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.1] text-slate-400 hover:text-white transition">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
             </div>
 
             <h3 class="font-display text-2xl font-bold text-white mb-2">D474designs Dossier Generated</h3>
             <p class="text-sm text-slate-400 mb-6">
-                Your project brief has been logged into the D474designs studio queue. A copy of your dossier and <span
-                    class="text-white font-medium">Direct Studio Invoice</span> have been prepared for <span
-                    id="receipt-email" class="text-[#00f0ff]">client@domain.com</span>.
+                Your project brief has been prepared for the D474designs studio queue and remains saved in your cart until you send it. Click <span class="text-white font-medium">Email Brief to Studio</span> below to transmit your dossier and request your <span class="text-white font-medium">Direct Studio Invoice</span> for <span id="receipt-email" class="text-[#00f0ff]">client@domain.com</span>.
             </p>
 
             <div class="relative rounded-2xl bg-[#07090e] border border-white/[0.08] mb-5 overflow-hidden">
@@ -1456,16 +901,12 @@
                 <span id="receipt-total" class="font-display text-2xl font-bold text-[#10b981]">$0</span>
             </div>
 
-            <div class="flex flex-col sm:flex-row gap-3">
-                <a id="mailto-studio-link" href="mailto:jcazares117@gmail.com"
-                    class="flex-1 py-3 px-4 rounded-xl bg-white/[0.06] hover:bg-[#00f0ff]/15 border border-white/[0.12] hover:border-[#00f0ff]/50 text-white text-xs font-mono font-medium transition flex items-center justify-center gap-2">
-                    <i data-lucide="mail" class="w-4 h-4 text-[#00f0ff]"></i>
+            <div class="flex">
+                <a id="mailto-studio-link" href="mailto:jcazares117@gmail.com" onclick="handleStudioEmailSent()"
+                    class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#00f0ff] to-[#10b981] hover:opacity-95 text-[#07090e] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider shadow-cyan-glow transition flex items-center justify-center gap-2">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
                     <span>Email Brief to Studio</span>
                 </a>
-                <button onclick="closeReceiptModal()"
-                    class="flex-1 py-3 px-4 rounded-xl bg-[#10b981] hover:bg-[#34d399] text-[#07090e] text-xs font-bold uppercase tracking-wider transition">
-                    Done
-                </button>
             </div>
         </div>
     </div>
@@ -1771,6 +1212,7 @@
         let selectedTierIndex = 0;
         let editingCartItemUid = null;
         let editingBundleItemUid = null;
+        let lastSubmittedUids = [];
         let bundleSelections = {}; // Map of serviceId -> selectedTierIndex
         let serviceDrafts = {}; // Map of serviceId -> { notes, tierIndex, priority, targetDate }
         let bundleDraft = { notes: '', priority: 'standard', targetDate: '' };
@@ -2129,9 +1571,11 @@
             }
 
             const price = priority === 'rush' ? Math.round(tier.price * 1.25) : tier.price;
+            const existingItem = editingCartItemUid ? cartItems.find(item => item.uid === editingCartItemUid) : null;
             const updatedPayload = {
                 uid: editingCartItemUid || ('item-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6)),
                 isBundle: false,
+                sentToStudio: existingItem ? Boolean(existingItem.sentToStudio) : false,
                 serviceId: currentModalService.id,
                 tierIndex: selectedTierIndex,
                 title: currentModalService.title,
@@ -2246,24 +1690,6 @@
         function selectBundleServiceTier(serviceId, tierIdx) {
             bundleSelections[serviceId] = tierIdx;
             if (!editingBundleItemUid) persistState();
-            renderBundleServices();
-            updateBundleTotals();
-        }
-
-        function toggleBundleService(serviceId) {
-            if (Object.prototype.hasOwnProperty.call(bundleSelections, serviceId)) {
-                delete bundleSelections[serviceId];
-            } else {
-                bundleSelections[serviceId] = 0;
-            }
-            persistState();
-            renderBundleServices();
-            updateBundleTotals();
-        }
-
-        function selectBundleServiceTier(serviceId, tierIdx) {
-            bundleSelections[serviceId] = tierIdx;
-            persistState();
             renderBundleServices();
             updateBundleTotals();
         }
@@ -2424,10 +1850,12 @@
             const discountRate = selectedIds.length >= 9 ? 0.15 : (selectedIds.length >= 6 ? 0.10 : 0);
             const finalPrice = rushAdjustedRaw - Math.round(rushAdjustedRaw * discountRate);
             const wasEditingBundle = Boolean(editingBundleItemUid);
+            const existingBundle = wasEditingBundle ? cartItems.find(item => item.uid === editingBundleItemUid) : null;
 
             const bundlePayload = {
                 uid: editingBundleItemUid || ('bundle-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6)),
                 isBundle: true,
+                sentToStudio: existingBundle ? Boolean(existingBundle.sentToStudio) : false,
                 selectionsMap: { ...bundleSelections },
                 title: `Multi-Discipline Bundle (${selectedIds.length} Services)`,
                 disciplineLabel: discountRate > 0 ? `${Math.round(discountRate * 100)}% Studio Bundle Savings` : 'Custom Bundle',
@@ -2489,6 +1917,28 @@
             persistState();
             updateCartUI();
             showToast('Removed item from Project Brief');
+        }
+
+        function toggleItemSentStatus(uid, isChecked) {
+            const item = cartItems.find(entry => entry.uid === uid);
+            if (!item) return;
+            item.sentToStudio = Boolean(isChecked);
+            persistState();
+            updateCartUI();
+            showToast(item.sentToStudio ? `Marked "${item.title}" as sent to studio` : `Unmarked "${item.title}"`);
+        }
+
+        function handleStudioEmailSent() {
+            if (lastSubmittedUids.length > 0) {
+                cartItems.forEach((item) => {
+                    if (lastSubmittedUids.includes(item.uid)) {
+                        item.sentToStudio = true;
+                    }
+                });
+                persistState();
+                updateCartUI();
+            }
+            showToast('Opening email client & marked items as sent to studio');
         }
 
         function editCartItem(uid) {
@@ -2560,8 +2010,10 @@
                 return;
             }
 
-            container.innerHTML = cartItems.map((item) => `
-        <div class="p-4 rounded-2xl bg-[#07090e] border border-[#ff0055]/30 space-y-2">
+            container.innerHTML = cartItems.map((item) => {
+                const isSent = Boolean(item.sentToStudio);
+                return `
+        <div class="p-4 rounded-2xl bg-[#07090e] border ${isSent ? 'border-[#10b981]/40' : 'border-[#ff0055]/30'} space-y-2 transition-colors">
           <div class="flex items-start justify-between gap-3">
             <div>
               <span class="font-mono text-[10px] uppercase tracking-wider text-[#ff0055]">${escapeHTML(item.disciplineLabel)}</span>
@@ -2599,6 +2051,18 @@
           <div class="flex flex-wrap items-center gap-2 pt-1 text-[11px] font-mono text-slate-400">
             <span class="px-2 py-0.5 rounded bg-white/[0.04]">Date: ${escapeHTML(item.targetDate)}</span>
             ${item.priority === 'rush' ? '<span class="px-2 py-0.5 rounded bg-amber-400/15 text-amber-300">Priority Rush (+25%)</span>' : ''}
+            <label class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border cursor-pointer select-none transition-colors ${isSent
+                    ? 'bg-[#10b981]/15 border-[#10b981]/40 text-[#10b981]'
+                    : 'bg-white/[0.04] border-white/[0.12] text-slate-300 hover:border-white/25'
+                }">
+              <input
+                type="checkbox"
+                ${isSent ? 'checked' : ''}
+                onchange="toggleItemSentStatus('${item.uid}', this.checked)"
+                class="w-3 h-3 rounded accent-[#10b981] cursor-pointer"
+              />
+              <span>${isSent ? 'Sent to Studio' : 'Mark Sent'}</span>
+            </label>
           </div>
 
           ${item.notes ? `<p class="text-xs text-slate-400 italic bg-white/[0.02] p-2 rounded-lg border border-white/[0.05]">"${escapeHTML(item.notes)}"</p>` : ''}
@@ -2608,7 +2072,8 @@
             <span class="font-display font-bold text-base text-[#ff0055]">$${item.price.toLocaleString()}</span>
           </div>
         </div>
-      `).join('');
+      `;
+            }).join('');
 
             lucide.createIcons();
         }
@@ -2630,6 +2095,7 @@
             const receiptCode = 'D474-' + Math.floor(1000 + Math.random() * 9000);
             const total = cartItems.reduce((sum, item) => sum + item.price, 0);
             const referralCode = (document.getElementById('client-referral-code')?.value || '').trim();
+            lastSubmittedUids = cartItems.map(item => item.uid);
 
             document.getElementById('receipt-id').textContent = `#${receiptCode}`;
             document.getElementById('receipt-email').textContent = clientEmail;
@@ -2677,11 +2143,7 @@
                 mailtoLink.href = `mailto:jcazares117@gmail.com?subject=${subject}&body=${body}`;
             }
 
-            // Clear cart & referral input after generating dossier
-            cartItems = [];
-            const referralInput = document.getElementById('client-referral-code');
-            if (referralInput) referralInput.value = '';
-            clientCheckoutDraft.referralCode = '';
+            // Keep items preserved in the cart until user explicitly clears them
             persistState();
             updateCartUI();
             toggleCartDrawer(false);
