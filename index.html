@@ -1119,8 +1119,11 @@
             color: #d1fae5;
         }
 
-        .placeholder-slate-500::placeholder {
-            color: #94a3b8;
+        .placeholder-slate-500::placeholder,
+        textarea::placeholder,
+        input::placeholder {
+            color: #64748b;
+            opacity: 1;
         }
 
         .placeholder-emerald-200\/35::placeholder {
@@ -4999,15 +5002,18 @@
             if (!idea) return;
 
             const isEs = currentLang === 'es';
-            const prefillNotes = isEs ? idea.prefillNotesEs : idea.prefillNotesEn;
+            const ideaText = isEs ? idea.prefillNotesEs : idea.prefillNotesEn;
 
             if (idea.actionType === 'bundle') {
                 editingBundleUid = null;
                 bundleSelections = { ...idea.bundleMap };
-                const bundleNotesEl = document.getElementById('bundle-notes');
-                if (bundleNotesEl) bundleNotesEl.value = prefillNotes;
                 saveBundleDraft();
                 openCustomConsultation();
+                const bundleNotesEl = document.getElementById('bundle-notes');
+                if (bundleNotesEl) {
+                    bundleNotesEl.value = ideaText;
+                    saveBundleDraft();
+                }
                 return;
             }
 
@@ -5018,103 +5024,36 @@
                 }
                 const notesEl = document.getElementById('modal-notes');
                 if (notesEl) {
-                    notesEl.value = prefillNotes;
+                    notesEl.value = ideaText;
                     saveServiceDraft();
                 }
             }
         }
 
-        // Render service cards based on active category filter & search query
-        function renderServices() {
-            const grid = document.getElementById('services-grid');
-            const emptyState = document.getElementById('empty-search-state');
-            if (!grid) return;
-
-            const query = searchQuery.trim().toLowerCase();
-            const filtered = SERVICES_CATALOG.filter((rawService) => {
-                const service = getLocalizedService(rawService);
-                const matchesCategory = activeFilter === 'all' || service.category === activeFilter;
-                if (!matchesCategory) return false;
-                if (!query) return true;
-
-                const searchableText = [
-                    rawService.title,
-                    rawService.titleEs || '',
-                    service.disciplineLabel,
-                    service.shortDesc,
-                    ...service.deliverables,
-                    ...service.tiers.map(t => t.name)
-                ].join(' ').toLowerCase();
-
-                return searchableText.includes(query);
-            });
-
-            if (filtered.length === 0) {
-                grid.innerHTML = '';
-                emptyState.classList.remove('hidden');
-                lucide.createIcons();
-                return;
-            }
-
-            emptyState.classList.add('hidden');
-            grid.innerHTML = filtered.map((rawService) => {
-                const service = getLocalizedService(rawService);
-                const accent = ACCENT_STYLES[service.accent] || ACCENT_STYLES.cyan;
-                const startingPrice = Math.min(...service.tiers.map(t => t.price));
-
-                return `
-          <article class="group relative rounded-3xl bg-[#0c101a]/90 border border-white/[0.08] ${accent.borderHover} ${accent.glowHover} p-6 flex flex-col justify-between transition-all duration-300">
-            <div>
-              <div class="flex items-start justify-between gap-3 mb-4">
-                <span class="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-lg border ${accent.badgeBg} ${accent.badgeText} ${accent.badgeBorder}">
-                  ${escapeHTML(service.disciplineLabel)}
-                </span>
-                <div class="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center group-hover:scale-105 transition-transform">
-                  <i data-lucide="${service.icon}" class="w-5 h-5 ${accent.iconColor}"></i>
-                </div>
-              </div>
-
-              <h3 class="font-display text-xl font-bold text-white mb-2 group-hover:text-white transition-colors">
-                ${escapeHTML(service.title)}
-              </h3>
-              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-5">
-                ${escapeHTML(service.shortDesc)}
-              </p>
-
-              <ul class="space-y-1.5 mb-6 border-t border-white/[0.06] pt-4">
-                ${service.deliverables.slice(0, 3).map(item => `
-                  <li class="flex items-center gap-2 text-xs text-slate-300">
-                    <i data-lucide="check" class="w-3.5 h-3.5 ${accent.iconColor} shrink-0"></i>
-                    <span>${escapeHTML(item)}</span>
-                  </li>
-                `).join('')}
-              </ul>
-            </div>
-
-            <div class="pt-4 border-t border-white/[0.07] flex items-center justify-between gap-3">
-              <div>
-                <span class="block font-mono text-[10px] uppercase tracking-wider text-slate-500">${escapeHTML(t('startingAt'))}</span>
-                <span class="font-display text-xl font-bold text-white">$${startingPrice.toLocaleString()}</span>
-              </div>
-              <button
-                type="button"
-                onclick="openConfigModal('${service.id}')"
-                class="px-4 py-2.5 rounded-xl bg-white/[0.05] hover:bg-[#00f0ff] text-white hover:text-[#07090e] border border-white/[0.1] hover:border-[#00f0ff] font-medium text-xs sm:text-sm transition-all duration-200 inline-flex items-center gap-1.5"
-              >
-                <span>${escapeHTML(t('configureBtn'))}</span>
-                <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i>
-              </button>
-            </div>
-          </article>
-        `;
-            }).join('');
-
-            lucide.createIcons();
+        function isIdeaTemplateNote(text) {
+            if (!text) return false;
+            const trimmed = text.trim();
+            return PROJECT_IDEAS.some(
+                idea => idea.prefillNotesEn === trimmed || idea.prefillNotesEs === trimmed
+            );
         }
 
-        // Category filter switcher
-        function setCategoryFilter(category, shouldScroll = false) {
-            activeFilter = category;
+        // =====================================================================
+        // CATALOG FILTERING, SEARCH & RENDERING
+        // =====================================================================
+        function setCategoryFilter(filter, shouldScroll = false) {
+            activeFilter = filter;
+            document.querySelectorAll('.filter-tab').forEach((tab) => {
+                const isMatch = tab.getAttribute('data-filter') === filter;
+                tab.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+                if (isMatch) {
+                    tab.className = 'filter-tab active shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-[#00f0ff]/10 border-[#00f0ff]/50 text-[#00f0ff] shadow-cyan-glow';
+                } else {
+                    tab.className = 'filter-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20';
+                }
+            });
+
+            // Translate tab labels
             const tabLabels = {
                 all: t('tabAll'),
                 engineering: t('tabEngineering'),
@@ -5122,195 +5061,23 @@
                 audio: t('tabAudio'),
                 physical: t('tabPhysical')
             };
-
             document.querySelectorAll('.filter-tab').forEach((tab) => {
-                const filterKey = tab.getAttribute('data-filter');
-                if (tabLabels[filterKey]) tab.textContent = tabLabels[filterKey];
-                const isSelected = filterKey === category;
-                tab.setAttribute('aria-selected', isSelected ? 'true' : 'false');
-                if (isSelected) {
-                    tab.className = 'filter-tab active shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-[#00f0ff]/10 border-[#00f0ff]/50 text-[#00f0ff] shadow-cyan-glow';
-                } else {
-                    tab.className = 'filter-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20';
-                }
+                const key = tab.getAttribute('data-filter');
+                if (tabLabels[key]) tab.textContent = tabLabels[key];
             });
 
-            renderServices();
-
+            renderServicesGrid();
             if (shouldScroll) {
                 const catalogEl = document.getElementById('catalog');
-                if (catalogEl) catalogEl.scrollIntoView({ behavior: 'smooth' });
+                if (catalogEl) catalogEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
-        // =====================================================================
-        // STUDIO PORTFOLIO MODAL & FULL-SIZE IMAGE LIGHTBOX LOGIC
-        // =====================================================================
-        function getFilteredPortfolioItems() {
-            if (activePortfolioFilter === 'all') return PORTFOLIO_ITEMS;
-            return PORTFOLIO_ITEMS.filter(item => item.category === activePortfolioFilter);
+        function handleSearch(value) {
+            searchQuery = (value || '').trim().toLowerCase();
+            renderServicesGrid();
         }
 
-        function openPortfolioModal() {
-            setPortfolioFilter('all');
-            const modal = document.getElementById('portfolio-modal');
-            if (!modal) return;
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            syncBodyScrollLock();
-            lucide.createIcons(modal);
-        }
-
-        function closePortfolioModal() {
-            const modal = document.getElementById('portfolio-modal');
-            if (!modal) return;
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            syncBodyScrollLock();
-        }
-
-        function setPortfolioFilter(category) {
-            activePortfolioFilter = category;
-            const tabLabels = {
-                all: t('portfolioAll'),
-                engineering: t('tabEngineering'),
-                brand: t('tabBrand'),
-                audio: t('tabAudio'),
-                physical: t('tabPhysical')
-            };
-
-            document.querySelectorAll('.portfolio-filter-tab').forEach((tab) => {
-                const key = tab.getAttribute('data-pfilter');
-                if (tabLabels[key]) tab.textContent = tabLabels[key];
-                const isSelected = key === category;
-                tab.setAttribute('aria-selected', isSelected ? 'true' : 'false');
-                if (isSelected) {
-                    tab.className = 'portfolio-filter-tab shrink-0 px-3.5 py-2 rounded-xl text-xs font-medium transition-all border bg-[#10b981]/15 border-[#10b981]/50 text-[#10b981] shadow-emerald-glow';
-                } else {
-                    tab.className = 'portfolio-filter-tab shrink-0 px-3.5 py-2 rounded-xl text-xs font-medium transition-all border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20';
-                }
-            });
-
-            renderPortfolioGrid();
-        }
-
-        function renderPortfolioGrid() {
-            const grid = document.getElementById('portfolio-grid');
-            if (!grid) return;
-
-            const isEs = currentLang === 'es';
-            const items = getFilteredPortfolioItems();
-
-            grid.innerHTML = items.map((item, idx) => {
-                const title = isEs ? item.titleEs : item.titleEn;
-                const catLabel = isEs ? item.catLabelEs : item.catLabelEn;
-                const fallbackImg = `https://placehold.co/500x500/0c101a/10b981?text=${encodeURIComponent(catLabel)}`;
-
-                return `
-                  <button
-                    type="button"
-                    onclick="openPortfolioLightbox(${idx})"
-                    aria-label="${escapeHTML(title)}"
-                    class="group relative aspect-square w-full rounded-2xl overflow-hidden bg-[#07090e] border border-white/[0.08] hover:border-[#10b981]/60 hover:shadow-emerald-glow text-left transition-all duration-300 focus:outline-none"
-                  >
-                    <img
-                      src="${escapeHTML(item.thumbUrl)}"
-                      alt="${escapeHTML(title)}"
-                      width="500"
-                      height="500"
-                      loading="lazy"
-                      decoding="async"
-                      onerror="this.onerror=null;this.src='${fallbackImg}';"
-                      class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#07090e]/90 via-[#07090e]/25 to-transparent"></div>
-                    <div class="absolute inset-x-0 bottom-0 p-3 flex flex-col justify-end">
-                      <span class="font-mono text-[10px] uppercase tracking-wider text-[#10b981] mb-0.5">
-                        ${escapeHTML(catLabel)}
-                      </span>
-                      <span class="font-display text-xs sm:text-sm font-semibold text-white leading-snug">
-                        ${escapeHTML(title)}
-                      </span>
-                    </div>
-                  </button>
-                `;
-            }).join('');
-        }
-
-        function openPortfolioLightbox(filteredIdx) {
-            const items = getFilteredPortfolioItems();
-            if (!items.length) return;
-            currentLightboxIndex = Math.max(0, Math.min(filteredIdx, items.length - 1));
-            renderPortfolioLightbox();
-
-            const lightbox = document.getElementById('portfolio-lightbox');
-            if (!lightbox) return;
-            lightbox.classList.remove('hidden');
-            lightbox.classList.add('flex');
-            syncBodyScrollLock();
-            lucide.createIcons(lightbox);
-        }
-
-        function closePortfolioLightbox() {
-            const lightbox = document.getElementById('portfolio-lightbox');
-            if (!lightbox) return;
-            lightbox.classList.add('hidden');
-            lightbox.classList.remove('flex');
-            syncBodyScrollLock();
-        }
-
-        function nextLightboxItem() {
-            const items = getFilteredPortfolioItems();
-            if (!items.length) return;
-            currentLightboxIndex = (currentLightboxIndex + 1) % items.length;
-            renderPortfolioLightbox();
-        }
-
-        function prevLightboxItem() {
-            const items = getFilteredPortfolioItems();
-            if (!items.length) return;
-            currentLightboxIndex = (currentLightboxIndex - 1 + items.length) % items.length;
-            renderPortfolioLightbox();
-        }
-
-        function renderPortfolioLightbox() {
-            const items = getFilteredPortfolioItems();
-            if (!items.length) return;
-            const item = items[currentLightboxIndex];
-            const isEs = currentLang === 'es';
-
-            const title = isEs ? item.titleEs : item.titleEn;
-            const catLabel = isEs ? item.catLabelEs : item.catLabelEn;
-            const desc = isEs ? item.descEs : item.descEn;
-            const fallbackImg = `https://placehold.co/1200x900/0c101a/10b981?text=${encodeURIComponent(title)}`;
-
-            const imgEl = document.getElementById('lightbox-img');
-            const titleEl = document.getElementById('lightbox-title');
-            const catEl = document.getElementById('lightbox-category');
-            const descEl = document.getElementById('lightbox-desc');
-            const counterEl = document.getElementById('lightbox-counter');
-
-            if (imgEl) {
-                imgEl.onerror = function () {
-                    this.onerror = null;
-                    this.src = fallbackImg;
-                };
-                imgEl.src = item.fullUrl;
-                imgEl.alt = title;
-            }
-            if (titleEl) titleEl.textContent = title;
-            if (catEl) catEl.textContent = catLabel;
-            if (descEl) descEl.textContent = desc;
-            if (counterEl) counterEl.textContent = `${currentLightboxIndex + 1} / ${items.length}`;
-        }
-
-        // Search input handler
-        function handleSearch(val) {
-            searchQuery = val;
-            renderServices();
-        }
-
-        // Reset all catalog filters
         function resetFilters() {
             searchQuery = '';
             const searchInput = document.getElementById('service-search');
@@ -5318,51 +5085,142 @@
             setCategoryFilter('all', false);
         }
 
+        function renderServicesGrid() {
+            const grid = document.getElementById('services-grid');
+            const emptyState = document.getElementById('empty-search-state');
+            if (!grid) return;
+
+            const filtered = SERVICES_CATALOG.map(getLocalizedService).filter((service) => {
+                const matchesCat = activeFilter === 'all' || service.category === activeFilter;
+                if (!matchesCat) return false;
+                if (!searchQuery) return true;
+                const haystack = [
+                    service.title,
+                    service.shortDesc,
+                    service.disciplineLabel,
+                    ...service.deliverables,
+                    ...service.tiers.map(tier => `${tier.name} ${tier.detail}`)
+                ].join(' ').toLowerCase();
+                return haystack.includes(searchQuery);
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                if (emptyState) emptyState.classList.remove('hidden');
+                lucide.createIcons();
+                return;
+            }
+
+            if (emptyState) emptyState.classList.add('hidden');
+
+            grid.innerHTML = filtered.map((service) => {
+                const accent = ACCENT_STYLES[service.accent] || ACCENT_STYLES.cyan;
+                const startingPrice = Math.min(...service.tiers.map(tier => tier.price));
+                return `
+                  <article class="group rounded-3xl bg-[#0c101a]/90 border border-white/[0.08] ${accent.borderHover} ${accent.glowHover} p-6 sm:p-7 flex flex-col justify-between transition-all duration-300">
+                    <div>
+                      <div class="flex items-center justify-between gap-3 mb-5">
+                        <span class="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-lg border ${accent.badgeBg} ${accent.badgeText} ${accent.badgeBorder}">
+                          <i data-lucide="${service.icon}" class="w-3.5 h-3.5 ${accent.iconColor}"></i>
+                          <span>${escapeHTML(service.disciplineLabel)}</span>
+                        </span>
+                        <span class="font-mono text-[11px] text-slate-500">0${service.tiers.length} TIERS</span>
+                      </div>
+
+                      <h3 class="font-display text-lg sm:text-xl font-bold text-white mb-2.5 group-hover:text-white transition-colors">
+                        ${escapeHTML(service.title)}
+                      </h3>
+                      <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-5">
+                        ${escapeHTML(service.shortDesc)}
+                      </p>
+
+                      <ul class="space-y-2 mb-6 pt-4 border-t border-white/[0.06]">
+                        ${service.deliverables.map(item => `
+                          <li class="flex items-start gap-2 text-xs text-slate-300">
+                            <i data-lucide="check" class="w-3.5 h-3.5 ${accent.iconColor} shrink-0 mt-0.5"></i>
+                            <span>${escapeHTML(item)}</span>
+                          </li>
+                        `).join('')}
+                      </ul>
+                    </div>
+
+                    <div class="pt-4 border-t border-white/[0.08] flex items-center justify-between gap-3">
+                      <div>
+                        <span class="block font-mono text-[10px] uppercase tracking-wider text-slate-500">${escapeHTML(t('startingAt'))}</span>
+                        <span class="font-display text-xl font-bold text-white">$${startingPrice.toLocaleString()}</span>
+                      </div>
+                      <button type="button" onclick="openConfigModal('${service.id}')"
+                        class="px-4 py-2.5 rounded-xl bg-white/[0.04] hover:bg-[#00f0ff] border border-white/[0.1] hover:border-[#00f0ff] text-xs sm:text-sm font-semibold text-white hover:text-[#07090e] transition-all inline-flex items-center gap-1.5">
+                        <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i>
+                        <span>${escapeHTML(t('configureBtn'))}</span>
+                      </button>
+                    </div>
+                  </article>
+                `;
+            }).join('');
+
+            lucide.createIcons(grid);
+        }
+
         // =====================================================================
-        // SINGLE SERVICE CONFIGURATOR MODAL LOGIC (WITH DRAFT & CART EDITING)
+        // SINGLE SERVICE CONFIGURATOR MODAL & CART ITEM EDITING
         // =====================================================================
         function openConfigModal(serviceId, existingCartItem = null) {
             const rawService = SERVICES_CATALOG.find(s => s.id === serviceId);
             if (!rawService) return;
 
-            const service = getLocalizedService(rawService);
             currentModalService = rawService;
+            const service = getLocalizedService(rawService);
             editingCartUid = existingCartItem ? existingCartItem.uid : null;
 
             const drafts = readStorage(STORAGE_KEYS.SERVICE_DRAFTS, {});
-            const savedDraft = drafts[serviceId] || {};
+            const savedDraft = drafts[serviceId] || null;
 
-            if (existingCartItem) {
-                selectedTierIndex = typeof existingCartItem.tierIndex === 'number' ? existingCartItem.tierIndex : 0;
-            } else {
-                selectedTierIndex = typeof savedDraft.tierIndex === 'number' ? savedDraft.tierIndex : 0;
-            }
+            selectedTierIndex = existingCartItem && typeof existingCartItem.tierIndex === 'number'
+                ? existingCartItem.tierIndex
+                : (savedDraft && typeof savedDraft.tierIndex === 'number' ? savedDraft.tierIndex : 0);
 
             document.getElementById('modal-discipline-tag').textContent = service.disciplineLabel;
             document.getElementById('modal-service-title').textContent = service.title;
             document.getElementById('modal-service-desc').textContent = service.shortDesc;
 
-            const priorityEl = document.getElementById('modal-priority');
+            const deliverablesEl = document.getElementById('modal-deliverables');
+            if (deliverablesEl) {
+                deliverablesEl.innerHTML = service.deliverables.map(item => `
+                  <li class="flex items-start gap-2 bg-white/[0.02] border border-white/[0.05] rounded-xl p-2.5">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00f0ff] shrink-0 mt-0.5"></i>
+                    <span>${escapeHTML(item)}</span>
+                  </li>
+                `).join('');
+            }
+
             const dateEl = document.getElementById('modal-target-date');
+            const priorityEl = document.getElementById('modal-priority');
             const notesLabelEl = document.getElementById('modal-notes-label');
             const notesInputEl = document.getElementById('modal-notes');
             const submitBtnEl = document.getElementById('modal-submit-btn');
 
             if (existingCartItem) {
-                priorityEl.value = existingCartItem.priority || 'standard';
-                if (dateEl && existingCartItem.targetDate && existingCartItem.targetDate !== 'Flexible') {
-                    dateEl.value = existingCartItem.targetDate;
-                }
-                if (notesInputEl) {
-                    notesInputEl.value = existingCartItem.notes || '';
+                if (priorityEl) priorityEl.value = existingCartItem.priority || 'standard';
+                if (dateEl) dateEl.value = existingCartItem.targetDate && existingCartItem.targetDate !== 'Flexible' ? existingCartItem.targetDate : '';
+                if (notesInputEl) notesInputEl.value = existingCartItem.notes || '';
+                if (submitBtnEl) {
+                    submitBtnEl.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i><span>${escapeHTML(t('saveItemChangesBtn'))}</span>`;
                 }
             } else {
-                priorityEl.value = savedDraft.priority || 'standard';
-                if (dateEl && savedDraft.targetDate) {
-                    dateEl.value = savedDraft.targetDate;
-                }
+                if (priorityEl) priorityEl.value = savedDraft?.priority || 'standard';
+                if (dateEl) dateEl.value = savedDraft?.targetDate || '';
                 if (notesInputEl) {
-                    notesInputEl.value = savedDraft.notes || '';
+                    const draftNote = savedDraft?.notes || '';
+                    if (isIdeaTemplateNote(draftNote)) {
+                        notesInputEl.value = '';
+                        clearServiceDraft(serviceId);
+                    } else {
+                        notesInputEl.value = draftNote;
+                    }
+                }
+                if (submitBtnEl) {
+                    submitBtnEl.innerHTML = `<i data-lucide="plus-circle" class="w-4 h-4"></i><span>${escapeHTML(t('addToBriefBtn'))}</span>`;
                 }
             }
 
@@ -5372,19 +5230,6 @@
             if (notesInputEl) {
                 notesInputEl.placeholder = service.briefPlaceholder || 'Share your goals, key deliverables, reference links, and specific requirements...';
             }
-            if (submitBtnEl) {
-                submitBtnEl.innerHTML = existingCartItem
-                    ? `<i data-lucide="check" class="w-4 h-4"></i><span>${escapeHTML(t('saveItemChangesBtn'))}</span>`
-                    : `<i data-lucide="plus-circle" class="w-4 h-4"></i><span>${escapeHTML(t('addToBriefBtn'))}</span>`;
-            }
-
-            const deliverablesEl = document.getElementById('modal-deliverables');
-            deliverablesEl.innerHTML = service.deliverables.map(item => `
-        <li class="flex items-center gap-2 p-2 rounded-lg bg-white/[0.02] border border-white/[0.05]">
-          <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00f0ff] shrink-0"></i>
-          <span>${escapeHTML(item)}</span>
-        </li>
-      `).join('');
 
             renderModalTiers();
             updateModalCalculatedPrice();
@@ -5395,7 +5240,7 @@
             syncBodyScrollLock();
             const scrollBody = modal.querySelector('.modal-scroll-body');
             if (scrollBody) scrollBody.scrollTop = 0;
-            lucide.createIcons();
+            lucide.createIcons(modal);
         }
 
         function closeConfigModal() {
@@ -5410,26 +5255,25 @@
 
         function renderModalTiers() {
             if (!currentModalService) return;
+            const tiersEl = document.getElementById('modal-tiers');
+            if (!tiersEl) return;
             const service = getLocalizedService(currentModalService);
-            const tiersContainer = document.getElementById('modal-tiers');
-            tiersContainer.innerHTML = service.tiers.map((tier, idx) => {
+
+            tiersEl.innerHTML = service.tiers.map((tier, idx) => {
                 const isSelected = idx === selectedTierIndex;
                 return `
-          <button
-            type="button"
-            onclick="selectModalTier(${idx})"
-            class="text-left p-4 rounded-2xl border transition-all ${isSelected
+                  <button type="button" onclick="selectModalTier(${idx})"
+                    class="p-3.5 rounded-2xl border text-left transition-all ${isSelected
                         ? 'bg-[#00f0ff]/10 border-[#00f0ff] shadow-cyan-glow'
                         : 'bg-[#07090e] border-white/[0.08] hover:border-white/25'
-                    }"
-          >
-            <div class="flex items-center justify-between gap-2 mb-1">
-              <span class="font-display font-semibold text-sm text-white">${escapeHTML(tier.name)}</span>
-              <span class="font-mono text-sm font-bold ${isSelected ? 'text-[#00f0ff]' : 'text-slate-300'}">$${tier.price.toLocaleString()}</span>
-            </div>
-            <p class="text-xs text-slate-400 leading-relaxed">${escapeHTML(tier.detail)}</p>
-          </button>
-        `;
+                    }">
+                    <div class="flex items-center justify-between gap-2 mb-1">
+                      <span class="font-display font-semibold text-xs sm:text-sm text-white">${escapeHTML(tier.name)}</span>
+                      <span class="font-mono font-bold text-xs sm:text-sm ${isSelected ? 'text-[#00f0ff]' : 'text-slate-300'}">$${tier.price.toLocaleString()}</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-snug">${escapeHTML(tier.detail)}</p>
+                  </button>
+                `;
             }).join('');
         }
 
@@ -5442,97 +5286,87 @@
 
         function updateModalCalculatedPrice() {
             if (!currentModalService) return;
-            const basePrice = currentModalService.tiers[selectedTierIndex].price;
-            const isRush = document.getElementById('modal-priority').value === 'rush';
-            const finalPrice = isRush ? Math.round(basePrice * 1.25) : basePrice;
-            document.getElementById('modal-total-price').textContent = `$${finalPrice.toLocaleString()}`;
+            const tier = currentModalService.tiers[selectedTierIndex] || currentModalService.tiers[0];
+            const isRush = document.getElementById('modal-priority')?.value === 'rush';
+            const total = isRush ? Math.round(tier.price * 1.25) : tier.price;
+            const priceEl = document.getElementById('modal-total-price');
+            if (priceEl) priceEl.textContent = `$${total.toLocaleString()}`;
         }
 
         function confirmAddToCart() {
             if (!currentModalService) return;
-            const localizedService = getLocalizedService(currentModalService);
-            const tier = localizedService.tiers[selectedTierIndex];
-            const priority = document.getElementById('modal-priority').value;
-            const targetDate = document.getElementById('modal-target-date').value || 'Flexible';
+            const isEs = currentLang === 'es';
+            const service = getLocalizedService(currentModalService);
+            const tier = service.tiers[selectedTierIndex] || service.tiers[0];
+            const isRush = document.getElementById('modal-priority')?.value === 'rush';
+            const targetDate = document.getElementById('modal-target-date')?.value || 'Flexible';
             const notesEl = document.getElementById('modal-notes');
-            const notes = notesEl.value.trim();
+            const notes = (notesEl?.value || '').trim();
 
             if (!notes) {
-                notesEl.focus();
+                notesEl?.focus();
                 showToast(
-                    currentLang === 'es'
-                        ? 'Por favor ingresa los detalles de tu solicitud antes de agregarla'
-                        : 'Please enter your service brief details before adding to Project Brief',
+                    isEs
+                        ? 'Por favor ingresa los requisitos específicos antes de agregar el servicio'
+                        : 'Please enter your project brief & specific requirements before adding',
                     true
                 );
                 return;
             }
 
-            const price = priority === 'rush' ? Math.round(tier.price * 1.25) : tier.price;
-            const serviceId = currentModalService.id;
-            const targetTitle = localizedService.title;
+            const finalPrice = isRush ? Math.round(tier.price * 1.25) : tier.price;
 
             if (editingCartUid) {
-                const existingIndex = cartItems.findIndex(item => item.uid === editingCartUid);
-                if (existingIndex !== -1) {
-                    cartItems[existingIndex] = {
-                        ...cartItems[existingIndex],
-                        serviceId,
+                const idx = cartItems.findIndex(item => item.uid === editingCartUid);
+                if (idx !== -1) {
+                    cartItems[idx] = {
+                        ...cartItems[idx],
+                        serviceId: currentModalService.id,
+                        title: service.title,
+                        disciplineLabel: service.disciplineLabel,
                         tierIndex: selectedTierIndex,
-                        title: targetTitle,
-                        disciplineLabel: localizedService.disciplineLabel,
                         tierName: tier.name,
-                        priority,
+                        priority: isRush ? 'rush' : 'standard',
                         targetDate,
                         notes,
-                        price
+                        price: finalPrice
                     };
                 }
                 persistCart();
                 closeConfigModal();
                 updateCartUI();
                 toggleCartDrawer(true);
-                showToast(
-                    currentLang === 'es'
-                        ? `Actualizado "${targetTitle}" en tu Resumen`
-                        : `Updated "${targetTitle}" in Project Brief`,
-                    false,
-                    true
-                );
+                showToast(isEs ? `Actualizado "${service.title}" en tu Resumen` : `Updated "${service.title}" in Project Brief`, false, true);
                 return;
             }
 
             cartItems.push({
-                uid: 'item-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
-                serviceId,
-                tierIndex: selectedTierIndex,
+                uid: 'svc-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+                serviceId: currentModalService.id,
                 isBundle: false,
                 sentToStudio: false,
-                title: targetTitle,
-                disciplineLabel: localizedService.disciplineLabel,
+                title: service.title,
+                disciplineLabel: service.disciplineLabel,
+                tierIndex: selectedTierIndex,
                 tierName: tier.name,
-                priority,
+                priority: isRush ? 'rush' : 'standard',
                 targetDate,
                 notes,
-                price
+                price: finalPrice
             });
 
-            clearServiceDraft(serviceId);
+            clearServiceDraft(currentModalService.id);
+            if (notesEl) notesEl.value = '';
             persistCart();
             closeConfigModal();
             updateCartUI();
             showToast(
-                currentLang === 'es'
-                    ? `Agregado "${targetTitle}" a tu Resumen de Proyecto`
-                    : `Added "${targetTitle}" to Project Brief`,
+                isEs ? `Agregado "${service.title}" a tu Resumen de Proyecto` : `Added "${service.title}" to Project Brief`,
                 false,
                 true
             );
         }
 
-        // =====================================================================
-        // EDIT EXISTING CART ITEM (SINGLE SERVICE OR BUNDLE OR BUDGET REQUEST)
-        // =====================================================================
         function editCartItem(uid) {
             const item = cartItems.find(entry => entry.uid === uid);
             if (!item) return;
@@ -5584,6 +5418,142 @@
             } else {
                 showToast('Unable to locate configurator for this item', true);
             }
+        }
+
+        // =====================================================================
+        // STUDIO PORTFOLIO GALLERY & LIGHTBOX LOGIC
+        // =====================================================================
+        function openPortfolioModal(initialFilter = 'all') {
+            setPortfolioFilter(initialFilter);
+            const modal = document.getElementById('portfolio-modal');
+            if (!modal) return;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            syncBodyScrollLock();
+            const scrollBody = modal.querySelector('.modal-scroll-body');
+            if (scrollBody) scrollBody.scrollTop = 0;
+            lucide.createIcons(modal);
+        }
+
+        function closePortfolioModal() {
+            const modal = document.getElementById('portfolio-modal');
+            if (!modal) return;
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            syncBodyScrollLock();
+        }
+
+        function getFilteredPortfolioItems() {
+            if (activePortfolioFilter === 'all') return PORTFOLIO_ITEMS;
+            return PORTFOLIO_ITEMS.filter(item => item.category === activePortfolioFilter);
+        }
+
+        function setPortfolioFilter(filter) {
+            activePortfolioFilter = filter;
+            const tabLabels = {
+                all: t('portfolioAll'),
+                engineering: t('tabEngineering'),
+                brand: t('tabBrand'),
+                audio: t('tabAudio'),
+                physical: t('tabPhysical')
+            };
+
+            document.querySelectorAll('.portfolio-filter-tab').forEach((tab) => {
+                const key = tab.getAttribute('data-pfilter');
+                if (tabLabels[key]) tab.textContent = tabLabels[key];
+                const isMatch = key === filter;
+                tab.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+                if (isMatch) {
+                    tab.className = 'portfolio-filter-tab shrink-0 px-3.5 py-2 rounded-xl text-xs font-medium transition-all border bg-[#10b981]/15 border-[#10b981]/50 text-[#10b981] shadow-emerald-glow';
+                } else {
+                    tab.className = 'portfolio-filter-tab shrink-0 px-3.5 py-2 rounded-xl text-xs font-medium transition-all border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20';
+                }
+            });
+
+            const grid = document.getElementById('portfolio-grid');
+            if (!grid) return;
+            const isEs = currentLang === 'es';
+            const items = getFilteredPortfolioItems();
+
+            grid.innerHTML = items.map((item, idx) => {
+                const title = isEs ? item.titleEs : item.titleEn;
+                const cat = isEs ? item.catLabelEs : item.catLabelEn;
+                const fallback = `https://placehold.co/500x500/0c101a/10b981?text=${encodeURIComponent(cat)}`;
+                return `
+                  <button type="button" onclick="openPortfolioLightbox(${idx})"
+                    class="group relative aspect-square rounded-2xl overflow-hidden bg-[#07090e] border border-white/[0.08] hover:border-[#10b981]/60 text-left transition-all">
+                    <img src="${escapeHTML(item.thumbUrl)}" alt="${escapeHTML(title)}" loading="lazy"
+                      onerror="this.onerror=null;this.src='${fallback}';"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#07090e]/80 via-[#07090e]/20 to-transparent p-3 flex flex-col justify-end">
+                      <span class="font-mono text-[10px] uppercase tracking-wider text-[#10b981]">${escapeHTML(cat)}</span>
+                      <span class="font-display font-semibold text-xs text-white leading-snug">${escapeHTML(title)}</span>
+                    </div>
+                  </button>
+                `;
+            }).join('');
+        }
+
+        function openPortfolioLightbox(index) {
+            const items = getFilteredPortfolioItems();
+            if (!items.length) return;
+            currentLightboxIndex = (index + items.length) % items.length;
+            renderPortfolioLightbox();
+            const lightbox = document.getElementById('portfolio-lightbox');
+            if (!lightbox) return;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            syncBodyScrollLock();
+            lucide.createIcons(lightbox);
+        }
+
+        function closePortfolioLightbox() {
+            const lightbox = document.getElementById('portfolio-lightbox');
+            if (!lightbox) return;
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            syncBodyScrollLock();
+        }
+
+        function renderPortfolioLightbox() {
+            const items = getFilteredPortfolioItems();
+            if (!items.length) return;
+            const item = items[currentLightboxIndex] || items[0];
+            const isEs = currentLang === 'es';
+            const title = isEs ? item.titleEs : item.titleEn;
+            const cat = isEs ? item.catLabelEs : item.catLabelEn;
+            const desc = isEs ? item.descEs : item.descEn;
+            const fallback = `https://placehold.co/1200x800/0c101a/10b981?text=${encodeURIComponent(title)}`;
+
+            const catEl = document.getElementById('lightbox-category');
+            const titleEl = document.getElementById('lightbox-title');
+            const descEl = document.getElementById('lightbox-desc');
+            const counterEl = document.getElementById('lightbox-counter');
+            const imgEl = document.getElementById('lightbox-img');
+
+            if (catEl) catEl.textContent = cat;
+            if (titleEl) titleEl.textContent = title;
+            if (descEl) descEl.textContent = desc;
+            if (counterEl) counterEl.textContent = `${currentLightboxIndex + 1} / ${items.length}`;
+            if (imgEl) {
+                imgEl.onerror = () => { imgEl.onerror = null; imgEl.src = fallback; };
+                imgEl.src = item.fullUrl;
+                imgEl.alt = title;
+            }
+        }
+
+        function nextLightboxItem() {
+            const items = getFilteredPortfolioItems();
+            if (!items.length) return;
+            currentLightboxIndex = (currentLightboxIndex + 1) % items.length;
+            renderPortfolioLightbox();
+        }
+
+        function prevLightboxItem() {
+            const items = getFilteredPortfolioItems();
+            if (!items.length) return;
+            currentLightboxIndex = (currentLightboxIndex - 1 + items.length) % items.length;
+            renderPortfolioLightbox();
         }
 
         // =====================================================================
