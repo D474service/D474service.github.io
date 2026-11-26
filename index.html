@@ -1778,32 +1778,32 @@
             color: #ffffff;
         }
 
-        .focus\:outline-none:focus {
-            outline: none;
+        .aspect-square {
+            aspect-ratio: 1 / 1;
         }
 
-        .focus\:border-\[\#00f0ff\]:focus {
-            border-color: #00f0ff;
+        .object-contain {
+            object-fit: contain;
         }
 
-        .focus\:border-\[\#00f0ff\]\/60:focus {
-            border-color: rgba(0, 240, 255, 0.6);
+        .max-h-\[75vh\] {
+            max-height: 75vh;
         }
 
-        .focus\:border-\[\#10b981\]:focus {
-            border-color: #10b981;
+        .max-w-5xl {
+            max-width: 64rem;
         }
 
-        .focus\:border-\[\#ff0055\]:focus {
-            border-color: #ff0055;
-        }
-
-        .focus\:border-amber-400:focus {
-            border-color: #fbbf24;
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         /* Responsive Breakpoints */
         @media (min-width: 640px) {
+            .sm\:grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
             .sm\:inline {
                 display: inline;
             }
@@ -1918,6 +1918,10 @@
         }
 
         @media (min-width: 768px) {
+            .md\:grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+
             .md\:flex-row {
                 flex-direction: row;
             }
@@ -2120,6 +2124,75 @@
                     <i data-lucide="layers" class="w-4 h-4 text-[#07090e]"></i>
                     <span data-i18n="bundleBtn">Multi-Discipline Bundle</span>
                 </button>
+                <button type="button" onclick="openPortfolioModal()"
+                    class="px-6 py-3.5 rounded-xl bg-[#10b981] hover:opacity-95 text-[#07090e] font-bold text-sm tracking-wide shadow-emerald-glow transition-all duration-200 inline-flex items-center gap-2">
+                    <i data-lucide="layout-grid" class="w-4 h-4 text-[#07090e]"></i>
+                    <span data-i18n="portfolioBtn">View Portfolio</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- How Payments Work Section (Before Carousel) -->
+        <section id="how-payments-work" aria-labelledby="payments-heading"
+            class="mb-12 rounded-3xl bg-[#0c101a]/90 border border-[#10b981]/30 p-8 sm:p-10 shadow-emerald-glow">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <span data-i18n="paymentsTag"
+                        class="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest px-3 py-1 rounded-lg bg-[#07090e] border border-[#10b981]/30 text-[#10b981]">Milestone
+                        Protection &amp; Transparency</span>
+                    <h2 id="payments-heading" data-i18n="paymentsTitle"
+                        class="font-display text-2xl sm:text-3xl font-bold text-white mt-2">How Payments Work</h2>
+                </div>
+                <p data-i18n="paymentsSubtitle" class="text-sm text-slate-400 max-w-md">
+                    Every project is structured around verified progress checkpoints so you see real results before
+                    committing to subsequent installments.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+                    <span data-i18n="payStep1Tag"
+                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#00f0ff]/30 text-[#00f0ff] mb-2.5">01
+                        // INITIAL DEPOSIT</span>
+                    <h3 data-i18n="payStep1Title" class="font-display font-semibold text-white text-base mb-1.5">Lock In
+                        Your Sprint</h3>
+                    <p data-i18n="payStep1Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                        Once your project brief is confirmed, an initial deposit reserves your studio slot and kicks off
+                        active production right away.
+                    </p>
+                </div>
+                <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+                    <span data-i18n="payStep2Tag"
+                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#8b5cf6]/30 text-[#8b5cf6] mb-2.5">02
+                        // LIVE PROGRESSION</span>
+                    <h3 data-i18n="payStep2Title" class="font-display font-semibold text-white text-base mb-1.5">Review
+                        Work-in-Progress</h3>
+                    <p data-i18n="payStep2Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                        I get to work and share clear progression previews—staging builds, design drafts, mix stems, or
+                        stencil proofs—before taking further installments.
+                    </p>
+                </div>
+                <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+                    <span data-i18n="payStep3Tag"
+                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#10b981]/30 text-[#10b981] mb-2.5">03
+                        // FINAL HANDOFF</span>
+                    <h3 data-i18n="payStep3Title" class="font-display font-semibold text-white text-base mb-1.5">
+                        Milestone Approval &amp; Delivery</h3>
+                    <p data-i18n="payStep3Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                        Remaining installments follow approved milestones, concluding with final source files,
+                        production deployment, or completed artwork handoff.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Payment Plans & Upfront Full-Payment Note -->
+            <div class="p-4 sm:p-5 rounded-2xl bg-[#10b981]/[0.07] border border-[#10b981]/35 flex items-start gap-3">
+                <i data-lucide="badge-dollar-sign" class="w-5 h-5 text-[#10b981] shrink-0 mt-0.5"></i>
+                <p data-i18n="paymentsFlexNote" class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                    <strong class="text-[#10b981] font-semibold">Flexible Payment Options:</strong> Custom payment plans
+                    can be discussed to fit your timeline, or projects may also be paid in full before work starts for
+                    streamlined single-invoice billing.
+                </p>
             </div>
         </section>
 
@@ -2130,7 +2203,7 @@
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                     <div>
                         <div
-                            class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-[#00f0ff] mb-1">
+                            class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider px-3 py-1 rounded-lg bg-[#07090e] border border-[#00f0ff]/30 text-[#00f0ff] mb-2">
                             <i data-lucide="lightbulb" class="w-3.5 h-3.5 text-[#00f0ff]"></i>
                             <span data-i18n="ideasTag">Commission Blueprints &amp; Inspiration</span>
                         </div>
@@ -2168,7 +2241,7 @@
                 class="rounded-3xl bg-[#0c101a]/90 border border-amber-400/30 p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-5 shadow-[0_0_24px_-4px_rgba(251,191,36,0.12)]">
                 <div class="space-y-1.5 max-w-2xl">
                     <div
-                        class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-amber-300">
+                        class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider px-3 py-1 rounded-lg bg-[#07090e] border border-amber-400/30 text-amber-300">
                         <i data-lucide="coins" class="w-3.5 h-3.5 text-amber-400"></i>
                         <span data-i18n="budgetBadge">Flexible Budget &amp; Micro-Commissions</span>
                     </div>
@@ -2256,13 +2329,78 @@
             </div>
         </section>
 
+        <!-- How Payments Work Section (After Services) -->
+        <section id="how-payments-work-after-services" aria-labelledby="payments-heading-after"
+            class="mt-10 rounded-3xl bg-[#0c101a]/90 border border-[#10b981]/30 p-8 sm:p-10 shadow-emerald-glow">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <span data-i18n="paymentsTag"
+                        class="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest px-3 py-1 rounded-lg bg-[#07090e] border border-[#10b981]/30 text-[#10b981]">Milestone
+                        Protection &amp; Transparency</span>
+                    <h2 id="payments-heading-after" data-i18n="paymentsTitle"
+                        class="font-display text-2xl sm:text-3xl font-bold text-white mt-2">How Payments Work</h2>
+                </div>
+                <p data-i18n="paymentsSubtitle" class="text-sm text-slate-400 max-w-md">
+                    Every project is structured around verified progress checkpoints so you see real results before
+                    committing to subsequent installments.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+                    <span data-i18n="payStep1Tag"
+                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#00f0ff]/30 text-[#00f0ff] mb-2.5">01
+                        // INITIAL DEPOSIT</span>
+                    <h3 data-i18n="payStep1Title" class="font-display font-semibold text-white text-base mb-1.5">Lock In
+                        Your Sprint</h3>
+                    <p data-i18n="payStep1Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                        Once your project brief is confirmed, an initial deposit reserves your studio slot and kicks off
+                        active production right away.
+                    </p>
+                </div>
+                <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+                    <span data-i18n="payStep2Tag"
+                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#8b5cf6]/30 text-[#8b5cf6] mb-2.5">02
+                        // LIVE PROGRESSION</span>
+                    <h3 data-i18n="payStep2Title" class="font-display font-semibold text-white text-base mb-1.5">Review
+                        Work-in-Progress</h3>
+                    <p data-i18n="payStep2Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                        I get to work and share clear progression previews—staging builds, design drafts, mix stems, or
+                        stencil proofs—before taking further installments.
+                    </p>
+                </div>
+                <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+                    <span data-i18n="payStep3Tag"
+                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#10b981]/30 text-[#10b981] mb-2.5">03
+                        // FINAL HANDOFF</span>
+                    <h3 data-i18n="payStep3Title" class="font-display font-semibold text-white text-base mb-1.5">
+                        Milestone Approval &amp; Delivery</h3>
+                    <p data-i18n="payStep3Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                        Remaining installments follow approved milestones, concluding with final source files,
+                        production deployment, or completed artwork handoff.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Payment Plans & Upfront Full-Payment Note -->
+            <div class="p-4 sm:p-5 rounded-2xl bg-[#10b981]/[0.07] border border-[#10b981]/35 flex items-start gap-3">
+                <i data-lucide="badge-dollar-sign" class="w-5 h-5 text-[#10b981] shrink-0 mt-0.5"></i>
+                <p data-i18n="paymentsFlexNote" class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                    <strong class="text-[#10b981] font-semibold">Flexible Payment Options:</strong> Custom payment plans
+                    can be discussed to fit your timeline, or projects may also be paid in full before work starts for
+                    streamlined single-invoice billing.
+                </p>
+            </div>
+        </section>
+
         <!-- Studio Workflow Strip (Simple, Refined 3-Step Clarity) -->
-        <section class="mt-24 rounded-3xl bg-[#0c101a]/90 border border-white/[0.08] p-8 sm:p-10">
+        <section class="mt-10 rounded-3xl bg-[#0c101a]/90 border border-white/[0.08] p-8 sm:p-10">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
                     <span data-i18n="workflowTag"
-                        class="font-mono text-xs uppercase tracking-widest text-[#00f0ff]">Seamless Execution</span>
-                    <h2 data-i18n="workflowTitle" class="font-display text-2xl sm:text-3xl font-bold text-white mt-1">
+                        class="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest px-3 py-1 rounded-lg bg-[#07090e] border border-[#00f0ff]/30 text-[#00f0ff]">Seamless
+                        Execution</span>
+                    <h2 data-i18n="workflowTitle" class="font-display text-2xl sm:text-3xl font-bold text-white mt-2">
                         How D474designs Commissions
                         Work</h2>
                 </div>
@@ -2273,7 +2411,9 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <div data-i18n="step1Tag" class="font-mono text-xs text-[#00f0ff] mb-2">01 // CONFIGURE</div>
+                    <span data-i18n="step1Tag"
+                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#00f0ff]/30 text-[#00f0ff] mb-2.5">01
+                        // CONFIGURE</span>
                     <h3 data-i18n="step1Title" class="font-display font-semibold text-white text-base mb-1.5">Select
                         Scope &amp; Tier</h3>
                     <p data-i18n="step1Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">Choose starter
@@ -2281,7 +2421,9 @@
                         sprints across software, branding, audio, airbrushing, or tattoo sessions.</p>
                 </div>
                 <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <div data-i18n="step2Tag" class="font-mono text-xs text-[#8b5cf6] mb-2">02 // SPECIFY</div>
+                    <span data-i18n="step2Tag"
+                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#8b5cf6]/30 text-[#8b5cf6] mb-2.5">02
+                        // SPECIFY</span>
                     <h3 data-i18n="step2Title" class="font-display font-semibold text-white text-base mb-1.5">Attach
                         Creative Notes &amp; Dates
                     </h3>
@@ -2290,7 +2432,9 @@
                         placement details, or target dates directly inside each service configurator.</p>
                 </div>
                 <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <div data-i18n="step3Tag" class="font-mono text-xs text-[#10b981] mb-2">03 // INITIATE</div>
+                    <span data-i18n="step3Tag"
+                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#10b981]/30 text-[#10b981] mb-2.5">03
+                        // INITIATE</span>
                     <h3 data-i18n="step3Title" class="font-display font-semibold text-white text-base mb-1.5">Instant
                         Dossier &amp; Invoice
                     </h3>
@@ -2307,7 +2451,7 @@
                 class="rounded-3xl bg-[#0c101a]/90 border border-amber-400/30 p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-5 shadow-[0_0_24px_-4px_rgba(251,191,36,0.12)]">
                 <div class="space-y-1.5 max-w-2xl">
                     <div
-                        class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-amber-300">
+                        class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider px-3 py-1 rounded-lg bg-[#07090e] border border-amber-400/30 text-amber-300">
                         <i data-lucide="coins" class="w-3.5 h-3.5 text-amber-400"></i>
                         <span data-i18n="budgetBadge">Flexible Budget &amp; Micro-Commissions</span>
                     </div>
@@ -2927,6 +3071,129 @@
         </div>
     </div>
 
+    <!-- ===================================================================== -->
+    <!-- STUDIO PORTFOLIO MODAL (SQUARE THUMBNAILS + DISCIPLINE FILTER)        -->
+    <!-- ===================================================================== -->
+    <div id="portfolio-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6" role="dialog"
+        aria-modal="true" aria-labelledby="portfolio-modal-title">
+        <div onclick="closePortfolioModal()" class="fixed inset-0 bg-[#04060a]/85 backdrop-blur-md transition-opacity">
+        </div>
+
+        <div
+            class="relative w-full max-w-5xl rounded-3xl bg-[#0c101a] border border-[#10b981]/40 shadow-emerald-glow overflow-hidden z-10 max-h-[92vh] flex flex-col">
+            <!-- Top Emerald Accent Line -->
+            <div class="h-1 w-full bg-gradient-to-r from-[#10b981] via-[#00f0ff] to-[#8b5cf6]"></div>
+
+            <!-- Modal Header -->
+            <div class="px-6 pt-6 pb-4 border-b border-white/[0.07] flex items-start justify-between gap-4">
+                <div>
+                    <span data-i18n="portfolioModalTag"
+                        class="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/30 mb-2">
+                        Selected Works &amp; Archive
+                    </span>
+                    <h3 id="portfolio-modal-title" data-i18n="portfolioModalTitle"
+                        class="font-display text-xl sm:text-2xl font-bold text-white">
+                        D474designs Studio Portfolio
+                    </h3>
+                </div>
+                <button type="button" onclick="closePortfolioModal()" aria-label="Close portfolio"
+                    class="p-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.1] text-slate-400 hover:text-white transition">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Discipline Filter Tabs -->
+            <div class="px-6 py-3.5 bg-[#07090e]/90 border-b border-white/[0.07] flex items-center gap-2 overflow-x-auto no-scrollbar"
+                role="tablist" aria-label="Portfolio Service Filters">
+                <button type="button" role="tab" aria-selected="true" data-pfilter="all"
+                    onclick="setPortfolioFilter('all')"
+                    class="portfolio-filter-tab shrink-0 px-3.5 py-2 rounded-xl text-xs font-medium transition-all border bg-[#10b981]/15 border-[#10b981]/50 text-[#10b981] shadow-emerald-glow">
+                    All Works
+                </button>
+                <button type="button" role="tab" aria-selected="false" data-pfilter="engineering"
+                    onclick="setPortfolioFilter('engineering')"
+                    class="portfolio-filter-tab shrink-0 px-3.5 py-2 rounded-xl text-xs font-medium transition-all border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
+                    Engineering &amp; Web3
+                </button>
+                <button type="button" role="tab" aria-selected="false" data-pfilter="brand"
+                    onclick="setPortfolioFilter('brand')"
+                    class="portfolio-filter-tab shrink-0 px-3.5 py-2 rounded-xl text-xs font-medium transition-all border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
+                    Brand &amp; Media
+                </button>
+                <button type="button" role="tab" aria-selected="false" data-pfilter="audio"
+                    onclick="setPortfolioFilter('audio')"
+                    class="portfolio-filter-tab shrink-0 px-3.5 py-2 rounded-xl text-xs font-medium transition-all border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
+                    Audio &amp; Video
+                </button>
+                <button type="button" role="tab" aria-selected="false" data-pfilter="physical"
+                    onclick="setPortfolioFilter('physical')"
+                    class="portfolio-filter-tab shrink-0 px-3.5 py-2 rounded-xl text-xs font-medium transition-all border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
+                    Physical &amp; Ink
+                </button>
+            </div>
+
+            <!-- Square Thumbnails Grid -->
+            <div class="p-6 overflow-y-auto">
+                <div id="portfolio-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+                    <!-- Square thumbnails dynamically injected via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- PORTFOLIO FULL-SIZE IMAGE LIGHTBOX                                    -->
+    <!-- ===================================================================== -->
+    <div id="portfolio-lightbox" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6" role="dialog"
+        aria-modal="true" aria-labelledby="lightbox-title">
+        <div onclick="closePortfolioLightbox()"
+            class="fixed inset-0 bg-[#04060a]/95 backdrop-blur-md transition-opacity">
+        </div>
+
+        <div
+            class="relative w-full max-w-4xl rounded-3xl bg-[#0c101a] border border-white/[0.12] shadow-2xl overflow-hidden z-10 flex flex-col">
+            <!-- Top Lightbox Bar -->
+            <div class="px-5 py-3.5 border-b border-white/[0.08] flex items-center justify-between gap-3">
+                <div class="min-w-0">
+                    <span id="lightbox-category"
+                        class="font-mono text-[10px] uppercase tracking-wider text-[#10b981] block">
+                        Category
+                    </span>
+                    <h4 id="lightbox-title" class="font-display text-base sm:text-lg font-bold text-white truncate">
+                        Project Title
+                    </h4>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                    <button type="button" onclick="prevLightboxItem()" aria-label="Previous portfolio image"
+                        class="p-2 rounded-xl bg-white/[0.04] hover:bg-[#10b981]/15 border border-white/[0.1] hover:border-[#10b981]/50 text-slate-300 hover:text-[#10b981] transition">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    </button>
+                    <button type="button" onclick="nextLightboxItem()" aria-label="Next portfolio image"
+                        class="p-2 rounded-xl bg-white/[0.04] hover:bg-[#10b981]/15 border border-white/[0.1] hover:border-[#10b981]/50 text-slate-300 hover:text-[#10b981] transition">
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                    <button type="button" onclick="closePortfolioLightbox()" aria-label="Close full-size image"
+                        class="p-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.1] text-slate-400 hover:text-white transition">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Full-Size Image Container -->
+            <div class="bg-[#07090e] flex items-center justify-center p-3 sm:p-5">
+                <img id="lightbox-img" src="" alt=""
+                    class="w-full max-h-[75vh] object-contain rounded-2xl border border-white/[0.08]" />
+            </div>
+
+            <!-- Caption Bar -->
+            <div
+                class="px-5 py-3.5 bg-[#07090e]/95 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <p id="lightbox-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed"></p>
+                <span id="lightbox-counter" class="font-mono text-xs text-slate-400 shrink-0">1 / 12</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Clickable, Hover-Pausable Toast Notification Banner (Centered & Styled like Submit Project Brief) -->
     <div id="toast-notification"
         class="fixed bottom-8 inset-x-0 z-50 flex justify-center px-4 pointer-events-none opacity-0 translate-y-4 transition-all duration-300">
@@ -3040,6 +3307,24 @@
                 heroDesc: 'D474designs unifies full-stack engineering, Web3 architecture, visual identity, publicity & client promotion, sound engineering, video editing, custom airbrushing, and bespoke tattoo artistry under one streamlined studio storefront.',
                 exploreBtn: 'Explore Services',
                 bundleBtn: 'Multi-Discipline Bundle',
+                portfolioBtn: 'View Portfolio',
+                portfolioModalTag: 'Selected Works & Archive',
+                portfolioModalTitle: 'D474designs Studio Portfolio',
+                portfolioAll: 'All Works',
+                portfolioInspect: 'View Full Size',
+                paymentsTag: 'Milestone Protection & Transparency',
+                paymentsTitle: 'How Payments Work',
+                paymentsSubtitle: 'Every project is structured around verified progress checkpoints so you see real results before committing to subsequent installments.',
+                payStep1Tag: '01 // INITIAL DEPOSIT',
+                payStep1Title: 'Lock In Your Sprint',
+                payStep1Desc: 'Once your project brief is confirmed, an initial deposit reserves your studio slot and kicks off active production right away.',
+                payStep2Tag: '02 // LIVE PROGRESSION',
+                payStep2Title: 'Review Work-in-Progress',
+                payStep2Desc: 'I get to work and share clear progression previews—staging builds, design drafts, mix stems, or stencil proofs—before taking further installments.',
+                payStep3Tag: '03 // FINAL HANDOFF',
+                payStep3Title: 'Milestone Approval & Delivery',
+                payStep3Desc: 'Remaining installments follow approved milestones, concluding with final source files, production deployment, or completed artwork handoff.',
+                paymentsFlexNote: 'Flexible Payment Options: Custom payment plans can be discussed to fit your timeline, or projects may also be paid in full before work starts for streamlined single-invoice billing.',
                 budgetBadge: 'Flexible Budget & Micro-Commissions',
                 budgetTitle: 'Need a Smaller Task or Custom Budget Quote?',
                 budgetDesc: "Have a quick edit, smaller budget request, or custom one-off task that doesn't require a full package tier? Configure a custom budget request and add it straight into your Project Brief.",
@@ -3145,9 +3430,27 @@
                 heroDesc: 'D474designs unifica ingeniería full-stack, arquitectura Web3, identidad visual, publicidad y promoción de clientes, ingeniería de sonido, edición de video, aerografía personalizada y arte del tatuaje en una sola plataforma.',
                 exploreBtn: 'Explorar Servicios',
                 bundleBtn: 'Paquete Multidisciplinario',
+                portfolioBtn: 'Ver Portafolio',
+                portfolioModalTag: 'Obras Seleccionadas y Archivo',
+                portfolioModalTitle: 'Portafolio del Estudio D474designs',
+                portfolioAll: 'Todos los Trabajos',
+                portfolioInspect: 'Ver Tamaño Completo',
+                paymentsTag: 'Protección por Hitos y Transparencia',
+                paymentsTitle: 'Cómo Funcionan los Pagos',
+                paymentsSubtitle: 'Cada proyecto se estructura en puntos de avance verificados para que veas resultados reales antes de realizar los siguientes pagos.',
+                payStep1Tag: '01 // PAGO INICIAL',
+                payStep1Title: 'Reserva Tu Sprint',
+                payStep1Desc: 'Una vez confirmado tu resumen de proyecto, un pago inicial reserva tu espacio en el estudio y comienza la producción de inmediato.',
+                payStep2Tag: '02 // PROGRESIÓN EN VIVO',
+                payStep2Title: 'Revisa el Avance del Trabajo',
+                payStep2Desc: 'Me pongo a trabajar y te muestro la progresión de tu proyecto—versiones de prueba, bocetos, mezclas o plantillas—antes de tomar pagos adicionales.',
+                payStep3Tag: '03 // ENTREGA FINAL',
+                payStep3Title: 'Aprobación de Hitos y Entrega',
+                payStep3Desc: 'Los pagos restantes siguen los hitos aprobados, concluyendo con los archivos fuente finales, despliegue en producción o entrega de la obra.',
+                paymentsFlexNote: 'Opciones de Pago Flexibles: Podemos acordar planes de pago personalizados según tus tiempos, o bien el proyecto también puede pagarse por completo antes de iniciar el trabajo.',
                 budgetBadge: 'Presupuesto Flexible y Micro-Comisiones',
-                budgetTitle: '¿Necesitas una Tarea Más Pequeña o Cotización Personalizada?',
-                budgetDesc: '¿Tienes una edición rápida, un presupuesto más ajustado o una tarea puntual que no requiere un paquete completo? Configura una solicitud a tu medida y agrégala directo a tu Resumen de Proyecto.',
+                budgetTitle: '¿Necesitas una Tarea Más Pequeña o Cotización a Medida?',
+                budgetDesc: '¿Tienes una edición rápida, un presupuesto más reducido o una tarea puntual que no requiere un paquete completo? Configura una solicitud de presupuesto personalizado y agrégala directo a tu Resumen de Proyecto.',
                 budgetBtn: 'Solicitar Cotización / Presupuesto',
                 tabAll: 'Todas las Disciplinas (11)',
                 tabEngineering: 'Ingeniería y Web3',
@@ -3156,86 +3459,234 @@
                 tabPhysical: 'Arte Físico y Tatuaje',
                 searchPlaceholder: 'Filtrar servicios o entregables...',
                 emptySearchTitle: 'No se encontraron servicios coincidentes',
-                emptySearchDesc: 'Intenta borrar tu búsqueda o cambiar de disciplina.',
+                emptySearchDesc: 'Intenta borrar tu búsqueda o cambiar los filtros de disciplina.',
                 resetFiltersBtn: 'Restablecer Filtros',
                 startingAt: 'Desde',
                 configureBtn: 'Configurar',
-                workflowTag: 'Ejecución Fluida',
-                workflowTitle: 'Cómo Funcionan las Comisiones en D474designs',
-                workflowSubtitle: 'Combina desarrollo digital, campañas de publicidad, ingeniería de sonido, edición de video o sesiones de arte físico en un solo resumen unificado.',
-                step1Tag: '01 // CONFIGURA',
-                step1Title: 'Elige Alcance y Nivel',
-                step1Desc: 'Selecciona paquetes iniciales o sprints personalizados en software, branding, audio, aerografía o sesiones de tatuaje.',
-                step2Tag: '02 // ESPECIFICA',
+                workflowTag: 'Ejecución Sin Fricciones',
+                workflowTitle: 'Cómo Funcionan las Comisiones D474designs',
+                workflowSubtitle: 'Combina desarrollos digitales, campañas de publicidad, ingeniería de sonido, edición de video o sesiones de arte físico en un solo resumen unificado.',
+                step1Tag: '01 // CONFIGURAR',
+                step1Title: 'Selecciona Alcance y Nivel',
+                step1Desc: 'Elige paquetes iniciales o sprints personalizados en software, marca, audio, aerografía o sesiones de tatuaje.',
+                step2Tag: '02 // ESPECIFICAR',
                 step2Title: 'Adjunta Notas Creativas y Fechas',
                 step2Desc: 'Agrega especificaciones técnicas, enlaces de referencia, ubicación o fechas objetivo dentro de cada configurador.',
-                step3Tag: '03 // INICIA',
+                step3Tag: '03 // INICIAR',
                 step3Title: 'Dossier y Factura al Instante',
-                step3Desc: 'Genera un dossier de proyecto D474designs con marca de tiempo y una factura directa del estudio lista para enviar.',
+                step3Desc: 'Genera un dossier de proyecto D474designs con marca de tiempo y solicitud directa de factura en tu bandeja.',
                 footerConnect: 'Conecta y Explora la Red D474',
                 footerTagline: 'Ingeniería • Publicidad • Audio y Video • Arte Físico',
-                footerLegal: 'D474SERVICE • TODAS LAS TRANSMISIONES CIFRADAS • © 2026 D474DESIGNS STUDIO',
+                footerLegal: 'D474SERVICE • TODAS LAS TRANSMISIONES CIFRADAS • © 2026 ESTUDIO D474DESIGNS',
                 modalDeliverablesLabel: 'Entregables Principales Incluidos',
-                modalScopeLabel: 'Selecciona Alcance / Nivel del Paquete',
+                modalScopeLabel: 'Selecciona Alcance / Nivel de Paquete',
                 modalDateLabel: 'Fecha Objetivo / Ventana de Sesión',
                 modalPriorityLabel: 'Velocidad de Entrega',
                 priorityStandard: 'Cola Estándar del Estudio (+0%)',
                 priorityRush: 'Sprint Prioritario Urgente (+25%)',
                 modalEstAllocation: 'Asignación Estimada',
-                addToBriefBtn: 'Agregar al Resumen',
+                addToBriefBtn: 'Agregar al Resumen de Proyecto',
                 saveItemChangesBtn: 'Guardar Cambios',
                 bundleModalTag: 'Configurador de Paquete Multidisciplinario',
                 bundleModalTitle: 'Combina Servicios Entre Disciplinas',
                 bundleHelperText: 'Marca los servicios abajo y selecciona el nivel de alcance preferido para cada uno.',
                 bundleClearBtn: 'Limpiar Selección',
-                bundleDateLabel: 'Ventana Objetivo de Lanzamiento / Sesión',
+                bundleDateLabel: 'Fecha Objetivo de Lanzamiento / Sesión',
                 bundlePriorityLabel: 'Velocidad de Entrega del Paquete',
                 bundleNotesLabel: 'Resumen Multidisciplinario Unificado y Notas Cruzadas *',
-                bundleNotesPlaceholder: 'Describe cómo se conectan estas disciplinas (ej. dApp Web3 + Contrato Inteligente + Identidad de Marca + Banda Sonora o Merch/Tatuaje)...',
+                bundleNotesPlaceholder: 'Describe cómo se conectan estas disciplinas (ej. dApp Web3 + Contrato Inteligente + Identidad Visual + Soundtrack o Merch/Tatuaje)...',
                 bundleAllocationLabel: 'Asignación del Paquete',
                 addBundleBtn: 'Agregar Paquete al Resumen',
                 saveBundleChangesBtn: 'Guardar Cambios del Paquete',
-                bundleDiscountDefault: 'Elige 6+ servicios para ahorrar hasta 15% en Paquete',
+                bundleDiscountDefault: 'Selecciona 6+ servicios para obtener hasta 15% de ahorro en paquete',
                 cartDrawerTitle: 'Resumen de Proyecto Activo',
                 clearCartBtn: 'Vaciar Carrito',
                 cartEstTotalLabel: 'Alcance Total Estimado',
                 clientNamePlaceholder: 'Tu Nombre / Marca / Usuario *',
-                clientEmailPlaceholder: 'Correo de Contacto para Resumen y Factura *',
+                clientEmailPlaceholder: 'Correo Electrónico para Resumen y Factura *',
                 referralLabel: 'Código de Referido / Socio (Opcional)',
-                directInvoiceLabel: 'Factura Directa y Reserva de Estudio',
+                directInvoiceLabel: 'Factura Directa del Estudio y Reserva',
                 paymentMethodsLabel: 'Cripto / Transferencia / Tarjeta',
                 submitBriefBtn: 'Enviar Resumen y Solicitar Factura',
-                emptyCartTitle: 'Tu Resumen de Proyecto Está Vacío',
+                emptyCartTitle: 'Tu Resumen de Proyecto está Vacío',
                 emptyCartDesc: 'Configura servicios individuales del catálogo o arma un Paquete Multidisciplinario con descuento para generar tu dossier.',
                 sentBadgeChecked: 'Enviado al Estudio',
                 sentBadgeUnchecked: 'Marcar Enviado',
                 scopeLabel: 'Alcance:',
                 dateLabel: 'Fecha:',
-                rushLabel: 'Urgente (+25%)',
+                rushLabel: 'Prioridad Urgente (+25%)',
                 allocationLabel: 'Asignación',
                 specialRequestsLabel: 'Solicitudes Especiales',
                 receiptBadge: 'TRANSMISIÓN LISTA',
                 receiptTitle: 'Dossier D474designs Generado',
                 receiptTotalLabel: 'Asignación Total Estimada',
-                emailStudioBtn: 'Enviar Resumen al Estudio',
+                emailStudioBtn: 'Enviar Resumen por Correo al Estudio',
                 budgetModalBadge: 'Solicitud de Presupuesto Especial',
                 budgetModalTitle: 'Solicitud Personalizada o de Menor Presupuesto',
-                budgetModalDesc: 'Cuéntanos qué necesitas realizar y tu presupuesto objetivo. Esta solicitud se agregará directamente a tu Resumen de Proyecto Activo como cualquier otro servicio para enviarlo todo junto.',
+                budgetModalDesc: 'Cuéntanos qué necesitas realizar y tu presupuesto objetivo. Esta solicitud se agregará directo a tu Resumen de Proyecto Activo para enviarlo todo junto.',
                 budgetDisciplineLabel: 'Disciplina Principal *',
                 budgetAmountLabel: 'Presupuesto Objetivo (USD) *',
                 budgetTitleLabel: 'Título Corto de la Solicitud *',
-                budgetTitlePlaceholder: 'ej. Corte Rápido de Reel / Corrección de Bug / Portada',
+                budgetTitlePlaceholder: 'ej. Corte Rápido de Reel / Ajuste Web / Edición de Portada',
                 budgetDateLabel: 'Fecha Objetivo Preferida',
                 budgetNotesLabel: 'Detalles, Enlaces y Alcance de la Solicitud *',
                 budgetNotesPlaceholder: 'Explica qué necesitas lograr, enlaces o archivos de referencia y cómo adaptar el alcance a tu presupuesto...',
                 budgetProposedLabel: 'Presupuesto Propuesto',
                 toastSubtext: 'Haz clic aquí para ver y editar tu Resumen de Proyecto →',
-                ideasTag: 'Ideas y Planos de Comisión',
+                ideasTag: 'Planos de Comisión e Inspiración',
                 ideasTitle: '¿Necesitas Ideas? Explora Conceptos Listos para Lanzar',
-                useIdeaBtn: 'Usar Esta Idea',
+                useIdeaBtn: 'Usar Este Concepto',
                 ideaEstLabel: 'Alcance Sugerido'
             }
         };
+
+        // Curated Portfolio Archive Items (Filterable by Discipline, Square Thumbnails -> Full-Size Lightbox)
+        const PORTFOLIO_ITEMS = [
+            {
+                id: 'port-web3-vault',
+                category: 'engineering',
+                catLabelEn: 'Engineering & Web3',
+                catLabelEs: 'Ingeniería y Web3',
+                titleEn: 'DeFi Staking Vault & Multi-Chain Dashboard',
+                titleEs: 'Bóveda de Staking DeFi y Panel Multicadena',
+                descEn: 'Custom Solidity staking architecture paired with a real-time Web3 analytics frontend and gas-optimized reward claims.',
+                descEs: 'Arquitectura personalizada de staking en Solidity junto con interfaz analítica Web3 en tiempo real.',
+                thumbUrl: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=500&q=80',
+                fullUrl: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1400&q=85'
+            },
+            {
+                id: 'port-saas-platform',
+                category: 'engineering',
+                catLabelEn: 'Engineering & Web3',
+                catLabelEs: 'Ingeniería y Web3',
+                titleEn: 'Real-Time SaaS Telemetry & Booking Engine',
+                titleEs: 'Plataforma SaaS de Telemetría y Reservas en Tiempo Real',
+                descEn: 'Full-stack TypeScript web application featuring role-based auth, live metrics, and automated Stripe/Web3 invoicing.',
+                descEs: 'Aplicación web full-stack en TypeScript con autenticación por roles, métricas en vivo y facturación automatizada.',
+                thumbUrl: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=500&q=80',
+                fullUrl: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&q=85'
+            },
+            {
+                id: 'port-ui-system',
+                category: 'engineering',
+                catLabelEn: 'Engineering & Web3',
+                catLabelEs: 'Ingeniería y Web3',
+                titleEn: 'Cyber-Obsidian Design System & Mobile UX',
+                titleEs: 'Sistema de Diseño Cyber-Obsidian y UX Móvil',
+                descEn: 'Modular Figma token library and interactive dark-mode component architecture engineered for sub-second load speeds.',
+                descEs: 'Biblioteca modular de tokens en Figma y arquitectura de componentes en modo oscuro de alta velocidad.',
+                thumbUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80',
+                fullUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=85'
+            },
+            {
+                id: 'port-brand-identity',
+                category: 'brand',
+                catLabelEn: 'Brand & Media',
+                catLabelEs: 'Marca y Medios',
+                titleEn: 'Avant-Garde Record Label Visual Identity',
+                titleEs: 'Identidad Visual para Sello Discográfico Vanguardista',
+                descEn: 'Complete vector logomark suite, vinyl sleeve typography, and multi-channel social rollout kit.',
+                descEs: 'Sistema completo de logotipos vectoriales, tipografía para vinilo y kit de lanzamiento multicanal.',
+                thumbUrl: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=500&q=80',
+                fullUrl: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1400&q=85'
+            },
+            {
+                id: 'port-publicity-campaign',
+                category: 'brand',
+                catLabelEn: 'Brand & Media',
+                catLabelEs: 'Marca y Medios',
+                titleEn: 'Global Release Publicity & Spotlight Blitz',
+                titleEs: 'Campaña Global de Publicidad y Difusión de Lanzamiento',
+                descEn: 'Coordinated social spotlight campaign, press kit graphics, and high-converting funnel assets.',
+                descEs: 'Campaña coordinada de difusión en redes, gráficos de prensa y activos de conversión.',
+                thumbUrl: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=500&q=80',
+                fullUrl: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1400&q=85'
+            },
+            {
+                id: 'port-album-art',
+                category: 'brand',
+                catLabelEn: 'Brand & Media',
+                catLabelEs: 'Marca y Medios',
+                titleEn: '3D Chrome Emblem & Single Cover Suite',
+                titleEs: 'Emblema Cromado 3D y Arte de Portada de Sencillo',
+                descEn: 'High-resolution key artwork, Spotify canvas visuals, and tour merch print separations.',
+                descEs: 'Arte principal en alta resolución, visuales para Spotify Canvas y separaciones para mercancía oficial.',
+                thumbUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=500&q=80',
+                fullUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1400&q=85'
+            },
+            {
+                id: 'port-sound-master',
+                category: 'audio',
+                catLabelEn: 'Audio & Video',
+                catLabelEs: 'Audio y Video',
+                titleEn: 'Analog-Warmth Vocal Mix & Club Master',
+                titleEs: 'Mezcla Vocal Analógica y Máster de Club',
+                descEn: 'Full 48-stem vocal tuning, harmonic saturation, and streaming/club loudness mastering.',
+                descEs: 'Afinación vocal completa de 48 stems, saturación armónica y masterización para streaming y club.',
+                thumbUrl: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=500&q=80',
+                fullUrl: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1400&q=85'
+            },
+            {
+                id: 'port-music-video',
+                category: 'audio',
+                catLabelEn: 'Audio & Video',
+                catLabelEs: 'Audio y Video',
+                titleEn: 'Nocturnal Performance Music Video & Color Grade',
+                titleEs: 'Video Musical Nocturno y Etalonaje Cinematográfico',
+                descEn: 'Beat-synced multi-camera timeline assembly, custom LUT color grade, and vertical 9:16 promo cutdowns.',
+                descEs: 'Montaje multicámara sincronizado al beat, etalonaje LUT personalizado y cortes verticales 9:16.',
+                thumbUrl: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=500&q=80',
+                fullUrl: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1400&q=85'
+            },
+            {
+                id: 'port-vocal-session',
+                category: 'audio',
+                catLabelEn: 'Audio & Video',
+                catLabelEs: 'Audio y Video',
+                titleEn: 'EP Songwriting, Cadence & Reference Production',
+                titleEs: 'Composición de EP, Cadencia y Producción de Referencia',
+                descEn: 'Original hook and verse architecture recorded with reference vocal stems and commercial master.',
+                descEs: 'Arquitectura original de coros y versos grabada con stems vocales de referencia y máster comercial.',
+                thumbUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=500&q=80',
+                fullUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1400&q=85'
+            },
+            {
+                id: 'port-tattoo-sleeve',
+                category: 'physical',
+                catLabelEn: 'Physical & Ink',
+                catLabelEs: 'Arte Físico y Tatuaje',
+                titleEn: 'Dark Surrealism & Cyber-Sigilism Forearm Piece',
+                titleEs: 'Pieza de Antebrazo en Surrealismo Oscuro y Cybersigilismo',
+                descEn: 'Custom anatomical stencil executed with fine-line precision and smooth black-and-grey shading.',
+                descEs: 'Plantilla anatómica original ejecutada con precisión de línea fina y sombreado en negro y gris.',
+                thumbUrl: 'https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=500&q=80',
+                fullUrl: 'https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=1400&q=85'
+            },
+            {
+                id: 'port-airbrush-tank',
+                category: 'physical',
+                catLabelEn: 'Physical & Ink',
+                catLabelEs: 'Arte Físico y Tatuaje',
+                titleEn: 'Candy-Fade Airbrushed Custom Tank & Livery',
+                titleEs: 'Tanque Personalizado con Aerografía Candy-Fade',
+                descEn: 'Multi-layer metallic airbrush artwork sealed under high-gloss UV-resistant automotive clear coat.',
+                descEs: 'Arte aerografiado metálico multicapa sellado con laca automotriz de alto brillo resistente a rayos UV.',
+                thumbUrl: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=500&q=80',
+                fullUrl: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1400&q=85'
+            },
+            {
+                id: 'port-custom-footwear',
+                category: 'physical',
+                catLabelEn: 'Physical & Ink',
+                catLabelEs: 'Arte Físico y Tatuaje',
+                titleEn: '1-of-1 Hand-Airbrushed Custom Footwear Capsule',
+                titleEs: 'Cápsula 1-de-1 de Calzado Aerografiado a Mano',
+                descEn: 'Bespoke leather-prepped airbrush gradients, sharp stencil typography, and flexible protective finish.',
+                descEs: 'Degradados aerografiados sobre piel preparada, tipografía con plantilla y acabado protector flexible.',
+                thumbUrl: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80',
+                fullUrl: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1400&q=85'
+            }
+        ];
 
         // Curated Project Ideas Carousel Data (Single-Service & Multi-Discipline Blueprints)
         const PROJECT_IDEAS = [
@@ -3968,6 +4419,10 @@
         let ideasAutoplayInterval = null;
         let ideasTouchStartX = 0;
 
+        // Portfolio & Lightbox State
+        let activePortfolioFilter = 'all';
+        let currentLightboxIndex = 0;
+
         // Hover-pausable Toast Timer State
         let toastTimeout = null;
         let toastRemainingMs = 5500;
@@ -4064,6 +4519,16 @@
             setCategoryFilter(activeFilter, false);
             renderIdeasCarousel();
             updateCartUI();
+
+            const portfolioModal = document.getElementById('portfolio-modal');
+            if (portfolioModal && !portfolioModal.classList.contains('hidden')) {
+                setPortfolioFilter(activePortfolioFilter);
+            }
+
+            const lightboxModal = document.getElementById('portfolio-lightbox');
+            if (lightboxModal && !lightboxModal.classList.contains('hidden')) {
+                renderPortfolioLightbox();
+            }
 
             if (currentModalService) {
                 const loc = getLocalizedService(currentModalService);
@@ -4244,11 +4709,27 @@
             // Close modals/drawers on Escape key
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
+                    const lightbox = document.getElementById('portfolio-lightbox');
+                    if (lightbox && !lightbox.classList.contains('hidden')) {
+                        closePortfolioLightbox();
+                        return;
+                    }
+                    closePortfolioModal();
                     closeConfigModal();
                     closeBundleModal();
                     closeBudgetRequestModal();
                     toggleCartDrawer(false);
                     closeReceiptModal();
+                } else if (e.key === 'ArrowRight') {
+                    const lightbox = document.getElementById('portfolio-lightbox');
+                    if (lightbox && !lightbox.classList.contains('hidden')) {
+                        nextLightboxItem();
+                    }
+                } else if (e.key === 'ArrowLeft') {
+                    const lightbox = document.getElementById('portfolio-lightbox');
+                    if (lightbox && !lightbox.classList.contains('hidden')) {
+                        prevLightboxItem();
+                    }
                 }
             });
 
@@ -4573,6 +5054,163 @@
                 const catalogEl = document.getElementById('catalog');
                 if (catalogEl) catalogEl.scrollIntoView({ behavior: 'smooth' });
             }
+        }
+
+        // =====================================================================
+        // STUDIO PORTFOLIO MODAL & FULL-SIZE IMAGE LIGHTBOX LOGIC
+        // =====================================================================
+        function getFilteredPortfolioItems() {
+            if (activePortfolioFilter === 'all') return PORTFOLIO_ITEMS;
+            return PORTFOLIO_ITEMS.filter(item => item.category === activePortfolioFilter);
+        }
+
+        function openPortfolioModal() {
+            setPortfolioFilter('all');
+            const modal = document.getElementById('portfolio-modal');
+            if (!modal) return;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            lucide.createIcons(modal);
+        }
+
+        function closePortfolioModal() {
+            const modal = document.getElementById('portfolio-modal');
+            if (!modal) return;
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function setPortfolioFilter(category) {
+            activePortfolioFilter = category;
+            const tabLabels = {
+                all: t('portfolioAll'),
+                engineering: t('tabEngineering'),
+                brand: t('tabBrand'),
+                audio: t('tabAudio'),
+                physical: t('tabPhysical')
+            };
+
+            document.querySelectorAll('.portfolio-filter-tab').forEach((tab) => {
+                const key = tab.getAttribute('data-pfilter');
+                if (tabLabels[key]) tab.textContent = tabLabels[key];
+                const isSelected = key === category;
+                tab.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+                if (isSelected) {
+                    tab.className = 'portfolio-filter-tab shrink-0 px-3.5 py-2 rounded-xl text-xs font-medium transition-all border bg-[#10b981]/15 border-[#10b981]/50 text-[#10b981] shadow-emerald-glow';
+                } else {
+                    tab.className = 'portfolio-filter-tab shrink-0 px-3.5 py-2 rounded-xl text-xs font-medium transition-all border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20';
+                }
+            });
+
+            renderPortfolioGrid();
+        }
+
+        function renderPortfolioGrid() {
+            const grid = document.getElementById('portfolio-grid');
+            if (!grid) return;
+
+            const isEs = currentLang === 'es';
+            const items = getFilteredPortfolioItems();
+
+            grid.innerHTML = items.map((item, idx) => {
+                const title = isEs ? item.titleEs : item.titleEn;
+                const catLabel = isEs ? item.catLabelEs : item.catLabelEn;
+                const fallbackImg = `https://placehold.co/500x500/0c101a/10b981?text=${encodeURIComponent(catLabel)}`;
+
+                return `
+                  <button
+                    type="button"
+                    onclick="openPortfolioLightbox(${idx})"
+                    aria-label="${escapeHTML(title)}"
+                    class="group relative aspect-square w-full rounded-2xl overflow-hidden bg-[#07090e] border border-white/[0.08] hover:border-[#10b981]/60 hover:shadow-emerald-glow text-left transition-all duration-300 focus:outline-none"
+                  >
+                    <img
+                      src="${escapeHTML(item.thumbUrl)}"
+                      alt="${escapeHTML(title)}"
+                      width="500"
+                      height="500"
+                      loading="lazy"
+                      decoding="async"
+                      onerror="this.onerror=null;this.src='${fallbackImg}';"
+                      class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#07090e]/90 via-[#07090e]/25 to-transparent"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-3 flex flex-col justify-end">
+                      <span class="font-mono text-[10px] uppercase tracking-wider text-[#10b981] mb-0.5">
+                        ${escapeHTML(catLabel)}
+                      </span>
+                      <span class="font-display text-xs sm:text-sm font-semibold text-white leading-snug">
+                        ${escapeHTML(title)}
+                      </span>
+                    </div>
+                  </button>
+                `;
+            }).join('');
+        }
+
+        function openPortfolioLightbox(filteredIdx) {
+            const items = getFilteredPortfolioItems();
+            if (!items.length) return;
+            currentLightboxIndex = Math.max(0, Math.min(filteredIdx, items.length - 1));
+            renderPortfolioLightbox();
+
+            const lightbox = document.getElementById('portfolio-lightbox');
+            if (!lightbox) return;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            lucide.createIcons(lightbox);
+        }
+
+        function closePortfolioLightbox() {
+            const lightbox = document.getElementById('portfolio-lightbox');
+            if (!lightbox) return;
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+        }
+
+        function nextLightboxItem() {
+            const items = getFilteredPortfolioItems();
+            if (!items.length) return;
+            currentLightboxIndex = (currentLightboxIndex + 1) % items.length;
+            renderPortfolioLightbox();
+        }
+
+        function prevLightboxItem() {
+            const items = getFilteredPortfolioItems();
+            if (!items.length) return;
+            currentLightboxIndex = (currentLightboxIndex - 1 + items.length) % items.length;
+            renderPortfolioLightbox();
+        }
+
+        function renderPortfolioLightbox() {
+            const items = getFilteredPortfolioItems();
+            if (!items.length) return;
+            const item = items[currentLightboxIndex];
+            const isEs = currentLang === 'es';
+
+            const title = isEs ? item.titleEs : item.titleEn;
+            const catLabel = isEs ? item.catLabelEs : item.catLabelEn;
+            const desc = isEs ? item.descEs : item.descEn;
+            const fallbackImg = `https://placehold.co/1200x900/0c101a/10b981?text=${encodeURIComponent(title)}`;
+
+            const imgEl = document.getElementById('lightbox-img');
+            const titleEl = document.getElementById('lightbox-title');
+            const catEl = document.getElementById('lightbox-category');
+            const descEl = document.getElementById('lightbox-desc');
+            const counterEl = document.getElementById('lightbox-counter');
+
+            if (imgEl) {
+                imgEl.onerror = function () {
+                    this.onerror = null;
+                    this.src = fallbackImg;
+                };
+                imgEl.src = item.fullUrl;
+                imgEl.alt = title;
+            }
+            if (titleEl) titleEl.textContent = title;
+            if (catEl) catEl.textContent = catLabel;
+            if (descEl) descEl.textContent = desc;
+            if (counterEl) counterEl.textContent = `${currentLightboxIndex + 1} / ${items.length}`;
         }
 
         // Search input handler
