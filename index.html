@@ -349,6 +349,10 @@
             justify-content: space-between;
         }
 
+        .justify-end {
+            justify-content: flex-end;
+        }
+
         .self-start {
             align-self: flex-start;
         }
@@ -836,6 +840,10 @@
 
         .h-full {
             height: 100%;
+        }
+
+        .min-h-\[5rem\] {
+            min-height: 5rem;
         }
 
         .min-w-0 {
@@ -1873,6 +1881,10 @@
                 grid-template-columns: repeat(3, minmax(0, 1fr));
             }
 
+            .sm\:flex {
+                display: flex;
+            }
+
             .sm\:inline {
                 display: inline;
             }
@@ -2147,14 +2159,14 @@
     <header id="studio-navbar" class="fixed top-0 inset-x-0 z-40">
         <!-- Main Navigation Bar -->
         <div class="relative z-20 bg-[#07090e]/90 backdrop-blur-xl border-b border-white/[0.08]">
-            <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3"
+            <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[5rem] py-2.5 flex flex-wrap items-center justify-between gap-2 sm:gap-3"
                 aria-label="Primary Studio Navigation">
                 <!-- Left: Studio Brand Emblem -->
                 <a href="#top" onclick="navigateToSection('top'); return false;"
                     class="flex items-center gap-3 group shrink-0">
                     <div
                         class="px-2.5 h-10 rounded-xl bg-[#0c101a] border border-white/[0.12] group-hover:border-[#00f0ff] flex items-center justify-center shadow-cyan-glow transition-all duration-300">
-                        <span class="font-mono font-bold text-xs sm:text-sm tracking-tighter text-[#00f0ff]">D474</span>
+                        <span class="font-mono font-bold text-sm tracking-tighter text-[#00f0ff]">D474</span>
                     </div>
                     <div class="flex flex-col">
                         <span
@@ -2162,7 +2174,7 @@
                             D474<span class="text-[#00f0ff]">designs</span>
                         </span>
                         <span data-i18n="navSubtitle"
-                            class="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-400 mt-1 hidden sm:block">
+                            class="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-400 mt-1">
                             Multidisciplinary Studio
                         </span>
                     </div>
@@ -2173,7 +2185,7 @@
                     <button type="button" id="sections-menu-btn" onclick="toggleSectionsMenu()" aria-expanded="false"
                         aria-haspopup="true" aria-controls="sections-menu-tray"
                         class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl bg-white/[0.04] hover:bg-[#00f0ff]/10 border border-white/[0.12] hover:border-[#00f0ff]/50 text-xs sm:text-sm font-medium text-slate-200 hover:text-[#00f0ff] shadow-cyan-glow transition-all duration-200">
-                        <span id="sections-menu-icon-wrap" class="flex items-center justify-center">
+                        <span id="sections-menu-icon-wrap" class="flex items-center justify-center shrink-0">
                             <i data-lucide="menu" class="w-4 h-4 text-[#00f0ff]"></i>
                         </span>
                         <span data-i18n="navMenuBtn" class="font-display font-semibold">Menu</span>
@@ -2192,12 +2204,10 @@
                     </button>
 
                     <button onclick="toggleCartDrawer(true)" aria-label="Open Project Brief & Booking Cart"
-                        class="relative inline-flex items-center gap-2.5 px-3.5 sm:px-4 py-2.5 rounded-xl bg-[#ff0055]/10 hover:bg-[#ff0055]/20 border border-[#ff0055]/40 hover:border-[#ff0055] text-sm font-medium text-[#ff0055] shadow-pink-glow transition-all duration-300 group">
+                        class="relative inline-flex items-center gap-2.5 px-3.5 sm:px-4 py-2.5 rounded-xl bg-[#ff0055]/10 hover:bg-[#ff0055]/20 border border-[#ff0055]/40 hover:border-[#ff0055] text-xs sm:text-sm font-medium text-[#ff0055] shadow-pink-glow transition-all duration-300 group">
                         <i data-lucide="shopping-cart"
-                            class="w-4 h-4 text-[#ff0055] group-hover:scale-110 transition-transform"></i>
-                        <span data-i18n="navProjectBrief" class="hidden sm:inline font-display font-semibold">Project
-                            Brief</span>
-                        <span data-i18n="navBriefShort" class="sm:hidden font-display font-semibold">Brief</span>
+                            class="w-4 h-4 text-[#ff0055] group-hover:scale-110 transition-transform shrink-0"></i>
+                        <span data-i18n="navProjectBrief" class="font-display font-semibold">Project Brief</span>
                         <span id="cart-badge"
                             class="inline-flex items-center justify-center min-w-[22px] h-[22px] px-1.5 rounded-full text-xs font-mono font-bold bg-[#ff0055] text-[#07090e] shadow-pink-glow transition-transform">
                             0
@@ -2262,6 +2272,15 @@
                         class="w-full text-left px-3.5 py-2.5 rounded-xl bg-[#10b981]/10 hover:bg-[#10b981]/20 border border-[#10b981]/35 hover:border-[#10b981]/60 text-xs sm:text-sm font-semibold text-[#10b981] flex items-center gap-2.5 transition">
                         <i data-lucide="layout-grid" class="w-4 h-4 text-[#10b981] shrink-0"></i>
                         <span data-i18n="portfolioBtn">View Portfolio</span>
+                    </button>
+                </div>
+
+                <!-- Bottom Divider & Contact Us Link matching Menu Title Styling -->
+                <div class="pt-3 mt-3 border-t border-white/[0.07] flex items-center justify-end">
+                    <button type="button" role="menuitem" onclick="navigateToSection('contact-us-section')"
+                        class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-[#00f0ff] hover:text-white transition-colors">
+                        <i data-lucide="mail" class="w-3.5 h-3.5 text-[#00f0ff] shrink-0"></i>
+                        <span data-i18n="contactBtn">Contact Us</span>
                     </button>
                 </div>
             </div>
@@ -2444,213 +2463,28 @@
             </div>
         </section>
 
-        <!-- Interactive Filter & Search Controls -->
-        <section id="catalog" class="scroll-mt-28 mb-10">
+        <!-- Contact Us Section (Below Bottom Custom Budget Banner) -->
+        <section id="contact-us-section" aria-label="Contact D474designs Studio" class="scroll-mt-28 mt-10">
             <div
-                class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-white/[0.08]">
-                <!-- Category Tabs -->
-                <div id="category-tabs" class="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 no-scrollbar"
-                    role="tablist" aria-label="Service Disciplines">
-                    <button type="button" role="tab" aria-selected="true" data-filter="all"
-                        onclick="setCategoryFilter('all')"
-                        class="filter-tab active shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-[#00f0ff]/10 border-[#00f0ff]/50 text-[#00f0ff] shadow-cyan-glow">
-                        All Disciplines (11)
-                    </button>
-                    <button type="button" role="tab" aria-selected="false" data-filter="engineering"
-                        onclick="setCategoryFilter('engineering')"
-                        class="filter-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
-                        Engineering &amp; Web3
-                    </button>
-                    <button type="button" role="tab" aria-selected="false" data-filter="brand"
-                        onclick="setCategoryFilter('brand')"
-                        class="filter-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
-                        Brand &amp; Media
-                    </button>
-                    <button type="button" role="tab" aria-selected="false" data-filter="audio"
-                        onclick="setCategoryFilter('audio')"
-                        class="filter-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
-                        Audio &amp; Video
-                    </button>
-                    <button type="button" role="tab" aria-selected="false" data-filter="physical"
-                        onclick="setCategoryFilter('physical')"
-                        class="filter-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
-                        Physical &amp; Ink
-                    </button>
-                </div>
-
-                <!-- Subtle Search Input -->
-                <div class="relative w-full lg:w-72">
-                    <span class="absolute inset-y-0 left-3.5 flex items-center pointer-events-none">
-                        <i data-lucide="search" class="w-4 h-4 text-slate-500"></i>
-                    </span>
-                    <input type="text" id="service-search" oninput="handleSearch(this.value)"
-                        data-i18n-placeholder="searchPlaceholder" placeholder="Filter services or deliverables..."
-                        class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#0c101a] border border-white/[0.08] focus:border-[#00f0ff]/60 focus:outline-none text-sm text-white placeholder-slate-500 transition" />
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Grid -->
-        <section aria-label="Service Catalog">
-            <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Service cards dynamically injected via JS -->
-            </div>
-
-            <!-- Empty Search State -->
-            <div id="empty-search-state"
-                class="hidden text-center py-16 px-4 rounded-2xl bg-[#0c101a]/60 border border-white/[0.06]">
-                <i data-lucide="radar" class="w-10 h-10 text-slate-500 mx-auto mb-3"></i>
-                <h3 data-i18n="emptySearchTitle" class="font-display text-lg font-semibold text-white mb-1">No matching
-                    services found</h3>
-                <p data-i18n="emptySearchDesc" class="text-sm text-slate-400 mb-4">Try clearing your search term or
-                    switching discipline filters.
-                </p>
-                <button data-i18n="resetFiltersBtn" onclick="resetFilters()"
-                    class="px-4 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-xs font-mono text-[#00f0ff] border border-[#00f0ff]/30 transition">
-                    Reset Catalog Filters
-                </button>
-            </div>
-        </section>
-
-        <!-- How Payments Work Section (After Services) -->
-        <section id="how-payments-work-after-services" aria-labelledby="payments-heading-after"
-            class="mt-10 rounded-3xl bg-[#0c101a]/90 border border-[#10b981]/30 p-8 sm:p-10 shadow-emerald-glow">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-                <div>
-                    <span data-i18n="paymentsTag"
-                        class="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest px-3 py-1 rounded-lg bg-[#07090e] border border-[#10b981]/30 text-[#10b981]">Milestone
-                        Protection &amp; Transparency</span>
-                    <h2 id="payments-heading-after" data-i18n="paymentsTitle"
-                        class="font-display text-2xl sm:text-3xl font-bold text-white mt-2">How Payments Work</h2>
-                </div>
-                <p data-i18n="paymentsSubtitle" class="text-sm text-slate-400 max-w-md">
-                    Every project is structured around verified progress checkpoints so you see real results before
-                    committing to subsequent installments.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <span data-i18n="payStep1Tag"
-                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#00f0ff]/30 text-[#00f0ff] mb-2.5">01
-                        // INITIAL DEPOSIT</span>
-                    <h3 data-i18n="payStep1Title" class="font-display font-semibold text-white text-base mb-1.5">Lock In
-                        Your Sprint</h3>
-                    <p data-i18n="payStep1Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                        Once your project brief is confirmed, an initial deposit reserves your studio slot and kicks off
-                        active production right away.
-                    </p>
-                </div>
-                <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <span data-i18n="payStep2Tag"
-                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#8b5cf6]/30 text-[#8b5cf6] mb-2.5">02
-                        // LIVE PROGRESSION</span>
-                    <h3 data-i18n="payStep2Title" class="font-display font-semibold text-white text-base mb-1.5">Review
-                        Work-in-Progress</h3>
-                    <p data-i18n="payStep2Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                        I get to work and share clear progression previews—staging builds, design drafts, mix stems, or
-                        stencil proofs—before taking further installments.
-                    </p>
-                </div>
-                <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <span data-i18n="payStep3Tag"
-                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#10b981]/30 text-[#10b981] mb-2.5">03
-                        // FINAL HANDOFF</span>
-                    <h3 data-i18n="payStep3Title" class="font-display font-semibold text-white text-base mb-1.5">
-                        Milestone Approval &amp; Delivery</h3>
-                    <p data-i18n="payStep3Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                        Remaining installments follow approved milestones, concluding with final source files,
-                        production deployment, or completed artwork handoff.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Payment Plans & Upfront Full-Payment Note -->
-            <div class="p-4 sm:p-5 rounded-2xl bg-[#10b981]/[0.07] border border-[#10b981]/35 flex items-start gap-3">
-                <i data-lucide="badge-dollar-sign" class="w-5 h-5 text-[#10b981] shrink-0 mt-0.5"></i>
-                <p data-i18n="paymentsFlexNote" class="text-xs sm:text-sm text-slate-200 leading-relaxed">
-                    <strong class="text-[#10b981] font-semibold">Flexible Payment Options:</strong> Custom payment plans
-                    can be discussed to fit your timeline, or projects may also be paid in full before work starts for
-                    streamlined single-invoice billing.
-                </p>
-            </div>
-        </section>
-
-        <!-- Studio Workflow Strip (Simple, Refined 3-Step Clarity) -->
-        <section id="studio-workflow-section"
-            class="scroll-mt-28 mt-10 rounded-3xl bg-[#0c101a]/90 border border-white/[0.08] p-8 sm:p-10">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-                <div>
-                    <span data-i18n="workflowTag"
-                        class="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest px-3 py-1 rounded-lg bg-[#07090e] border border-[#00f0ff]/30 text-[#00f0ff]">Seamless
-                        Execution</span>
-                    <h2 data-i18n="workflowTitle" class="font-display text-2xl sm:text-3xl font-bold text-white mt-2">
-                        How D474designs Commissions
-                        Work</h2>
-                </div>
-                <p data-i18n="workflowSubtitle" class="text-sm text-slate-400 max-w-md">Combine digital builds,
-                    publicity campaigns, sound
-                    engineering, video editing, or physical custom art sessions into a single unified project brief.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <span data-i18n="step1Tag"
-                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#00f0ff]/30 text-[#00f0ff] mb-2.5">01
-                        // CONFIGURE</span>
-                    <h3 data-i18n="step1Title" class="font-display font-semibold text-white text-base mb-1.5">Select
-                        Scope &amp; Tier</h3>
-                    <p data-i18n="step1Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">Choose starter
-                        packages or custom
-                        sprints across software, branding, audio, airbrushing, or tattoo sessions.</p>
-                </div>
-                <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <span data-i18n="step2Tag"
-                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#8b5cf6]/30 text-[#8b5cf6] mb-2.5">02
-                        // SPECIFY</span>
-                    <h3 data-i18n="step2Title" class="font-display font-semibold text-white text-base mb-1.5">Attach
-                        Creative Notes &amp; Dates
-                    </h3>
-                    <p data-i18n="step2Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">Add technical
-                        specs, reference links,
-                        placement details, or target dates directly inside each service configurator.</p>
-                </div>
-                <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <span data-i18n="step3Tag"
-                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#10b981]/30 text-[#10b981] mb-2.5">03
-                        // INITIATE</span>
-                    <h3 data-i18n="step3Title" class="font-display font-semibold text-white text-base mb-1.5">Instant
-                        Dossier &amp; Invoice
-                    </h3>
-                    <p data-i18n="step3Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">Generate a
-                        timestamped D474designs
-                        project dossier with a direct studio invoice sent straight to your inbox.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Special Budget / Custom Quote Request Banner (Bottom — Below How It Works) -->
-        <section aria-label="Custom Budget & Smaller Requests Bottom" class="mt-10">
-            <div
-                class="rounded-3xl bg-[#0c101a]/90 border border-amber-400/30 p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-5 shadow-[0_0_24px_-4px_rgba(251,191,36,0.12)]">
+                class="rounded-3xl bg-[#0c101a]/90 border border-[#8b5cf6]/30 p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-5 shadow-violet-glow">
                 <div class="space-y-1.5 max-w-2xl">
                     <div
-                        class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider px-3 py-1 rounded-lg bg-[#07090e] border border-amber-400/30 text-amber-300">
-                        <i data-lucide="coins" class="w-3.5 h-3.5 text-amber-400"></i>
-                        <span data-i18n="budgetBadge">Flexible Budget &amp; Micro-Commissions</span>
+                        class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider px-3 py-1 rounded-lg bg-[#07090e] border border-[#8b5cf6]/30 text-[#8b5cf6]">
+                        <i data-lucide="mail" class="w-3.5 h-3.5 text-[#8b5cf6]"></i>
+                        <span data-i18n="contactBadge">Direct Studio Transmission</span>
                     </div>
-                    <h2 data-i18n="budgetTitle" class="font-display text-lg sm:text-xl font-bold text-white">
-                        Need a Smaller Task or Custom Budget Quote?
+                    <h2 data-i18n="contactTitle" class="font-display text-lg sm:text-xl font-bold text-white">
+                        Have any questions, suggestions, or want to drop us a line?
                     </h2>
-                    <p data-i18n="budgetDesc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                        Have a quick edit, smaller budget request, or custom one-off task that doesn't require a full
-                        package tier? Configure a custom budget request and add it straight into your Project Brief.
+                    <p data-i18n="contactDesc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                        Reach out directly to D474designs for general inquiries, collaboration ideas, or feedback—your
+                        message goes straight to our studio inbox.
                     </p>
                 </div>
-                <button type="button" onclick="openBudgetRequestModal()"
-                    class="shrink-0 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-[#07090e] font-bold text-sm tracking-wide shadow-amber-glow transition-all duration-200 inline-flex items-center justify-center gap-2">
-                    <i data-lucide="badge-dollar-sign" class="w-4 h-4 text-[#07090e]"></i>
-                    <span data-i18n="budgetBtn">Request Custom / Budget Quote</span>
+                <button type="button" onclick="openContactModal()"
+                    class="shrink-0 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#8b5cf6] to-[#00f0ff] hover:opacity-95 text-[#07090e] font-bold text-sm tracking-wide shadow-cyan-glow transition-all duration-200 inline-flex items-center justify-center gap-2">
+                    <i data-lucide="mail" class="w-4 h-4 text-[#07090e]"></i>
+                    <span data-i18n="contactBtn">Contact Us</span>
                 </button>
             </div>
         </section>
@@ -3417,6 +3251,98 @@
         </div>
     </div>
 
+    <!-- ===================================================================== -->
+    <!-- CONTACT US MODAL                                                      -->
+    <!-- ===================================================================== -->
+    <div id="contact-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6" role="dialog"
+        aria-modal="true" aria-labelledby="contact-modal-title">
+        <div onclick="closeContactModal()" class="fixed inset-0 bg-[#04060a]/85 backdrop-blur-md transition-opacity">
+        </div>
+
+        <div
+            class="relative w-full max-w-xl rounded-3xl bg-[#0c101a] border border-[#8b5cf6]/40 shadow-2xl overflow-hidden z-10 max-h-[90vh] flex flex-col">
+            <!-- Top Gradient Accent Bar -->
+            <div class="h-1 w-full bg-gradient-to-r from-[#8b5cf6] via-[#00f0ff] to-[#10b981]"></div>
+
+            <!-- Modal Header -->
+            <div class="px-6 pt-6 pb-4 border-b border-white/[0.07] flex items-start justify-between gap-4">
+                <div>
+                    <span data-i18n="contactModalBadge"
+                        class="inline-block font-mono text-[11px] uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-[#8b5cf6]/15 text-[#8b5cf6] border border-[#8b5cf6]/30 mb-2">
+                        Studio Inquiry &amp; Feedback
+                    </span>
+                    <h3 data-i18n="contactModalTitle" id="contact-modal-title"
+                        class="font-display text-xl sm:text-2xl font-bold text-white">
+                        Drop D474designs a Line
+                    </h3>
+                </div>
+                <button type="button" onclick="closeContactModal()" aria-label="Close contact modal"
+                    class="p-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.1] text-slate-400 hover:text-white transition">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-scroll-body p-6 space-y-5">
+                <p data-i18n="contactModalDesc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Have a question about a discipline, a suggestion for the studio, or just want to say hello? Fill out
+                    the form below to send your message directly to our email.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label data-i18n="contactNameLabel" for="contact-sender-name"
+                            class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
+                            Your Name / Handle *
+                        </label>
+                        <input type="text" id="contact-sender-name" data-i18n-placeholder="contactNamePlaceholder"
+                            placeholder="e.g. Alex Rivera"
+                            class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-[#8b5cf6] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
+                    </div>
+                    <div>
+                        <label data-i18n="contactEmailLabel" for="contact-sender-email"
+                            class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
+                            Your Email Address *
+                        </label>
+                        <input type="email" id="contact-sender-email" data-i18n-placeholder="contactEmailPlaceholder"
+                            placeholder="you@domain.com"
+                            class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-[#8b5cf6] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
+                    </div>
+                </div>
+
+                <div>
+                    <label data-i18n="contactSubjectLabel" for="contact-subject"
+                        class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
+                        Topic / Subject *
+                    </label>
+                    <input type="text" id="contact-subject" data-i18n-placeholder="contactSubjectPlaceholder"
+                        placeholder="e.g. Question about Web3 builds / Studio suggestion"
+                        class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-[#8b5cf6] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
+                </div>
+
+                <div>
+                    <label data-i18n="contactMessageLabel" for="contact-message"
+                        class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
+                        Message *
+                    </label>
+                    <textarea id="contact-message" rows="4" required data-i18n-placeholder="contactMessagePlaceholder"
+                        placeholder="Write your question, suggestion, or message here..."
+                        class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-[#8b5cf6] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500 resize-none"></textarea>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div
+                class="shrink-0 px-6 sm:px-8 py-6 bg-[#07090e]/95 border-t border-white/[0.08] flex items-center justify-end gap-4">
+                <button type="button" onclick="submitContactForm()"
+                    class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#8b5cf6] to-[#00f0ff] hover:opacity-95 text-[#07090e] font-bold text-sm shadow-cyan-glow transition-all inline-flex items-center justify-center gap-2">
+                    <i data-lucide="mail" class="w-4 h-4 text-[#07090e]"></i>
+                    <span data-i18n="contactSubmitBtn">Send Message to Studio</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Clickable, Hover-Pausable Toast Notification Banner (Centered & Styled like Submit Project Brief) -->
     <div id="toast-notification" style="z-index: 9999; bottom: 2rem;"
         class="fixed bottom-8 inset-x-0 flex justify-center px-6 sm:px-10 pointer-events-none opacity-0 translate-y-4 transition-all duration-300">
@@ -3652,6 +3578,21 @@
                 budgetNotesLabel: 'Request Details, Links & Scope *',
                 budgetNotesPlaceholder: 'Explain what you need accomplished, any reference links or files, and how we can best tailor the scope to your budget...',
                 budgetProposedLabel: 'Proposed Budget',
+                contactBadge: 'Direct Studio Transmission',
+                contactTitle: 'Have any questions, suggestions, or want to drop us a line?',
+                contactDesc: 'Reach out directly to D474designs for general inquiries, collaboration ideas, or feedback—your message goes straight to our studio inbox.',
+                contactBtn: 'Contact Us',
+                contactModalBadge: 'Studio Inquiry & Feedback',
+                contactModalTitle: 'Drop D474designs a Line',
+                contactModalDesc: 'Have a question about a discipline, a suggestion for the studio, or just want to say hello? Fill out the form below to send your message directly to our email.',
+                contactNameLabel: 'Your Name / Handle *',
+                contactNamePlaceholder: 'e.g. Alex Rivera',
+                contactEmailLabel: 'Your Email Address *',
+                contactSubjectLabel: 'Topic / Subject *',
+                contactSubjectPlaceholder: 'e.g. Question about Web3 builds / Studio suggestion',
+                contactMessageLabel: 'Message *',
+                contactMessagePlaceholder: 'Write your question, suggestion, or message here...',
+                contactSubmitBtn: 'Send Message to Studio',
                 toastSubtext: 'Click here to view & edit your Project Brief →',
                 ideasTag: 'Commission Blueprints & Inspiration',
                 ideasTitle: 'Need Ideas? Explore Ready-to-Launch Project Concepts',
@@ -3792,6 +3733,21 @@
                 budgetNotesLabel: 'Detalles, Enlaces y Alcance de la Solicitud *',
                 budgetNotesPlaceholder: 'Explica qué necesitas lograr, enlaces o archivos de referencia y cómo adaptar el alcance a tu presupuesto...',
                 budgetProposedLabel: 'Presupuesto Propuesto',
+                contactBadge: 'Transmisión Directa al Estudio',
+                contactTitle: '¿Tienes alguna pregunta, sugerencia o quieres escribirnos?',
+                contactDesc: 'Comunícate directamente con D474designs para consultas generales, ideas de colaboración o comentarios; tu mensaje llega directo a nuestra bandeja.',
+                contactBtn: 'Contáctanos',
+                contactModalBadge: 'Consulta y Comentarios del Estudio',
+                contactModalTitle: 'Escríbele a D474designs',
+                contactModalDesc: '¿Tienes una pregunta sobre alguna disciplina, una sugerencia para el estudio o simplemente quieres saludar? Completa el formulario para enviar tu mensaje directo a nuestro correo.',
+                contactNameLabel: 'Tu Nombre / Usuario *',
+                contactNamePlaceholder: 'ej. Alex Rivera',
+                contactEmailLabel: 'Tu Correo Electrónico *',
+                contactSubjectLabel: 'Tema / Asunto *',
+                contactSubjectPlaceholder: 'ej. Pregunta sobre desarrollo Web3 / Sugerencia',
+                contactMessageLabel: 'Mensaje *',
+                contactMessagePlaceholder: 'Escribe aquí tu pregunta, sugerencia o mensaje...',
+                contactSubmitBtn: 'Enviar Mensaje al Estudio',
                 toastSubtext: 'Haz clic aquí para ver y editar tu Resumen de Proyecto →',
                 ideasTag: 'Planos de Comisión e Inspiración',
                 ideasTitle: '¿Necesitas Ideas? Explora Conceptos Listos para Lanzar',
@@ -4698,7 +4654,8 @@
                 'receipt-modal',
                 'budget-modal',
                 'portfolio-modal',
-                'portfolio-lightbox'
+                'portfolio-lightbox',
+                'contact-modal'
             ];
             const anyOpen = modalIds.some((id) => {
                 const el = document.getElementById(id);
@@ -6317,6 +6274,96 @@
                 showToast(currentLang === 'es' ? 'No se pudo copiar automáticamente' : 'Unable to copy automatically', true);
             }
             document.body.removeChild(tempTextarea);
+        }
+
+        // =====================================================================
+        // CONTACT US MODAL & DIRECT EMAIL SUBMISSION
+        // =====================================================================
+        function openContactModal() {
+            const modal = document.getElementById('contact-modal');
+            if (!modal) return;
+
+            const savedCheckout = readStorage(STORAGE_KEYS.CHECKOUT_DRAFT, null);
+            const nameInput = document.getElementById('contact-sender-name');
+            const emailInput = document.getElementById('contact-sender-email');
+            if (savedCheckout) {
+                if (nameInput && !nameInput.value && savedCheckout.clientName) {
+                    nameInput.value = savedCheckout.clientName;
+                }
+                if (emailInput && !emailInput.value && savedCheckout.clientEmail) {
+                    emailInput.value = savedCheckout.clientEmail;
+                }
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            syncBodyScrollLock();
+            const scrollBody = modal.querySelector('.modal-scroll-body');
+            if (scrollBody) scrollBody.scrollTop = 0;
+            lucide.createIcons(modal);
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contact-modal');
+            if (!modal) return;
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            syncBodyScrollLock();
+        }
+
+        function submitContactForm() {
+            const isEs = currentLang === 'es';
+            const nameEl = document.getElementById('contact-sender-name');
+            const emailEl = document.getElementById('contact-sender-email');
+            const subjectEl = document.getElementById('contact-subject');
+            const messageEl = document.getElementById('contact-message');
+
+            const senderName = (nameEl?.value || '').trim();
+            const senderEmail = (emailEl?.value || '').trim();
+            const subjectLine = (subjectEl?.value || '').trim();
+            const messageBody = (messageEl?.value || '').trim();
+
+            if (!senderName) {
+                nameEl?.focus();
+                showToast(isEs ? 'Por favor ingresa tu nombre o usuario' : 'Please enter your name or handle', true);
+                return;
+            }
+            if (!senderEmail || !senderEmail.includes('@')) {
+                emailEl?.focus();
+                showToast(isEs ? 'Por favor ingresa un correo electrónico válido' : 'Please enter a valid email address', true);
+                return;
+            }
+            if (!subjectLine) {
+                subjectEl?.focus();
+                showToast(isEs ? 'Por favor ingresa un asunto' : 'Please enter a topic or subject', true);
+                return;
+            }
+            if (!messageBody) {
+                messageEl?.focus();
+                showToast(isEs ? 'Por favor escribe tu mensaje antes de enviarlo' : 'Please enter your message before sending', true);
+                return;
+            }
+
+            const emailSubject = encodeURIComponent(`D474designs Inquiry: ${subjectLine} — ${senderName}`);
+            const formattedBody = [
+                `D474DESIGNS STUDIO CONTACT MESSAGE`,
+                `From: ${senderName} (${senderEmail})`,
+                `Subject: ${subjectLine}`,
+                `--------------------------------------------------`,
+                messageBody
+            ].join('\n');
+
+            const mailtoUrl = `mailto:jaime.cazares.dev@gmail.com?subject=${emailSubject}&body=${encodeURIComponent(formattedBody)}`;
+            window.location.href = mailtoUrl;
+
+            if (subjectEl) subjectEl.value = '';
+            if (messageEl) messageEl.value = '';
+            closeContactModal();
+            showToast(
+                isEs
+                    ? 'Abriendo tu cliente de correo para enviar el mensaje a D474designs'
+                    : 'Opening your email client to send message to D474designs'
+            );
         }
 
         // =====================================================================
