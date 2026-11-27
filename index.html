@@ -2463,6 +2463,165 @@
             </div>
         </section>
 
+        <!-- Service Catalog Section (Discipline Filter Tabs + Search + 11 Services Grid) -->
+        <section id="catalog" aria-labelledby="catalog-heading" class="scroll-mt-28 mb-14">
+            <h2 id="catalog-heading" class="sr-only hidden">D474designs Service Catalog</h2>
+
+            <!-- Filter Bar & Search Input -->
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
+                <!-- Discipline Filter Tabs -->
+                <div role="tablist" aria-label="Service Disciplines"
+                    class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 lg:pb-0">
+                    <button type="button" role="tab" aria-selected="true" data-filter="all"
+                        onclick="setCategoryFilter('all', false)"
+                        class="filter-tab active shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-[#00f0ff]/10 border-[#00f0ff]/50 text-[#00f0ff] shadow-cyan-glow">
+                        All Disciplines (11)
+                    </button>
+                    <button type="button" role="tab" aria-selected="false" data-filter="engineering"
+                        onclick="setCategoryFilter('engineering', false)"
+                        class="filter-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
+                        Engineering &amp; Web3
+                    </button>
+                    <button type="button" role="tab" aria-selected="false" data-filter="brand"
+                        onclick="setCategoryFilter('brand', false)"
+                        class="filter-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
+                        Brand &amp; Media
+                    </button>
+                    <button type="button" role="tab" aria-selected="false" data-filter="audio"
+                        onclick="setCategoryFilter('audio', false)"
+                        class="filter-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
+                        Audio &amp; Video
+                    </button>
+                    <button type="button" role="tab" aria-selected="false" data-filter="physical"
+                        onclick="setCategoryFilter('physical', false)"
+                        class="filter-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
+                        Physical &amp; Ink
+                    </button>
+                </div>
+
+                <!-- Search Input -->
+                <div class="relative w-full lg:w-72 shrink-0">
+                    <i data-lucide="search"
+                        class="w-4 h-4 text-slate-400 absolute left-3.5 top-4 pointer-events-none"></i>
+                    <input type="text" id="service-search" oninput="handleSearch(this.value)"
+                        data-i18n-placeholder="searchPlaceholder" placeholder="Filter services or deliverables..."
+                        class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#0c101a] border border-white/[0.1] focus:border-[#00f0ff] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500 transition" />
+                </div>
+            </div>
+
+            <!-- Services Grid -->
+            <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Populated dynamically via renderServicesGrid() -->
+            </div>
+
+            <!-- Empty Search State -->
+            <div id="empty-search-state"
+                class="hidden rounded-3xl bg-[#0c101a]/90 border border-white/[0.08] p-10 text-center space-y-4">
+                <div
+                    class="w-12 h-12 rounded-2xl bg-[#00f0ff]/10 border border-[#00f0ff]/30 flex items-center justify-center mx-auto">
+                    <i data-lucide="radar" class="w-6 h-6 text-[#00f0ff]"></i>
+                </div>
+                <h3 data-i18n="emptySearchTitle" class="font-display text-lg font-bold text-white">No matching services
+                    found</h3>
+                <p data-i18n="emptySearchDesc" class="text-xs sm:text-sm text-slate-400 max-w-md mx-auto">
+                    Try clearing your search term or switching discipline filters.
+                </p>
+                <button type="button" onclick="resetFilters()" data-i18n="resetFiltersBtn"
+                    class="px-5 py-2.5 rounded-xl bg-[#00f0ff] hover:bg-[#33f3ff] text-[#07090e] font-semibold text-xs sm:text-sm shadow-cyan-glow transition">
+                    Reset Catalog Filters
+                </button>
+            </div>
+        </section>
+
+        <!-- How D474designs Commissions Work Section -->
+        <section id="studio-workflow-section" aria-labelledby="workflow-heading"
+            class="scroll-mt-28 mb-10 rounded-3xl bg-[#0c101a]/90 border border-white/[0.08] p-8 sm:p-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <span data-i18n="workflowTag"
+                        class="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest px-3 py-1 rounded-lg bg-[#07090e] border border-[#00f0ff]/30 text-[#00f0ff]">
+                        Seamless Execution
+                    </span>
+                    <h2 id="workflow-heading" data-i18n="workflowTitle"
+                        class="font-display text-2xl sm:text-3xl font-bold text-white mt-2">
+                        How D474designs Commissions Work
+                    </h2>
+                </div>
+                <p data-i18n="workflowSubtitle" class="text-sm text-slate-400 max-w-md">
+                    Combine digital builds, publicity campaigns, sound engineering, video editing, or physical custom
+                    art sessions into a single unified project brief.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+                    <span data-i18n="step1Tag"
+                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#00f0ff]/30 text-[#00f0ff] mb-2.5">
+                        01 // CONFIGURE
+                    </span>
+                    <h3 data-i18n="step1Title" class="font-display font-semibold text-white text-base mb-1.5">
+                        Select Scope &amp; Tier
+                    </h3>
+                    <p data-i18n="step1Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                        Choose starter packages or custom sprints across software, branding, audio, airbrushing, or
+                        tattoo sessions.
+                    </p>
+                </div>
+                <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+                    <span data-i18n="step2Tag"
+                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#8b5cf6]/30 text-[#8b5cf6] mb-2.5">
+                        02 // SPECIFY
+                    </span>
+                    <h3 data-i18n="step2Title" class="font-display font-semibold text-white text-base mb-1.5">
+                        Attach Creative Notes &amp; Dates
+                    </h3>
+                    <p data-i18n="step2Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                        Add technical specs, reference links, placement details, or target dates directly inside each
+                        service configurator.
+                    </p>
+                </div>
+                <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+                    <span data-i18n="step3Tag"
+                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#10b981]/30 text-[#10b981] mb-2.5">
+                        03 // INITIATE
+                    </span>
+                    <h3 data-i18n="step3Title" class="font-display font-semibold text-white text-base mb-1.5">
+                        Instant Dossier &amp; Invoice
+                    </h3>
+                    <p data-i18n="step3Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                        Generate a timestamped D474designs project dossier with a direct studio invoice sent straight to
+                        your inbox.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Special Budget / Custom Quote Request Banner -->
+        <section aria-label="Custom Budget & Smaller Requests Bottom" class="mb-10">
+            <div
+                class="rounded-3xl bg-[#0c101a]/90 border border-amber-400/30 p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-5 shadow-[0_0_24px_-4px_rgba(251,191,36,0.12)]">
+                <div class="space-y-1.5 max-w-2xl">
+                    <div
+                        class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider px-3 py-1 rounded-lg bg-[#07090e] border border-amber-400/30 text-amber-300">
+                        <i data-lucide="coins" class="w-3.5 h-3.5 text-amber-400"></i>
+                        <span data-i18n="budgetBadge">Flexible Budget &amp; Micro-Commissions</span>
+                    </div>
+                    <h2 data-i18n="budgetTitle" class="font-display text-lg sm:text-xl font-bold text-white">
+                        Need a Smaller Task or Custom Budget Quote?
+                    </h2>
+                    <p data-i18n="budgetDesc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                        Have a quick edit, smaller budget request, or custom one-off task that doesn't require a full
+                        package tier? Configure a custom budget request and add it straight into your Project Brief.
+                    </p>
+                </div>
+                <button type="button" onclick="openBudgetRequestModal()"
+                    class="relative z-10 cursor-pointer shrink-0 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-[#07090e] font-bold text-sm tracking-wide shadow-amber-glow transition-all duration-200 inline-flex items-center justify-center gap-2">
+                    <i data-lucide="badge-dollar-sign" class="w-4 h-4 text-[#07090e]"></i>
+                    <span data-i18n="budgetBtn">Request Custom / Budget Quote</span>
+                </button>
+            </div>
+        </section>
+
         <!-- Contact Us Section (Below Bottom Custom Budget Banner) -->
         <section id="contact-us-section" aria-label="Contact D474designs Studio" class="scroll-mt-28 mt-10">
             <div
