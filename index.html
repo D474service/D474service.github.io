@@ -216,6 +216,10 @@
             margin-top: 1rem;
         }
 
+        .ml-auto {
+            margin-left: auto;
+        }
+
         .w-64 {
             width: 16rem;
         }
@@ -2181,7 +2185,7 @@
                 </a>
 
                 <!-- Center: Sections Slide-Out Tray Trigger Button -->
-                <div class="flex items-center justify-center">
+                <div class="flex items-center justify-end ml-auto sm:ml-0">
                     <button type="button" id="sections-menu-btn" onclick="toggleSectionsMenu()" aria-expanded="false"
                         aria-haspopup="true" aria-controls="sections-menu-tray"
                         class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl bg-white/[0.04] hover:bg-[#00f0ff]/10 border border-white/[0.12] hover:border-[#00f0ff]/50 text-xs sm:text-sm font-medium text-slate-200 hover:text-[#00f0ff] shadow-cyan-glow transition-all duration-200">
@@ -2193,7 +2197,7 @@
                 </div>
 
                 <!-- Right Action: Yellow Language Toggle & Crimson Pink Project Brief Drawer Trigger -->
-                <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                <div class="flex items-center justify-end gap-2 sm:gap-3 shrink-0 ml-auto sm:ml-0">
                     <!-- Single-Click Yellow Language Toggle -->
                     <button type="button" id="lang-toggle-btn" onclick="toggleLanguage()"
                         aria-label="Switch Language EN/ES" title="Switch Language (English / Español)"
