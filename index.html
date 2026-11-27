@@ -31,22 +31,8 @@
 
     <!-- Zero-Blocking Self-Contained Critical & Component CSS (0 KiB external CSS blocking, 0 KiB unused CSS) -->
     <style>
-        *,
-        ::before,
-        ::after {
-            box-sizing: border-box;
-            border-width: 0;
-            border-style: solid;
-            border-color: rgba(255, 255, 255, 0.08);
-        }
-
-        html {
-            line-height: 1.5;
-            -webkit-text-size-adjust: 100%;
-            scroll-behavior: smooth;
-            background-color: #07090e;
-        }
-
+        *, ::before, ::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: rgba(255, 255, 255, 0.08); }
+        html { line-height: 1.5; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; background-color: #07090e; }
         body {
             margin: 0;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -55,46 +41,12 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        p,
-        ul,
-        figure {
-            margin: 0;
-            padding: 0;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button,
-        input,
-        select,
-        textarea {
-            font-family: inherit;
-            font-size: 100%;
-            color: inherit;
-        }
-
-        button {
-            background: transparent;
-            cursor: pointer;
-        }
-
-        img,
-        svg {
-            display: block;
-            max-width: 100%;
-        }
+        h1, h2, h3, h4, p, ul, figure { margin: 0; padding: 0; }
+        ul { list-style: none; }
+        a { color: inherit; text-decoration: none; }
+        button, input, select, textarea { font-family: inherit; font-size: 100%; color: inherit; }
+        button { background: transparent; cursor: pointer; }
+        img, svg { display: block; max-width: 100%; }
 
         :root {
             --obsidian: #07090e;
@@ -106,2016 +58,538 @@
             --amber-gold: #f59e0b;
         }
 
-        .font-sans {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-
-        .font-display {
-            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-
-        .font-mono {
-            font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
-        }
+        .font-sans { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+        .font-display { font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace; }
 
         /* Layout & Display */
-        .hidden {
-            display: none !important;
-        }
-
-        .block {
-            display: block;
-        }
-
-        .inline {
-            display: inline;
-        }
-
-        .inline-block {
-            display: inline-block;
-        }
-
-        .flex {
-            display: flex;
-        }
-
-        .inline-flex {
-            display: inline-flex;
-        }
-
-        .grid {
-            display: grid;
-        }
-
-        .fixed {
-            position: fixed;
-        }
-
-        .absolute {
-            position: absolute;
-        }
-
-        .relative {
-            position: relative;
-        }
-
-        .inset-0 {
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-        }
-
-        .inset-x-0 {
-            left: 0;
-            right: 0;
-        }
-
-        .inset-y-0 {
-            top: 0;
-            bottom: 0;
-        }
-
-        .top-0 {
-            top: 0;
-        }
-
-        .top-4 {
-            top: 1rem;
-        }
-
-        .bottom-8 {
-            bottom: 2rem;
-        }
-
-        .top-full {
-            top: 100%;
-        }
-
-        .top-20 {
-            top: 5rem;
-        }
-
-        .top-1\/3 {
-            top: 33.333333%;
-        }
-
-        .right-0 {
-            right: 0;
-        }
-
-        .mt-2 {
-            margin-top: 0.5rem;
-        }
-
-        .mt-3 {
-            margin-top: 0.75rem;
-        }
-
-        .mt-4 {
-            margin-top: 1rem;
-        }
-
-        .ml-auto {
-            margin-left: auto;
-        }
-
-        .w-64 {
-            width: 16rem;
-        }
-
-        .h-20 {
-            height: 5rem;
-        }
-
-        .left-2\.5 {
-            left: 0.625rem;
-        }
-
-        .left-3\.5 {
-            left: 0.875rem;
-        }
-
-        .-top-40 {
-            top: -10rem;
-        }
-
-        .-left-40 {
-            left: -10rem;
-        }
-
-        .-right-40 {
-            right: -10rem;
-        }
-
-        .-bottom-40 {
-            bottom: -10rem;
-        }
-
-        .left-1\/3 {
-            left: 33.333333%;
-        }
-
-        .z-0 {
-            z-index: 0;
-        }
-
-        .z-10 {
-            z-index: 10;
-        }
-
-        .z-40 {
-            z-index: 40;
-        }
-
-        .z-50 {
-            z-index: 50;
-        }
-
-        .pointer-events-none {
-            pointer-events: none;
-        }
-
-        .pointer-events-auto {
-            pointer-events: auto;
-        }
-
-        .cursor-pointer {
-            cursor: pointer;
-        }
-
-        .select-none {
-            user-select: none;
-        }
-
-        .overflow-hidden {
-            overflow: hidden;
-        }
-
-        .overflow-x-hidden {
-            overflow-x: hidden;
-        }
-
-        .overflow-x-auto {
-            overflow-x: auto;
-        }
-
-        .overflow-y-auto {
-            overflow-y: auto;
-        }
-
-        .resize-none {
-            resize: none;
-        }
-
-        .scroll-mt-28 {
-            scroll-margin-top: 7rem;
-        }
+        .hidden { display: none !important; }
+        .block { display: block; }
+        .inline { display: inline; }
+        .inline-block { display: inline-block; }
+        .flex { display: flex; }
+        .inline-flex { display: inline-flex; }
+        .grid { display: grid; }
+        .fixed { position: fixed; }
+        .absolute { position: absolute; }
+        .relative { position: relative; }
+        .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+        .inset-x-0 { left: 0; right: 0; }
+        .inset-y-0 { top: 0; bottom: 0; }
+        .top-0 { top: 0; }
+        .top-4 { top: 1rem; }
+        .bottom-8 { bottom: 2rem; }
+        .top-full { top: 100%; }
+        .top-20 { top: 5rem; }
+        .top-1\/3 { top: 33.333333%; }
+        .right-0 { right: 0; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-3 { margin-top: 0.75rem; }
+        .mt-4 { margin-top: 1rem; }
+        .ml-auto { margin-left: auto; }
+        .w-64 { width: 16rem; }
+        .h-20 { height: 5rem; }
+        .left-2\.5 { left: 0.625rem; }
+        .left-3\.5 { left: 0.875rem; }
+        .-top-40 { top: -10rem; }
+        .-left-40 { left: -10rem; }
+        .-right-40 { right: -10rem; }
+        .-bottom-40 { bottom: -10rem; }
+        .left-1\/3 { left: 33.333333%; }
+        .z-0 { z-index: 0; }
+        .z-10 { z-index: 10; }
+        .z-40 { z-index: 40; }
+        .z-50 { z-index: 50; }
+        .pointer-events-none { pointer-events: none; }
+        .pointer-events-auto { pointer-events: auto; }
+        .cursor-pointer { cursor: pointer; }
+        .select-none { user-select: none; }
+        .overflow-hidden { overflow: hidden; }
+        .overflow-x-hidden { overflow-x: hidden; }
+        .overflow-x-auto { overflow-x: auto; }
+        .overflow-y-auto { overflow-y: auto; }
+        .resize-none { resize: none; }
+        .scroll-mt-28 { scroll-margin-top: 7rem; }
 
         /* Flexbox & Grid */
-        .flex-col {
-            flex-direction: column;
-        }
-
-        .flex-wrap {
-            flex-wrap: wrap;
-        }
-
-        .flex-1 {
-            flex: 1 1 0%;
-        }
-
-        .shrink-0 {
-            flex-shrink: 0;
-        }
-
-        .basis-full {
-            flex-basis: 100%;
-        }
-
-        .items-start {
-            align-items: flex-start;
-        }
-
-        .items-center {
-            align-items: center;
-        }
-
-        .items-baseline {
-            align-items: baseline;
-        }
-
-        .justify-center {
-            justify-content: center;
-        }
-
-        .justify-between {
-            justify-content: space-between;
-        }
-
-        .justify-end {
-            justify-content: flex-end;
-        }
-
-        .self-start {
-            align-self: flex-start;
-        }
-
-        .grid-cols-1 {
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-        }
-
-        .gap-1 {
-            gap: 0.25rem;
-        }
-
-        .gap-1\.5 {
-            gap: 0.375rem;
-        }
-
-        .gap-2 {
-            gap: 0.5rem;
-        }
-
-        .gap-2\.5 {
-            gap: 0.625rem;
-        }
-
-        .gap-3 {
-            gap: 0.75rem;
-        }
-
-        .gap-3\.5 {
-            gap: 0.875rem;
-        }
-
-        .gap-4 {
-            gap: 1rem;
-        }
-
-        .gap-5 {
-            gap: 1.25rem;
-        }
-
-        .gap-6 {
-            gap: 1.5rem;
-        }
-
-        .gap-x-4 {
-            column-gap: 1rem;
-        }
-
-        .gap-y-1 {
-            row-gap: 0.25rem;
-        }
+        .flex-col { flex-direction: column; }
+        .flex-wrap { flex-wrap: wrap; }
+        .flex-1 { flex: 1 1 0%; }
+        .shrink-0 { flex-shrink: 0; }
+        .basis-full { flex-basis: 100%; }
+        .items-start { align-items: flex-start; }
+        .items-center { align-items: center; }
+        .items-baseline { align-items: baseline; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-end { justify-content: flex-end; }
+        .self-start { align-self: flex-start; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .gap-1 { gap: 0.25rem; }
+        .gap-1\.5 { gap: 0.375rem; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-2\.5 { gap: 0.625rem; }
+        .gap-3 { gap: 0.75rem; }
+        .gap-3\.5 { gap: 0.875rem; }
+        .gap-4 { gap: 1rem; }
+        .gap-5 { gap: 1.25rem; }
+        .gap-6 { gap: 1.5rem; }
+        .gap-x-4 { column-gap: 1rem; }
+        .gap-y-1 { row-gap: 0.25rem; }
 
         /* Spacing */
-        .mx-auto {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .mx-4 {
-            margin-left: 1rem;
-            margin-right: 1rem;
-        }
-
-        .m-1 {
-            margin: 0.25rem;
-        }
-
-        .m-2 {
-            margin: 0.5rem;
-        }
-
-        .mt-0\.5 {
-            margin-top: 0.125rem;
-        }
-
-        .mt-1 {
-            margin-top: 0.25rem;
-        }
-
-        .mt-10 {
-            margin-top: 2.5rem;
-        }
-
-        .mt-24 {
-            margin-top: 6rem;
-        }
-
-        .mb-1 {
-            margin-bottom: 0.25rem;
-        }
-
-        .mb-1\.5 {
-            margin-bottom: 0.375rem;
-        }
-
-        .mb-2 {
-            margin-bottom: 0.5rem;
-        }
-
-        .mb-2\.5 {
-            margin-bottom: 0.625rem;
-        }
-
-        .mb-3 {
-            margin-bottom: 0.75rem;
-        }
-
-        .mb-4 {
-            margin-bottom: 1rem;
-        }
-
-        .mb-5 {
-            margin-bottom: 1.25rem;
-        }
-
-        .mb-6 {
-            margin-bottom: 1.5rem;
-        }
-
-        .mb-8 {
-            margin-bottom: 2rem;
-        }
-
-        .mb-10 {
-            margin-bottom: 2.5rem;
-        }
-
-        .mb-12 {
-            margin-bottom: 3rem;
-        }
-
-        .mb-14 {
-            margin-bottom: 3.5rem;
-        }
-
-        .p-1 {
-            padding: 0.25rem;
-        }
-
-        .p-1\.5 {
-            padding: 0.375rem;
-        }
-
-        .p-2 {
-            padding: 0.5rem;
-        }
-
-        .p-2\.5 {
-            padding: 0.625rem;
-        }
-
-        .p-3 {
-            padding: 0.75rem;
-        }
-
-        .p-3\.5 {
-            padding: 0.875rem;
-        }
-
-        .p-4 {
-            padding: 1rem;
-        }
-
-        .p-5 {
-            padding: 1.25rem;
-        }
-
-        .p-6 {
-            padding: 1.5rem;
-        }
-
-        .p-8 {
-            padding: 2rem;
-        }
-
-        .px-1 {
-            padding-left: 0.25rem;
-            padding-right: 0.25rem;
-        }
-
-        .px-1\.5 {
-            padding-left: 0.375rem;
-            padding-right: 0.375rem;
-        }
-
-        .px-2 {
-            padding-left: 0.5rem;
-            padding-right: 0.5rem;
-        }
-
-        .px-2\.5 {
-            padding-left: 0.625rem;
-            padding-right: 0.625rem;
-        }
-
-        .px-3 {
-            padding-left: 0.75rem;
-            padding-right: 0.75rem;
-        }
-
-        .px-3\.5 {
-            padding-left: 0.875rem;
-            padding-right: 0.875rem;
-        }
-
-        .px-4 {
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
-        .px-5 {
-            padding-left: 1.25rem;
-            padding-right: 1.25rem;
-        }
-
-        .px-6 {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-        }
-
-        .px-8 {
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-
-        .py-0\.5 {
-            padding-top: 0.125rem;
-            padding-bottom: 0.125rem;
-        }
-
-        .py-1 {
-            padding-top: 0.25rem;
-            padding-bottom: 0.25rem;
-        }
-
-        .py-1\.5 {
-            padding-top: 0.375rem;
-            padding-bottom: 0.375rem;
-        }
-
-        .py-2 {
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-        }
-
-        .py-2\.5 {
-            padding-top: 0.625rem;
-            padding-bottom: 0.625rem;
-        }
-
-        .py-3 {
-            padding-top: 0.75rem;
-            padding-bottom: 0.75rem;
-        }
-
-        .py-3\.5 {
-            padding-top: 0.875rem;
-            padding-bottom: 0.875rem;
-        }
-
-        .py-4 {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-
-        .py-5 {
-            padding-top: 1.25rem;
-            padding-bottom: 1.25rem;
-        }
-
-        .py-6 {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-
-        .py-7 {
-            padding-top: 1.75rem;
-            padding-bottom: 1.75rem;
-        }
-
-        .py-8 {
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
-
-        .py-10 {
-            padding-top: 2.5rem;
-            padding-bottom: 2.5rem;
-        }
-
-        .py-12 {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
-        }
-
-        .py-16 {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
-        }
-
-        .pt-0\.5 {
-            padding-top: 0.125rem;
-        }
-
-        .pt-1 {
-            padding-top: 0.25rem;
-        }
-
-        .pt-2 {
-            padding-top: 0.5rem;
-        }
-
-        .pt-4 {
-            padding-top: 1rem;
-        }
-
-        .pt-6 {
-            padding-top: 1.5rem;
-        }
-
-        .pt-28 {
-            padding-top: 7rem;
-        }
-
-        .pb-2 {
-            padding-bottom: 0.5rem;
-        }
-
-        .pb-2\.5 {
-            padding-bottom: 0.625rem;
-        }
-
-        .pb-4 {
-            padding-bottom: 1rem;
-        }
-
-        .pb-6 {
-            padding-bottom: 1.5rem;
-        }
-
-        .pb-10 {
-            padding-bottom: 2.5rem;
-        }
-
-        .pb-24 {
-            padding-bottom: 6rem;
-        }
-
-        .pl-2 {
-            padding-left: 0.5rem;
-        }
-
-        .pl-10 {
-            padding-left: 2.5rem;
-        }
-
-        .pr-4 {
-            padding-right: 1rem;
-        }
-
-        .pr-12 {
-            padding-right: 3rem;
-        }
-
-        .space-y-1> :not([hidden])~ :not([hidden]) {
-            margin-top: 0.25rem;
-        }
-
-        .space-y-1\.5> :not([hidden])~ :not([hidden]) {
-            margin-top: 0.375rem;
-        }
-
-        .space-y-2> :not([hidden])~ :not([hidden]) {
-            margin-top: 0.5rem;
-        }
-
-        .space-y-2\.5> :not([hidden])~ :not([hidden]) {
-            margin-top: 0.625rem;
-        }
-
-        .space-y-3> :not([hidden])~ :not([hidden]) {
-            margin-top: 0.75rem;
-        }
-
-        .space-y-3\.5> :not([hidden])~ :not([hidden]) {
-            margin-top: 0.875rem;
-        }
-
-        .space-y-4> :not([hidden])~ :not([hidden]) {
-            margin-top: 1rem;
-        }
-
-        .space-y-5> :not([hidden])~ :not([hidden]) {
-            margin-top: 1.25rem;
-        }
-
-        .space-y-6> :not([hidden])~ :not([hidden]) {
-            margin-top: 1.5rem;
-        }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .mx-4 { margin-left: 1rem; margin-right: 1rem; }
+        .m-1 { margin: 0.25rem; }
+        .m-2 { margin: 0.5rem; }
+        .mt-0\.5 { margin-top: 0.125rem; }
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-10 { margin-top: 2.5rem; }
+        .mt-24 { margin-top: 6rem; }
+        .mb-1 { margin-bottom: 0.25rem; }
+        .mb-1\.5 { margin-bottom: 0.375rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-2\.5 { margin-bottom: 0.625rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-5 { margin-bottom: 1.25rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-10 { margin-bottom: 2.5rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        .mb-14 { margin-bottom: 3.5rem; }
+        .p-1 { padding: 0.25rem; }
+        .p-1\.5 { padding: 0.375rem; }
+        .p-2 { padding: 0.5rem; }
+        .p-2\.5 { padding: 0.625rem; }
+        .p-3 { padding: 0.75rem; }
+        .p-3\.5 { padding: 0.875rem; }
+        .p-4 { padding: 1rem; }
+        .p-5 { padding: 1.25rem; }
+        .p-6 { padding: 1.5rem; }
+        .p-8 { padding: 2rem; }
+        .px-1 { padding-left: 0.25rem; padding-right: 0.25rem; }
+        .px-1\.5 { padding-left: 0.375rem; padding-right: 0.375rem; }
+        .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+        .px-2\.5 { padding-left: 0.625rem; padding-right: 0.625rem; }
+        .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+        .px-3\.5 { padding-left: 0.875rem; padding-right: 0.875rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .px-8 { padding-left: 2rem; padding-right: 2rem; }
+        .py-0\.5 { padding-top: 0.125rem; padding-bottom: 0.125rem; }
+        .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+        .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        .py-2\.5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
+        .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+        .py-3\.5 { padding-top: 0.875rem; padding-bottom: 0.875rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-5 { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+        .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+        .py-7 { padding-top: 1.75rem; padding-bottom: 1.75rem; }
+        .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+        .py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+        .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+        .pt-0\.5 { padding-top: 0.125rem; }
+        .pt-1 { padding-top: 0.25rem; }
+        .pt-2 { padding-top: 0.5rem; }
+        .pt-4 { padding-top: 1rem; }
+        .pt-6 { padding-top: 1.5rem; }
+        .pt-28 { padding-top: 7rem; }
+        .pb-2 { padding-bottom: 0.5rem; }
+        .pb-2\.5 { padding-bottom: 0.625rem; }
+        .pb-4 { padding-bottom: 1rem; }
+        .pb-6 { padding-bottom: 1.5rem; }
+        .pb-10 { padding-bottom: 2.5rem; }
+        .pb-24 { padding-bottom: 6rem; }
+        .pl-2 { padding-left: 0.5rem; }
+        .pl-10 { padding-left: 2.5rem; }
+        .pr-4 { padding-right: 1rem; }
+        .pr-12 { padding-right: 3rem; }
+
+        .space-y-1 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.25rem; }
+        .space-y-1\.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.375rem; }
+        .space-y-2 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.5rem; }
+        .space-y-2\.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.625rem; }
+        .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.75rem; }
+        .space-y-3\.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.875rem; }
+        .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem; }
+        .space-y-5 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.25rem; }
+        .space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.5rem; }
 
         /* Sizing */
-        .w-2 {
-            width: 0.5rem;
-        }
-
-        .h-2 {
-            height: 0.5rem;
-        }
-
-        .w-3 {
-            width: 0.75rem;
-        }
-
-        .h-3 {
-            height: 0.75rem;
-        }
-
-        .w-3\.5 {
-            width: 0.875rem;
-        }
-
-        .h-3\.5 {
-            height: 0.875rem;
-        }
-
-        .w-4 {
-            width: 1rem;
-        }
-
-        .h-4 {
-            height: 1rem;
-        }
-
-        .w-5 {
-            width: 1.25rem;
-        }
-
-        .h-5 {
-            height: 1.25rem;
-        }
-
-        .w-6 {
-            width: 1.5rem;
-        }
-
-        .h-6 {
-            height: 1.5rem;
-        }
-
-        .w-9 {
-            width: 2.25rem;
-        }
-
-        .h-9 {
-            height: 2.25rem;
-        }
-
-        .w-10 {
-            width: 2.5rem;
-        }
-
-        .h-10 {
-            height: 2.5rem;
-        }
-
-        .w-12 {
-            width: 3rem;
-        }
-
-        .h-12 {
-            height: 3rem;
-        }
-
-        .w-full {
-            width: 100%;
-        }
-
-        .h-1 {
-            height: 0.25rem;
-        }
-
-        .h-48 {
-            height: 12rem;
-        }
-
-        .h-full {
-            height: 100%;
-        }
-
-        .min-h-\[5rem\] {
-            min-height: 5rem;
-        }
-
-        .min-w-0 {
-            min-width: 0;
-        }
-
-        .min-w-\[22px\] {
-            min-width: 22px;
-        }
-
-        .h-\[22px\] {
-            height: 22px;
-        }
-
-        .min-h-\[120px\] {
-            min-height: 120px;
-        }
-
-        .max-w-xs {
-            max-width: 20rem;
-        }
-
-        .max-w-md {
-            max-width: 28rem;
-        }
-
-        .max-w-lg {
-            max-width: 32rem;
-        }
-
-        .max-w-xl {
-            max-width: 36rem;
-        }
-
-        .max-w-2xl {
-            max-width: 42rem;
-        }
-
-        .max-w-4xl {
-            max-width: 56rem;
-        }
-
-        .max-w-7xl {
-            max-width: 80rem;
-        }
-
-        .max-h-56 {
-            max-height: 14rem;
-        }
-
-        .max-h-\[62vh\] {
-            max-height: 62vh;
-        }
-
-        .max-h-\[90vh\] {
-            max-height: 90vh;
-        }
-
-        .max-h-\[92vh\] {
-            max-height: 92vh;
-        }
-
-        .w-\[520px\] {
-            width: 520px;
-        }
-
-        .h-\[520px\] {
-            height: 520px;
-        }
-
-        .w-\[480px\] {
-            width: 480px;
-        }
-
-        .h-\[480px\] {
-            height: 480px;
-        }
-
-        .w-\[500px\] {
-            width: 500px;
-        }
-
-        .h-\[500px\] {
-            height: 500px;
-        }
+        .w-2 { width: 0.5rem; }
+        .h-2 { height: 0.5rem; }
+        .w-3 { width: 0.75rem; }
+        .h-3 { height: 0.75rem; }
+        .w-3\.5 { width: 0.875rem; }
+        .h-3\.5 { height: 0.875rem; }
+        .w-4 { width: 1rem; }
+        .h-4 { height: 1rem; }
+        .w-5 { width: 1.25rem; }
+        .h-5 { height: 1.25rem; }
+        .w-6 { width: 1.5rem; }
+        .h-6 { height: 1.5rem; }
+        .w-9 { width: 2.25rem; }
+        .h-9 { height: 2.25rem; }
+        .w-10 { width: 2.5rem; }
+        .h-10 { height: 2.5rem; }
+        .w-12 { width: 3rem; }
+        .h-12 { height: 3rem; }
+        .w-full { width: 100%; }
+        .h-1 { height: 0.25rem; }
+        .h-48 { height: 12rem; }
+        .h-full { height: 100%; }
+        .min-h-\[5rem\] { min-height: 5rem; }
+        .min-w-0 { min-width: 0; }
+        .min-w-\[22px\] { min-width: 22px; }
+        .h-\[22px\] { height: 22px; }
+        .min-h-\[120px\] { min-height: 120px; }
+        .max-w-xs { max-width: 20rem; }
+        .max-w-md { max-width: 28rem; }
+        .max-w-lg { max-width: 32rem; }
+        .max-w-xl { max-width: 36rem; }
+        .max-w-2xl { max-width: 42rem; }
+        .max-w-4xl { max-width: 56rem; }
+        .max-w-7xl { max-width: 80rem; }
+        .max-h-56 { max-height: 14rem; }
+        .max-h-\[62vh\] { max-height: 62vh; }
+        .max-h-\[90vh\] { max-height: 90vh; }
+        .max-h-\[92vh\] { max-height: 92vh; }
+        .w-\[520px\] { width: 520px; }
+        .h-\[520px\] { height: 520px; }
+        .w-\[480px\] { width: 480px; }
+        .h-\[480px\] { height: 480px; }
+        .w-\[500px\] { width: 500px; }
+        .h-\[500px\] { height: 500px; }
 
         /* Typography */
-        .text-left {
-            text-align: left;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .text-\[10px\] {
-            font-size: 10px;
-        }
-
-        .text-\[11px\] {
-            font-size: 11px;
-        }
-
-        .text-xs {
-            font-size: 0.75rem;
-            line-height: 1rem;
-        }
-
-        .text-sm {
-            font-size: 0.875rem;
-            line-height: 1.25rem;
-        }
-
-        .text-base {
-            font-size: 1rem;
-            line-height: 1.5rem;
-        }
-
-        .text-lg {
-            font-size: 1.125rem;
-            line-height: 1.75rem;
-        }
-
-        .text-xl {
-            font-size: 1.25rem;
-            line-height: 1.75rem;
-        }
-
-        .text-2xl {
-            font-size: 1.5rem;
-            line-height: 2rem;
-        }
-
-        .text-4xl {
-            font-size: 2.25rem;
-            line-height: 2.5rem;
-        }
-
-        .font-normal {
-            font-weight: 400;
-        }
-
-        .font-medium {
-            font-weight: 500;
-        }
-
-        .font-semibold {
-            font-weight: 600;
-        }
-
-        .font-bold {
-            font-weight: 700;
-        }
-
-        .uppercase {
-            text-transform: uppercase;
-        }
-
-        .italic {
-            font-style: italic;
-        }
-
-        .line-through {
-            text-decoration: line-through;
-        }
-
-        .underline {
-            text-decoration: underline;
-        }
-
-        .underline-offset-4 {
-            text-underline-offset: 4px;
-        }
-
-        .leading-none {
-            line-height: 1;
-        }
-
-        .leading-snug {
-            line-height: 1.375;
-        }
-
-        .leading-relaxed {
-            line-height: 1.625;
-        }
-
-        .leading-\[1\.1\] {
-            line-height: 1.1;
-        }
-
-        .tracking-tighter {
-            letter-spacing: -0.05em;
-        }
-
-        .tracking-tight {
-            letter-spacing: -0.025em;
-        }
-
-        .tracking-wide {
-            letter-spacing: 0.025em;
-        }
-
-        .tracking-wider {
-            letter-spacing: 0.05em;
-        }
-
-        .tracking-widest {
-            letter-spacing: 0.1em;
-        }
-
-        .tracking-\[0\.2em\] {
-            letter-spacing: 0.2em;
-        }
-
-        .stroke-\[3\] {
-            stroke-width: 3;
-        }
+        .text-left { text-align: left; }
+        .text-center { text-align: center; }
+        .text-\[10px\] { font-size: 10px; }
+        .text-\[11px\] { font-size: 11px; }
+        .text-xs { font-size: 0.75rem; line-height: 1rem; }
+        .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+        .text-base { font-size: 1rem; line-height: 1.5rem; }
+        .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+        .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+        .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+        .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+        .font-normal { font-weight: 400; }
+        .font-medium { font-weight: 500; }
+        .font-semibold { font-weight: 600; }
+        .font-bold { font-weight: 700; }
+        .uppercase { text-transform: uppercase; }
+        .italic { font-style: italic; }
+        .line-through { text-decoration: line-through; }
+        .underline { text-decoration: underline; }
+        .underline-offset-4 { text-underline-offset: 4px; }
+        .leading-none { line-height: 1; }
+        .leading-snug { line-height: 1.375; }
+        .leading-relaxed { line-height: 1.625; }
+        .leading-\[1\.1\] { line-height: 1.1; }
+        .tracking-tighter { letter-spacing: -0.05em; }
+        .tracking-tight { letter-spacing: -0.025em; }
+        .tracking-wide { letter-spacing: 0.025em; }
+        .tracking-wider { letter-spacing: 0.05em; }
+        .tracking-widest { letter-spacing: 0.1em; }
+        .tracking-\[0\.2em\] { letter-spacing: 0.2em; }
+        .stroke-\[3\] { stroke-width: 3; }
 
         /* Colors */
-        .text-white {
-            color: #ffffff;
-        }
+        .text-white { color: #ffffff; }
+        .text-transparent { color: transparent; }
+        .text-\[\#07090e\] { color: #07090e; }
+        .text-\[\#07090e\]\/80 { color: rgba(7, 9, 14, 0.8); }
+        .text-\[\#00f0ff\] { color: #00f0ff; }
+        .text-\[\#8b5cf6\] { color: #8b5cf6; }
+        .text-\[\#10b981\] { color: #10b981; }
+        .text-\[\#ff0055\] { color: #ff0055; }
+        .text-amber-200 { color: #fde68a; }
+        .text-amber-300 { color: #fcd34d; }
+        .text-amber-400 { color: #fbbf24; }
+        .text-slate-200 { color: #e2e8f0; }
+        .text-slate-300 { color: #cbd5e1; }
+        .text-slate-400 { color: #a8b5c7; }
+        .text-slate-500 { color: #94a3b8; }
+        .text-emerald-100 { color: #d1fae5; }
+        .placeholder-slate-500::placeholder, textarea::placeholder, input::placeholder { color: #64748b; opacity: 1; }
+        .placeholder-emerald-200\/35::placeholder { color: rgba(167, 243, 208, 0.65); }
+        .accent-\[\#10b981\] { accent-color: #10b981; }
+        .fill-current { fill: currentColor; }
 
-        .text-transparent {
-            color: transparent;
-        }
-
-        .text-\[\#07090e\] {
-            color: #07090e;
-        }
-
-        .text-\[\#07090e\]\/80 {
-            color: rgba(7, 9, 14, 0.8);
-        }
-
-        .text-\[\#00f0ff\] {
-            color: #00f0ff;
-        }
-
-        .text-\[\#8b5cf6\] {
-            color: #8b5cf6;
-        }
-
-        .text-\[\#10b981\] {
-            color: #10b981;
-        }
-
-        .text-\[\#ff0055\] {
-            color: #ff0055;
-        }
-
-        .text-amber-200 {
-            color: #fde68a;
-        }
-
-        .text-amber-300 {
-            color: #fcd34d;
-        }
-
-        .text-amber-400 {
-            color: #fbbf24;
-        }
-
-        .text-slate-200 {
-            color: #e2e8f0;
-        }
-
-        .text-slate-300 {
-            color: #cbd5e1;
-        }
-
-        .text-slate-400 {
-            color: #a8b5c7;
-        }
-
-        .text-slate-500 {
-            color: #94a3b8;
-        }
-
-        .text-emerald-100 {
-            color: #d1fae5;
-        }
-
-        .placeholder-slate-500::placeholder,
-        textarea::placeholder,
-        input::placeholder {
-            color: #64748b;
-            opacity: 1;
-        }
-
-        .placeholder-emerald-200\/35::placeholder {
-            color: rgba(167, 243, 208, 0.65);
-        }
-
-        .accent-\[\#10b981\] {
-            accent-color: #10b981;
-        }
-
-        .fill-current {
-            fill: currentColor;
-        }
-
-        .bg-\[\#07090e\] {
-            background-color: #07090e;
-        }
-
-        .bg-\[\#07090e\]\/80 {
-            background-color: rgba(7, 9, 14, 0.8);
-        }
-
-        .bg-\[\#07090e\]\/90 {
-            background-color: rgba(7, 9, 14, 0.9);
-        }
-
-        .bg-\[\#07090e\]\/95 {
-            background-color: rgba(7, 9, 14, 0.95);
-        }
-
-        .bg-\[\#0c101a\] {
-            background-color: #0c101a;
-        }
-
-        .bg-\[\#0c101a\]\/60 {
-            background-color: rgba(12, 16, 26, 0.6);
-        }
-
-        .bg-\[\#0c101a\]\/80 {
-            background-color: rgba(12, 16, 26, 0.88);
-        }
-
-        .bg-\[\#0c101a\]\/90 {
-            background-color: rgba(12, 16, 26, 0.92);
-        }
-
-        .bg-\[\#04060a\]\/75 {
-            background-color: rgba(4, 6, 10, 0.78);
-        }
-
-        .bg-\[\#04060a\]\/80 {
-            background-color: rgba(4, 6, 10, 0.82);
-        }
-
-        .bg-\[\#04060a\]\/85 {
-            background-color: rgba(4, 6, 10, 0.88);
-        }
-
-        .bg-\[\#00f0ff\] {
-            background-color: #00f0ff;
-        }
-
-        .bg-\[\#00f0ff\]\/10 {
-            background-color: rgba(0, 240, 255, 0.1);
-        }
-
-        .bg-\[\#00f0ff\]\/15 {
-            background-color: rgba(0, 240, 255, 0.15);
-        }
-
-        .bg-\[\#00f0ff\]\/\[0\.045\] {
-            background-color: rgba(0, 240, 255, 0.045);
-        }
-
-        .bg-\[\#00f0ff\]\/\[0\.06\] {
-            background-color: rgba(0, 240, 255, 0.06);
-        }
-
-        .bg-\[\#8b5cf6\]\/10 {
-            background-color: rgba(139, 92, 246, 0.1);
-        }
-
-        .bg-\[\#8b5cf6\]\/15 {
-            background-color: rgba(139, 92, 246, 0.15);
-        }
-
-        .bg-\[\#8b5cf6\]\/\[0\.055\] {
-            background-color: rgba(139, 92, 246, 0.055);
-        }
-
-        .bg-\[\#10b981\] {
-            background-color: #10b981;
-        }
-
-        .bg-\[\#10b981\]\/10 {
-            background-color: rgba(16, 185, 129, 0.1);
-        }
-
-        .bg-\[\#10b981\]\/15 {
-            background-color: rgba(16, 185, 129, 0.15);
-        }
-
-        .bg-\[\#10b981\]\/\[0\.035\] {
-            background-color: rgba(16, 185, 129, 0.035);
-        }
-
-        .bg-\[\#10b981\]\/\[0\.07\] {
-            background-color: rgba(16, 185, 129, 0.07);
-        }
-
-        .bg-\[\#ff0055\] {
-            background-color: #ff0055;
-        }
-
-        .bg-\[\#ff0055\]\/10 {
-            background-color: rgba(255, 0, 85, 0.1);
-        }
-
-        .bg-\[\#ff0055\]\/15 {
-            background-color: rgba(255, 0, 85, 0.15);
-        }
-
-        .bg-amber-400\/10 {
-            background-color: rgba(251, 191, 36, 0.1);
-        }
-
-        .bg-amber-400\/15 {
-            background-color: rgba(251, 191, 36, 0.15);
-        }
-
-        .bg-amber-500 {
-            background-color: #f59e0b;
-        }
-
-        .bg-white\/\[0\.02\] {
-            background-color: rgba(255, 255, 255, 0.02);
-        }
-
-        .bg-white\/\[0\.03\] {
-            background-color: rgba(255, 255, 255, 0.03);
-        }
-
-        .bg-white\/\[0\.04\] {
-            background-color: rgba(255, 255, 255, 0.04);
-        }
-
-        .bg-white\/\[0\.05\] {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .bg-white\/\[0\.06\] {
-            background-color: rgba(255, 255, 255, 0.06);
-        }
+        .bg-\[\#07090e\] { background-color: #07090e; }
+        .bg-\[\#07090e\]\/80 { background-color: rgba(7, 9, 14, 0.8); }
+        .bg-\[\#07090e\]\/90 { background-color: rgba(7, 9, 14, 0.9); }
+        .bg-\[\#07090e\]\/95 { background-color: rgba(7, 9, 14, 0.95); }
+        .bg-\[\#0c101a\] { background-color: #0c101a; }
+        .bg-\[\#0c101a\]\/60 { background-color: rgba(12, 16, 26, 0.6); }
+        .bg-\[\#0c101a\]\/80 { background-color: rgba(12, 16, 26, 0.88); }
+        .bg-\[\#0c101a\]\/90 { background-color: rgba(12, 16, 26, 0.92); }
+        .bg-\[\#04060a\]\/75 { background-color: rgba(4, 6, 10, 0.78); }
+        .bg-\[\#04060a\]\/80 { background-color: rgba(4, 6, 10, 0.82); }
+        .bg-\[\#04060a\]\/85 { background-color: rgba(4, 6, 10, 0.88); }
+        .bg-\[\#00f0ff\] { background-color: #00f0ff; }
+        .bg-\[\#00f0ff\]\/10 { background-color: rgba(0, 240, 255, 0.1); }
+        .bg-\[\#00f0ff\]\/15 { background-color: rgba(0, 240, 255, 0.15); }
+        .bg-\[\#00f0ff\]\/\[0\.045\] { background-color: rgba(0, 240, 255, 0.045); }
+        .bg-\[\#00f0ff\]\/\[0\.06\] { background-color: rgba(0, 240, 255, 0.06); }
+        .bg-\[\#8b5cf6\]\/10 { background-color: rgba(139, 92, 246, 0.1); }
+        .bg-\[\#8b5cf6\]\/15 { background-color: rgba(139, 92, 246, 0.15); }
+        .bg-\[\#8b5cf6\]\/\[0\.055\] { background-color: rgba(139, 92, 246, 0.055); }
+        .bg-\[\#10b981\] { background-color: #10b981; }
+        .bg-\[\#10b981\]\/10 { background-color: rgba(16, 185, 129, 0.1); }
+        .bg-\[\#10b981\]\/15 { background-color: rgba(16, 185, 129, 0.15); }
+        .bg-\[\#10b981\]\/\[0\.035\] { background-color: rgba(16, 185, 129, 0.035); }
+        .bg-\[\#10b981\]\/\[0\.07\] { background-color: rgba(16, 185, 129, 0.07); }
+        .bg-\[\#ff0055\] { background-color: #ff0055; }
+        .bg-\[\#ff0055\]\/10 { background-color: rgba(255, 0, 85, 0.1); }
+        .bg-\[\#ff0055\]\/15 { background-color: rgba(255, 0, 85, 0.15); }
+        .bg-amber-400\/10 { background-color: rgba(251, 191, 36, 0.1); }
+        .bg-amber-400\/15 { background-color: rgba(251, 191, 36, 0.15); }
+        .bg-amber-500 { background-color: #f59e0b; }
+        .bg-white\/\[0\.02\] { background-color: rgba(255, 255, 255, 0.02); }
+        .bg-white\/\[0\.03\] { background-color: rgba(255, 255, 255, 0.03); }
+        .bg-white\/\[0\.04\] { background-color: rgba(255, 255, 255, 0.04); }
+        .bg-white\/\[0\.05\] { background-color: rgba(255, 255, 255, 0.05); }
+        .bg-white\/\[0\.06\] { background-color: rgba(255, 255, 255, 0.06); }
 
         /* Borders & Radius */
-        .border {
-            border-width: 1px;
-        }
+        .border { border-width: 1px; }
+        .border-t { border-top-width: 1px; }
+        .border-b { border-bottom-width: 1px; }
+        .border-l { border-left-width: 1px; }
+        .rounded-md { border-radius: 0.375rem; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .rounded-xl { border-radius: 0.75rem; }
+        .rounded-2xl { border-radius: 1rem; }
+        .rounded-3xl { border-radius: 1.5rem; }
+        .rounded-full { border-radius: 9999px; }
 
-        .border-t {
-            border-top-width: 1px;
-        }
-
-        .border-b {
-            border-bottom-width: 1px;
-        }
-
-        .border-l {
-            border-left-width: 1px;
-        }
-
-        .rounded-md {
-            border-radius: 0.375rem;
-        }
-
-        .rounded-lg {
-            border-radius: 0.5rem;
-        }
-
-        .rounded-xl {
-            border-radius: 0.75rem;
-        }
-
-        .rounded-2xl {
-            border-radius: 1rem;
-        }
-
-        .rounded-3xl {
-            border-radius: 1.5rem;
-        }
-
-        .rounded-full {
-            border-radius: 9999px;
-        }
-
-        .border-white\/\[0\.05\] {
-            border-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .border-white\/\[0\.06\] {
-            border-color: rgba(255, 255, 255, 0.06);
-        }
-
-        .border-white\/\[0\.07\] {
-            border-color: rgba(255, 255, 255, 0.07);
-        }
-
-        .border-white\/\[0\.08\] {
-            border-color: rgba(255, 255, 255, 0.08);
-        }
-
-        .border-white\/\[0\.1\] {
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .border-white\/\[0\.12\] {
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-
-        .border-white\/20 {
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .border-\[\#00f0ff\] {
-            border-color: #00f0ff;
-        }
-
-        .border-\[\#00f0ff\]\/25 {
-            border-color: rgba(0, 240, 255, 0.25);
-        }
-
-        .border-\[\#00f0ff\]\/30 {
-            border-color: rgba(0, 240, 255, 0.3);
-        }
-
-        .border-\[\#00f0ff\]\/40 {
-            border-color: rgba(0, 240, 255, 0.4);
-        }
-
-        .border-\[\#00f0ff\]\/50 {
-            border-color: rgba(0, 240, 255, 0.5);
-        }
-
-        .border-\[\#00f0ff\]\/60 {
-            border-color: rgba(0, 240, 255, 0.6);
-        }
-
-        .border-\[\#8b5cf6\]\/25 {
-            border-color: rgba(139, 92, 246, 0.25);
-        }
-
-        .border-\[\#8b5cf6\]\/30 {
-            border-color: rgba(139, 92, 246, 0.3);
-        }
-
-        .border-\[\#8b5cf6\]\/40 {
-            border-color: rgba(139, 92, 246, 0.4);
-        }
-
-        .border-\[\#10b981\]\/25 {
-            border-color: rgba(16, 185, 129, 0.25);
-        }
-
-        .border-\[\#10b981\]\/30 {
-            border-color: rgba(16, 185, 129, 0.3);
-        }
-
-        .border-\[\#10b981\]\/35 {
-            border-color: rgba(16, 185, 129, 0.35);
-        }
-
-        .border-\[\#10b981\]\/40 {
-            border-color: rgba(16, 185, 129, 0.4);
-        }
-
-        .border-\[\#10b981\]\/50 {
-            border-color: rgba(16, 185, 129, 0.5);
-        }
-
-        .border-\[\#ff0055\]\/30 {
-            border-color: rgba(255, 0, 85, 0.3);
-        }
-
-        .border-\[\#ff0055\]\/40 {
-            border-color: rgba(255, 0, 85, 0.4);
-        }
-
-        .border-\[\#ff0055\]\/60 {
-            border-color: rgba(255, 0, 85, 0.6);
-        }
-
-        .border-amber-400\/25 {
-            border-color: rgba(251, 191, 36, 0.25);
-        }
-
-        .border-amber-400\/30 {
-            border-color: rgba(251, 191, 36, 0.3);
-        }
-
-        .border-amber-400\/40 {
-            border-color: rgba(251, 191, 36, 0.4);
-        }
+        .border-white\/\[0\.05\] { border-color: rgba(255, 255, 255, 0.05); }
+        .border-white\/\[0\.06\] { border-color: rgba(255, 255, 255, 0.06); }
+        .border-white\/\[0\.07\] { border-color: rgba(255, 255, 255, 0.07); }
+        .border-white\/\[0\.08\] { border-color: rgba(255, 255, 255, 0.08); }
+        .border-white\/\[0\.1\] { border-color: rgba(255, 255, 255, 0.1); }
+        .border-white\/\[0\.12\] { border-color: rgba(255, 255, 255, 0.12); }
+        .border-white\/20 { border-color: rgba(255, 255, 255, 0.2); }
+        .border-\[\#00f0ff\] { border-color: #00f0ff; }
+        .border-\[\#00f0ff\]\/25 { border-color: rgba(0, 240, 255, 0.25); }
+        .border-\[\#00f0ff\]\/30 { border-color: rgba(0, 240, 255, 0.3); }
+        .border-\[\#00f0ff\]\/40 { border-color: rgba(0, 240, 255, 0.4); }
+        .border-\[\#00f0ff\]\/50 { border-color: rgba(0, 240, 255, 0.5); }
+        .border-\[\#00f0ff\]\/60 { border-color: rgba(0, 240, 255, 0.6); }
+        .border-\[\#8b5cf6\]\/25 { border-color: rgba(139, 92, 246, 0.25); }
+        .border-\[\#8b5cf6\]\/30 { border-color: rgba(139, 92, 246, 0.3); }
+        .border-\[\#8b5cf6\]\/40 { border-color: rgba(139, 92, 246, 0.4); }
+        .border-\[\#10b981\]\/25 { border-color: rgba(16, 185, 129, 0.25); }
+        .border-\[\#10b981\]\/30 { border-color: rgba(16, 185, 129, 0.3); }
+        .border-\[\#10b981\]\/35 { border-color: rgba(16, 185, 129, 0.35); }
+        .border-\[\#10b981\]\/40 { border-color: rgba(16, 185, 129, 0.4); }
+        .border-\[\#10b981\]\/50 { border-color: rgba(16, 185, 129, 0.5); }
+        .border-\[\#ff0055\]\/30 { border-color: rgba(255, 0, 85, 0.3); }
+        .border-\[\#ff0055\]\/40 { border-color: rgba(255, 0, 85, 0.4); }
+        .border-\[\#ff0055\]\/60 { border-color: rgba(255, 0, 85, 0.6); }
+        .border-amber-400\/25 { border-color: rgba(251, 191, 36, 0.25); }
+        .border-amber-400\/30 { border-color: rgba(251, 191, 36, 0.3); }
+        .border-amber-400\/40 { border-color: rgba(251, 191, 36, 0.4); }
 
         /* Gradients, Shadows & GPU-Safe Blur */
-        .bg-gradient-to-r {
-            background-image: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-stops, var(--tw-gradient-to)));
-        }
+        .bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-stops, var(--tw-gradient-to))); }
+        .bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-from), var(--tw-gradient-stops, var(--tw-gradient-to))); }
+        .bg-gradient-to-t { background-image: linear-gradient(to top, var(--tw-gradient-from), var(--tw-gradient-stops, var(--tw-gradient-to))); }
+        .from-\[\#07090e\]\/80 { --tw-gradient-from: rgba(7, 9, 14, 0.8); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(7, 9, 14, 0)); }
+        .via-\[\#07090e\]\/20 { --tw-gradient-stops: var(--tw-gradient-from), rgba(7, 9, 14, 0.2), var(--tw-gradient-to, rgba(7, 9, 14, 0)); }
+        .to-transparent { --tw-gradient-to: transparent; }
+        .from-\[\#00f0ff\] { --tw-gradient-from: #00f0ff; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 240, 255, 0)); }
+        .from-\[\#00f0ff\]\/20 { --tw-gradient-from: rgba(0, 240, 255, 0.2); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 240, 255, 0)); }
+        .from-\[\#8b5cf6\] { --tw-gradient-from: #8b5cf6; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(139, 92, 246, 0)); }
+        .from-amber-500 { --tw-gradient-from: #f59e0b; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(245, 158, 11, 0)); }
+        .from-amber-400 { --tw-gradient-from: #fbbf24; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(251, 191, 36, 0)); }
+        .via-\[\#8b5cf6\] { --tw-gradient-stops: var(--tw-gradient-from), #8b5cf6, var(--tw-gradient-to, rgba(139, 92, 246, 0)); }
+        .via-\[\#8b5cf6\]\/20 { --tw-gradient-stops: var(--tw-gradient-from), rgba(139, 92, 246, 0.2), var(--tw-gradient-to, rgba(139, 92, 246, 0)); }
+        .via-\[\#00f0ff\] { --tw-gradient-stops: var(--tw-gradient-from), #00f0ff, var(--tw-gradient-to, rgba(0, 240, 255, 0)); }
+        .via-amber-300 { --tw-gradient-stops: var(--tw-gradient-from), #fcd34d, var(--tw-gradient-to, rgba(252, 211, 77, 0)); }
+        .to-\[\#10b981\] { --tw-gradient-to: #10b981; }
+        .to-\[\#10b981\]\/20 { --tw-gradient-to: rgba(16, 185, 129, 0.2); }
+        .to-\[\#00f0ff\] { --tw-gradient-to: #00f0ff; }
+        .to-\[\#8b5cf6\] { --tw-gradient-to: #8b5cf6; }
+        .to-amber-500 { --tw-gradient-to: #f59e0b; }
+        .bg-clip-text { -webkit-background-clip: text; background-clip: text; }
 
-        .bg-gradient-to-br {
-            background-image: linear-gradient(to bottom right, var(--tw-gradient-from), var(--tw-gradient-stops, var(--tw-gradient-to)));
-        }
+        .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65); }
+        .shadow-cyan-glow { box-shadow: 0 0 24px -4px rgba(0, 240, 255, 0.25); }
+        .shadow-violet-glow { box-shadow: 0 0 24px -4px rgba(139, 92, 246, 0.25); }
+        .shadow-emerald-glow { box-shadow: 0 0 24px -4px rgba(16, 185, 129, 0.25); }
+        .shadow-pink-glow { box-shadow: 0 0 24px -4px rgba(255, 0, 85, 0.35); }
+        .shadow-amber-glow { box-shadow: 0 0 24px -4px rgba(245, 158, 11, 0.35); }
+        .shadow-\[0_0_24px_-4px_rgba\(251\,191\,36\,0\.12\)\] { box-shadow: 0 0 24px -4px rgba(251, 191, 36, 0.12); }
 
-        .bg-gradient-to-t {
-            background-image: linear-gradient(to top, var(--tw-gradient-from), var(--tw-gradient-stops, var(--tw-gradient-to)));
-        }
-
-        .from-\[\#07090e\]\/80 {
-            --tw-gradient-from: rgba(7, 9, 14, 0.8);
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(7, 9, 14, 0));
-        }
-
-        .via-\[\#07090e\]\/20 {
-            --tw-gradient-stops: var(--tw-gradient-from), rgba(7, 9, 14, 0.2), var(--tw-gradient-to, rgba(7, 9, 14, 0));
-        }
-
-        .to-transparent {
-            --tw-gradient-to: transparent;
-        }
-
-        .from-\[\#00f0ff\] {
-            --tw-gradient-from: #00f0ff;
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 240, 255, 0));
-        }
-
-        .from-\[\#00f0ff\]\/20 {
-            --tw-gradient-from: rgba(0, 240, 255, 0.2);
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 240, 255, 0));
-        }
-
-        .from-\[\#8b5cf6\] {
-            --tw-gradient-from: #8b5cf6;
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(139, 92, 246, 0));
-        }
-
-        .from-amber-500 {
-            --tw-gradient-from: #f59e0b;
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(245, 158, 11, 0));
-        }
-
-        .from-amber-400 {
-            --tw-gradient-from: #fbbf24;
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(251, 191, 36, 0));
-        }
-
-        .via-\[\#8b5cf6\] {
-            --tw-gradient-stops: var(--tw-gradient-from), #8b5cf6, var(--tw-gradient-to, rgba(139, 92, 246, 0));
-        }
-
-        .via-\[\#8b5cf6\]\/20 {
-            --tw-gradient-stops: var(--tw-gradient-from), rgba(139, 92, 246, 0.2), var(--tw-gradient-to, rgba(139, 92, 246, 0));
-        }
-
-        .via-\[\#00f0ff\] {
-            --tw-gradient-stops: var(--tw-gradient-from), #00f0ff, var(--tw-gradient-to, rgba(0, 240, 255, 0));
-        }
-
-        .via-amber-300 {
-            --tw-gradient-stops: var(--tw-gradient-from), #fcd34d, var(--tw-gradient-to, rgba(252, 211, 77, 0));
-        }
-
-        .to-\[\#10b981\] {
-            --tw-gradient-to: #10b981;
-        }
-
-        .to-\[\#10b981\]\/20 {
-            --tw-gradient-to: rgba(16, 185, 129, 0.2);
-        }
-
-        .to-\[\#00f0ff\] {
-            --tw-gradient-to: #00f0ff;
-        }
-
-        .to-\[\#8b5cf6\] {
-            --tw-gradient-to: #8b5cf6;
-        }
-
-        .to-amber-500 {
-            --tw-gradient-to: #f59e0b;
-        }
-
-        .bg-clip-text {
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-
-        .shadow-2xl {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65);
-        }
-
-        .shadow-cyan-glow {
-            box-shadow: 0 0 24px -4px rgba(0, 240, 255, 0.25);
-        }
-
-        .shadow-violet-glow {
-            box-shadow: 0 0 24px -4px rgba(139, 92, 246, 0.25);
-        }
-
-        .shadow-emerald-glow {
-            box-shadow: 0 0 24px -4px rgba(16, 185, 129, 0.25);
-        }
-
-        .shadow-pink-glow {
-            box-shadow: 0 0 24px -4px rgba(255, 0, 85, 0.35);
-        }
-
-        .shadow-amber-glow {
-            box-shadow: 0 0 24px -4px rgba(245, 158, 11, 0.35);
-        }
-
-        .shadow-\[0_0_24px_-4px_rgba\(251\,191\,36\,0\.12\)\] {
-            box-shadow: 0 0 24px -4px rgba(251, 191, 36, 0.12);
-        }
-
-        .backdrop-blur-sm {
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-        }
-
-        .backdrop-blur-md {
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .backdrop-blur-xl {
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-        }
-
+        .backdrop-blur-sm { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+        .backdrop-blur-md { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+        .backdrop-blur-xl { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
         /* Radial gradients instead of expensive 140px mobile GPU blur filters */
-        .mesh-cyan {
-            background: radial-gradient(circle, rgba(0, 240, 255, 0.08) 0%, transparent 70%);
-        }
-
-        .mesh-violet {
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.09) 0%, transparent 70%);
-        }
-
-        .mesh-emerald {
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
-        }
+        .mesh-cyan { background: radial-gradient(circle, rgba(0, 240, 255, 0.08) 0%, transparent 70%); }
+        .mesh-violet { background: radial-gradient(circle, rgba(139, 92, 246, 0.09) 0%, transparent 70%); }
+        .mesh-emerald { background: radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%); }
 
         /* Transitions & Transforms */
-        .opacity-0 {
-            opacity: 0;
-        }
+        .opacity-0 { opacity: 0; }
+        .opacity-90 { opacity: 0.9; }
+        .opacity-100 { opacity: 1; }
+        .transform { transform: translateZ(0); }
+        .-translate-y-full { transform: translateY(-100%); }
+        .translate-y-0 { transform: translateY(0); }
+        .translate-y-4 { transform: translateY(1rem); }
+        .translate-x-full { transform: translateX(100%); }
+        .object-cover { object-fit: cover; }
+        .object-center { object-position: center; }
+        .transition { transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1); }
+        .transition-all { transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1); }
+        .transition-colors { transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease; }
+        .transition-opacity { transition: opacity 250ms ease; }
+        .transition-transform { transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1); }
+        .duration-200 { transition-duration: 200ms; }
+        .duration-300 { transition-duration: 300ms; }
+        .duration-500 { transition-duration: 500ms; }
+        .ease-out { transition-timing-function: cubic-bezier(0, 0, 0.2, 1); }
 
-        .opacity-90 {
-            opacity: 0.9;
-        }
-
-        .opacity-100 {
-            opacity: 1;
-        }
-
-        .transform {
-            transform: translateZ(0);
-        }
-
-        .-translate-y-full {
-            transform: translateY(-100%);
-        }
-
-        .translate-y-0 {
-            transform: translateY(0);
-        }
-
-        .translate-y-4 {
-            transform: translateY(1rem);
-        }
-
-        .translate-x-full {
-            transform: translateX(100%);
-        }
-
-        .object-cover {
-            object-fit: cover;
-        }
-
-        .object-center {
-            object-position: center;
-        }
-
-        .transition {
-            transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .transition-all {
-            transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .transition-colors {
-            transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease;
-        }
-
-        .transition-opacity {
-            transition: opacity 250ms ease;
-        }
-
-        .transition-transform {
-            transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .duration-200 {
-            transition-duration: 200ms;
-        }
-
-        .duration-300 {
-            transition-duration: 300ms;
-        }
-
-        .duration-500 {
-            transition-duration: 500ms;
-        }
-
-        .ease-out {
-            transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-        }
-
-        @keyframes pulse {
-            50% {
-                opacity: 0.5;
-            }
-        }
-
-        .animate-pulse {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
+        @keyframes pulse { 50% { opacity: 0.5; } }
+        .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 
         /* Interactive States */
-        .hover\:text-white:hover {
-            color: #ffffff;
-        }
+        .hover\:text-white:hover { color: #ffffff; }
+        .hover\:text-\[\#07090e\]:hover { color: #07090e; }
+        .hover\:text-\[\#00f0ff\]:hover { color: #00f0ff; }
+        .hover\:text-\[\#8b5cf6\]:hover { color: #8b5cf6; }
+        .hover\:text-\[\#10b981\]:hover { color: #10b981; }
+        .hover\:text-\[\#ff0055\]:hover { color: #ff0055; }
+        .hover\:text-amber-300:hover { color: #fcd34d; }
+        .hover\:text-slate-200:hover { color: #e2e8f0; }
 
-        .hover\:text-\[\#07090e\]:hover {
-            color: #07090e;
-        }
+        .hover\:bg-\[\#00f0ff\]:hover { background-color: #00f0ff; }
+        .hover\:bg-\[\#00f0ff\]\/10:hover { background-color: rgba(0, 240, 255, 0.1); }
+        .hover\:bg-\[\#00f0ff\]\/15:hover { background-color: rgba(0, 240, 255, 0.15); }
+        .hover\:bg-\[\#33f3ff\]:hover { background-color: #33f3ff; }
+        .hover\:bg-\[\#8b5cf6\]\/15:hover { background-color: rgba(139, 92, 246, 0.15); }
+        .hover\:bg-\[\#10b981\]\/15:hover { background-color: rgba(16, 185, 129, 0.15); }
+        .hover\:bg-\[\#ff0055\]\/10:hover { background-color: rgba(255, 0, 85, 0.1); }
+        .hover\:bg-\[\#ff0055\]\/20:hover { background-color: rgba(255, 0, 85, 0.2); }
+        .hover\:bg-\[\#ff0055\]\/25:hover { background-color: rgba(255, 0, 85, 0.25); }
+        .hover\:bg-amber-400:hover { background-color: #fbbf24; }
+        .hover\:bg-amber-400\/15:hover { background-color: rgba(251, 191, 36, 0.15); }
+        .hover\:bg-white\/\[0\.06\]:hover { background-color: rgba(255, 255, 255, 0.06); }
+        .hover\:bg-white\/\[0\.1\]:hover { background-color: rgba(255, 255, 255, 0.1); }
+        .hover\:opacity-95:hover { opacity: 0.95; }
 
-        .hover\:text-\[\#00f0ff\]:hover {
-            color: #00f0ff;
-        }
+        .hover\:border-white\/20:hover { border-color: rgba(255, 255, 255, 0.2); }
+        .hover\:border-white\/25:hover { border-color: rgba(255, 255, 255, 0.25); }
+        .hover\:border-white\/30:hover { border-color: rgba(255, 255, 255, 0.3); }
+        .hover\:border-\[\#00f0ff\]:hover { border-color: #00f0ff; }
+        .hover\:border-\[\#00f0ff\]\/50:hover { border-color: rgba(0, 240, 255, 0.5); }
+        .hover\:border-\[\#00f0ff\]\/60:hover { border-color: rgba(0, 240, 255, 0.6); }
+        .hover\:border-\[\#8b5cf6\]\/50:hover { border-color: rgba(139, 92, 246, 0.5); }
+        .hover\:border-\[\#8b5cf6\]\/60:hover { border-color: rgba(139, 92, 246, 0.6); }
+        .hover\:border-\[\#10b981\]\/50:hover { border-color: rgba(16, 185, 129, 0.5); }
+        .hover\:border-\[\#10b981\]\/60:hover { border-color: rgba(16, 185, 129, 0.6); }
+        .hover\:border-\[\#ff0055\]:hover { border-color: #ff0055; }
+        .hover\:border-\[\#ff0055\]\/50:hover { border-color: rgba(255, 0, 85, 0.5); }
+        .hover\:border-amber-400\/50:hover { border-color: rgba(251, 191, 36, 0.5); }
+        .hover\:border-amber-400\/60:hover { border-color: rgba(251, 191, 36, 0.6); }
 
-        .hover\:text-\[\#8b5cf6\]:hover {
-            color: #8b5cf6;
-        }
+        .hover\:shadow-cyan-glow:hover { box-shadow: 0 0 24px -4px rgba(0, 240, 255, 0.25); }
+        .hover\:shadow-violet-glow:hover { box-shadow: 0 0 24px -4px rgba(139, 92, 246, 0.25); }
+        .hover\:shadow-emerald-glow:hover { box-shadow: 0 0 24px -4px rgba(16, 185, 129, 0.25); }
+        .hover\:shadow-\[0_0_24px_-4px_rgba\(251\,191\,36\,0\.25\)\]:hover { box-shadow: 0 0 24px -4px rgba(251, 191, 36, 0.25); }
+        .hover\:scale-\[1\.02\]:hover { transform: scale(1.02); }
+        .group:hover .group-hover\:scale-105 { transform: scale(1.05); }
+        .group:hover .group-hover\:scale-110 { transform: scale(1.1); }
+        .group:hover .group-hover\:opacity-100 { opacity: 1; }
+        .group:hover .group-hover\:border-\[\#00f0ff\] { border-color: #00f0ff; }
+        .group:hover .group-hover\:text-white { color: #ffffff; }
 
-        .hover\:text-\[\#10b981\]:hover {
-            color: #10b981;
-        }
-
-        .hover\:text-\[\#ff0055\]:hover {
-            color: #ff0055;
-        }
-
-        .hover\:text-amber-300:hover {
-            color: #fcd34d;
-        }
-
-        .hover\:text-slate-200:hover {
-            color: #e2e8f0;
-        }
-
-        .hover\:bg-\[\#00f0ff\]:hover {
-            background-color: #00f0ff;
-        }
-
-        .hover\:bg-\[\#00f0ff\]\/10:hover {
-            background-color: rgba(0, 240, 255, 0.1);
-        }
-
-        .hover\:bg-\[\#00f0ff\]\/15:hover {
-            background-color: rgba(0, 240, 255, 0.15);
-        }
-
-        .hover\:bg-\[\#33f3ff\]:hover {
-            background-color: #33f3ff;
-        }
-
-        .hover\:bg-\[\#8b5cf6\]\/15:hover {
-            background-color: rgba(139, 92, 246, 0.15);
-        }
-
-        .hover\:bg-\[\#10b981\]\/15:hover {
-            background-color: rgba(16, 185, 129, 0.15);
-        }
-
-        .hover\:bg-\[\#ff0055\]\/10:hover {
-            background-color: rgba(255, 0, 85, 0.1);
-        }
-
-        .hover\:bg-\[\#ff0055\]\/20:hover {
-            background-color: rgba(255, 0, 85, 0.2);
-        }
-
-        .hover\:bg-\[\#ff0055\]\/25:hover {
-            background-color: rgba(255, 0, 85, 0.25);
-        }
-
-        .hover\:bg-amber-400:hover {
-            background-color: #fbbf24;
-        }
-
-        .hover\:bg-amber-400\/15:hover {
-            background-color: rgba(251, 191, 36, 0.15);
-        }
-
-        .hover\:bg-white\/\[0\.06\]:hover {
-            background-color: rgba(255, 255, 255, 0.06);
-        }
-
-        .hover\:bg-white\/\[0\.1\]:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .hover\:opacity-95:hover {
-            opacity: 0.95;
-        }
-
-        .hover\:border-white\/20:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .hover\:border-white\/25:hover {
-            border-color: rgba(255, 255, 255, 0.25);
-        }
-
-        .hover\:border-white\/30:hover {
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .hover\:border-\[\#00f0ff\]:hover {
-            border-color: #00f0ff;
-        }
-
-        .hover\:border-\[\#00f0ff\]\/50:hover {
-            border-color: rgba(0, 240, 255, 0.5);
-        }
-
-        .hover\:border-\[\#00f0ff\]\/60:hover {
-            border-color: rgba(0, 240, 255, 0.6);
-        }
-
-        .hover\:border-\[\#8b5cf6\]\/50:hover {
-            border-color: rgba(139, 92, 246, 0.5);
-        }
-
-        .hover\:border-\[\#8b5cf6\]\/60:hover {
-            border-color: rgba(139, 92, 246, 0.6);
-        }
-
-        .hover\:border-\[\#10b981\]\/50:hover {
-            border-color: rgba(16, 185, 129, 0.5);
-        }
-
-        .hover\:border-\[\#10b981\]\/60:hover {
-            border-color: rgba(16, 185, 129, 0.6);
-        }
-
-        .hover\:border-\[\#ff0055\]:hover {
-            border-color: #ff0055;
-        }
-
-        .hover\:border-\[\#ff0055\]\/50:hover {
-            border-color: rgba(255, 0, 85, 0.5);
-        }
-
-        .hover\:border-amber-400\/50:hover {
-            border-color: rgba(251, 191, 36, 0.5);
-        }
-
-        .hover\:border-amber-400\/60:hover {
-            border-color: rgba(251, 191, 36, 0.6);
-        }
-
-        .hover\:shadow-cyan-glow:hover {
-            box-shadow: 0 0 24px -4px rgba(0, 240, 255, 0.25);
-        }
-
-        .hover\:shadow-violet-glow:hover {
-            box-shadow: 0 0 24px -4px rgba(139, 92, 246, 0.25);
-        }
-
-        .hover\:shadow-emerald-glow:hover {
-            box-shadow: 0 0 24px -4px rgba(16, 185, 129, 0.25);
-        }
-
-        .hover\:shadow-\[0_0_24px_-4px_rgba\(251\,191\,36\,0\.25\)\]:hover {
-            box-shadow: 0 0 24px -4px rgba(251, 191, 36, 0.25);
-        }
-
-        .hover\:scale-\[1\.02\]:hover {
-            transform: scale(1.02);
-        }
-
-        .group:hover .group-hover\:scale-105 {
-            transform: scale(1.05);
-        }
-
-        .group:hover .group-hover\:scale-110 {
-            transform: scale(1.1);
-        }
-
-        .group:hover .group-hover\:opacity-100 {
-            opacity: 1;
-        }
-
-        .group:hover .group-hover\:border-\[\#00f0ff\] {
-            border-color: #00f0ff;
-        }
-
-        .group:hover .group-hover\:text-white {
-            color: #ffffff;
-        }
-
-        .aspect-square {
-            aspect-ratio: 1 / 1;
-        }
-
-        .object-contain {
-            object-fit: contain;
-        }
-
-        .max-h-\[75vh\] {
-            max-height: 75vh;
-        }
-
-        .max-w-5xl {
-            max-width: 64rem;
-        }
-
-        .grid-cols-2 {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
+        .aspect-square { aspect-ratio: 1 / 1; }
+        .object-contain { object-fit: contain; }
+        .max-h-\[75vh\] { max-height: 75vh; }
+        .max-w-5xl { max-width: 64rem; }
+        .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
         /* Responsive Breakpoints */
         @media (min-width: 640px) {
-            .sm\:grid-cols-3 {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-
-            .sm\:flex {
-                display: flex;
-            }
-
-            .sm\:inline {
-                display: inline;
-            }
-
-            .sm\:inline-block {
-                display: inline-block;
-            }
-
-            .sm\:block {
-                display: block;
-            }
-
-            .sm\:hidden {
-                display: none;
-            }
-
-            .sm\:flex-row {
-                flex-direction: row;
-            }
-
-            .sm\:items-center {
-                align-items: center;
-            }
-
-            .sm\:self-auto {
-                align-self: auto;
-            }
-
-            .sm\:grid-cols-2 {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .sm\:gap-3 {
-                gap: 0.75rem;
-            }
-
-            .sm\:gap-4 {
-                gap: 1rem;
-            }
-
-            .sm\:mx-8 {
-                margin-left: 2rem;
-                margin-right: 2rem;
-            }
-
-            .sm\:p-6 {
-                padding: 1.5rem;
-            }
-
-            .sm\:p-7 {
-                padding: 1.75rem;
-            }
-
-            .sm\:p-8 {
-                padding: 2rem;
-            }
-
-            .sm\:p-10 {
-                padding: 2.5rem;
-            }
-
-            .sm\:px-5 {
-                padding-left: 1.25rem;
-                padding-right: 1.25rem;
-            }
-
-            .sm\:px-6 {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-
-            .sm\:px-8 {
-                padding-left: 2rem;
-                padding-right: 2rem;
-            }
-
-            .sm\:px-10 {
-                padding-left: 2.5rem;
-                padding-right: 2.5rem;
-            }
-
-            .sm\:pt-36 {
-                padding-top: 9rem;
-            }
-
-            .sm\:mb-20 {
-                margin-bottom: 5rem;
-            }
-
-            .sm\:w-auto {
-                width: auto;
-            }
-
-            .sm\:h-52 {
-                height: 13rem;
-            }
-
-            .sm\:text-sm {
-                font-size: 0.875rem;
-                line-height: 1.25rem;
-            }
-
-            .sm\:text-base {
-                font-size: 1rem;
-                line-height: 1.5rem;
-            }
-
-            .sm\:text-lg {
-                font-size: 1.125rem;
-                line-height: 1.75rem;
-            }
-
-            .sm\:text-xl {
-                font-size: 1.25rem;
-                line-height: 1.75rem;
-            }
-
-            .sm\:text-2xl {
-                font-size: 1.5rem;
-                line-height: 2rem;
-            }
-
-            .sm\:text-3xl {
-                font-size: 1.875rem;
-                line-height: 2.25rem;
-            }
-
-            .sm\:text-5xl {
-                font-size: 3rem;
-                line-height: 1;
-            }
+            .sm\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .sm\:flex { display: flex; }
+            .sm\:inline { display: inline; }
+            .sm\:inline-block { display: inline-block; }
+            .sm\:block { display: block; }
+            .sm\:hidden { display: none; }
+            .sm\:flex-row { flex-direction: row; }
+            .sm\:items-center { align-items: center; }
+            .sm\:self-auto { align-self: auto; }
+            .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .sm\:gap-3 { gap: 0.75rem; }
+            .sm\:gap-4 { gap: 1rem; }
+            .sm\:mx-8 { margin-left: 2rem; margin-right: 2rem; }
+            .sm\:p-6 { padding: 1.5rem; }
+            .sm\:p-7 { padding: 1.75rem; }
+            .sm\:p-8 { padding: 2rem; }
+            .sm\:p-10 { padding: 2.5rem; }
+            .sm\:px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
+            .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .sm\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+            .sm\:px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
+            .sm\:pt-36 { padding-top: 9rem; }
+            .sm\:mb-20 { margin-bottom: 5rem; }
+            .sm\:w-auto { width: auto; }
+            .sm\:h-52 { height: 13rem; }
+            .sm\:text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+            .sm\:text-base { font-size: 1rem; line-height: 1.5rem; }
+            .sm\:text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+            .sm\:text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+            .sm\:text-2xl { font-size: 1.5rem; line-height: 2rem; }
+            .sm\:text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+            .sm\:text-5xl { font-size: 3rem; line-height: 1; }
         }
-
         @media (min-width: 768px) {
-            .md\:grid-cols-4 {
-                grid-template-columns: repeat(4, minmax(0, 1fr));
-            }
-
-            .md\:flex-row {
-                flex-direction: row;
-            }
-
-            .md\:items-center {
-                align-items: center;
-            }
-
-            .md\:items-end {
-                align-items: flex-end;
-            }
-
-            .md\:grid-cols-2 {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .md\:grid-cols-3 {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-
-            .md\:w-72 {
-                width: 18rem;
-            }
-
-            .md\:h-52 {
-                height: 13rem;
-            }
+            .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+            .md\:flex-row { flex-direction: row; }
+            .md\:items-center { align-items: center; }
+            .md\:items-end { align-items: flex-end; }
+            .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .md\:w-72 { width: 18rem; }
+            .md\:h-52 { height: 13rem; }
         }
-
         @media (min-width: 1024px) {
-            .lg\:flex-row {
-                flex-direction: row;
-            }
-
-            .lg\:items-center {
-                align-items: center;
-            }
-
-            .lg\:grid-cols-3 {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-
-            .lg\:w-72 {
-                width: 18rem;
-            }
-
-            .lg\:px-8 {
-                padding-left: 2rem;
-                padding-right: 2rem;
-            }
-
-            .lg\:pb-0 {
-                padding-bottom: 0;
-            }
-
-            .lg\:text-6xl {
-                font-size: 3.75rem;
-                line-height: 1;
-            }
+            .lg\:flex-row { flex-direction: row; }
+            .lg\:items-center { align-items: center; }
+            .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .lg\:w-72 { width: 18rem; }
+            .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+            .lg\:pb-0 { padding-bottom: 0; }
+            .lg\:text-6xl { font-size: 3.75rem; line-height: 1; }
         }
 
         /* Universal Button Margin & Breathing Room */
-        button,
-        a[role="button"],
-        .filter-tab,
-        .portfolio-filter-tab {
+        button, a[role="button"], .filter-tab, .portfolio-filter-tab {
             margin: 0.125rem;
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
             cursor: pointer;
         }
-
         a {
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
         }
-
         #toast-notification.opacity-0 {
             visibility: hidden;
         }
-
         #toast-notification:not(.opacity-0) {
             visibility: visible;
         }
-
-        .overscroll-contain {
-            overscroll-behavior: contain;
-        }
-
+        .overscroll-contain { overscroll-behavior: contain; }
         .modal-scroll-body {
             overflow-y: auto;
             overscroll-behavior: contain;
@@ -2124,11 +598,9 @@
             flex: 1 1 auto;
             min-height: 0;
         }
-
         body.modal-open {
             overflow: hidden !important;
         }
-
         /* Architectural Grid Overlay */
         .studio-grid-bg {
             background-image:
@@ -2139,14 +611,8 @@
             mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 65%, transparent 100%);
         }
 
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
         /* Navigation Bottom Slide-Out Tray */
         #sections-menu-tray {
@@ -2156,7 +622,6 @@
             pointer-events: none;
             transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms ease, visibility 280ms ease;
         }
-
         #sections-menu-tray.is-open {
             transform: translateY(0);
             opacity: 1;
@@ -2182,15 +647,13 @@
             <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[5rem] py-2.5 flex flex-wrap items-center justify-between gap-2 sm:gap-3"
                 aria-label="Primary Studio Navigation">
                 <!-- Left: Studio Brand Emblem -->
-                <a href="#top" onclick="navigateToSection('top'); return false;"
-                    class="flex items-center gap-3 group shrink-0">
+                <a href="#top" onclick="navigateToSection('top'); return false;" class="flex items-center gap-3 group shrink-0">
                     <div
                         class="px-2.5 h-10 rounded-xl bg-[#0c101a] border border-white/[0.12] group-hover:border-[#00f0ff] flex items-center justify-center shadow-cyan-glow transition-all duration-300">
                         <span class="font-mono font-bold text-sm tracking-tighter text-[#00f0ff]">D474</span>
                     </div>
                     <div class="flex flex-col">
-                        <span
-                            class="font-display font-bold text-base sm:text-lg tracking-tight text-white leading-none">
+                        <span class="font-display font-bold text-base sm:text-lg tracking-tight text-white leading-none">
                             D474<span class="text-[#00f0ff]">designs</span>
                         </span>
                         <span data-i18n="navSubtitle"
@@ -2202,8 +665,8 @@
 
                 <!-- Center: Sections Slide-Out Tray Trigger Button -->
                 <div class="flex items-center justify-end ml-auto sm:ml-0">
-                    <button type="button" id="sections-menu-btn" onclick="toggleSectionsMenu()" aria-expanded="false"
-                        aria-haspopup="true" aria-controls="sections-menu-tray"
+                    <button type="button" id="sections-menu-btn" onclick="toggleSectionsMenu()"
+                        aria-expanded="false" aria-haspopup="true" aria-controls="sections-menu-tray"
                         class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl bg-white/[0.04] hover:bg-[#00f0ff]/10 border border-white/[0.12] hover:border-[#00f0ff]/50 text-xs sm:text-sm font-medium text-slate-200 hover:text-[#00f0ff] shadow-cyan-glow transition-all duration-200">
                         <span id="sections-menu-icon-wrap" class="flex items-center justify-center shrink-0">
                             <i data-lucide="menu" class="w-4 h-4 text-[#00f0ff]"></i>
@@ -2215,12 +678,13 @@
                 <!-- Right Action: Yellow Language Toggle & Crimson Pink Project Brief Drawer Trigger -->
                 <div class="flex items-center justify-end gap-2 sm:gap-3 shrink-0 ml-auto sm:ml-0">
                     <!-- Single-Click Yellow Language Toggle -->
-                    <button type="button" id="lang-toggle-btn" onclick="toggleLanguage()"
-                        aria-label="Switch Language EN/ES" title="Switch Language (English / Español)"
+                    <button type="button" id="lang-toggle-btn" onclick="toggleLanguage()" aria-label="Switch Language EN/ES"
+                        title="Switch Language (English / Español)"
                         class="inline-flex items-center p-1 rounded-xl bg-amber-400/10 hover:bg-amber-400/15 border border-amber-400/40 hover:border-amber-400/60 hover:shadow-[0_0_24px_-4px_rgba(251,191,36,0.25)] font-mono text-[11px] font-semibold transition-all duration-200 cursor-pointer">
                         <span id="lang-pill-en"
                             class="px-2 py-1 rounded-lg bg-amber-500 text-[#07090e] font-bold transition-all">EN</span>
-                        <span id="lang-pill-es" class="px-2 py-1 rounded-lg text-amber-300 transition-all">ES</span>
+                        <span id="lang-pill-es"
+                            class="px-2 py-1 rounded-lg text-amber-300 transition-all">ES</span>
                     </button>
 
                     <button onclick="toggleCartDrawer(true)" aria-label="Open Project Brief & Booking Cart"
@@ -2315,16 +779,14 @@
             <div
                 class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] mb-6">
                 <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
-                <span data-i18n="heroBadge" class="font-mono text-xs text-slate-300 tracking-wide">ACCEPTING COMMISSIONS
-                    &amp; SPRINT
+                <span data-i18n="heroBadge" class="font-mono text-xs text-slate-300 tracking-wide">ACCEPTING COMMISSIONS &amp; SPRINT
                     BOOKINGS</span>
             </div>
 
             <h1
                 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.1] mb-6">
                 <span data-i18n="heroTitleTop">Precision Craft Across</span> <br class="hidden sm:block" />
-                <span data-i18n="heroTitleBottom"
-                    class="bg-gradient-to-r from-[#00f0ff] via-[#8b5cf6] to-[#10b981] bg-clip-text text-transparent">
+                <span data-i18n="heroTitleBottom" class="bg-gradient-to-r from-[#00f0ff] via-[#8b5cf6] to-[#10b981] bg-clip-text text-transparent">
                     Code, Sound, Brand &amp; Ink.
                 </span>
             </h1>
@@ -2359,50 +821,34 @@
             class="mb-12 rounded-3xl bg-[#0c101a]/90 border border-[#10b981]/30 p-8 sm:p-10 shadow-emerald-glow">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
-                    <span data-i18n="paymentsTag"
-                        class="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest px-3 py-1 rounded-lg bg-[#07090e] border border-[#10b981]/30 text-[#10b981]">Milestone
-                        Protection &amp; Transparency</span>
-                    <h2 id="payments-heading" data-i18n="paymentsTitle"
-                        class="font-display text-2xl sm:text-3xl font-bold text-white mt-2">How Payments Work</h2>
+                    <span data-i18n="paymentsTag" class="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest px-3 py-1 rounded-lg bg-[#07090e] border border-[#10b981]/30 text-[#10b981]">Milestone Protection &amp; Transparency</span>
+                    <h2 id="payments-heading" data-i18n="paymentsTitle" class="font-display text-2xl sm:text-3xl font-bold text-white mt-2">How Payments Work</h2>
                 </div>
                 <p data-i18n="paymentsSubtitle" class="text-sm text-slate-400 max-w-md">
-                    Every project is structured around verified progress checkpoints so you see real results before
-                    committing to subsequent installments.
+                    Every project is structured around verified progress checkpoints so you see real results before committing to subsequent installments.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <span data-i18n="payStep1Tag"
-                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#00f0ff]/30 text-[#00f0ff] mb-2.5">01
-                        // INITIAL DEPOSIT</span>
-                    <h3 data-i18n="payStep1Title" class="font-display font-semibold text-white text-base mb-1.5">Lock In
-                        Your Sprint</h3>
+                    <span data-i18n="payStep1Tag" class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#00f0ff]/30 text-[#00f0ff] mb-2.5">01 // INITIAL DEPOSIT</span>
+                    <h3 data-i18n="payStep1Title" class="font-display font-semibold text-white text-base mb-1.5">Lock In Your Sprint</h3>
                     <p data-i18n="payStep1Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                        Once your project brief is confirmed, an initial deposit reserves your studio slot and kicks off
-                        active production right away.
+                        Once your project brief is confirmed, an initial deposit reserves your studio slot and kicks off active production right away.
                     </p>
                 </div>
                 <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <span data-i18n="payStep2Tag"
-                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#8b5cf6]/30 text-[#8b5cf6] mb-2.5">02
-                        // LIVE PROGRESSION</span>
-                    <h3 data-i18n="payStep2Title" class="font-display font-semibold text-white text-base mb-1.5">Review
-                        Work-in-Progress</h3>
+                    <span data-i18n="payStep2Tag" class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#8b5cf6]/30 text-[#8b5cf6] mb-2.5">02 // LIVE PROGRESSION</span>
+                    <h3 data-i18n="payStep2Title" class="font-display font-semibold text-white text-base mb-1.5">Review Work-in-Progress</h3>
                     <p data-i18n="payStep2Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                        I get to work and share clear progression previews—staging builds, design drafts, mix stems, or
-                        stencil proofs—before taking further installments.
+                        I get to work and share clear progression previews—staging builds, design drafts, mix stems, or stencil proofs—before taking further installments.
                     </p>
                 </div>
                 <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <span data-i18n="payStep3Tag"
-                        class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#10b981]/30 text-[#10b981] mb-2.5">03
-                        // FINAL HANDOFF</span>
-                    <h3 data-i18n="payStep3Title" class="font-display font-semibold text-white text-base mb-1.5">
-                        Milestone Approval &amp; Delivery</h3>
+                    <span data-i18n="payStep3Tag" class="inline-block font-mono text-xs px-2.5 py-1 rounded-lg bg-[#07090e] border border-[#10b981]/30 text-[#10b981] mb-2.5">03 // FINAL HANDOFF</span>
+                    <h3 data-i18n="payStep3Title" class="font-display font-semibold text-white text-base mb-1.5">Milestone Approval &amp; Delivery</h3>
                     <p data-i18n="payStep3Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                        Remaining installments follow approved milestones, concluding with final source files,
-                        production deployment, or completed artwork handoff.
+                        Remaining installments follow approved milestones, concluding with final source files, production deployment, or completed artwork handoff.
                     </p>
                 </div>
             </div>
@@ -2411,9 +857,7 @@
             <div class="p-4 sm:p-5 rounded-2xl bg-[#10b981]/[0.07] border border-[#10b981]/35 flex items-start gap-3">
                 <i data-lucide="badge-dollar-sign" class="w-5 h-5 text-[#10b981] shrink-0 mt-0.5"></i>
                 <p data-i18n="paymentsFlexNote" class="text-xs sm:text-sm text-slate-200 leading-relaxed">
-                    <strong class="text-[#10b981] font-semibold">Flexible Payment Options:</strong> Custom payment plans
-                    can be discussed to fit your timeline, or projects may also be paid in full before work starts for
-                    streamlined single-invoice billing.
+                    <strong class="text-[#10b981] font-semibold">Flexible Payment Options:</strong> Custom payment plans can be discussed to fit your timeline, or projects may also be paid in full before work starts for streamlined single-invoice billing.
                 </p>
             </div>
         </section>
@@ -2424,8 +868,7 @@
                 <!-- Header & Controls -->
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                     <div>
-                        <div
-                            class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider px-3 py-1 rounded-lg bg-[#07090e] border border-[#00f0ff]/30 text-[#00f0ff] mb-2">
+                        <div class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider px-3 py-1 rounded-lg bg-[#07090e] border border-[#00f0ff]/30 text-[#00f0ff] mb-2">
                             <i data-lucide="lightbulb" class="w-3.5 h-3.5 text-[#00f0ff]"></i>
                             <span data-i18n="ideasTag">Commission Blueprints &amp; Inspiration</span>
                         </div>
@@ -2434,7 +877,9 @@
                         </h2>
                     </div>
 
-                    <div onmouseenter="pauseIdeasAutoplay()" onmouseleave="resumeIdeasAutoplay()"
+                    <div
+                        onmouseenter="pauseIdeasAutoplay()"
+                        onmouseleave="resumeIdeasAutoplay()"
                         class="flex items-center gap-2 self-start sm:self-auto">
                         <button type="button" onclick="prevIdeaSlide()" aria-label="Previous project idea"
                             class="p-2.5 rounded-xl bg-white/[0.04] hover:bg-[#00f0ff]/15 border border-white/[0.1] hover:border-[#00f0ff]/50 text-slate-300 hover:text-[#00f0ff] transition">
@@ -2448,8 +893,10 @@
                 </div>
 
                 <!-- Carousel Track Viewport -->
-                <div id="ideas-carousel-viewport" onmouseenter="pauseIdeasAutoplay()"
-                    onmouseleave="resumeIdeasAutoplay()" class="overflow-hidden rounded-2xl">
+                <div id="ideas-carousel-viewport"
+                    onmouseenter="pauseIdeasAutoplay()"
+                    onmouseleave="resumeIdeasAutoplay()"
+                    class="overflow-hidden rounded-2xl">
                     <div id="ideas-carousel-track" class="flex transition-transform duration-500 ease-out">
                         <!-- Slides dynamically injected via JS -->
                     </div>
@@ -2462,8 +909,7 @@
             <div
                 class="rounded-3xl bg-[#0c101a]/90 border border-amber-400/30 p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-5 shadow-[0_0_24px_-4px_rgba(251,191,36,0.12)]">
                 <div class="space-y-1.5 max-w-2xl">
-                    <div
-                        class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider px-3 py-1 rounded-lg bg-[#07090e] border border-amber-400/30 text-amber-300">
+                    <div class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider px-3 py-1 rounded-lg bg-[#07090e] border border-amber-400/30 text-amber-300">
                         <i data-lucide="coins" class="w-3.5 h-3.5 text-amber-400"></i>
                         <span data-i18n="budgetBadge">Flexible Budget &amp; Micro-Commissions</span>
                     </div>
@@ -2471,8 +917,7 @@
                         Need a Smaller Task or Custom Budget Quote?
                     </h2>
                     <p data-i18n="budgetDesc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                        Have a quick edit, smaller budget request, or custom one-off task that doesn't require a full
-                        package tier? Configure a custom budget request and add it straight into your Project Brief.
+                        Have a quick edit, smaller budget request, or custom one-off task that doesn't require a full package tier? Configure a custom budget request and add it straight into your Project Brief.
                     </p>
                 </div>
                 <button type="button" onclick="openBudgetRequestModal()"
@@ -2524,7 +969,8 @@
                     <i data-lucide="search"
                         class="w-4 h-4 text-slate-400 absolute left-3.5 top-4 pointer-events-none"></i>
                     <input type="text" id="service-search" oninput="handleSearch(this.value)"
-                        data-i18n-placeholder="searchPlaceholder" placeholder="Filter services or deliverables..."
+                        data-i18n-placeholder="searchPlaceholder"
+                        placeholder="Filter services or deliverables..."
                         class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#0c101a] border border-white/[0.1] focus:border-[#00f0ff] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500 transition" />
                 </div>
             </div>
@@ -2541,8 +987,7 @@
                     class="w-12 h-12 rounded-2xl bg-[#00f0ff]/10 border border-[#00f0ff]/30 flex items-center justify-center mx-auto">
                     <i data-lucide="radar" class="w-6 h-6 text-[#00f0ff]"></i>
                 </div>
-                <h3 data-i18n="emptySearchTitle" class="font-display text-lg font-bold text-white">No matching services
-                    found</h3>
+                <h3 data-i18n="emptySearchTitle" class="font-display text-lg font-bold text-white">No matching services found</h3>
                 <p data-i18n="emptySearchDesc" class="text-xs sm:text-sm text-slate-400 max-w-md mx-auto">
                     Try clearing your search term or switching discipline filters.
                 </p>
@@ -2568,8 +1013,7 @@
                     </h2>
                 </div>
                 <p data-i18n="workflowSubtitle" class="text-sm text-slate-400 max-w-md">
-                    Combine digital builds, publicity campaigns, sound engineering, video editing, or physical custom
-                    art sessions into a single unified project brief.
+                    Combine digital builds, publicity campaigns, sound engineering, video editing, or physical custom art sessions into a single unified project brief.
                 </p>
             </div>
 
@@ -2583,8 +1027,7 @@
                         Select Scope &amp; Tier
                     </h3>
                     <p data-i18n="step1Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                        Choose starter packages or custom sprints across software, branding, audio, airbrushing, or
-                        tattoo sessions.
+                        Choose starter packages or custom sprints across software, branding, audio, airbrushing, or tattoo sessions.
                     </p>
                 </div>
                 <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
@@ -2596,8 +1039,7 @@
                         Attach Creative Notes &amp; Dates
                     </h3>
                     <p data-i18n="step2Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                        Add technical specs, reference links, placement details, or target dates directly inside each
-                        service configurator.
+                        Add technical specs, reference links, placement details, or target dates directly inside each service configurator.
                     </p>
                 </div>
                 <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
@@ -2609,8 +1051,7 @@
                         Instant Dossier &amp; Invoice
                     </h3>
                     <p data-i18n="step3Desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                        Generate a timestamped D474designs project dossier with a direct studio invoice sent straight to
-                        your inbox.
+                        Generate a timestamped D474designs project dossier with a direct studio invoice sent straight to your inbox.
                     </p>
                 </div>
             </div>
@@ -2621,8 +1062,7 @@
             <div
                 class="rounded-3xl bg-[#0c101a]/90 border border-amber-400/30 p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-5 shadow-[0_0_24px_-4px_rgba(251,191,36,0.12)]">
                 <div class="space-y-1.5 max-w-2xl">
-                    <div
-                        class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider px-3 py-1 rounded-lg bg-[#07090e] border border-amber-400/30 text-amber-300">
+                    <div class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider px-3 py-1 rounded-lg bg-[#07090e] border border-amber-400/30 text-amber-300">
                         <i data-lucide="coins" class="w-3.5 h-3.5 text-amber-400"></i>
                         <span data-i18n="budgetBadge">Flexible Budget &amp; Micro-Commissions</span>
                     </div>
@@ -2630,8 +1070,7 @@
                         Need a Smaller Task or Custom Budget Quote?
                     </h2>
                     <p data-i18n="budgetDesc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                        Have a quick edit, smaller budget request, or custom one-off task that doesn't require a full
-                        package tier? Configure a custom budget request and add it straight into your Project Brief.
+                        Have a quick edit, smaller budget request, or custom one-off task that doesn't require a full package tier? Configure a custom budget request and add it straight into your Project Brief.
                     </p>
                 </div>
                 <button type="button" onclick="openBudgetRequestModal()"
@@ -2647,8 +1086,7 @@
             <div
                 class="rounded-3xl bg-[#0c101a]/90 border border-[#8b5cf6]/30 p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-5 shadow-violet-glow">
                 <div class="space-y-1.5 max-w-2xl">
-                    <div
-                        class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider px-3 py-1 rounded-lg bg-[#07090e] border border-[#8b5cf6]/30 text-[#8b5cf6]">
+                    <div class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider px-3 py-1 rounded-lg bg-[#07090e] border border-[#8b5cf6]/30 text-[#8b5cf6]">
                         <i data-lucide="mail" class="w-3.5 h-3.5 text-[#8b5cf6]"></i>
                         <span data-i18n="contactBadge">Direct Studio Transmission</span>
                     </div>
@@ -2656,8 +1094,7 @@
                         Have any questions, suggestions, or want to drop us a line?
                     </h2>
                     <p data-i18n="contactDesc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                        Reach out directly to D474designs for general inquiries, collaboration ideas, or feedback—your
-                        message goes straight to our studio inbox.
+                        Reach out directly to D474designs for general inquiries, collaboration ideas, or feedback—your message goes straight to our studio inbox.
                     </p>
                 </div>
                 <button type="button" onclick="openContactModal()"
@@ -2683,8 +1120,7 @@
                         aria-label="D474designs on Facebook" title="Facebook — D474designs"
                         class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all duration-200">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
                         </svg>
                     </a>
                     <!-- Instagram -->
@@ -2692,8 +1128,7 @@
                         aria-label="D474designs on Instagram" title="Instagram — @d474designs"
                         class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#ff0055]/10 border border-white/[0.08] hover:border-[#ff0055]/50 text-slate-400 hover:text-[#ff0055] flex items-center justify-center transition-all duration-200">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                         </svg>
                     </a>
                     <!-- X (Twitter) -->
@@ -2701,8 +1136,7 @@
                         aria-label="D474designs on X" title="X — @D474designs"
                         class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-white/[0.1] border border-white/[0.08] hover:border-white/30 text-slate-400 hover:text-white flex items-center justify-center transition-all duration-200">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                         </svg>
                     </a>
                     <!-- LinkedIn -->
@@ -2710,8 +1144,7 @@
                         aria-label="Jaime Cazares on LinkedIn" title="LinkedIn — Jaime Cazares"
                         class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/10 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all duration-200">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
                         </svg>
                     </a>
                     <!-- GitHub -->
@@ -2719,8 +1152,7 @@
                         aria-label="D474designs on GitHub" title="GitHub — D474designs"
                         class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#8b5cf6]/15 border border-white/[0.08] hover:border-[#8b5cf6]/50 text-slate-400 hover:text-[#8b5cf6] flex items-center justify-center transition-all duration-200">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
                         </svg>
                     </a>
                     <!-- SlideShare -->
@@ -2728,21 +1160,18 @@
                         aria-label="Jaime Cazares on SlideShare" title="SlideShare — Jaime Cazares"
                         class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#10b981]/15 border border-white/[0.08] hover:border-[#10b981]/50 text-slate-400 hover:text-[#10b981] flex items-center justify-center transition-all duration-200">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                                d="M19.5 3h-15A1.5 1.5 0 0 0 3 4.5v9A1.5 1.5 0 0 0 4.5 15h4.25c-.48.72-.75 1.58-.75 2.5a3.5 3.5 0 0 0 7 0c0-.92-.27-1.78-.75-2.5h5.25a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 19.5 3zm-10 7.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM12 19a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                            <path d="M19.5 3h-15A1.5 1.5 0 0 0 3 4.5v9A1.5 1.5 0 0 0 4.5 15h4.25c-.48.72-.75 1.58-.75 2.5a3.5 3.5 0 0 0 7 0c0-.92-.27-1.78-.75-2.5h5.25a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 19.5 3zm-10 7.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM12 19a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
                         </svg>
                     </a>
                     <!-- D474designs Portfolio (Creative / Palette Icon) -->
                     <a href="https://d474designs.github.io" target="_blank" rel="noopener noreferrer"
-                        aria-label="D474designs Official Portfolio"
-                        title="D474designs Portfolio — d474designs.github.io"
+                        aria-label="D474designs Official Portfolio" title="D474designs Portfolio — d474designs.github.io"
                         class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-amber-400/15 border border-white/[0.08] hover:border-amber-400/50 text-slate-400 hover:text-amber-300 flex items-center justify-center transition-all duration-200">
                         <i data-lucide="palette" class="w-4 h-4"></i>
                     </a>
                     <!-- D474developments Portal (Engineering / Code Terminal Icon) -->
                     <a href="https://d474developments.github.io" target="_blank" rel="noopener noreferrer"
-                        aria-label="D474developments Engineering Portal"
-                        title="D474developments — d474developments.github.io"
+                        aria-label="D474developments Engineering Portal" title="D474developments — d474developments.github.io"
                         class="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-[#00f0ff]/15 border border-white/[0.08] hover:border-[#00f0ff]/50 text-slate-400 hover:text-[#00f0ff] flex items-center justify-center transition-all duration-200">
                         <i data-lucide="code-2" class="w-4 h-4"></i>
                     </a>
@@ -2755,8 +1184,7 @@
                     <span class="font-display font-bold text-sm text-white">D474<span
                             class="text-[#00f0ff]">designs</span></span>
                     <span>&bull;</span>
-                    <span data-i18n="footerTagline">Engineering &bull; Publicity &bull; Audio &amp; Video &bull;
-                        Physical Art</span>
+                    <span data-i18n="footerTagline">Engineering &bull; Publicity &bull; Audio &amp; Video &bull; Physical Art</span>
                 </div>
                 <div data-i18n="footerLegal" class="font-mono text-[11px] text-slate-500">
                     D474SERVICE &bull; ALL TRANSMISSIONS ENCRYPTED &bull; &copy; 2026 D474DESIGNS STUDIO
@@ -2804,8 +1232,7 @@
 
                 <!-- Deliverables List -->
                 <div>
-                    <label data-i18n="modalDeliverablesLabel"
-                        class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-2.5">Core
+                    <label data-i18n="modalDeliverablesLabel" class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-2.5">Core
                         Deliverables Included</label>
                     <ul id="modal-deliverables" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
                         <!-- Populated dynamically -->
@@ -2814,8 +1241,7 @@
 
                 <!-- Tier / Package Selector -->
                 <div>
-                    <label data-i18n="modalScopeLabel"
-                        class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-2.5">Select Scope /
+                    <label data-i18n="modalScopeLabel" class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-2.5">Select Scope /
                         Package Tier</label>
                     <div id="modal-tiers" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <!-- Populated dynamically -->
@@ -2857,11 +1283,9 @@
             </div>
 
             <!-- Modal Footer -->
-            <div
-                class="shrink-0 px-6 sm:px-8 py-8 mt-4 bg-[#07090e]/95 border-t border-white/[0.08] flex items-center justify-between gap-6">
+            <div class="shrink-0 px-6 sm:px-8 py-8 mt-4 bg-[#07090e]/95 border-t border-white/[0.08] flex items-center justify-between gap-6">
                 <div class="py-1.5">
-                    <span data-i18n="modalEstAllocation"
-                        class="block font-mono text-[10px] uppercase tracking-wider text-slate-400 mb-1">Estimated
+                    <span data-i18n="modalEstAllocation" class="block font-mono text-[10px] uppercase tracking-wider text-slate-400 mb-1">Estimated
                         Allocation</span>
                     <span id="modal-total-price" class="font-display text-xl sm:text-2xl font-bold text-white">$0</span>
                 </div>
@@ -2903,8 +1327,7 @@
                             Select 6+ services for up to 15% Studio Bundle Savings
                         </span>
                     </div>
-                    <h3 data-i18n="bundleModalTitle" id="bundle-modal-title"
-                        class="font-display text-xl sm:text-2xl font-bold text-white">
+                    <h3 data-i18n="bundleModalTitle" id="bundle-modal-title" class="font-display text-xl sm:text-2xl font-bold text-white">
                         Combine Services Across Disciplines
                     </h3>
                 </div>
@@ -2924,8 +1347,7 @@
                             class="inline-flex items-center justify-center px-2.5 py-1 rounded-lg bg-[#00f0ff]/15 text-[#00f0ff] font-mono font-bold">
                             0 Selected
                         </span>
-                        <span data-i18n="bundleHelperText">Check services below and select your preferred scope tier for
-                            each.</span>
+                        <span data-i18n="bundleHelperText">Check services below and select your preferred scope tier for each.</span>
                     </div>
                     <button data-i18n="bundleClearBtn" type="button" onclick="clearBundleSelections()"
                         class="font-mono text-[11px] text-slate-400 hover:text-white underline underline-offset-4 transition">
@@ -2980,8 +1402,7 @@
                 class="shrink-0 px-6 sm:px-8 py-8 mt-4 bg-[#07090e]/95 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                 <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 py-1.5">
                     <div>
-                        <span data-i18n="bundleAllocationLabel"
-                            class="block font-mono text-[10px] uppercase tracking-wider text-slate-400 mb-1">Bundle
+                        <span data-i18n="bundleAllocationLabel" class="block font-mono text-[10px] uppercase tracking-wider text-slate-400 mb-1">Bundle
                             Allocation</span>
                         <div class="flex items-baseline gap-2.5">
                             <span id="bundle-final-price" class="font-display text-2xl font-bold text-white">$0</span>
@@ -3020,11 +1441,11 @@
             <div class="px-6 py-5 border-b border-[#ff0055]/30 flex items-center justify-between gap-2 shrink-0">
                 <div class="flex items-center gap-2.5">
                     <i data-lucide="shopping-cart" class="w-5 h-5 text-[#ff0055]"></i>
-                    <h2 data-i18n="cartDrawerTitle" class="font-display text-lg font-bold text-[#ff0055]">Active Project
-                        Brief</h2>
+                    <h2 data-i18n="cartDrawerTitle" class="font-display text-lg font-bold text-[#ff0055]">Active Project Brief</h2>
                 </div>
                 <div class="flex items-center gap-2">
-                    <button type="button" onclick="clearCart()" aria-label="Clear Cart" data-i18n="clearCartBtn"
+                    <button type="button" onclick="clearCart()" aria-label="Clear Cart"
+                        data-i18n="clearCartBtn"
                         class="px-3 py-1.5 rounded-xl bg-[#ff0055]/15 hover:bg-[#ff0055]/25 border border-[#ff0055]/60 text-xs font-mono font-medium text-[#ff0055] transition">
                         Clear Cart
                     </button>
@@ -3041,8 +1462,7 @@
             </div>
 
             <!-- Checkout & Settlement Form -->
-            <div id="cart-footer"
-                class="p-5 sm:p-6 bg-[#07090e] border-t border-[#ff0055]/30 space-y-3.5 shrink-0 max-h-[62vh] overflow-y-auto">
+            <div id="cart-footer" class="p-5 sm:p-6 bg-[#07090e] border-t border-[#ff0055]/30 space-y-3.5 shrink-0 max-h-[62vh] overflow-y-auto">
                 <div class="flex items-center justify-between text-sm">
                     <span data-i18n="cartEstTotalLabel" class="text-slate-400">Estimated Total Scope</span>
                     <span id="cart-subtotal" class="font-display text-2xl font-bold text-[#ff0055]">$0</span>
@@ -3051,10 +1471,12 @@
                 <!-- Client Contact Details -->
                 <div class="space-y-2.5 pt-2 border-t border-white/[0.06]">
                     <input type="text" id="client-name" oninput="saveClientCheckoutDraft()"
-                        data-i18n-placeholder="clientNamePlaceholder" placeholder="Your Name / Brand / Handle *"
+                        data-i18n-placeholder="clientNamePlaceholder"
+                        placeholder="Your Name / Brand / Handle *"
                         class="w-full px-3.5 py-2.5 rounded-xl bg-[#0c101a] border border-white/[0.1] focus:border-[#ff0055] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
                     <input type="email" id="client-email" oninput="saveClientCheckoutDraft()"
-                        data-i18n-placeholder="clientEmailPlaceholder" placeholder="Contact Email for Brief & Invoice *"
+                        data-i18n-placeholder="clientEmailPlaceholder"
+                        placeholder="Contact Email for Brief & Invoice *"
                         class="w-full px-3.5 py-2.5 rounded-xl bg-[#0c101a] border border-white/[0.1] focus:border-[#ff0055] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
                 </div>
 
@@ -3068,8 +1490,7 @@
                             <span data-i18n="referralLabel">Referral / Partner Code (Optional)</span>
                         </label>
                     </div>
-                    <input type="text" id="client-referral-code" oninput="saveClientCheckoutDraft()"
-                        placeholder="*******"
+                    <input type="text" id="client-referral-code" oninput="saveClientCheckoutDraft()" placeholder="*******"
                         class="w-full px-3.5 py-2 rounded-xl bg-[#07090e]/90 border border-[#10b981]/30 focus:border-[#10b981] focus:outline-none font-mono text-xs sm:text-sm text-emerald-100 placeholder-emerald-200/35 transition" />
                 </div>
 
@@ -3080,8 +1501,7 @@
                         <i data-lucide="file-text" class="w-4 h-4 text-[#8b5cf6] shrink-0"></i>
                         <span data-i18n="directInvoiceLabel">Direct Studio Invoice &amp; Booking</span>
                     </div>
-                    <span data-i18n="paymentMethodsLabel" class="font-mono text-[10px] text-slate-400">Crypto / Wire /
-                        Card</span>
+                    <span data-i18n="paymentMethodsLabel" class="font-mono text-[10px] text-slate-400">Crypto / Wire / Card</span>
                 </div>
 
                 <!-- Checkout Payments Summary & Method Selector -->
@@ -3093,8 +1513,7 @@
                         </span>
                     </div>
                     <p data-i18n="checkoutPaySummary" class="text-[11px] text-slate-300 leading-relaxed">
-                        Projects start with an initial deposit, followed by live progression previews before subsequent
-                        installments. Custom payment plans or upfront full payment are also available.
+                        Projects start with an initial deposit, followed by live progression previews before subsequent installments. Custom payment plans or upfront full payment are also available.
                     </p>
                     <div>
                         <label for="checkout-payment-method" data-i18n="checkoutPayMethodLabel"
@@ -3154,11 +1573,9 @@
                 </div>
             </div>
 
-            <h3 data-i18n="receiptTitle" class="font-display text-2xl font-bold text-white mb-2">D474designs Dossier
-                Generated</h3>
+            <h3 data-i18n="receiptTitle" class="font-display text-2xl font-bold text-white mb-2">D474designs Dossier Generated</h3>
             <p id="receipt-intro-text" class="text-sm text-slate-400 mb-6">
-                Your project brief is ready to send to the D474designs studio. Your items remain saved in your Active
-                Project Brief until you send them via email below.
+                Your project brief is ready to send to the D474designs studio. Your items remain saved in your Active Project Brief until you send them via email below.
             </p>
 
             <div class="relative rounded-2xl bg-[#07090e] border border-white/[0.08] mb-5 overflow-hidden">
@@ -3175,8 +1592,7 @@
             </div>
 
             <div class="flex items-center justify-between pt-4 border-t border-white/[0.08] mb-6">
-                <span data-i18n="receiptTotalLabel" class="text-xs font-mono uppercase text-slate-400">Total Estimated
-                    Allocation</span>
+                <span data-i18n="receiptTotalLabel" class="text-xs font-mono uppercase text-slate-400">Total Estimated Allocation</span>
                 <span id="receipt-total" class="font-display text-2xl font-bold text-[#10b981]">$0</span>
             </div>
 
@@ -3195,8 +1611,7 @@
     <!-- ===================================================================== -->
     <div id="budget-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6" role="dialog"
         aria-modal="true" aria-labelledby="budget-modal-title">
-        <div onclick="closeBudgetRequestModal()"
-            class="fixed inset-0 bg-[#04060a]/80 backdrop-blur-md transition-opacity">
+        <div onclick="closeBudgetRequestModal()" class="fixed inset-0 bg-[#04060a]/80 backdrop-blur-md transition-opacity">
         </div>
 
         <div
@@ -3211,8 +1626,7 @@
                         class="inline-block font-mono text-[11px] uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-amber-400/15 text-amber-300 border border-amber-400/30 mb-2">
                         Special Budget Request
                     </span>
-                    <h3 data-i18n="budgetModalTitle" id="budget-modal-title"
-                        class="font-display text-xl sm:text-2xl font-bold text-white">
+                    <h3 data-i18n="budgetModalTitle" id="budget-modal-title" class="font-display text-xl sm:text-2xl font-bold text-white">
                         Custom &amp; Lower-Budget Request
                     </h3>
                 </div>
@@ -3225,8 +1639,7 @@
             <!-- Modal Body -->
             <div class="modal-scroll-body p-6 space-y-5">
                 <p data-i18n="budgetModalDesc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    Tell us what you need done and your target budget. This request will be added right into your Active
-                    Project Brief just like any regular service item so you can send everything together.
+                    Tell us what you need done and your target budget. This request will be added right into your Active Project Brief just like any regular service item so you can send everything together.
                 </p>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -3250,7 +1663,8 @@
                             Target Budget (USD) *
                         </label>
                         <input type="number" id="budget-amount" min="15" step="5" value="150"
-                            oninput="updateBudgetModalTotal(); saveBudgetRequestDraft();" placeholder="e.g. 150"
+                            oninput="updateBudgetModalTotal(); saveBudgetRequestDraft();"
+                            placeholder="e.g. 150"
                             class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-amber-400 focus:outline-none font-mono text-xs sm:text-sm text-amber-200 placeholder-slate-500" />
                     </div>
                 </div>
@@ -3289,14 +1703,11 @@
             </div>
 
             <!-- Modal Footer -->
-            <div
-                class="shrink-0 px-6 sm:px-8 py-8 mt-4 bg-[#07090e]/90 border-t border-white/[0.08] flex items-center justify-between gap-6">
+            <div class="shrink-0 px-6 sm:px-8 py-8 mt-4 bg-[#07090e]/90 border-t border-white/[0.08] flex items-center justify-between gap-6">
                 <div class="py-1.5">
-                    <span data-i18n="budgetProposedLabel"
-                        class="block font-mono text-[10px] uppercase tracking-wider text-slate-400 mb-1">Proposed
+                    <span data-i18n="budgetProposedLabel" class="block font-mono text-[10px] uppercase tracking-wider text-slate-400 mb-1">Proposed
                         Budget</span>
-                    <span id="budget-modal-total"
-                        class="font-display text-xl sm:text-2xl font-bold text-amber-300">$0</span>
+                    <span id="budget-modal-total" class="font-display text-xl sm:text-2xl font-bold text-amber-300">$0</span>
                 </div>
                 <button id="budget-submit-btn" type="button" onclick="confirmAddBudgetRequestToCart()"
                     class="px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-[#07090e] font-bold text-sm shadow-amber-glow transition-all inline-flex items-center gap-2 shrink-0">
@@ -3327,8 +1738,7 @@
                         class="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/30 mb-2">
                         Selected Works &amp; Archive
                     </span>
-                    <h3 id="portfolio-modal-title" data-i18n="portfolioModalTitle"
-                        class="font-display text-xl sm:text-2xl font-bold text-white">
+                    <h3 id="portfolio-modal-title" data-i18n="portfolioModalTitle" class="font-display text-xl sm:text-2xl font-bold text-white">
                         D474designs Studio Portfolio
                     </h3>
                 </div>
@@ -3341,28 +1751,23 @@
             <!-- Discipline Filter Tabs -->
             <div class="px-6 py-3.5 bg-[#07090e]/90 border-b border-white/[0.07] flex items-center gap-2 overflow-x-auto no-scrollbar"
                 role="tablist" aria-label="Portfolio Service Filters">
-                <button type="button" role="tab" aria-selected="true" data-pfilter="all"
-                    onclick="setPortfolioFilter('all')"
+                <button type="button" role="tab" aria-selected="true" data-pfilter="all" onclick="setPortfolioFilter('all')"
                     class="portfolio-filter-tab shrink-0 px-3.5 py-2 rounded-xl text-xs font-medium transition-all border bg-[#10b981]/15 border-[#10b981]/50 text-[#10b981] shadow-emerald-glow">
                     All Works
                 </button>
-                <button type="button" role="tab" aria-selected="false" data-pfilter="engineering"
-                    onclick="setPortfolioFilter('engineering')"
+                <button type="button" role="tab" aria-selected="false" data-pfilter="engineering" onclick="setPortfolioFilter('engineering')"
                     class="portfolio-filter-tab shrink-0 px-3.5 py-2 rounded-xl text-xs font-medium transition-all border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
                     Engineering &amp; Web3
                 </button>
-                <button type="button" role="tab" aria-selected="false" data-pfilter="brand"
-                    onclick="setPortfolioFilter('brand')"
+                <button type="button" role="tab" aria-selected="false" data-pfilter="brand" onclick="setPortfolioFilter('brand')"
                     class="portfolio-filter-tab shrink-0 px-3.5 py-2 rounded-xl text-xs font-medium transition-all border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
                     Brand &amp; Media
                 </button>
-                <button type="button" role="tab" aria-selected="false" data-pfilter="audio"
-                    onclick="setPortfolioFilter('audio')"
+                <button type="button" role="tab" aria-selected="false" data-pfilter="audio" onclick="setPortfolioFilter('audio')"
                     class="portfolio-filter-tab shrink-0 px-3.5 py-2 rounded-xl text-xs font-medium transition-all border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
                     Audio &amp; Video
                 </button>
-                <button type="button" role="tab" aria-selected="false" data-pfilter="physical"
-                    onclick="setPortfolioFilter('physical')"
+                <button type="button" role="tab" aria-selected="false" data-pfilter="physical" onclick="setPortfolioFilter('physical')"
                     class="portfolio-filter-tab shrink-0 px-3.5 py-2 rounded-xl text-xs font-medium transition-all border bg-white/[0.02] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20">
                     Physical &amp; Ink
                 </button>
@@ -3382,8 +1787,7 @@
     <!-- ===================================================================== -->
     <div id="portfolio-lightbox" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6" role="dialog"
         aria-modal="true" aria-labelledby="lightbox-title">
-        <div onclick="closePortfolioLightbox()"
-            class="fixed inset-0 bg-[#04060a]/95 backdrop-blur-md transition-opacity">
+        <div onclick="closePortfolioLightbox()" class="fixed inset-0 bg-[#04060a]/95 backdrop-blur-md transition-opacity">
         </div>
 
         <div
@@ -3391,8 +1795,7 @@
             <!-- Top Lightbox Bar -->
             <div class="px-5 py-3.5 border-b border-white/[0.08] flex items-center justify-between gap-3">
                 <div class="min-w-0">
-                    <span id="lightbox-category"
-                        class="font-mono text-[10px] uppercase tracking-wider text-[#10b981] block">
+                    <span id="lightbox-category" class="font-mono text-[10px] uppercase tracking-wider text-[#10b981] block">
                         Category
                     </span>
                     <h4 id="lightbox-title" class="font-display text-base sm:text-lg font-bold text-white truncate">
@@ -3422,8 +1825,7 @@
             </div>
 
             <!-- Caption Bar -->
-            <div
-                class="px-5 py-3.5 bg-[#07090e]/95 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div class="px-5 py-3.5 bg-[#07090e]/95 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <p id="lightbox-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed"></p>
                 <span id="lightbox-counter" class="font-mono text-xs text-slate-400 shrink-0">1 / 12</span>
             </div>
@@ -3450,8 +1852,7 @@
                         class="inline-block font-mono text-[11px] uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-[#8b5cf6]/15 text-[#8b5cf6] border border-[#8b5cf6]/30 mb-2">
                         Studio Inquiry &amp; Feedback
                     </span>
-                    <h3 data-i18n="contactModalTitle" id="contact-modal-title"
-                        class="font-display text-xl sm:text-2xl font-bold text-white">
+                    <h3 data-i18n="contactModalTitle" id="contact-modal-title" class="font-display text-xl sm:text-2xl font-bold text-white">
                         Drop D474designs a Line
                     </h3>
                 </div>
@@ -3464,26 +1865,27 @@
             <!-- Modal Body -->
             <div class="modal-scroll-body p-6 space-y-5">
                 <p data-i18n="contactModalDesc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    Have a question about a discipline, a suggestion for the studio, or just want to say hello? Fill out
-                    the form below to send your message directly to our email.
+                    Have a question about a discipline, a suggestion for the studio, or just want to say hello? Fill out the form below to send your message directly to our email.
                 </p>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
+                    <div class="min-w-0">
                         <label data-i18n="contactNameLabel" for="contact-sender-name"
-                            class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
+                            class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5 leading-snug">
                             Your Name / Handle *
                         </label>
-                        <input type="text" id="contact-sender-name" data-i18n-placeholder="contactNamePlaceholder"
+                        <input type="text" id="contact-sender-name"
+                            data-i18n-placeholder="contactNamePlaceholder"
                             placeholder="e.g. Alex Rivera"
                             class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-[#8b5cf6] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
                     </div>
-                    <div>
+                    <div class="min-w-0">
                         <label data-i18n="contactEmailLabel" for="contact-sender-email"
-                            class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
+                            class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5 leading-snug">
                             Your Email Address *
                         </label>
-                        <input type="email" id="contact-sender-email" data-i18n-placeholder="contactEmailPlaceholder"
+                        <input type="email" id="contact-sender-email"
+                            data-i18n-placeholder="contactEmailPlaceholder"
                             placeholder="you@domain.com"
                             class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-[#8b5cf6] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
                     </div>
@@ -3494,7 +1896,8 @@
                         class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
                         Topic / Subject *
                     </label>
-                    <input type="text" id="contact-subject" data-i18n-placeholder="contactSubjectPlaceholder"
+                    <input type="text" id="contact-subject"
+                        data-i18n-placeholder="contactSubjectPlaceholder"
                         placeholder="e.g. Question about Web3 builds / Studio suggestion"
                         class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-[#8b5cf6] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500" />
                 </div>
@@ -3504,15 +1907,15 @@
                         class="block font-mono text-xs uppercase tracking-wider text-slate-400 mb-1.5">
                         Message *
                     </label>
-                    <textarea id="contact-message" rows="4" required data-i18n-placeholder="contactMessagePlaceholder"
+                    <textarea id="contact-message" rows="4" required
+                        data-i18n-placeholder="contactMessagePlaceholder"
                         placeholder="Write your question, suggestion, or message here..."
                         class="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-white/[0.1] focus:border-[#8b5cf6] focus:outline-none text-xs sm:text-sm text-white placeholder-slate-500 resize-none"></textarea>
                 </div>
             </div>
 
             <!-- Modal Footer -->
-            <div
-                class="shrink-0 px-6 sm:px-8 py-6 bg-[#07090e]/95 border-t border-white/[0.08] flex items-center justify-end gap-4">
+            <div class="shrink-0 px-6 sm:px-8 py-6 bg-[#07090e]/95 border-t border-white/[0.08] flex items-center justify-end gap-4">
                 <button type="button" onclick="submitContactForm()"
                     class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#8b5cf6] to-[#00f0ff] hover:opacity-95 text-[#07090e] font-bold text-sm shadow-cyan-glow transition-all inline-flex items-center justify-center gap-2">
                     <i data-lucide="mail" class="w-4 h-4 text-[#07090e]"></i>
@@ -3523,19 +1926,24 @@
     </div>
 
     <!-- Clickable, Hover-Pausable Toast Notification Banner (Centered & Styled like Submit Project Brief) -->
-    <div id="toast-notification" style="z-index: 9999; bottom: 2rem;"
+    <div id="toast-notification"
+        style="z-index: 9999; bottom: 2rem;"
         class="fixed bottom-8 inset-x-0 flex justify-center px-6 sm:px-10 pointer-events-none opacity-0 translate-y-4 transition-all duration-300">
-        <div id="toast-clickable-box" role="button" tabindex="0" onclick="handleToastClick()"
-            onkeydown="if(event.key==='Enter'||event.key===' ') handleToastClick()" onmouseenter="pauseToastTimer()"
-            onmouseleave="resumeToastTimer()" title="Click to open your Project Brief"
+        <div id="toast-clickable-box"
+            role="button"
+            tabindex="0"
+            onclick="handleToastClick()"
+            onkeydown="if(event.key==='Enter'||event.key===' ') handleToastClick()"
+            onmouseenter="pauseToastTimer()"
+            onmouseleave="resumeToastTimer()"
+            title="Click to open your Project Brief"
             class="cursor-pointer mx-4 sm:mx-8 px-6 sm:px-8 py-5 rounded-2xl bg-[#0c101a]/95 hover:bg-[#0c101a] border border-[#00f0ff] shadow-cyan-glow backdrop-blur-xl flex items-center justify-center gap-3.5 text-sm sm:text-base font-bold text-white max-w-xl transition-transform hover:scale-[1.02]">
             <span id="toast-icon-wrap" class="w-6 h-6 text-[#00f0ff] shrink-0 flex items-center justify-center">
                 <i id="toast-icon" data-lucide="check-circle" class="w-6 h-6 text-[#00f0ff]"></i>
             </span>
             <div class="flex flex-col text-left min-w-0">
                 <span id="toast-message" class="font-bold text-white leading-snug">Action completed</span>
-                <span id="toast-subtext" class="hidden text-xs font-mono font-semibold text-[#00f0ff] mt-1">Click here
-                    to view &amp; edit your Project Brief &rarr;</span>
+                <span id="toast-subtext" class="hidden text-xs font-mono font-semibold text-[#00f0ff] mt-1">Click here to view &amp; edit your Project Brief &rarr;</span>
             </div>
         </div>
     </div>
@@ -3766,7 +2174,8 @@
                 contactModalDesc: 'Have a question about a discipline, a suggestion for the studio, or just want to say hello? Fill out the form below to send your message directly to our email.',
                 contactNameLabel: 'Your Name / Handle *',
                 contactNamePlaceholder: 'e.g. Alex Rivera',
-                contactEmailLabel: 'Your Email Address *',
+                contactEmailLabel: 'Your Email *',
+                contactEmailPlaceholder: 'you@domain.com',
                 contactSubjectLabel: 'Topic / Subject *',
                 contactSubjectPlaceholder: 'e.g. Question about Web3 builds / Studio suggestion',
                 contactMessageLabel: 'Message *',
@@ -3921,7 +2330,8 @@
                 contactModalDesc: '¿Tienes una pregunta sobre alguna disciplina, una sugerencia para el estudio o simplemente quieres saludar? Completa el formulario para enviar tu mensaje directo a nuestro correo.',
                 contactNameLabel: 'Tu Nombre / Usuario *',
                 contactNamePlaceholder: 'ej. Alex Rivera',
-                contactEmailLabel: 'Tu Correo Electrónico *',
+                contactEmailLabel: 'Tu Correo *',
+                contactEmailPlaceholder: 'tu@dominio.com',
                 contactSubjectLabel: 'Tema / Asunto *',
                 contactSubjectPlaceholder: 'ej. Pregunta sobre desarrollo Web3 / Sugerencia',
                 contactMessageLabel: 'Mensaje *',
@@ -6269,9 +4679,9 @@
 
           <div class="text-xs text-slate-400">
             ${item.isBundle && item.includedServices
-                        ? `<ul class="space-y-1 mt-1 pl-2 border-l border-[#8b5cf6]/40">${item.includedServices.map(s => `<li>&bull; ${escapeHTML(s)}</li>`).join('')}</ul>`
-                        : `<span>${escapeHTML(t('scopeLabel'))} <strong class="text-slate-200 font-medium">${escapeHTML(item.tierName)}</strong></span>`
-                    }
+                    ? `<ul class="space-y-1 mt-1 pl-2 border-l border-[#8b5cf6]/40">${item.includedServices.map(s => `<li>&bull; ${escapeHTML(s)}</li>`).join('')}</ul>`
+                    : `<span>${escapeHTML(t('scopeLabel'))} <strong class="text-slate-200 font-medium">${escapeHTML(item.tierName)}</strong></span>`
+                }
           </div>
 
           <div class="flex flex-wrap items-center gap-2 pt-1 text-[11px] font-mono text-slate-400">
