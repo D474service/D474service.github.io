@@ -6435,6 +6435,17 @@
                 return;
             }
 
+            const unsentItems = cartItems.filter(item => !item.sentToStudio);
+            if (unsentItems.length === 0) {
+                showToast(
+                    isEs
+                        ? 'Todos los artículos de tu Resumen ya fueron marcados como enviados al estudio'
+                        : 'All items in your Project Brief have already been marked as sent to the studio',
+                    true
+                );
+                return;
+            }
+
             const clientNameEl = document.getElementById('client-name');
             const clientEmailEl = document.getElementById('client-email');
             const paymentOtherEl = document.getElementById('checkout-payment-other');
@@ -6473,7 +6484,8 @@
                 : paymentMethodRaw;
 
             const receiptCode = 'D474-' + Math.floor(1000 + Math.random() * 9000);
-            const total = cartItems.reduce((sum, item) => sum + item.price, 0);
+            const total = unsentItems.reduce((sum, item) => sum + item.price, 0);
+            const skippedSentCount = cartItems.length - unsentItems.length;
             const referralCode = (document.getElementById('client-referral-code')?.value || '').trim();
 
             document.getElementById('receipt-id').textContent = `#${receiptCode}`;
@@ -6481,9 +6493,15 @@
 
             const introEl = document.getElementById('receipt-intro-text');
             if (introEl) {
+                const skippedNoteEn = skippedSentCount > 0
+                    ? ` (${skippedSentCount} previously sent ${skippedSentCount === 1 ? 'item' : 'items'} excluded)`
+                    : '';
+                const skippedNoteEs = skippedSentCount > 0
+                    ? ` (${skippedSentCount} ${skippedSentCount === 1 ? 'artículo ya enviado excluido' : 'artículos ya enviados excluidos'})`
+                    : '';
                 introEl.innerHTML = isEs
-                    ? `Tu resumen de proyecto está listo para enviarse al estudio D474designs desde <span class="text-[#00f0ff]">${escapeHTML(clientEmail)}</span>. Tus artículos permanecerán guardados en tu Resumen de Proyecto Activo hasta que los envíes por correo abajo.`
-                    : `Your project brief is ready to send to the D474designs studio from <span class="text-[#00f0ff]">${escapeHTML(clientEmail)}</span>. Your items remain saved in your Active Project Brief until you send them via email below.`;
+                    ? `Tu resumen de proyecto está listo para enviarse al estudio D474designs desde <span class="text-[#00f0ff]">${escapeHTML(clientEmail)}</span>${escapeHTML(skippedNoteEs)}. Tus artículos permanecerán guardados en tu Resumen de Proyecto Activo hasta que los envíes por correo abajo.`
+                    : `Your project brief is ready to send to the D474designs studio from <span class="text-[#00f0ff]">${escapeHTML(clientEmail)}</span>${escapeHTML(skippedNoteEn)}. Your items remain saved in your Active Project Brief until you send them via email below.`;
             }
 
             const summaryContainer = document.getElementById('receipt-summary');
@@ -6502,8 +6520,8 @@
         `
                 : '';
 
-            summaryContainer.innerHTML = paymentSummaryHtml + referralSummaryHtml + cartItems.map((item, idx) => `
-        <div class="pb-2.5 ${idx < cartItems.length - 1 ? 'border-b border-white/[0.06]' : ''}">
+            summaryContainer.innerHTML = paymentSummaryHtml + referralSummaryHtml + unsentItems.map((item, idx) => `
+        <div class="pb-2.5 ${idx < unsentItems.length - 1 ? 'border-b border-white/[0.06]' : ''}">
           <div class="flex items-center justify-between gap-2 font-medium text-white">
             <span>${idx + 1}. ${escapeHTML(item.title)}</span>
             <span class="font-mono text-[#10b981]">$${item.price.toLocaleString()}</span>
@@ -6513,7 +6531,7 @@
         </div>
       `).join('');
 
-            // Build plain-text dossier for clipboard copy & mailto link
+            // Build plain-text dossier for clipboard copy & mailto link (only unsent items)
             const lines = [
                 `D474DESIGNS STUDIO PROJECT DOSSIER (#${receiptCode})`,
                 `Client: ${clientName} (${clientEmail})`,
@@ -6521,7 +6539,7 @@
                 `Payment Terms: Initial deposit to start -> live progression previews before further installments (payment plans or full upfront payment available)`,
                 ...(referralCode ? [`Referral Code: ${referralCode}`] : []),
                 `--------------------------------------------------`,
-                ...cartItems.map((item, idx) => {
+                ...unsentItems.map((item, idx) => {
                     return `${idx + 1}. ${item.title} — $${item.price.toLocaleString()}\n   Scope: ${item.tierName}\n   Target Date: ${item.targetDate} | Speed: ${item.priority === 'rush' ? 'Priority Rush' : 'Standard'}${item.notes ? `\n   Notes: ${item.notes}` : ''}`;
                 }),
                 `--------------------------------------------------`,
