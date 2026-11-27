@@ -2094,6 +2094,14 @@
         .filter-tab,
         .portfolio-filter-tab {
             margin: 0.125rem;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            cursor: pointer;
+        }
+
+        a {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .overscroll-contain {
@@ -2104,13 +2112,13 @@
             overflow-y: auto;
             overscroll-behavior: contain;
             -webkit-overflow-scrolling: touch;
+            touch-action: pan-y;
             flex: 1 1 auto;
             min-height: 0;
         }
 
         body.modal-open {
             overflow: hidden !important;
-            touch-action: none;
         }
 
         /* Architectural Grid Overlay */
@@ -6666,10 +6674,11 @@
 
         document.addEventListener('click', (e) => {
             const navbar = document.getElementById('studio-navbar');
-            if (navbar && !navbar.contains(e.target)) {
+            const tray = document.getElementById('sections-menu-tray');
+            if (tray && tray.classList.contains('is-open') && navbar && !navbar.contains(e.target)) {
                 closeSectionsMenu();
             }
-        });
+        }, { passive: true });
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
