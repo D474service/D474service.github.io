@@ -6724,6 +6724,7 @@
         }
 
         function handleToastClick() {
+            if (!toastSuppressClick && !toastOpensCart) { hideToast(); return; }
             if (toastSuppressClick) {
                 toastSuppressClick = false;
                 return;
@@ -6752,7 +6753,7 @@
 
         // Swipe-to-dismiss: drag the toast up / down / left / right to send it off-screen in that direction
         let toastSwipe = null;
-        let toastSuppressClick = false;
+        let toastSuppressClick = false; let toastOpensCart = false;
 
         function resetToastSwipeStyles() {
             const boxEl = document.getElementById('toast-clickable-box');
@@ -6900,7 +6901,7 @@
                 lucide.createIcons(iconWrapEl);
             }
 
-            resetToastSwipeStyles();
+            toastOpensCart = !!showBriefHint && !isWarning; if (boxEl) { if (toastOpensCart) boxEl.title = 'Click to open your Project Brief'; else boxEl.removeAttribute('title'); } resetToastSwipeStyles();
             toast.classList.remove('opacity-0', 'translate-y-4');
             clearTimeout(toastTimeout);
             isToastPaused = false;
