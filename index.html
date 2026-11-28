@@ -5283,7 +5283,7 @@
                 openCustomConsultation();
                 const bundleNotesEl = document.getElementById('bundle-notes');
                 if (bundleNotesEl) {
-                    bundleNotesEl.value = ideaText;
+                    bundleNotesEl.value = ''; bundleNotesEl.placeholder = ideaText;
                     saveBundleDraft();
                 }
                 return;
@@ -5832,6 +5832,7 @@
         // MULTI-DISCIPLINE BUNDLE BUILDER MODAL LOGIC (WITH PERSISTENCE)
         // =====================================================================
         function openCustomConsultation() {
+            const bundleNotesBox = document.getElementById('bundle-notes'); if (bundleNotesBox) { bundleNotesBox.placeholder = t('bundleNotesPlaceholder'); if (isIdeaTemplateNote(bundleNotesBox.value)) { bundleNotesBox.value = ''; saveBundleDraft(); } }
             editingBundleUid = null;
             const bundleSubmitBtn = document.getElementById('bundle-submit-btn');
             if (bundleSubmitBtn) {
